@@ -22,79 +22,45 @@ Partial Class frmCLR
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.MaskedTextBox6 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox5 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox4 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox3 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox2 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox1 = New System.Windows.Forms.MaskedTextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.MaskedTextBox7 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox8 = New System.Windows.Forms.MaskedTextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
-        Me.DataGridView6 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.DataGridView7 = New System.Windows.Forms.DataGridView()
-        Me.DataGridView8 = New System.Windows.Forms.DataGridView()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridView4 = New System.Windows.Forms.DataGridView()
+        Me.gbxVessel = New System.Windows.Forms.GroupBox()
+        Me.mskLastPort = New System.Windows.Forms.MaskedTextBox()
+        Me.mskNextPort = New System.Windows.Forms.MaskedTextBox()
+        Me.mskVoyage = New System.Windows.Forms.MaskedTextBox()
+        Me.mskRegistry = New System.Windows.Forms.MaskedTextBox()
+        Me.mskVessel = New System.Windows.Forms.MaskedTextBox()
+        Me.mskShippingLine = New System.Windows.Forms.MaskedTextBox()
+        Me.lblVoyage = New System.Windows.Forms.Label()
+        Me.lblNextPort = New System.Windows.Forms.Label()
+        Me.lblLastPort = New System.Windows.Forms.Label()
+        Me.lblRegistry = New System.Windows.Forms.Label()
+        Me.lblVessel = New System.Windows.Forms.Label()
+        Me.lblShippingLine = New System.Windows.Forms.Label()
+        Me.tbctlCLR = New System.Windows.Forms.TabControl()
+        Me.tabGeneral = New System.Windows.Forms.TabPage()
+        Me.mskNBPRB = New System.Windows.Forms.MaskedTextBox()
+        Me.mskGBPRB = New System.Windows.Forms.MaskedTextBox()
+        Me.mskNBHB = New System.Windows.Forms.MaskedTextBox()
+        Me.mskNBPRA = New System.Windows.Forms.MaskedTextBox()
+        Me.mskGBPRA = New System.Windows.Forms.MaskedTextBox()
+        Me.mskNBHA = New System.Windows.Forms.MaskedTextBox()
+        Me.lblNBPRB = New System.Windows.Forms.Label()
+        Me.lblGBPRB = New System.Windows.Forms.Label()
+        Me.lblNBHB = New System.Windows.Forms.Label()
+        Me.lblNBPRA = New System.Windows.Forms.Label()
+        Me.lblGBPRA = New System.Windows.Forms.Label()
+        Me.lblNBHA = New System.Windows.Forms.Label()
+        Me.lblMovesB = New System.Windows.Forms.Label()
+        Me.lblMovesA = New System.Windows.Forms.Label()
+        Me.lblTotalMovesB = New System.Windows.Forms.Label()
+        Me.lblTotalMovesA = New System.Windows.Forms.Label()
+        Me.lblGCB = New System.Windows.Forms.Label()
+        Me.lblGCA = New System.Windows.Forms.Label()
+        Me.lblCummulativeYr = New System.Windows.Forms.Label()
+        Me.lblCummulativeMoA = New System.Windows.Forms.Label()
+        Me.dgvCummulativeYr = New System.Windows.Forms.DataGridView()
+        Me.dgvCummulativeMoA = New System.Windows.Forms.DataGridView()
+        Me.tabSummary = New System.Windows.Forms.TabPage()
+        Me.dgvHCB = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -102,7 +68,7 @@ Partial Class frmCLR
         Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridView5 = New System.Windows.Forms.DataGridView()
+        Me.dgvGbxB = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -110,775 +76,545 @@ Partial Class frmCLR
         Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TabPage6 = New System.Windows.Forms.TabPage()
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
+        Me.dgvCTNB = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lblSumGCB = New System.Windows.Forms.Label()
+        Me.dgvHCA = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgvGbxA = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgvCTNA = New System.Windows.Forms.DataGridView()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lblSumGCA = New System.Windows.Forms.Label()
+        Me.lblSumMovesA = New System.Windows.Forms.TabPage()
+        Me.lblNPRB = New System.Windows.Forms.Label()
+        Me.Label44 = New System.Windows.Forms.Label()
+        Me.lblNWHB = New System.Windows.Forms.Label()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.lblGPB = New System.Windows.Forms.Label()
+        Me.Label48 = New System.Windows.Forms.Label()
+        Me.lblGWHB = New System.Windows.Forms.Label()
+        Me.Label50 = New System.Windows.Forms.Label()
+        Me.lblNPRA = New System.Windows.Forms.Label()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.lblNWHA = New System.Windows.Forms.Label()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.lblGPA = New System.Windows.Forms.Label()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.lblGWHA = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.mskLMB = New System.Windows.Forms.MaskedTextBox()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.mskFMB = New System.Windows.Forms.MaskedTextBox()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.mskLMA = New System.Windows.Forms.MaskedTextBox()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.mskFMA = New System.Windows.Forms.MaskedTextBox()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.lblSumMovesB = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.Label30 = New System.Windows.Forms.Label()
-        Me.MaskedTextBox9 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox10 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox11 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox12 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox13 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox14 = New System.Windows.Forms.MaskedTextBox()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.MaskedTextBox15 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox16 = New System.Windows.Forms.MaskedTextBox()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.MaskedTextBox17 = New System.Windows.Forms.MaskedTextBox()
-        Me.Label33 = New System.Windows.Forms.Label()
-        Me.MaskedTextBox18 = New System.Windows.Forms.MaskedTextBox()
-        Me.Label34 = New System.Windows.Forms.Label()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.Label36 = New System.Windows.Forms.Label()
-        Me.Label37 = New System.Windows.Forms.Label()
-        Me.Label38 = New System.Windows.Forms.Label()
-        Me.Label39 = New System.Windows.Forms.Label()
-        Me.Label40 = New System.Windows.Forms.Label()
-        Me.Label41 = New System.Windows.Forms.Label()
-        Me.Label42 = New System.Windows.Forms.Label()
-        Me.Label43 = New System.Windows.Forms.Label()
-        Me.Label44 = New System.Windows.Forms.Label()
-        Me.Label45 = New System.Windows.Forms.Label()
-        Me.Label46 = New System.Windows.Forms.Label()
-        Me.Label47 = New System.Windows.Forms.Label()
-        Me.Label48 = New System.Windows.Forms.Label()
-        Me.Label49 = New System.Windows.Forms.Label()
-        Me.Label50 = New System.Windows.Forms.Label()
-        Me.Label51 = New System.Windows.Forms.Label()
-        Me.Label52 = New System.Windows.Forms.Label()
-        Me.DataGridView9 = New System.Windows.Forms.DataGridView()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridView10 = New System.Windows.Forms.DataGridView()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.mskTotDelayB = New System.Windows.Forms.MaskedTextBox()
+        Me.Label54 = New System.Windows.Forms.Label()
+        Me.mskTotDelayA = New System.Windows.Forms.MaskedTextBox()
+        Me.Label53 = New System.Windows.Forms.Label()
+        Me.dgvDelayB = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label53 = New System.Windows.Forms.Label()
-        Me.MaskedTextBox19 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox20 = New System.Windows.Forms.MaskedTextBox()
-        Me.Label54 = New System.Windows.Forms.Label()
-        Me.Label55 = New System.Windows.Forms.Label()
-        Me.Label56 = New System.Windows.Forms.Label()
-        Me.MaskedTextBox21 = New System.Windows.Forms.MaskedTextBox()
-        Me.Label57 = New System.Windows.Forms.Label()
-        Me.MaskedTextBox22 = New System.Windows.Forms.MaskedTextBox()
-        Me.Label58 = New System.Windows.Forms.Label()
-        Me.DataGridView11 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn41 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn42 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn43 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridView12 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn44 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn46 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn47 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MaskedTextBox23 = New System.Windows.Forms.MaskedTextBox()
-        Me.Label59 = New System.Windows.Forms.Label()
-        Me.MaskedTextBox24 = New System.Windows.Forms.MaskedTextBox()
-        Me.Label60 = New System.Windows.Forms.Label()
-        Me.DataGridView13 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn48 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn49 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridView14 = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MaskedTextBox25 = New System.Windows.Forms.MaskedTextBox()
+        Me.dgvDelayA = New System.Windows.Forms.DataGridView()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label51 = New System.Windows.Forms.Label()
+        Me.Label52 = New System.Windows.Forms.Label()
+        Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.mskTotBerthDelay = New System.Windows.Forms.MaskedTextBox()
         Me.Label61 = New System.Windows.Forms.Label()
-        Me.DataGridView15 = New System.Windows.Forms.DataGridView()
+        Me.dgvBerthDelay = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn59 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.mskTotAddDelayB = New System.Windows.Forms.MaskedTextBox()
+        Me.Label59 = New System.Windows.Forms.Label()
+        Me.mskTotAddDelayA = New System.Windows.Forms.MaskedTextBox()
+        Me.Label60 = New System.Windows.Forms.Label()
+        Me.dgvAddDelayB = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn48 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn49 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgvAddDelayA = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.mskTotBreakB = New System.Windows.Forms.MaskedTextBox()
+        Me.Label57 = New System.Windows.Forms.Label()
+        Me.mskTotBreakA = New System.Windows.Forms.MaskedTextBox()
+        Me.Label58 = New System.Windows.Forms.Label()
+        Me.dgvBreakB = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn41 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn42 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn43 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dgvBreakA = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn44 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn46 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn47 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label55 = New System.Windows.Forms.Label()
+        Me.Label56 = New System.Windows.Forms.Label()
         Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.GroupBox1.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
+        Me.cmdSave = New System.Windows.Forms.Button()
+        Me.crvPreview = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
+        Me.gbxVessel.SuspendLayout()
+        Me.tbctlCLR.SuspendLayout()
+        Me.tabGeneral.SuspendLayout()
+        CType(Me.dgvCummulativeYr, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvCummulativeMoA, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabSummary.SuspendLayout()
+        CType(Me.dgvHCB, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvGbxB, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvCTNB, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvHCA, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvGbxA, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvCTNA, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.lblSumMovesA.SuspendLayout()
         Me.TabPage3.SuspendLayout()
+        CType(Me.dgvDelayB, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvDelayA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage4.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage6.SuspendLayout()
-        CType(Me.DataGridView9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView11, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView12, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView13, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView14, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView15, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvBerthDelay, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvAddDelayB, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvAddDelayA, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvBreakB, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvBreakA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage5.SuspendLayout()
         Me.SuspendLayout()
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.MaskedTextBox6)
-        Me.GroupBox1.Controls.Add(Me.MaskedTextBox5)
-        Me.GroupBox1.Controls.Add(Me.MaskedTextBox4)
-        Me.GroupBox1.Controls.Add(Me.MaskedTextBox3)
-        Me.GroupBox1.Controls.Add(Me.MaskedTextBox2)
-        Me.GroupBox1.Controls.Add(Me.MaskedTextBox1)
-        Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1342, 217)
-        Me.GroupBox1.TabIndex = 12
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "GroupBox1"
-        '
-        'MaskedTextBox6
-        '
-        Me.MaskedTextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox6.Location = New System.Drawing.Point(925, 43)
-        Me.MaskedTextBox6.Name = "MaskedTextBox6"
-        Me.MaskedTextBox6.Size = New System.Drawing.Size(302, 27)
-        Me.MaskedTextBox6.TabIndex = 23
-        '
-        'MaskedTextBox5
-        '
-        Me.MaskedTextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox5.Location = New System.Drawing.Point(925, 94)
-        Me.MaskedTextBox5.Name = "MaskedTextBox5"
-        Me.MaskedTextBox5.Size = New System.Drawing.Size(302, 27)
-        Me.MaskedTextBox5.TabIndex = 22
-        '
-        'MaskedTextBox4
-        '
-        Me.MaskedTextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox4.Location = New System.Drawing.Point(925, 146)
-        Me.MaskedTextBox4.Name = "MaskedTextBox4"
-        Me.MaskedTextBox4.Size = New System.Drawing.Size(302, 27)
-        Me.MaskedTextBox4.TabIndex = 21
-        '
-        'MaskedTextBox3
-        '
-        Me.MaskedTextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox3.Location = New System.Drawing.Point(245, 146)
-        Me.MaskedTextBox3.Name = "MaskedTextBox3"
-        Me.MaskedTextBox3.Size = New System.Drawing.Size(302, 27)
-        Me.MaskedTextBox3.TabIndex = 20
-        '
-        'MaskedTextBox2
-        '
-        Me.MaskedTextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox2.Location = New System.Drawing.Point(245, 96)
-        Me.MaskedTextBox2.Name = "MaskedTextBox2"
-        Me.MaskedTextBox2.Size = New System.Drawing.Size(302, 27)
-        Me.MaskedTextBox2.TabIndex = 19
-        '
-        'MaskedTextBox1
-        '
-        Me.MaskedTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox1.Location = New System.Drawing.Point(245, 44)
-        Me.MaskedTextBox1.Name = "MaskedTextBox1"
-        Me.MaskedTextBox1.Size = New System.Drawing.Size(302, 27)
-        Me.MaskedTextBox1.TabIndex = 18
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.Label6.Location = New System.Drawing.Point(780, 149)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(139, 22)
-        Me.Label6.TabIndex = 17
-        Me.Label6.Text = "Voyage Number"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.Label5.Location = New System.Drawing.Point(780, 98)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(85, 22)
-        Me.Label5.TabIndex = 16
-        Me.Label5.Text = "Next Port"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.Label4.Location = New System.Drawing.Point(780, 47)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(82, 22)
-        Me.Label4.TabIndex = 15
-        Me.Label4.Text = "Last Port"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.Label3.Location = New System.Drawing.Point(95, 149)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(144, 22)
-        Me.Label3.TabIndex = 14
-        Me.Label3.Text = "Registry Number"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.Label2.Location = New System.Drawing.Point(95, 98)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(116, 22)
-        Me.Label2.TabIndex = 13
-        Me.Label2.Text = "Vessel Name"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.Label1.Location = New System.Drawing.Point(95, 47)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(119, 22)
-        Me.Label1.TabIndex = 12
-        Me.Label1.Text = "Shipping Line"
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Controls.Add(Me.TabPage6)
-        Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Controls.Add(Me.TabPage4)
-        Me.TabControl1.Controls.Add(Me.TabPage5)
-        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.TabControl1.Location = New System.Drawing.Point(12, 235)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1342, 521)
-        Me.TabControl1.TabIndex = 13
-        '
-        'TabPage1
-        '
-        Me.TabPage1.Controls.Add(Me.MaskedTextBox12)
-        Me.TabPage1.Controls.Add(Me.MaskedTextBox13)
-        Me.TabPage1.Controls.Add(Me.MaskedTextBox14)
-        Me.TabPage1.Controls.Add(Me.MaskedTextBox11)
-        Me.TabPage1.Controls.Add(Me.MaskedTextBox10)
-        Me.TabPage1.Controls.Add(Me.MaskedTextBox9)
-        Me.TabPage1.Controls.Add(Me.Label22)
-        Me.TabPage1.Controls.Add(Me.Label23)
-        Me.TabPage1.Controls.Add(Me.Label24)
-        Me.TabPage1.Controls.Add(Me.Label21)
-        Me.TabPage1.Controls.Add(Me.Label20)
-        Me.TabPage1.Controls.Add(Me.Label19)
-        Me.TabPage1.Controls.Add(Me.Label18)
-        Me.TabPage1.Controls.Add(Me.Label17)
-        Me.TabPage1.Controls.Add(Me.Label16)
-        Me.TabPage1.Controls.Add(Me.Label15)
-        Me.TabPage1.Controls.Add(Me.Label14)
-        Me.TabPage1.Controls.Add(Me.Label13)
-        Me.TabPage1.Controls.Add(Me.Label12)
-        Me.TabPage1.Controls.Add(Me.Label11)
-        Me.TabPage1.Controls.Add(Me.DataGridView8)
-        Me.TabPage1.Controls.Add(Me.DataGridView7)
-        Me.TabPage1.Controls.Add(Me.MaskedTextBox7)
-        Me.TabPage1.Controls.Add(Me.MaskedTextBox8)
-        Me.TabPage1.Controls.Add(Me.Label7)
-        Me.TabPage1.Controls.Add(Me.Label8)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 29)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(1334, 488)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "General"
-        Me.TabPage1.UseVisualStyleBackColor = True
-        '
-        'TabPage2
-        '
-        Me.TabPage2.Controls.Add(Me.DataGridView4)
-        Me.TabPage2.Controls.Add(Me.DataGridView5)
-        Me.TabPage2.Controls.Add(Me.DataGridView6)
-        Me.TabPage2.Controls.Add(Me.Label10)
-        Me.TabPage2.Controls.Add(Me.DataGridView3)
-        Me.TabPage2.Controls.Add(Me.DataGridView2)
-        Me.TabPage2.Controls.Add(Me.DataGridView1)
-        Me.TabPage2.Controls.Add(Me.Label9)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 29)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1334, 488)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Summaries"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'TabPage3
-        '
-        Me.TabPage3.Controls.Add(Me.MaskedTextBox20)
-        Me.TabPage3.Controls.Add(Me.Label54)
-        Me.TabPage3.Controls.Add(Me.MaskedTextBox19)
-        Me.TabPage3.Controls.Add(Me.Label53)
-        Me.TabPage3.Controls.Add(Me.DataGridView10)
-        Me.TabPage3.Controls.Add(Me.DataGridView9)
-        Me.TabPage3.Controls.Add(Me.Label51)
-        Me.TabPage3.Controls.Add(Me.Label52)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 29)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(1334, 488)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Deductables"
-        Me.TabPage3.UseVisualStyleBackColor = True
-        '
-        'TabPage4
-        '
-        Me.TabPage4.Controls.Add(Me.MaskedTextBox25)
-        Me.TabPage4.Controls.Add(Me.Label61)
-        Me.TabPage4.Controls.Add(Me.DataGridView15)
-        Me.TabPage4.Controls.Add(Me.MaskedTextBox23)
-        Me.TabPage4.Controls.Add(Me.Label59)
-        Me.TabPage4.Controls.Add(Me.MaskedTextBox24)
-        Me.TabPage4.Controls.Add(Me.Label60)
-        Me.TabPage4.Controls.Add(Me.DataGridView13)
-        Me.TabPage4.Controls.Add(Me.DataGridView14)
-        Me.TabPage4.Controls.Add(Me.MaskedTextBox21)
-        Me.TabPage4.Controls.Add(Me.Label57)
-        Me.TabPage4.Controls.Add(Me.MaskedTextBox22)
-        Me.TabPage4.Controls.Add(Me.Label58)
-        Me.TabPage4.Controls.Add(Me.DataGridView11)
-        Me.TabPage4.Controls.Add(Me.DataGridView12)
-        Me.TabPage4.Controls.Add(Me.Label55)
-        Me.TabPage4.Controls.Add(Me.Label56)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 29)
-        Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Size = New System.Drawing.Size(1334, 488)
-        Me.TabPage4.TabIndex = 3
-        Me.TabPage4.Text = "Additional Delays"
-        Me.TabPage4.UseVisualStyleBackColor = True
-        '
-        'MaskedTextBox7
-        '
-        Me.MaskedTextBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox7.Location = New System.Drawing.Point(921, 38)
-        Me.MaskedTextBox7.Name = "MaskedTextBox7"
-        Me.MaskedTextBox7.Size = New System.Drawing.Size(302, 27)
-        Me.MaskedTextBox7.TabIndex = 25
-        '
-        'MaskedTextBox8
-        '
-        Me.MaskedTextBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox8.Location = New System.Drawing.Point(241, 38)
-        Me.MaskedTextBox8.Name = "MaskedTextBox8"
-        Me.MaskedTextBox8.Size = New System.Drawing.Size(302, 27)
-        Me.MaskedTextBox8.TabIndex = 24
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.Label7.Location = New System.Drawing.Point(776, 41)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(139, 22)
-        Me.Label7.TabIndex = 23
-        Me.Label7.Text = "Voyage Number"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.Label8.Location = New System.Drawing.Point(91, 41)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(144, 22)
-        Me.Label8.TabIndex = 22
-        Me.Label8.Text = "Registry Number"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(328, 10)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(37, 22)
-        Me.Label9.TabIndex = 0
-        Me.Label9.Text = "GC"
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column7, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
-        Me.DataGridView1.Location = New System.Drawing.Point(29, 35)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView1.Size = New System.Drawing.Size(635, 221)
-        Me.DataGridView1.TabIndex = 1
-        '
-        'DataGridView2
-        '
-        Me.DataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView2.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
-        Me.DataGridView2.Location = New System.Drawing.Point(29, 262)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.RowHeadersVisible = False
-        Me.DataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView2.Size = New System.Drawing.Size(635, 75)
-        Me.DataGridView2.TabIndex = 2
-        '
-        'DataGridView3
-        '
-        Me.DataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView3.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView3.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13})
-        Me.DataGridView3.Location = New System.Drawing.Point(29, 343)
-        Me.DataGridView3.Name = "DataGridView3"
-        Me.DataGridView3.RowHeadersVisible = False
-        Me.DataGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView3.Size = New System.Drawing.Size(635, 127)
-        Me.DataGridView3.TabIndex = 3
-        '
-        'DataGridView6
-        '
-        Me.DataGridView6.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView6.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView6.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView6.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn30, Me.DataGridViewTextBoxColumn31, Me.DataGridViewTextBoxColumn32, Me.DataGridViewTextBoxColumn33, Me.DataGridViewTextBoxColumn34, Me.DataGridViewTextBoxColumn35})
-        Me.DataGridView6.Location = New System.Drawing.Point(670, 35)
-        Me.DataGridView6.Name = "DataGridView6"
-        Me.DataGridView6.RowHeadersVisible = False
-        Me.DataGridView6.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView6.Size = New System.Drawing.Size(635, 221)
-        Me.DataGridView6.TabIndex = 5
-        '
-        'DataGridViewTextBoxColumn29
-        '
-        Me.DataGridViewTextBoxColumn29.FillWeight = 200.0!
-        Me.DataGridViewTextBoxColumn29.HeaderText = ""
-        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
-        '
-        'DataGridViewTextBoxColumn30
-        '
-        Me.DataGridViewTextBoxColumn30.HeaderText = "D-20'"
-        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
-        '
-        'DataGridViewTextBoxColumn31
-        '
-        Me.DataGridViewTextBoxColumn31.HeaderText = "D-40'"
-        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
-        '
-        'DataGridViewTextBoxColumn32
-        '
-        Me.DataGridViewTextBoxColumn32.HeaderText = "D-45'"
-        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
-        '
-        'DataGridViewTextBoxColumn33
-        '
-        Me.DataGridViewTextBoxColumn33.HeaderText = "L-20'"
-        Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
-        '
-        'DataGridViewTextBoxColumn34
-        '
-        Me.DataGridViewTextBoxColumn34.HeaderText = "L-40'"
-        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
-        '
-        'DataGridViewTextBoxColumn35
-        '
-        Me.DataGridViewTextBoxColumn35.HeaderText = "L-45'"
-        Me.DataGridViewTextBoxColumn35.Name = "DataGridViewTextBoxColumn35"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(969, 10)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(37, 22)
-        Me.Label10.TabIndex = 4
-        Me.Label10.Text = "GC"
-        '
-        'DataGridView7
-        '
-        Me.DataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView7.Location = New System.Drawing.Point(95, 322)
-        Me.DataGridView7.Name = "DataGridView7"
-        Me.DataGridView7.Size = New System.Drawing.Size(448, 150)
-        Me.DataGridView7.TabIndex = 26
-        '
-        'DataGridView8
-        '
-        Me.DataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView8.Location = New System.Drawing.Point(780, 322)
-        Me.DataGridView8.Name = "DataGridView8"
-        Me.DataGridView8.Size = New System.Drawing.Size(443, 150)
-        Me.DataGridView8.TabIndex = 27
-        '
-        'Label11
-        '
-        Me.Label11.Location = New System.Drawing.Point(95, 294)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(448, 25)
-        Me.Label11.TabIndex = 28
-        Me.Label11.Text = "Cummulative Volume this Mo." & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'Label12
-        '
-        Me.Label12.Location = New System.Drawing.Point(780, 294)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(448, 25)
-        Me.Label12.TabIndex = 29
-        Me.Label12.Text = "Cummulative Volume this Year" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'Label13
-        '
-        Me.Label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label13.Location = New System.Drawing.Point(91, 80)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(448, 25)
-        Me.Label13.TabIndex = 30
-        Me.Label13.Text = "GC"
-        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label14
-        '
-        Me.Label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label14.Location = New System.Drawing.Point(780, 80)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(448, 25)
-        Me.Label14.TabIndex = 31
-        Me.Label14.Text = "GC"
-        Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label15
-        '
-        Me.Label15.Location = New System.Drawing.Point(91, 105)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(448, 25)
-        Me.Label15.TabIndex = 32
-        Me.Label15.Text = "TOTAL MOVES"
-        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label16
-        '
-        Me.Label16.Location = New System.Drawing.Point(780, 105)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(448, 25)
-        Me.Label16.TabIndex = 33
-        Me.Label16.Text = "TOTAL MOVES"
-        Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label17
-        '
-        Me.Label17.Location = New System.Drawing.Point(91, 130)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(448, 73)
-        Me.Label17.TabIndex = 34
-        Me.Label17.Text = "Label17"
-        Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label18
-        '
-        Me.Label18.Location = New System.Drawing.Point(780, 130)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(448, 73)
-        Me.Label18.TabIndex = 35
-        Me.Label18.Text = "Label18"
-        Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label19
-        '
-        Me.Label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label19.Location = New System.Drawing.Point(91, 203)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(225, 25)
-        Me.Label19.TabIndex = 36
-        Me.Label19.Text = "Net Berth Hours (Berth Time less delays)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'Label20
-        '
-        Me.Label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label20.Location = New System.Drawing.Point(91, 228)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(225, 25)
-        Me.Label20.TabIndex = 37
-        Me.Label20.Text = "Gross Berth Prod. Rate (Total Moves/ Berth Time)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'Label21
-        '
-        Me.Label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label21.Location = New System.Drawing.Point(91, 253)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(225, 25)
-        Me.Label21.TabIndex = 38
-        Me.Label21.Text = "Net Berth Prod. (Gross Berth Prod. less delays)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'Label22
-        '
-        Me.Label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label22.Location = New System.Drawing.Point(780, 251)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(225, 25)
-        Me.Label22.TabIndex = 47
-        Me.Label22.Text = "Net Berth Prod. (Gross Berth Prod. less delays)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'Label23
-        '
-        Me.Label23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label23.Location = New System.Drawing.Point(780, 226)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(225, 25)
-        Me.Label23.TabIndex = 46
-        Me.Label23.Text = "Gross Berth Prod. Rate (Total Moves/ Berth Time)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'Label24
-        '
-        Me.Label24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label24.Location = New System.Drawing.Point(780, 201)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(225, 25)
-        Me.Label24.TabIndex = 45
-        Me.Label24.Text = "Net Berth Hours (Berth Time less delays)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.HeaderText = "L-40'"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.HeaderText = "L-20'"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.HeaderText = "L-Bay #"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.HeaderText = "D-40'"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.HeaderText = "D-20'"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.HeaderText = "D-Bay #"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.FillWeight = 200.0!
-        Me.DataGridViewTextBoxColumn1.HeaderText = ""
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "L-45'"
-        Me.Column6.Name = "Column6"
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "L-40'"
-        Me.Column5.Name = "Column5"
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "L-20'"
-        Me.Column4.Name = "Column4"
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "D-45'"
-        Me.Column3.Name = "Column3"
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "D-40'"
-        Me.Column2.Name = "Column2"
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "D-20'"
-        Me.Column1.Name = "Column1"
-        '
-        'Column7
-        '
-        Me.Column7.FillWeight = 200.0!
-        Me.Column7.HeaderText = ""
-        Me.Column7.Name = "Column7"
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.FillWeight = 200.0!
-        Me.DataGridViewTextBoxColumn8.HeaderText = ""
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.HeaderText = "O-Bay #"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.HeaderText = "O-20'"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.HeaderText = "O-40'"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.HeaderText = "C-Bay #"
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.HeaderText = "C-20'"
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.HeaderText = "C-40'"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        '
-        'DataGridView4
-        '
-        Me.DataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView4.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView4.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView4.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19, Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn21})
-        Me.DataGridView4.Location = New System.Drawing.Point(670, 343)
-        Me.DataGridView4.Name = "DataGridView4"
-        Me.DataGridView4.RowHeadersVisible = False
-        Me.DataGridView4.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView4.Size = New System.Drawing.Size(635, 127)
-        Me.DataGridView4.TabIndex = 7
+        'gbxVessel
+        '
+        Me.gbxVessel.Controls.Add(Me.mskLastPort)
+        Me.gbxVessel.Controls.Add(Me.mskNextPort)
+        Me.gbxVessel.Controls.Add(Me.mskVoyage)
+        Me.gbxVessel.Controls.Add(Me.mskRegistry)
+        Me.gbxVessel.Controls.Add(Me.mskVessel)
+        Me.gbxVessel.Controls.Add(Me.mskShippingLine)
+        Me.gbxVessel.Controls.Add(Me.lblVoyage)
+        Me.gbxVessel.Controls.Add(Me.lblNextPort)
+        Me.gbxVessel.Controls.Add(Me.lblLastPort)
+        Me.gbxVessel.Controls.Add(Me.lblRegistry)
+        Me.gbxVessel.Controls.Add(Me.lblVessel)
+        Me.gbxVessel.Controls.Add(Me.lblShippingLine)
+        Me.gbxVessel.Location = New System.Drawing.Point(12, 12)
+        Me.gbxVessel.Name = "gbxVessel"
+        Me.gbxVessel.Size = New System.Drawing.Size(1342, 217)
+        Me.gbxVessel.TabIndex = 12
+        Me.gbxVessel.TabStop = False
+        Me.gbxVessel.Text = "Vessel Details"
+        '
+        'mskLastPort
+        '
+        Me.mskLastPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskLastPort.Location = New System.Drawing.Point(925, 43)
+        Me.mskLastPort.Name = "mskLastPort"
+        Me.mskLastPort.Size = New System.Drawing.Size(302, 27)
+        Me.mskLastPort.TabIndex = 23
+        '
+        'mskNextPort
+        '
+        Me.mskNextPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskNextPort.Location = New System.Drawing.Point(925, 94)
+        Me.mskNextPort.Name = "mskNextPort"
+        Me.mskNextPort.Size = New System.Drawing.Size(302, 27)
+        Me.mskNextPort.TabIndex = 22
+        '
+        'mskVoyage
+        '
+        Me.mskVoyage.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskVoyage.Location = New System.Drawing.Point(925, 146)
+        Me.mskVoyage.Name = "mskVoyage"
+        Me.mskVoyage.Size = New System.Drawing.Size(302, 27)
+        Me.mskVoyage.TabIndex = 21
+        '
+        'mskRegistry
+        '
+        Me.mskRegistry.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskRegistry.Location = New System.Drawing.Point(245, 146)
+        Me.mskRegistry.Name = "mskRegistry"
+        Me.mskRegistry.Size = New System.Drawing.Size(302, 27)
+        Me.mskRegistry.TabIndex = 20
+        '
+        'mskVessel
+        '
+        Me.mskVessel.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskVessel.Location = New System.Drawing.Point(245, 96)
+        Me.mskVessel.Name = "mskVessel"
+        Me.mskVessel.Size = New System.Drawing.Size(302, 27)
+        Me.mskVessel.TabIndex = 19
+        '
+        'mskShippingLine
+        '
+        Me.mskShippingLine.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskShippingLine.Location = New System.Drawing.Point(245, 44)
+        Me.mskShippingLine.Name = "mskShippingLine"
+        Me.mskShippingLine.Size = New System.Drawing.Size(302, 27)
+        Me.mskShippingLine.TabIndex = 18
+        '
+        'lblVoyage
+        '
+        Me.lblVoyage.AutoSize = True
+        Me.lblVoyage.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.lblVoyage.Location = New System.Drawing.Point(780, 149)
+        Me.lblVoyage.Name = "lblVoyage"
+        Me.lblVoyage.Size = New System.Drawing.Size(139, 22)
+        Me.lblVoyage.TabIndex = 17
+        Me.lblVoyage.Text = "Voyage Number"
+        '
+        'lblNextPort
+        '
+        Me.lblNextPort.AutoSize = True
+        Me.lblNextPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.lblNextPort.Location = New System.Drawing.Point(780, 98)
+        Me.lblNextPort.Name = "lblNextPort"
+        Me.lblNextPort.Size = New System.Drawing.Size(85, 22)
+        Me.lblNextPort.TabIndex = 16
+        Me.lblNextPort.Text = "Next Port"
+        '
+        'lblLastPort
+        '
+        Me.lblLastPort.AutoSize = True
+        Me.lblLastPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.lblLastPort.Location = New System.Drawing.Point(780, 47)
+        Me.lblLastPort.Name = "lblLastPort"
+        Me.lblLastPort.Size = New System.Drawing.Size(82, 22)
+        Me.lblLastPort.TabIndex = 15
+        Me.lblLastPort.Text = "Last Port"
+        '
+        'lblRegistry
+        '
+        Me.lblRegistry.AutoSize = True
+        Me.lblRegistry.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.lblRegistry.Location = New System.Drawing.Point(95, 149)
+        Me.lblRegistry.Name = "lblRegistry"
+        Me.lblRegistry.Size = New System.Drawing.Size(144, 22)
+        Me.lblRegistry.TabIndex = 14
+        Me.lblRegistry.Text = "Registry Number"
+        '
+        'lblVessel
+        '
+        Me.lblVessel.AutoSize = True
+        Me.lblVessel.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.lblVessel.Location = New System.Drawing.Point(95, 98)
+        Me.lblVessel.Name = "lblVessel"
+        Me.lblVessel.Size = New System.Drawing.Size(116, 22)
+        Me.lblVessel.TabIndex = 13
+        Me.lblVessel.Text = "Vessel Name"
+        '
+        'lblShippingLine
+        '
+        Me.lblShippingLine.AutoSize = True
+        Me.lblShippingLine.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.lblShippingLine.Location = New System.Drawing.Point(95, 47)
+        Me.lblShippingLine.Name = "lblShippingLine"
+        Me.lblShippingLine.Size = New System.Drawing.Size(119, 22)
+        Me.lblShippingLine.TabIndex = 12
+        Me.lblShippingLine.Text = "Shipping Line"
+        '
+        'tbctlCLR
+        '
+        Me.tbctlCLR.Controls.Add(Me.tabGeneral)
+        Me.tbctlCLR.Controls.Add(Me.tabSummary)
+        Me.tbctlCLR.Controls.Add(Me.lblSumMovesA)
+        Me.tbctlCLR.Controls.Add(Me.TabPage3)
+        Me.tbctlCLR.Controls.Add(Me.TabPage4)
+        Me.tbctlCLR.Controls.Add(Me.TabPage5)
+        Me.tbctlCLR.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.tbctlCLR.Location = New System.Drawing.Point(12, 235)
+        Me.tbctlCLR.Name = "tbctlCLR"
+        Me.tbctlCLR.SelectedIndex = 0
+        Me.tbctlCLR.Size = New System.Drawing.Size(1342, 521)
+        Me.tbctlCLR.TabIndex = 13
+        '
+        'tabGeneral
+        '
+        Me.tabGeneral.Controls.Add(Me.mskNBPRB)
+        Me.tabGeneral.Controls.Add(Me.mskGBPRB)
+        Me.tabGeneral.Controls.Add(Me.mskNBHB)
+        Me.tabGeneral.Controls.Add(Me.mskNBPRA)
+        Me.tabGeneral.Controls.Add(Me.mskGBPRA)
+        Me.tabGeneral.Controls.Add(Me.mskNBHA)
+        Me.tabGeneral.Controls.Add(Me.lblNBPRB)
+        Me.tabGeneral.Controls.Add(Me.lblGBPRB)
+        Me.tabGeneral.Controls.Add(Me.lblNBHB)
+        Me.tabGeneral.Controls.Add(Me.lblNBPRA)
+        Me.tabGeneral.Controls.Add(Me.lblGBPRA)
+        Me.tabGeneral.Controls.Add(Me.lblNBHA)
+        Me.tabGeneral.Controls.Add(Me.lblMovesB)
+        Me.tabGeneral.Controls.Add(Me.lblMovesA)
+        Me.tabGeneral.Controls.Add(Me.lblTotalMovesB)
+        Me.tabGeneral.Controls.Add(Me.lblTotalMovesA)
+        Me.tabGeneral.Controls.Add(Me.lblGCB)
+        Me.tabGeneral.Controls.Add(Me.lblGCA)
+        Me.tabGeneral.Controls.Add(Me.lblCummulativeYr)
+        Me.tabGeneral.Controls.Add(Me.lblCummulativeMoA)
+        Me.tabGeneral.Controls.Add(Me.dgvCummulativeYr)
+        Me.tabGeneral.Controls.Add(Me.dgvCummulativeMoA)
+        Me.tabGeneral.Location = New System.Drawing.Point(4, 29)
+        Me.tabGeneral.Name = "tabGeneral"
+        Me.tabGeneral.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabGeneral.Size = New System.Drawing.Size(1334, 488)
+        Me.tabGeneral.TabIndex = 0
+        Me.tabGeneral.Text = "General"
+        Me.tabGeneral.UseVisualStyleBackColor = True
+        '
+        'mskNBPRB
+        '
+        Me.mskNBPRB.Location = New System.Drawing.Point(1015, 217)
+        Me.mskNBPRB.Name = "mskNBPRB"
+        Me.mskNBPRB.Size = New System.Drawing.Size(217, 27)
+        Me.mskNBPRB.TabIndex = 56
+        '
+        'mskGBPRB
+        '
+        Me.mskGBPRB.Location = New System.Drawing.Point(1015, 192)
+        Me.mskGBPRB.Name = "mskGBPRB"
+        Me.mskGBPRB.Size = New System.Drawing.Size(217, 27)
+        Me.mskGBPRB.TabIndex = 55
+        '
+        'mskNBHB
+        '
+        Me.mskNBHB.Location = New System.Drawing.Point(1015, 167)
+        Me.mskNBHB.Name = "mskNBHB"
+        Me.mskNBHB.Size = New System.Drawing.Size(217, 27)
+        Me.mskNBHB.TabIndex = 54
+        '
+        'mskNBPRA
+        '
+        Me.mskNBPRA.Location = New System.Drawing.Point(326, 219)
+        Me.mskNBPRA.Name = "mskNBPRA"
+        Me.mskNBPRA.Size = New System.Drawing.Size(217, 27)
+        Me.mskNBPRA.TabIndex = 53
+        '
+        'mskGBPRA
+        '
+        Me.mskGBPRA.Location = New System.Drawing.Point(326, 194)
+        Me.mskGBPRA.Name = "mskGBPRA"
+        Me.mskGBPRA.Size = New System.Drawing.Size(217, 27)
+        Me.mskGBPRA.TabIndex = 52
+        '
+        'mskNBHA
+        '
+        Me.mskNBHA.Location = New System.Drawing.Point(326, 169)
+        Me.mskNBHA.Name = "mskNBHA"
+        Me.mskNBHA.Size = New System.Drawing.Size(217, 27)
+        Me.mskNBHA.TabIndex = 51
+        '
+        'lblNBPRB
+        '
+        Me.lblNBPRB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblNBPRB.Location = New System.Drawing.Point(784, 219)
+        Me.lblNBPRB.Name = "lblNBPRB"
+        Me.lblNBPRB.Size = New System.Drawing.Size(225, 25)
+        Me.lblNBPRB.TabIndex = 47
+        Me.lblNBPRB.Text = "Net Berth Prod. (Gross Berth Prod. less delays)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'lblGBPRB
+        '
+        Me.lblGBPRB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblGBPRB.Location = New System.Drawing.Point(784, 194)
+        Me.lblGBPRB.Name = "lblGBPRB"
+        Me.lblGBPRB.Size = New System.Drawing.Size(225, 25)
+        Me.lblGBPRB.TabIndex = 46
+        Me.lblGBPRB.Text = "Gross Berth Prod. Rate (Total Moves/ Berth Time)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'lblNBHB
+        '
+        Me.lblNBHB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblNBHB.Location = New System.Drawing.Point(784, 169)
+        Me.lblNBHB.Name = "lblNBHB"
+        Me.lblNBHB.Size = New System.Drawing.Size(225, 25)
+        Me.lblNBHB.TabIndex = 45
+        Me.lblNBHB.Text = "Net Berth Hours (Berth Time less delays)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'lblNBPRA
+        '
+        Me.lblNBPRA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblNBPRA.Location = New System.Drawing.Point(95, 221)
+        Me.lblNBPRA.Name = "lblNBPRA"
+        Me.lblNBPRA.Size = New System.Drawing.Size(225, 25)
+        Me.lblNBPRA.TabIndex = 38
+        Me.lblNBPRA.Text = "Net Berth Prod. (Gross Berth Prod. less delays)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'lblGBPRA
+        '
+        Me.lblGBPRA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblGBPRA.Location = New System.Drawing.Point(95, 196)
+        Me.lblGBPRA.Name = "lblGBPRA"
+        Me.lblGBPRA.Size = New System.Drawing.Size(225, 25)
+        Me.lblGBPRA.TabIndex = 37
+        Me.lblGBPRA.Text = "Gross Berth Prod. Rate (Total Moves/ Berth Time)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'lblNBHA
+        '
+        Me.lblNBHA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblNBHA.Location = New System.Drawing.Point(95, 171)
+        Me.lblNBHA.Name = "lblNBHA"
+        Me.lblNBHA.Size = New System.Drawing.Size(225, 25)
+        Me.lblNBHA.TabIndex = 36
+        Me.lblNBHA.Text = "Net Berth Hours (Berth Time less delays)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'lblMovesB
+        '
+        Me.lblMovesB.Location = New System.Drawing.Point(784, 98)
+        Me.lblMovesB.Name = "lblMovesB"
+        Me.lblMovesB.Size = New System.Drawing.Size(448, 73)
+        Me.lblMovesB.TabIndex = 35
+        Me.lblMovesB.Text = "Label18"
+        Me.lblMovesB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblMovesA
+        '
+        Me.lblMovesA.Location = New System.Drawing.Point(95, 98)
+        Me.lblMovesA.Name = "lblMovesA"
+        Me.lblMovesA.Size = New System.Drawing.Size(448, 73)
+        Me.lblMovesA.TabIndex = 34
+        Me.lblMovesA.Text = "Label17"
+        Me.lblMovesA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblTotalMovesB
+        '
+        Me.lblTotalMovesB.Location = New System.Drawing.Point(784, 73)
+        Me.lblTotalMovesB.Name = "lblTotalMovesB"
+        Me.lblTotalMovesB.Size = New System.Drawing.Size(448, 25)
+        Me.lblTotalMovesB.TabIndex = 33
+        Me.lblTotalMovesB.Text = "TOTAL MOVES"
+        Me.lblTotalMovesB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblTotalMovesA
+        '
+        Me.lblTotalMovesA.Location = New System.Drawing.Point(95, 73)
+        Me.lblTotalMovesA.Name = "lblTotalMovesA"
+        Me.lblTotalMovesA.Size = New System.Drawing.Size(448, 25)
+        Me.lblTotalMovesA.TabIndex = 32
+        Me.lblTotalMovesA.Text = "TOTAL MOVES"
+        Me.lblTotalMovesA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblGCB
+        '
+        Me.lblGCB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblGCB.Location = New System.Drawing.Point(784, 48)
+        Me.lblGCB.Name = "lblGCB"
+        Me.lblGCB.Size = New System.Drawing.Size(448, 25)
+        Me.lblGCB.TabIndex = 31
+        Me.lblGCB.Text = "GC"
+        Me.lblGCB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblGCA
+        '
+        Me.lblGCA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblGCA.Location = New System.Drawing.Point(95, 48)
+        Me.lblGCA.Name = "lblGCA"
+        Me.lblGCA.Size = New System.Drawing.Size(448, 25)
+        Me.lblGCA.TabIndex = 30
+        Me.lblGCA.Text = "GC"
+        Me.lblGCA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblCummulativeYr
+        '
+        Me.lblCummulativeYr.Location = New System.Drawing.Point(784, 262)
+        Me.lblCummulativeYr.Name = "lblCummulativeYr"
+        Me.lblCummulativeYr.Size = New System.Drawing.Size(448, 25)
+        Me.lblCummulativeYr.TabIndex = 29
+        Me.lblCummulativeYr.Text = "Cummulative Volume this Year" & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'lblCummulativeMoA
+        '
+        Me.lblCummulativeMoA.Location = New System.Drawing.Point(99, 262)
+        Me.lblCummulativeMoA.Name = "lblCummulativeMoA"
+        Me.lblCummulativeMoA.Size = New System.Drawing.Size(448, 25)
+        Me.lblCummulativeMoA.TabIndex = 28
+        Me.lblCummulativeMoA.Text = "Cummulative Volume this Mo." & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(9) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'dgvCummulativeYr
+        '
+        Me.dgvCummulativeYr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvCummulativeYr.Location = New System.Drawing.Point(784, 290)
+        Me.dgvCummulativeYr.Name = "dgvCummulativeYr"
+        Me.dgvCummulativeYr.Size = New System.Drawing.Size(443, 150)
+        Me.dgvCummulativeYr.TabIndex = 27
+        '
+        'dgvCummulativeMoA
+        '
+        Me.dgvCummulativeMoA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvCummulativeMoA.Location = New System.Drawing.Point(99, 290)
+        Me.dgvCummulativeMoA.Name = "dgvCummulativeMoA"
+        Me.dgvCummulativeMoA.Size = New System.Drawing.Size(448, 150)
+        Me.dgvCummulativeMoA.TabIndex = 26
+        '
+        'tabSummary
+        '
+        Me.tabSummary.Controls.Add(Me.dgvHCB)
+        Me.tabSummary.Controls.Add(Me.dgvGbxB)
+        Me.tabSummary.Controls.Add(Me.dgvCTNB)
+        Me.tabSummary.Controls.Add(Me.lblSumGCB)
+        Me.tabSummary.Controls.Add(Me.dgvHCA)
+        Me.tabSummary.Controls.Add(Me.dgvGbxA)
+        Me.tabSummary.Controls.Add(Me.dgvCTNA)
+        Me.tabSummary.Controls.Add(Me.lblSumGCA)
+        Me.tabSummary.Location = New System.Drawing.Point(4, 29)
+        Me.tabSummary.Name = "tabSummary"
+        Me.tabSummary.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabSummary.Size = New System.Drawing.Size(1334, 488)
+        Me.tabSummary.TabIndex = 1
+        Me.tabSummary.Text = "Summaries"
+        Me.tabSummary.UseVisualStyleBackColor = True
+        '
+        'dgvHCB
+        '
+        Me.dgvHCB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvHCB.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvHCB.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvHCB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvHCB.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19, Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn21})
+        Me.dgvHCB.Location = New System.Drawing.Point(670, 343)
+        Me.dgvHCB.Name = "dgvHCB"
+        Me.dgvHCB.RowHeadersVisible = False
+        Me.dgvHCB.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvHCB.Size = New System.Drawing.Size(635, 127)
+        Me.dgvHCB.TabIndex = 7
         '
         'DataGridViewTextBoxColumn15
         '
@@ -916,19 +652,19 @@ Partial Class frmCLR
         Me.DataGridViewTextBoxColumn21.HeaderText = "C-40'"
         Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
         '
-        'DataGridView5
+        'dgvGbxB
         '
-        Me.DataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView5.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView5.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView5.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn23, Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25, Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewTextBoxColumn28})
-        Me.DataGridView5.Location = New System.Drawing.Point(670, 262)
-        Me.DataGridView5.Name = "DataGridView5"
-        Me.DataGridView5.RowHeadersVisible = False
-        Me.DataGridView5.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView5.Size = New System.Drawing.Size(635, 75)
-        Me.DataGridView5.TabIndex = 6
+        Me.dgvGbxB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvGbxB.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvGbxB.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvGbxB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvGbxB.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn23, Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25, Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewTextBoxColumn28})
+        Me.dgvGbxB.Location = New System.Drawing.Point(670, 262)
+        Me.dgvGbxB.Name = "dgvGbxB"
+        Me.dgvGbxB.RowHeadersVisible = False
+        Me.dgvGbxB.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvGbxB.Size = New System.Drawing.Size(635, 75)
+        Me.dgvGbxB.TabIndex = 6
         '
         'DataGridViewTextBoxColumn22
         '
@@ -966,75 +702,484 @@ Partial Class frmCLR
         Me.DataGridViewTextBoxColumn28.HeaderText = "L-40'"
         Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
         '
-        'TabPage6
+        'dgvCTNB
         '
-        Me.TabPage6.Controls.Add(Me.Label43)
-        Me.TabPage6.Controls.Add(Me.Label44)
-        Me.TabPage6.Controls.Add(Me.Label45)
-        Me.TabPage6.Controls.Add(Me.Label46)
-        Me.TabPage6.Controls.Add(Me.Label47)
-        Me.TabPage6.Controls.Add(Me.Label48)
-        Me.TabPage6.Controls.Add(Me.Label49)
-        Me.TabPage6.Controls.Add(Me.Label50)
-        Me.TabPage6.Controls.Add(Me.Label41)
-        Me.TabPage6.Controls.Add(Me.Label42)
-        Me.TabPage6.Controls.Add(Me.Label39)
-        Me.TabPage6.Controls.Add(Me.Label40)
-        Me.TabPage6.Controls.Add(Me.Label37)
-        Me.TabPage6.Controls.Add(Me.Label38)
-        Me.TabPage6.Controls.Add(Me.Label36)
-        Me.TabPage6.Controls.Add(Me.Label35)
-        Me.TabPage6.Controls.Add(Me.MaskedTextBox17)
-        Me.TabPage6.Controls.Add(Me.Label33)
-        Me.TabPage6.Controls.Add(Me.MaskedTextBox18)
-        Me.TabPage6.Controls.Add(Me.Label34)
-        Me.TabPage6.Controls.Add(Me.MaskedTextBox16)
-        Me.TabPage6.Controls.Add(Me.Label32)
-        Me.TabPage6.Controls.Add(Me.MaskedTextBox15)
-        Me.TabPage6.Controls.Add(Me.Label31)
-        Me.TabPage6.Controls.Add(Me.Label27)
-        Me.TabPage6.Controls.Add(Me.Label28)
-        Me.TabPage6.Controls.Add(Me.Label29)
-        Me.TabPage6.Controls.Add(Me.Label30)
-        Me.TabPage6.Controls.Add(Me.Label25)
-        Me.TabPage6.Controls.Add(Me.Label26)
-        Me.TabPage6.Location = New System.Drawing.Point(4, 29)
-        Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Size = New System.Drawing.Size(1334, 488)
-        Me.TabPage6.TabIndex = 5
-        Me.TabPage6.Text = "Summaries: Totals"
-        Me.TabPage6.UseVisualStyleBackColor = True
+        Me.dgvCTNB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvCTNB.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvCTNB.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvCTNB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvCTNB.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn30, Me.DataGridViewTextBoxColumn31, Me.DataGridViewTextBoxColumn32, Me.DataGridViewTextBoxColumn33, Me.DataGridViewTextBoxColumn34, Me.DataGridViewTextBoxColumn35})
+        Me.dgvCTNB.Location = New System.Drawing.Point(670, 35)
+        Me.dgvCTNB.Name = "dgvCTNB"
+        Me.dgvCTNB.RowHeadersVisible = False
+        Me.dgvCTNB.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvCTNB.Size = New System.Drawing.Size(635, 221)
+        Me.dgvCTNB.TabIndex = 5
         '
-        'Label25
+        'DataGridViewTextBoxColumn29
         '
-        Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(969, 10)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(37, 22)
-        Me.Label25.TabIndex = 6
-        Me.Label25.Text = "GC"
+        Me.DataGridViewTextBoxColumn29.FillWeight = 200.0!
+        Me.DataGridViewTextBoxColumn29.HeaderText = ""
+        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
         '
-        'Label26
+        'DataGridViewTextBoxColumn30
         '
-        Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(328, 10)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(37, 22)
-        Me.Label26.TabIndex = 5
-        Me.Label26.Text = "GC"
+        Me.DataGridViewTextBoxColumn30.HeaderText = "D-20'"
+        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
         '
-        'Label27
+        'DataGridViewTextBoxColumn31
         '
-        Me.Label27.Location = New System.Drawing.Point(763, 78)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(448, 73)
-        Me.Label27.TabIndex = 39
-        Me.Label27.Text = "Label27"
-        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn31.HeaderText = "D-40'"
+        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
+        '
+        'DataGridViewTextBoxColumn32
+        '
+        Me.DataGridViewTextBoxColumn32.HeaderText = "D-45'"
+        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
+        '
+        'DataGridViewTextBoxColumn33
+        '
+        Me.DataGridViewTextBoxColumn33.HeaderText = "L-20'"
+        Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
+        '
+        'DataGridViewTextBoxColumn34
+        '
+        Me.DataGridViewTextBoxColumn34.HeaderText = "L-40'"
+        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
+        '
+        'DataGridViewTextBoxColumn35
+        '
+        Me.DataGridViewTextBoxColumn35.HeaderText = "L-45'"
+        Me.DataGridViewTextBoxColumn35.Name = "DataGridViewTextBoxColumn35"
+        '
+        'lblSumGCB
+        '
+        Me.lblSumGCB.AutoSize = True
+        Me.lblSumGCB.Location = New System.Drawing.Point(969, 10)
+        Me.lblSumGCB.Name = "lblSumGCB"
+        Me.lblSumGCB.Size = New System.Drawing.Size(37, 22)
+        Me.lblSumGCB.TabIndex = 4
+        Me.lblSumGCB.Text = "GC"
+        '
+        'dgvHCA
+        '
+        Me.dgvHCA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvHCA.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvHCA.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvHCA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvHCA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13})
+        Me.dgvHCA.Location = New System.Drawing.Point(29, 343)
+        Me.dgvHCA.Name = "dgvHCA"
+        Me.dgvHCA.RowHeadersVisible = False
+        Me.dgvHCA.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvHCA.Size = New System.Drawing.Size(635, 127)
+        Me.dgvHCA.TabIndex = 3
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.FillWeight = 200.0!
+        Me.DataGridViewTextBoxColumn8.HeaderText = ""
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.HeaderText = "O-Bay #"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.HeaderText = "O-20'"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.HeaderText = "O-40'"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.HeaderText = "C-Bay #"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.HeaderText = "C-20'"
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.HeaderText = "C-40'"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        '
+        'dgvGbxA
+        '
+        Me.dgvGbxA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvGbxA.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvGbxA.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvGbxA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvGbxA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
+        Me.dgvGbxA.Location = New System.Drawing.Point(29, 262)
+        Me.dgvGbxA.Name = "dgvGbxA"
+        Me.dgvGbxA.RowHeadersVisible = False
+        Me.dgvGbxA.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvGbxA.Size = New System.Drawing.Size(635, 75)
+        Me.dgvGbxA.TabIndex = 2
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.FillWeight = 200.0!
+        Me.DataGridViewTextBoxColumn1.HeaderText = ""
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.HeaderText = "D-Bay #"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.HeaderText = "D-20'"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.HeaderText = "D-40'"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.HeaderText = "L-Bay #"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.HeaderText = "L-20'"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.HeaderText = "L-40'"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        '
+        'dgvCTNA
+        '
+        Me.dgvCTNA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvCTNA.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvCTNA.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvCTNA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvCTNA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column7, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
+        Me.dgvCTNA.Location = New System.Drawing.Point(29, 35)
+        Me.dgvCTNA.Name = "dgvCTNA"
+        Me.dgvCTNA.RowHeadersVisible = False
+        Me.dgvCTNA.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvCTNA.Size = New System.Drawing.Size(635, 221)
+        Me.dgvCTNA.TabIndex = 1
+        '
+        'Column7
+        '
+        Me.Column7.FillWeight = 200.0!
+        Me.Column7.HeaderText = ""
+        Me.Column7.Name = "Column7"
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "D-20'"
+        Me.Column1.Name = "Column1"
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "D-40'"
+        Me.Column2.Name = "Column2"
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "D-45'"
+        Me.Column3.Name = "Column3"
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "L-20'"
+        Me.Column4.Name = "Column4"
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "L-40'"
+        Me.Column5.Name = "Column5"
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "L-45'"
+        Me.Column6.Name = "Column6"
+        '
+        'lblSumGCA
+        '
+        Me.lblSumGCA.AutoSize = True
+        Me.lblSumGCA.Location = New System.Drawing.Point(328, 10)
+        Me.lblSumGCA.Name = "lblSumGCA"
+        Me.lblSumGCA.Size = New System.Drawing.Size(37, 22)
+        Me.lblSumGCA.TabIndex = 0
+        Me.lblSumGCA.Text = "GC"
+        '
+        'lblSumMovesA
+        '
+        Me.lblSumMovesA.Controls.Add(Me.lblNPRB)
+        Me.lblSumMovesA.Controls.Add(Me.Label44)
+        Me.lblSumMovesA.Controls.Add(Me.lblNWHB)
+        Me.lblSumMovesA.Controls.Add(Me.Label46)
+        Me.lblSumMovesA.Controls.Add(Me.lblGPB)
+        Me.lblSumMovesA.Controls.Add(Me.Label48)
+        Me.lblSumMovesA.Controls.Add(Me.lblGWHB)
+        Me.lblSumMovesA.Controls.Add(Me.Label50)
+        Me.lblSumMovesA.Controls.Add(Me.lblNPRA)
+        Me.lblSumMovesA.Controls.Add(Me.Label42)
+        Me.lblSumMovesA.Controls.Add(Me.lblNWHA)
+        Me.lblSumMovesA.Controls.Add(Me.Label40)
+        Me.lblSumMovesA.Controls.Add(Me.lblGPA)
+        Me.lblSumMovesA.Controls.Add(Me.Label38)
+        Me.lblSumMovesA.Controls.Add(Me.lblGWHA)
+        Me.lblSumMovesA.Controls.Add(Me.Label35)
+        Me.lblSumMovesA.Controls.Add(Me.mskLMB)
+        Me.lblSumMovesA.Controls.Add(Me.Label33)
+        Me.lblSumMovesA.Controls.Add(Me.mskFMB)
+        Me.lblSumMovesA.Controls.Add(Me.Label34)
+        Me.lblSumMovesA.Controls.Add(Me.mskLMA)
+        Me.lblSumMovesA.Controls.Add(Me.Label32)
+        Me.lblSumMovesA.Controls.Add(Me.mskFMA)
+        Me.lblSumMovesA.Controls.Add(Me.Label31)
+        Me.lblSumMovesA.Controls.Add(Me.lblSumMovesB)
+        Me.lblSumMovesA.Controls.Add(Me.Label28)
+        Me.lblSumMovesA.Controls.Add(Me.Label29)
+        Me.lblSumMovesA.Controls.Add(Me.Label30)
+        Me.lblSumMovesA.Controls.Add(Me.Label25)
+        Me.lblSumMovesA.Controls.Add(Me.Label26)
+        Me.lblSumMovesA.Location = New System.Drawing.Point(4, 29)
+        Me.lblSumMovesA.Name = "lblSumMovesA"
+        Me.lblSumMovesA.Size = New System.Drawing.Size(1334, 488)
+        Me.lblSumMovesA.TabIndex = 5
+        Me.lblSumMovesA.Text = "Summaries: Totals"
+        Me.lblSumMovesA.UseVisualStyleBackColor = True
+        '
+        'lblNPRB
+        '
+        Me.lblNPRB.AutoSize = True
+        Me.lblNPRB.Location = New System.Drawing.Point(1127, 437)
+        Me.lblNPRB.Name = "lblNPRB"
+        Me.lblNPRB.Size = New System.Drawing.Size(74, 22)
+        Me.lblNPRB.TabIndex = 63
+        Me.lblNPRB.Text = "Label43"
+        '
+        'Label44
+        '
+        Me.Label44.AutoSize = True
+        Me.Label44.Location = New System.Drawing.Point(1075, 384)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(179, 22)
+        Me.Label44.TabIndex = 62
+        Me.Label44.Text = "Net Productivity Rate"
+        '
+        'lblNWHB
+        '
+        Me.lblNWHB.AutoSize = True
+        Me.lblNWHB.Location = New System.Drawing.Point(792, 437)
+        Me.lblNWHB.Name = "lblNWHB"
+        Me.lblNWHB.Size = New System.Drawing.Size(74, 22)
+        Me.lblNWHB.TabIndex = 61
+        Me.lblNWHB.Text = "Label45"
+        '
+        'Label46
+        '
+        Me.Label46.AutoSize = True
+        Me.Label46.Location = New System.Drawing.Point(748, 384)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(162, 22)
+        Me.Label46.TabIndex = 60
+        Me.Label46.Text = "Net Working Hours"
+        '
+        'lblGPB
+        '
+        Me.lblGPB.AutoSize = True
+        Me.lblGPB.Location = New System.Drawing.Point(1127, 336)
+        Me.lblGPB.Name = "lblGPB"
+        Me.lblGPB.Size = New System.Drawing.Size(74, 22)
+        Me.lblGPB.TabIndex = 59
+        Me.lblGPB.Text = "Label47"
+        '
+        'Label48
+        '
+        Me.Label48.AutoSize = True
+        Me.Label48.Location = New System.Drawing.Point(1086, 283)
+        Me.Label48.Name = "Label48"
+        Me.Label48.Size = New System.Drawing.Size(156, 22)
+        Me.Label48.TabIndex = 58
+        Me.Label48.Text = "Gross Productivity"
+        '
+        'lblGWHB
+        '
+        Me.lblGWHB.AutoSize = True
+        Me.lblGWHB.Location = New System.Drawing.Point(792, 336)
+        Me.lblGWHB.Name = "lblGWHB"
+        Me.lblGWHB.Size = New System.Drawing.Size(74, 22)
+        Me.lblGWHB.TabIndex = 57
+        Me.lblGWHB.Text = "Label49"
+        '
+        'Label50
+        '
+        Me.Label50.AutoSize = True
+        Me.Label50.Location = New System.Drawing.Point(738, 283)
+        Me.Label50.Name = "Label50"
+        Me.Label50.Size = New System.Drawing.Size(182, 22)
+        Me.Label50.TabIndex = 56
+        Me.Label50.Text = "Gross Working Hours"
+        '
+        'lblNPRA
+        '
+        Me.lblNPRA.AutoSize = True
+        Me.lblNPRA.Location = New System.Drawing.Point(504, 437)
+        Me.lblNPRA.Name = "lblNPRA"
+        Me.lblNPRA.Size = New System.Drawing.Size(74, 22)
+        Me.lblNPRA.TabIndex = 55
+        Me.lblNPRA.Text = "Label41"
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Location = New System.Drawing.Point(452, 384)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(179, 22)
+        Me.Label42.TabIndex = 54
+        Me.Label42.Text = "Net Productivity Rate"
+        '
+        'lblNWHA
+        '
+        Me.lblNWHA.AutoSize = True
+        Me.lblNWHA.Location = New System.Drawing.Point(134, 437)
+        Me.lblNWHA.Name = "lblNWHA"
+        Me.lblNWHA.Size = New System.Drawing.Size(74, 22)
+        Me.lblNWHA.TabIndex = 53
+        Me.lblNWHA.Text = "Label39"
+        '
+        'Label40
+        '
+        Me.Label40.AutoSize = True
+        Me.Label40.Location = New System.Drawing.Point(90, 384)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(162, 22)
+        Me.Label40.TabIndex = 52
+        Me.Label40.Text = "Net Working Hours"
+        '
+        'lblGPA
+        '
+        Me.lblGPA.AutoSize = True
+        Me.lblGPA.Location = New System.Drawing.Point(504, 336)
+        Me.lblGPA.Name = "lblGPA"
+        Me.lblGPA.Size = New System.Drawing.Size(74, 22)
+        Me.lblGPA.TabIndex = 51
+        Me.lblGPA.Text = "Label37"
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Location = New System.Drawing.Point(463, 283)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(156, 22)
+        Me.Label38.TabIndex = 50
+        Me.Label38.Text = "Gross Productivity"
+        '
+        'lblGWHA
+        '
+        Me.lblGWHA.AutoSize = True
+        Me.lblGWHA.Location = New System.Drawing.Point(134, 336)
+        Me.lblGWHA.Name = "lblGWHA"
+        Me.lblGWHA.Size = New System.Drawing.Size(74, 22)
+        Me.lblGWHA.TabIndex = 49
+        Me.lblGWHA.Text = "Label36"
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Location = New System.Drawing.Point(80, 283)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(182, 22)
+        Me.Label35.TabIndex = 48
+        Me.Label35.Text = "Gross Working Hours"
+        '
+        'mskLMB
+        '
+        Me.mskLMB.Location = New System.Drawing.Point(918, 206)
+        Me.mskLMB.Name = "mskLMB"
+        Me.mskLMB.Size = New System.Drawing.Size(301, 27)
+        Me.mskLMB.TabIndex = 47
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Location = New System.Drawing.Point(784, 209)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(92, 22)
+        Me.Label33.TabIndex = 46
+        Me.Label33.Text = "Last Move"
+        '
+        'mskFMB
+        '
+        Me.mskFMB.Location = New System.Drawing.Point(918, 173)
+        Me.mskFMB.Name = "mskFMB"
+        Me.mskFMB.Size = New System.Drawing.Size(301, 27)
+        Me.mskFMB.TabIndex = 45
+        '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.Location = New System.Drawing.Point(784, 176)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(93, 22)
+        Me.Label34.TabIndex = 44
+        Me.Label34.Text = "First Move"
+        '
+        'mskLMA
+        '
+        Me.mskLMA.Location = New System.Drawing.Point(277, 206)
+        Me.mskLMA.Name = "mskLMA"
+        Me.mskLMA.Size = New System.Drawing.Size(301, 27)
+        Me.mskLMA.TabIndex = 43
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Location = New System.Drawing.Point(130, 209)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(92, 22)
+        Me.Label32.TabIndex = 42
+        Me.Label32.Text = "Last Move"
+        '
+        'mskFMA
+        '
+        Me.mskFMA.Location = New System.Drawing.Point(277, 173)
+        Me.mskFMA.Name = "mskFMA"
+        Me.mskFMA.Size = New System.Drawing.Size(301, 27)
+        Me.mskFMA.TabIndex = 41
+        Me.mskFMA.ValidatingType = GetType(Date)
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(130, 176)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(93, 22)
+        Me.Label31.TabIndex = 40
+        Me.Label31.Text = "First Move"
+        '
+        'lblSumMovesB
+        '
+        Me.lblSumMovesB.Location = New System.Drawing.Point(771, 97)
+        Me.lblSumMovesB.Name = "lblSumMovesB"
+        Me.lblSumMovesB.Size = New System.Drawing.Size(448, 73)
+        Me.lblSumMovesB.TabIndex = 39
+        Me.lblSumMovesB.Text = "Label27"
+        Me.lblSumMovesB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label28
         '
-        Me.Label28.Location = New System.Drawing.Point(122, 78)
+        Me.Label28.Location = New System.Drawing.Point(130, 97)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(448, 73)
         Me.Label28.TabIndex = 38
@@ -1043,7 +1188,7 @@ Partial Class frmCLR
         '
         'Label29
         '
-        Me.Label29.Location = New System.Drawing.Point(763, 53)
+        Me.Label29.Location = New System.Drawing.Point(771, 72)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(448, 25)
         Me.Label29.TabIndex = 37
@@ -1052,329 +1197,94 @@ Partial Class frmCLR
         '
         'Label30
         '
-        Me.Label30.Location = New System.Drawing.Point(122, 53)
+        Me.Label30.Location = New System.Drawing.Point(130, 72)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(448, 25)
         Me.Label30.TabIndex = 36
         Me.Label30.Text = "TOTAL MOVES"
         Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'MaskedTextBox9
-        '
-        Me.MaskedTextBox9.Location = New System.Drawing.Point(322, 201)
-        Me.MaskedTextBox9.Name = "MaskedTextBox9"
-        Me.MaskedTextBox9.Size = New System.Drawing.Size(217, 27)
-        Me.MaskedTextBox9.TabIndex = 51
-        '
-        'MaskedTextBox10
-        '
-        Me.MaskedTextBox10.Location = New System.Drawing.Point(322, 226)
-        Me.MaskedTextBox10.Name = "MaskedTextBox10"
-        Me.MaskedTextBox10.Size = New System.Drawing.Size(217, 27)
-        Me.MaskedTextBox10.TabIndex = 52
-        '
-        'MaskedTextBox11
-        '
-        Me.MaskedTextBox11.Location = New System.Drawing.Point(322, 251)
-        Me.MaskedTextBox11.Name = "MaskedTextBox11"
-        Me.MaskedTextBox11.Size = New System.Drawing.Size(217, 27)
-        Me.MaskedTextBox11.TabIndex = 53
-        '
-        'MaskedTextBox12
-        '
-        Me.MaskedTextBox12.Location = New System.Drawing.Point(1011, 249)
-        Me.MaskedTextBox12.Name = "MaskedTextBox12"
-        Me.MaskedTextBox12.Size = New System.Drawing.Size(217, 27)
-        Me.MaskedTextBox12.TabIndex = 56
-        '
-        'MaskedTextBox13
-        '
-        Me.MaskedTextBox13.Location = New System.Drawing.Point(1011, 224)
-        Me.MaskedTextBox13.Name = "MaskedTextBox13"
-        Me.MaskedTextBox13.Size = New System.Drawing.Size(217, 27)
-        Me.MaskedTextBox13.TabIndex = 55
-        '
-        'MaskedTextBox14
-        '
-        Me.MaskedTextBox14.Location = New System.Drawing.Point(1011, 199)
-        Me.MaskedTextBox14.Name = "MaskedTextBox14"
-        Me.MaskedTextBox14.Size = New System.Drawing.Size(217, 27)
-        Me.MaskedTextBox14.TabIndex = 54
-        '
-        'Label31
-        '
-        Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(122, 157)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(93, 22)
-        Me.Label31.TabIndex = 40
-        Me.Label31.Text = "First Move"
-        '
-        'MaskedTextBox15
-        '
-        Me.MaskedTextBox15.Location = New System.Drawing.Point(269, 154)
-        Me.MaskedTextBox15.Name = "MaskedTextBox15"
-        Me.MaskedTextBox15.Size = New System.Drawing.Size(301, 27)
-        Me.MaskedTextBox15.TabIndex = 41
-        Me.MaskedTextBox15.ValidatingType = GetType(Date)
-        '
-        'MaskedTextBox16
-        '
-        Me.MaskedTextBox16.Location = New System.Drawing.Point(269, 187)
-        Me.MaskedTextBox16.Name = "MaskedTextBox16"
-        Me.MaskedTextBox16.Size = New System.Drawing.Size(301, 27)
-        Me.MaskedTextBox16.TabIndex = 43
-        '
-        'Label32
-        '
-        Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(122, 190)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(92, 22)
-        Me.Label32.TabIndex = 42
-        Me.Label32.Text = "Last Move"
-        '
-        'MaskedTextBox17
-        '
-        Me.MaskedTextBox17.Location = New System.Drawing.Point(910, 187)
-        Me.MaskedTextBox17.Name = "MaskedTextBox17"
-        Me.MaskedTextBox17.Size = New System.Drawing.Size(301, 27)
-        Me.MaskedTextBox17.TabIndex = 47
-        '
-        'Label33
-        '
-        Me.Label33.AutoSize = True
-        Me.Label33.Location = New System.Drawing.Point(776, 190)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(92, 22)
-        Me.Label33.TabIndex = 46
-        Me.Label33.Text = "Last Move"
-        '
-        'MaskedTextBox18
-        '
-        Me.MaskedTextBox18.Location = New System.Drawing.Point(910, 154)
-        Me.MaskedTextBox18.Name = "MaskedTextBox18"
-        Me.MaskedTextBox18.Size = New System.Drawing.Size(301, 27)
-        Me.MaskedTextBox18.TabIndex = 45
-        '
-        'Label34
-        '
-        Me.Label34.AutoSize = True
-        Me.Label34.Location = New System.Drawing.Point(776, 157)
-        Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(93, 22)
-        Me.Label34.TabIndex = 44
-        Me.Label34.Text = "First Move"
-        '
-        'Label35
-        '
-        Me.Label35.AutoSize = True
-        Me.Label35.Location = New System.Drawing.Point(126, 264)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(74, 22)
-        Me.Label35.TabIndex = 48
-        Me.Label35.Text = "Label35"
-        '
-        'Label36
-        '
-        Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(126, 317)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(74, 22)
-        Me.Label36.TabIndex = 49
-        Me.Label36.Text = "Label36"
-        '
-        'Label37
-        '
-        Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(496, 317)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(74, 22)
-        Me.Label37.TabIndex = 51
-        Me.Label37.Text = "Label37"
-        '
-        'Label38
-        '
-        Me.Label38.AutoSize = True
-        Me.Label38.Location = New System.Drawing.Point(496, 264)
-        Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(74, 22)
-        Me.Label38.TabIndex = 50
-        Me.Label38.Text = "Label38"
-        '
-        'Label39
-        '
-        Me.Label39.AutoSize = True
-        Me.Label39.Location = New System.Drawing.Point(126, 418)
-        Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(74, 22)
-        Me.Label39.TabIndex = 53
-        Me.Label39.Text = "Label39"
-        '
-        'Label40
-        '
-        Me.Label40.AutoSize = True
-        Me.Label40.Location = New System.Drawing.Point(126, 365)
-        Me.Label40.Name = "Label40"
-        Me.Label40.Size = New System.Drawing.Size(74, 22)
-        Me.Label40.TabIndex = 52
-        Me.Label40.Text = "Label40"
-        '
-        'Label41
-        '
-        Me.Label41.AutoSize = True
-        Me.Label41.Location = New System.Drawing.Point(496, 418)
-        Me.Label41.Name = "Label41"
-        Me.Label41.Size = New System.Drawing.Size(74, 22)
-        Me.Label41.TabIndex = 55
-        Me.Label41.Text = "Label41"
-        '
-        'Label42
-        '
-        Me.Label42.AutoSize = True
-        Me.Label42.Location = New System.Drawing.Point(496, 365)
-        Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(74, 22)
-        Me.Label42.TabIndex = 54
-        Me.Label42.Text = "Label42"
-        '
-        'Label43
-        '
-        Me.Label43.AutoSize = True
-        Me.Label43.Location = New System.Drawing.Point(1154, 418)
-        Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(74, 22)
-        Me.Label43.TabIndex = 63
-        Me.Label43.Text = "Label43"
-        '
-        'Label44
-        '
-        Me.Label44.AutoSize = True
-        Me.Label44.Location = New System.Drawing.Point(1154, 365)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(74, 22)
-        Me.Label44.TabIndex = 62
-        Me.Label44.Text = "Label44"
-        '
-        'Label45
-        '
-        Me.Label45.AutoSize = True
-        Me.Label45.Location = New System.Drawing.Point(784, 418)
-        Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(74, 22)
-        Me.Label45.TabIndex = 61
-        Me.Label45.Text = "Label45"
-        '
-        'Label46
-        '
-        Me.Label46.AutoSize = True
-        Me.Label46.Location = New System.Drawing.Point(784, 365)
-        Me.Label46.Name = "Label46"
-        Me.Label46.Size = New System.Drawing.Size(74, 22)
-        Me.Label46.TabIndex = 60
-        Me.Label46.Text = "Label46"
-        '
-        'Label47
-        '
-        Me.Label47.AutoSize = True
-        Me.Label47.Location = New System.Drawing.Point(1154, 317)
-        Me.Label47.Name = "Label47"
-        Me.Label47.Size = New System.Drawing.Size(74, 22)
-        Me.Label47.TabIndex = 59
-        Me.Label47.Text = "Label47"
-        '
-        'Label48
-        '
-        Me.Label48.AutoSize = True
-        Me.Label48.Location = New System.Drawing.Point(1154, 264)
-        Me.Label48.Name = "Label48"
-        Me.Label48.Size = New System.Drawing.Size(74, 22)
-        Me.Label48.TabIndex = 58
-        Me.Label48.Text = "Label48"
-        '
-        'Label49
-        '
-        Me.Label49.AutoSize = True
-        Me.Label49.Location = New System.Drawing.Point(784, 317)
-        Me.Label49.Name = "Label49"
-        Me.Label49.Size = New System.Drawing.Size(74, 22)
-        Me.Label49.TabIndex = 57
-        Me.Label49.Text = "Label49"
-        '
-        'Label50
-        '
-        Me.Label50.AutoSize = True
-        Me.Label50.Location = New System.Drawing.Point(784, 264)
-        Me.Label50.Name = "Label50"
-        Me.Label50.Size = New System.Drawing.Size(74, 22)
-        Me.Label50.TabIndex = 56
-        Me.Label50.Text = "Label50"
-        '
-        'Label51
-        '
-        Me.Label51.AutoSize = True
-        Me.Label51.Location = New System.Drawing.Point(969, 10)
-        Me.Label51.Name = "Label51"
-        Me.Label51.Size = New System.Drawing.Size(37, 22)
-        Me.Label51.TabIndex = 8
-        Me.Label51.Text = "GC"
-        '
-        'Label52
-        '
-        Me.Label52.AutoSize = True
-        Me.Label52.Location = New System.Drawing.Point(328, 10)
-        Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(37, 22)
-        Me.Label52.TabIndex = 7
-        Me.Label52.Text = "GC"
-        '
-        'DataGridView9
-        '
-        Me.DataGridView9.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView9.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView9.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView9.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView9.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column8, Me.Column9, Me.Column10, Me.Column11})
-        Me.DataGridView9.Location = New System.Drawing.Point(29, 35)
-        Me.DataGridView9.Name = "DataGridView9"
-        Me.DataGridView9.RowHeadersVisible = False
-        Me.DataGridView9.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView9.Size = New System.Drawing.Size(635, 418)
-        Me.DataGridView9.TabIndex = 9
-        '
-        'Column8
-        '
-        Me.Column8.HeaderText = "Deductable Delays"
-        Me.Column8.Name = "Column8"
-        '
-        'Column9
-        '
-        Me.Column9.HeaderText = "Time From"
-        Me.Column9.Name = "Column9"
-        '
-        'Column10
-        '
-        Me.Column10.HeaderText = "Time To"
-        Me.Column10.Name = "Column10"
-        '
-        'Column11
-        '
-        Me.Column11.HeaderText = "Total Hours"
-        Me.Column11.Name = "Column11"
-        '
-        'DataGridView10
-        '
-        Me.DataGridView10.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView10.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView10.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView10.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView10.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn36, Me.DataGridViewTextBoxColumn37, Me.DataGridViewTextBoxColumn38, Me.DataGridViewTextBoxColumn39})
-        Me.DataGridView10.Location = New System.Drawing.Point(670, 35)
-        Me.DataGridView10.Name = "DataGridView10"
-        Me.DataGridView10.RowHeadersVisible = False
-        Me.DataGridView10.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView10.Size = New System.Drawing.Size(635, 418)
-        Me.DataGridView10.TabIndex = 10
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(977, 29)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(37, 22)
+        Me.Label25.TabIndex = 6
+        Me.Label25.Text = "GC"
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(336, 29)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(37, 22)
+        Me.Label26.TabIndex = 5
+        Me.Label26.Text = "GC"
+        '
+        'TabPage3
+        '
+        Me.TabPage3.Controls.Add(Me.mskTotDelayB)
+        Me.TabPage3.Controls.Add(Me.Label54)
+        Me.TabPage3.Controls.Add(Me.mskTotDelayA)
+        Me.TabPage3.Controls.Add(Me.Label53)
+        Me.TabPage3.Controls.Add(Me.dgvDelayB)
+        Me.TabPage3.Controls.Add(Me.dgvDelayA)
+        Me.TabPage3.Controls.Add(Me.Label51)
+        Me.TabPage3.Controls.Add(Me.Label52)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage3.Size = New System.Drawing.Size(1334, 488)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "Deductables"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'mskTotDelayB
+        '
+        Me.mskTotDelayB.Location = New System.Drawing.Point(1205, 453)
+        Me.mskTotDelayB.Name = "mskTotDelayB"
+        Me.mskTotDelayB.Size = New System.Drawing.Size(100, 27)
+        Me.mskTotDelayB.TabIndex = 14
+        '
+        'Label54
+        '
+        Me.Label54.AutoSize = True
+        Me.Label54.Location = New System.Drawing.Point(1148, 456)
+        Me.Label54.Name = "Label54"
+        Me.Label54.Size = New System.Drawing.Size(51, 22)
+        Me.Label54.TabIndex = 13
+        Me.Label54.Text = "Total"
+        '
+        'mskTotDelayA
+        '
+        Me.mskTotDelayA.Location = New System.Drawing.Point(564, 455)
+        Me.mskTotDelayA.Name = "mskTotDelayA"
+        Me.mskTotDelayA.Size = New System.Drawing.Size(100, 27)
+        Me.mskTotDelayA.TabIndex = 12
+        '
+        'Label53
+        '
+        Me.Label53.AutoSize = True
+        Me.Label53.Location = New System.Drawing.Point(507, 458)
+        Me.Label53.Name = "Label53"
+        Me.Label53.Size = New System.Drawing.Size(51, 22)
+        Me.Label53.TabIndex = 11
+        Me.Label53.Text = "Total"
+        '
+        'dgvDelayB
+        '
+        Me.dgvDelayB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvDelayB.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvDelayB.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvDelayB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvDelayB.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn36, Me.DataGridViewTextBoxColumn37, Me.DataGridViewTextBoxColumn38, Me.DataGridViewTextBoxColumn39})
+        Me.dgvDelayB.Location = New System.Drawing.Point(670, 35)
+        Me.dgvDelayB.Name = "dgvDelayB"
+        Me.dgvDelayB.RowHeadersVisible = False
+        Me.dgvDelayB.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvDelayB.Size = New System.Drawing.Size(635, 418)
+        Me.dgvDelayB.TabIndex = 10
         '
         'DataGridViewTextBoxColumn36
         '
@@ -1396,262 +1306,90 @@ Partial Class frmCLR
         Me.DataGridViewTextBoxColumn39.HeaderText = "Total Hours"
         Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
         '
-        'Label53
-        '
-        Me.Label53.AutoSize = True
-        Me.Label53.Location = New System.Drawing.Point(507, 458)
-        Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(51, 22)
-        Me.Label53.TabIndex = 11
-        Me.Label53.Text = "Total"
-        '
-        'MaskedTextBox19
-        '
-        Me.MaskedTextBox19.Location = New System.Drawing.Point(564, 455)
-        Me.MaskedTextBox19.Name = "MaskedTextBox19"
-        Me.MaskedTextBox19.Size = New System.Drawing.Size(100, 27)
-        Me.MaskedTextBox19.TabIndex = 12
-        '
-        'MaskedTextBox20
-        '
-        Me.MaskedTextBox20.Location = New System.Drawing.Point(1205, 453)
-        Me.MaskedTextBox20.Name = "MaskedTextBox20"
-        Me.MaskedTextBox20.Size = New System.Drawing.Size(100, 27)
-        Me.MaskedTextBox20.TabIndex = 14
-        '
-        'Label54
-        '
-        Me.Label54.AutoSize = True
-        Me.Label54.Location = New System.Drawing.Point(1148, 456)
-        Me.Label54.Name = "Label54"
-        Me.Label54.Size = New System.Drawing.Size(51, 22)
-        Me.Label54.TabIndex = 13
-        Me.Label54.Text = "Total"
-        '
-        'Label55
-        '
-        Me.Label55.AutoSize = True
-        Me.Label55.Location = New System.Drawing.Point(969, 10)
-        Me.Label55.Name = "Label55"
-        Me.Label55.Size = New System.Drawing.Size(37, 22)
-        Me.Label55.TabIndex = 10
-        Me.Label55.Text = "GC"
-        '
-        'Label56
-        '
-        Me.Label56.AutoSize = True
-        Me.Label56.Location = New System.Drawing.Point(328, 10)
-        Me.Label56.Name = "Label56"
-        Me.Label56.Size = New System.Drawing.Size(37, 22)
-        Me.Label56.TabIndex = 9
-        Me.Label56.Text = "GC"
-        '
-        'MaskedTextBox21
-        '
-        Me.MaskedTextBox21.Location = New System.Drawing.Point(1205, 141)
-        Me.MaskedTextBox21.Name = "MaskedTextBox21"
-        Me.MaskedTextBox21.Size = New System.Drawing.Size(100, 27)
-        Me.MaskedTextBox21.TabIndex = 20
-        '
-        'Label57
-        '
-        Me.Label57.AutoSize = True
-        Me.Label57.Location = New System.Drawing.Point(1148, 144)
-        Me.Label57.Name = "Label57"
-        Me.Label57.Size = New System.Drawing.Size(51, 22)
-        Me.Label57.TabIndex = 19
-        Me.Label57.Text = "Total"
-        '
-        'MaskedTextBox22
-        '
-        Me.MaskedTextBox22.Location = New System.Drawing.Point(564, 143)
-        Me.MaskedTextBox22.Name = "MaskedTextBox22"
-        Me.MaskedTextBox22.Size = New System.Drawing.Size(100, 27)
-        Me.MaskedTextBox22.TabIndex = 18
-        '
-        'Label58
-        '
-        Me.Label58.AutoSize = True
-        Me.Label58.Location = New System.Drawing.Point(507, 146)
-        Me.Label58.Name = "Label58"
-        Me.Label58.Size = New System.Drawing.Size(51, 22)
-        Me.Label58.TabIndex = 17
-        Me.Label58.Text = "Total"
-        '
-        'DataGridView11
-        '
-        Me.DataGridView11.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView11.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView11.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView11.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView11.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn40, Me.DataGridViewTextBoxColumn41, Me.DataGridViewTextBoxColumn42, Me.DataGridViewTextBoxColumn43})
-        Me.DataGridView11.Location = New System.Drawing.Point(670, 35)
-        Me.DataGridView11.Name = "DataGridView11"
-        Me.DataGridView11.RowHeadersVisible = False
-        Me.DataGridView11.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView11.Size = New System.Drawing.Size(635, 102)
-        Me.DataGridView11.TabIndex = 16
-        '
-        'DataGridViewTextBoxColumn40
-        '
-        Me.DataGridViewTextBoxColumn40.HeaderText = "Deductable Delays"
-        Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
-        '
-        'DataGridViewTextBoxColumn41
-        '
-        Me.DataGridViewTextBoxColumn41.HeaderText = "Time From"
-        Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
-        '
-        'DataGridViewTextBoxColumn42
-        '
-        Me.DataGridViewTextBoxColumn42.HeaderText = "Time To"
-        Me.DataGridViewTextBoxColumn42.Name = "DataGridViewTextBoxColumn42"
-        '
-        'DataGridViewTextBoxColumn43
-        '
-        Me.DataGridViewTextBoxColumn43.HeaderText = "Total Hours"
-        Me.DataGridViewTextBoxColumn43.Name = "DataGridViewTextBoxColumn43"
-        '
-        'DataGridView12
-        '
-        Me.DataGridView12.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView12.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView12.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView12.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView12.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn44, Me.DataGridViewTextBoxColumn45, Me.DataGridViewTextBoxColumn46, Me.DataGridViewTextBoxColumn47})
-        Me.DataGridView12.Location = New System.Drawing.Point(29, 35)
-        Me.DataGridView12.Name = "DataGridView12"
-        Me.DataGridView12.RowHeadersVisible = False
-        Me.DataGridView12.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView12.Size = New System.Drawing.Size(635, 102)
-        Me.DataGridView12.TabIndex = 15
-        '
-        'DataGridViewTextBoxColumn44
-        '
-        Me.DataGridViewTextBoxColumn44.HeaderText = "Deductable Delays"
-        Me.DataGridViewTextBoxColumn44.Name = "DataGridViewTextBoxColumn44"
-        '
-        'DataGridViewTextBoxColumn45
-        '
-        Me.DataGridViewTextBoxColumn45.HeaderText = "Time From"
-        Me.DataGridViewTextBoxColumn45.Name = "DataGridViewTextBoxColumn45"
-        '
-        'DataGridViewTextBoxColumn46
-        '
-        Me.DataGridViewTextBoxColumn46.HeaderText = "Time To"
-        Me.DataGridViewTextBoxColumn46.Name = "DataGridViewTextBoxColumn46"
-        '
-        'DataGridViewTextBoxColumn47
-        '
-        Me.DataGridViewTextBoxColumn47.HeaderText = "Total Hours"
-        Me.DataGridViewTextBoxColumn47.Name = "DataGridViewTextBoxColumn47"
-        '
-        'MaskedTextBox23
-        '
-        Me.MaskedTextBox23.Location = New System.Drawing.Point(1205, 280)
-        Me.MaskedTextBox23.Name = "MaskedTextBox23"
-        Me.MaskedTextBox23.Size = New System.Drawing.Size(100, 27)
-        Me.MaskedTextBox23.TabIndex = 26
-        '
-        'Label59
-        '
-        Me.Label59.AutoSize = True
-        Me.Label59.Location = New System.Drawing.Point(1148, 283)
-        Me.Label59.Name = "Label59"
-        Me.Label59.Size = New System.Drawing.Size(51, 22)
-        Me.Label59.TabIndex = 25
-        Me.Label59.Text = "Total"
-        '
-        'MaskedTextBox24
-        '
-        Me.MaskedTextBox24.Location = New System.Drawing.Point(564, 282)
-        Me.MaskedTextBox24.Name = "MaskedTextBox24"
-        Me.MaskedTextBox24.Size = New System.Drawing.Size(100, 27)
-        Me.MaskedTextBox24.TabIndex = 24
-        '
-        'Label60
-        '
-        Me.Label60.AutoSize = True
-        Me.Label60.Location = New System.Drawing.Point(507, 285)
-        Me.Label60.Name = "Label60"
-        Me.Label60.Size = New System.Drawing.Size(51, 22)
-        Me.Label60.TabIndex = 23
-        Me.Label60.Text = "Total"
-        '
-        'DataGridView13
-        '
-        Me.DataGridView13.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView13.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView13.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView13.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView13.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn48, Me.DataGridViewTextBoxColumn49, Me.DataGridViewTextBoxColumn50, Me.DataGridViewTextBoxColumn51})
-        Me.DataGridView13.Location = New System.Drawing.Point(670, 174)
-        Me.DataGridView13.Name = "DataGridView13"
-        Me.DataGridView13.RowHeadersVisible = False
-        Me.DataGridView13.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView13.Size = New System.Drawing.Size(635, 102)
-        Me.DataGridView13.TabIndex = 22
-        '
-        'DataGridViewTextBoxColumn48
-        '
-        Me.DataGridViewTextBoxColumn48.HeaderText = "Deductable Delays"
-        Me.DataGridViewTextBoxColumn48.Name = "DataGridViewTextBoxColumn48"
-        '
-        'DataGridViewTextBoxColumn49
-        '
-        Me.DataGridViewTextBoxColumn49.HeaderText = "Time From"
-        Me.DataGridViewTextBoxColumn49.Name = "DataGridViewTextBoxColumn49"
-        '
-        'DataGridViewTextBoxColumn50
-        '
-        Me.DataGridViewTextBoxColumn50.HeaderText = "Time To"
-        Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
-        '
-        'DataGridViewTextBoxColumn51
-        '
-        Me.DataGridViewTextBoxColumn51.HeaderText = "Total Hours"
-        Me.DataGridViewTextBoxColumn51.Name = "DataGridViewTextBoxColumn51"
-        '
-        'DataGridView14
-        '
-        Me.DataGridView14.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView14.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView14.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView14.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView14.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn52, Me.DataGridViewTextBoxColumn53, Me.DataGridViewTextBoxColumn54, Me.DataGridViewTextBoxColumn55})
-        Me.DataGridView14.Location = New System.Drawing.Point(29, 174)
-        Me.DataGridView14.Name = "DataGridView14"
-        Me.DataGridView14.RowHeadersVisible = False
-        Me.DataGridView14.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView14.Size = New System.Drawing.Size(635, 102)
-        Me.DataGridView14.TabIndex = 21
-        '
-        'DataGridViewTextBoxColumn52
-        '
-        Me.DataGridViewTextBoxColumn52.HeaderText = "Deductable Delays"
-        Me.DataGridViewTextBoxColumn52.Name = "DataGridViewTextBoxColumn52"
-        '
-        'DataGridViewTextBoxColumn53
-        '
-        Me.DataGridViewTextBoxColumn53.HeaderText = "Time From"
-        Me.DataGridViewTextBoxColumn53.Name = "DataGridViewTextBoxColumn53"
-        '
-        'DataGridViewTextBoxColumn54
-        '
-        Me.DataGridViewTextBoxColumn54.HeaderText = "Time To"
-        Me.DataGridViewTextBoxColumn54.Name = "DataGridViewTextBoxColumn54"
-        '
-        'DataGridViewTextBoxColumn55
-        '
-        Me.DataGridViewTextBoxColumn55.HeaderText = "Total Hours"
-        Me.DataGridViewTextBoxColumn55.Name = "DataGridViewTextBoxColumn55"
-        '
-        'MaskedTextBox25
-        '
-        Me.MaskedTextBox25.Location = New System.Drawing.Point(885, 442)
-        Me.MaskedTextBox25.Name = "MaskedTextBox25"
-        Me.MaskedTextBox25.Size = New System.Drawing.Size(100, 27)
-        Me.MaskedTextBox25.TabIndex = 29
+        'dgvDelayA
+        '
+        Me.dgvDelayA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvDelayA.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvDelayA.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvDelayA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvDelayA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column8, Me.Column9, Me.Column10, Me.Column11})
+        Me.dgvDelayA.Location = New System.Drawing.Point(29, 35)
+        Me.dgvDelayA.Name = "dgvDelayA"
+        Me.dgvDelayA.RowHeadersVisible = False
+        Me.dgvDelayA.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvDelayA.Size = New System.Drawing.Size(635, 418)
+        Me.dgvDelayA.TabIndex = 9
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "Deductable Delays"
+        Me.Column8.Name = "Column8"
+        '
+        'Column9
+        '
+        Me.Column9.HeaderText = "Time From"
+        Me.Column9.Name = "Column9"
+        '
+        'Column10
+        '
+        Me.Column10.HeaderText = "Time To"
+        Me.Column10.Name = "Column10"
+        '
+        'Column11
+        '
+        Me.Column11.HeaderText = "Total Hours"
+        Me.Column11.Name = "Column11"
+        '
+        'Label51
+        '
+        Me.Label51.AutoSize = True
+        Me.Label51.Location = New System.Drawing.Point(969, 10)
+        Me.Label51.Name = "Label51"
+        Me.Label51.Size = New System.Drawing.Size(37, 22)
+        Me.Label51.TabIndex = 8
+        Me.Label51.Text = "GC"
+        '
+        'Label52
+        '
+        Me.Label52.AutoSize = True
+        Me.Label52.Location = New System.Drawing.Point(328, 10)
+        Me.Label52.Name = "Label52"
+        Me.Label52.Size = New System.Drawing.Size(37, 22)
+        Me.Label52.TabIndex = 7
+        Me.Label52.Text = "GC"
+        '
+        'TabPage4
+        '
+        Me.TabPage4.Controls.Add(Me.mskTotBerthDelay)
+        Me.TabPage4.Controls.Add(Me.Label61)
+        Me.TabPage4.Controls.Add(Me.dgvBerthDelay)
+        Me.TabPage4.Controls.Add(Me.mskTotAddDelayB)
+        Me.TabPage4.Controls.Add(Me.Label59)
+        Me.TabPage4.Controls.Add(Me.mskTotAddDelayA)
+        Me.TabPage4.Controls.Add(Me.Label60)
+        Me.TabPage4.Controls.Add(Me.dgvAddDelayB)
+        Me.TabPage4.Controls.Add(Me.dgvAddDelayA)
+        Me.TabPage4.Controls.Add(Me.mskTotBreakB)
+        Me.TabPage4.Controls.Add(Me.Label57)
+        Me.TabPage4.Controls.Add(Me.mskTotBreakA)
+        Me.TabPage4.Controls.Add(Me.Label58)
+        Me.TabPage4.Controls.Add(Me.dgvBreakB)
+        Me.TabPage4.Controls.Add(Me.dgvBreakA)
+        Me.TabPage4.Controls.Add(Me.Label55)
+        Me.TabPage4.Controls.Add(Me.Label56)
+        Me.TabPage4.Location = New System.Drawing.Point(4, 29)
+        Me.TabPage4.Name = "TabPage4"
+        Me.TabPage4.Size = New System.Drawing.Size(1334, 488)
+        Me.TabPage4.TabIndex = 3
+        Me.TabPage4.Text = "Additional Delays"
+        Me.TabPage4.UseVisualStyleBackColor = True
+        '
+        'mskTotBerthDelay
+        '
+        Me.mskTotBerthDelay.Location = New System.Drawing.Point(885, 442)
+        Me.mskTotBerthDelay.Name = "mskTotBerthDelay"
+        Me.mskTotBerthDelay.Size = New System.Drawing.Size(100, 27)
+        Me.mskTotBerthDelay.TabIndex = 29
         '
         'Label61
         '
@@ -1662,19 +1400,19 @@ Partial Class frmCLR
         Me.Label61.TabIndex = 28
         Me.Label61.Text = "Total"
         '
-        'DataGridView15
+        'dgvBerthDelay
         '
-        Me.DataGridView15.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView15.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.DataGridView15.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.DataGridView15.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView15.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn56, Me.DataGridViewTextBoxColumn57, Me.DataGridViewTextBoxColumn58, Me.DataGridViewTextBoxColumn59})
-        Me.DataGridView15.Location = New System.Drawing.Point(350, 315)
-        Me.DataGridView15.Name = "DataGridView15"
-        Me.DataGridView15.RowHeadersVisible = False
-        Me.DataGridView15.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView15.Size = New System.Drawing.Size(635, 121)
-        Me.DataGridView15.TabIndex = 27
+        Me.dgvBerthDelay.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvBerthDelay.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvBerthDelay.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvBerthDelay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvBerthDelay.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn56, Me.DataGridViewTextBoxColumn57, Me.DataGridViewTextBoxColumn58, Me.DataGridViewTextBoxColumn59})
+        Me.dgvBerthDelay.Location = New System.Drawing.Point(350, 315)
+        Me.dgvBerthDelay.Name = "dgvBerthDelay"
+        Me.dgvBerthDelay.RowHeadersVisible = False
+        Me.dgvBerthDelay.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvBerthDelay.Size = New System.Drawing.Size(635, 121)
+        Me.dgvBerthDelay.TabIndex = 27
         '
         'DataGridViewTextBoxColumn56
         '
@@ -1696,10 +1434,228 @@ Partial Class frmCLR
         Me.DataGridViewTextBoxColumn59.HeaderText = "Total Hours"
         Me.DataGridViewTextBoxColumn59.Name = "DataGridViewTextBoxColumn59"
         '
+        'mskTotAddDelayB
+        '
+        Me.mskTotAddDelayB.Location = New System.Drawing.Point(1205, 280)
+        Me.mskTotAddDelayB.Name = "mskTotAddDelayB"
+        Me.mskTotAddDelayB.Size = New System.Drawing.Size(100, 27)
+        Me.mskTotAddDelayB.TabIndex = 26
+        '
+        'Label59
+        '
+        Me.Label59.AutoSize = True
+        Me.Label59.Location = New System.Drawing.Point(1148, 283)
+        Me.Label59.Name = "Label59"
+        Me.Label59.Size = New System.Drawing.Size(51, 22)
+        Me.Label59.TabIndex = 25
+        Me.Label59.Text = "Total"
+        '
+        'mskTotAddDelayA
+        '
+        Me.mskTotAddDelayA.Location = New System.Drawing.Point(564, 282)
+        Me.mskTotAddDelayA.Name = "mskTotAddDelayA"
+        Me.mskTotAddDelayA.Size = New System.Drawing.Size(100, 27)
+        Me.mskTotAddDelayA.TabIndex = 24
+        '
+        'Label60
+        '
+        Me.Label60.AutoSize = True
+        Me.Label60.Location = New System.Drawing.Point(507, 285)
+        Me.Label60.Name = "Label60"
+        Me.Label60.Size = New System.Drawing.Size(51, 22)
+        Me.Label60.TabIndex = 23
+        Me.Label60.Text = "Total"
+        '
+        'dgvAddDelayB
+        '
+        Me.dgvAddDelayB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvAddDelayB.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvAddDelayB.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvAddDelayB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvAddDelayB.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn48, Me.DataGridViewTextBoxColumn49, Me.DataGridViewTextBoxColumn50, Me.DataGridViewTextBoxColumn51})
+        Me.dgvAddDelayB.Location = New System.Drawing.Point(670, 174)
+        Me.dgvAddDelayB.Name = "dgvAddDelayB"
+        Me.dgvAddDelayB.RowHeadersVisible = False
+        Me.dgvAddDelayB.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvAddDelayB.Size = New System.Drawing.Size(635, 102)
+        Me.dgvAddDelayB.TabIndex = 22
+        '
+        'DataGridViewTextBoxColumn48
+        '
+        Me.DataGridViewTextBoxColumn48.HeaderText = "Deductable Delays"
+        Me.DataGridViewTextBoxColumn48.Name = "DataGridViewTextBoxColumn48"
+        '
+        'DataGridViewTextBoxColumn49
+        '
+        Me.DataGridViewTextBoxColumn49.HeaderText = "Time From"
+        Me.DataGridViewTextBoxColumn49.Name = "DataGridViewTextBoxColumn49"
+        '
+        'DataGridViewTextBoxColumn50
+        '
+        Me.DataGridViewTextBoxColumn50.HeaderText = "Time To"
+        Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
+        '
+        'DataGridViewTextBoxColumn51
+        '
+        Me.DataGridViewTextBoxColumn51.HeaderText = "Total Hours"
+        Me.DataGridViewTextBoxColumn51.Name = "DataGridViewTextBoxColumn51"
+        '
+        'dgvAddDelayA
+        '
+        Me.dgvAddDelayA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvAddDelayA.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvAddDelayA.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvAddDelayA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvAddDelayA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn52, Me.DataGridViewTextBoxColumn53, Me.DataGridViewTextBoxColumn54, Me.DataGridViewTextBoxColumn55})
+        Me.dgvAddDelayA.Location = New System.Drawing.Point(29, 174)
+        Me.dgvAddDelayA.Name = "dgvAddDelayA"
+        Me.dgvAddDelayA.RowHeadersVisible = False
+        Me.dgvAddDelayA.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvAddDelayA.Size = New System.Drawing.Size(635, 102)
+        Me.dgvAddDelayA.TabIndex = 21
+        '
+        'DataGridViewTextBoxColumn52
+        '
+        Me.DataGridViewTextBoxColumn52.HeaderText = "Deductable Delays"
+        Me.DataGridViewTextBoxColumn52.Name = "DataGridViewTextBoxColumn52"
+        '
+        'DataGridViewTextBoxColumn53
+        '
+        Me.DataGridViewTextBoxColumn53.HeaderText = "Time From"
+        Me.DataGridViewTextBoxColumn53.Name = "DataGridViewTextBoxColumn53"
+        '
+        'DataGridViewTextBoxColumn54
+        '
+        Me.DataGridViewTextBoxColumn54.HeaderText = "Time To"
+        Me.DataGridViewTextBoxColumn54.Name = "DataGridViewTextBoxColumn54"
+        '
+        'DataGridViewTextBoxColumn55
+        '
+        Me.DataGridViewTextBoxColumn55.HeaderText = "Total Hours"
+        Me.DataGridViewTextBoxColumn55.Name = "DataGridViewTextBoxColumn55"
+        '
+        'mskTotBreakB
+        '
+        Me.mskTotBreakB.Location = New System.Drawing.Point(1205, 141)
+        Me.mskTotBreakB.Name = "mskTotBreakB"
+        Me.mskTotBreakB.Size = New System.Drawing.Size(100, 27)
+        Me.mskTotBreakB.TabIndex = 20
+        '
+        'Label57
+        '
+        Me.Label57.AutoSize = True
+        Me.Label57.Location = New System.Drawing.Point(1148, 144)
+        Me.Label57.Name = "Label57"
+        Me.Label57.Size = New System.Drawing.Size(51, 22)
+        Me.Label57.TabIndex = 19
+        Me.Label57.Text = "Total"
+        '
+        'mskTotBreakA
+        '
+        Me.mskTotBreakA.Location = New System.Drawing.Point(564, 143)
+        Me.mskTotBreakA.Name = "mskTotBreakA"
+        Me.mskTotBreakA.Size = New System.Drawing.Size(100, 27)
+        Me.mskTotBreakA.TabIndex = 18
+        '
+        'Label58
+        '
+        Me.Label58.AutoSize = True
+        Me.Label58.Location = New System.Drawing.Point(507, 146)
+        Me.Label58.Name = "Label58"
+        Me.Label58.Size = New System.Drawing.Size(51, 22)
+        Me.Label58.TabIndex = 17
+        Me.Label58.Text = "Total"
+        '
+        'dgvBreakB
+        '
+        Me.dgvBreakB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvBreakB.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvBreakB.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvBreakB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvBreakB.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn40, Me.DataGridViewTextBoxColumn41, Me.DataGridViewTextBoxColumn42, Me.DataGridViewTextBoxColumn43})
+        Me.dgvBreakB.Location = New System.Drawing.Point(670, 35)
+        Me.dgvBreakB.Name = "dgvBreakB"
+        Me.dgvBreakB.RowHeadersVisible = False
+        Me.dgvBreakB.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvBreakB.Size = New System.Drawing.Size(635, 102)
+        Me.dgvBreakB.TabIndex = 16
+        '
+        'DataGridViewTextBoxColumn40
+        '
+        Me.DataGridViewTextBoxColumn40.HeaderText = "Deductable Delays"
+        Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
+        '
+        'DataGridViewTextBoxColumn41
+        '
+        Me.DataGridViewTextBoxColumn41.HeaderText = "Time From"
+        Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
+        '
+        'DataGridViewTextBoxColumn42
+        '
+        Me.DataGridViewTextBoxColumn42.HeaderText = "Time To"
+        Me.DataGridViewTextBoxColumn42.Name = "DataGridViewTextBoxColumn42"
+        '
+        'DataGridViewTextBoxColumn43
+        '
+        Me.DataGridViewTextBoxColumn43.HeaderText = "Total Hours"
+        Me.DataGridViewTextBoxColumn43.Name = "DataGridViewTextBoxColumn43"
+        '
+        'dgvBreakA
+        '
+        Me.dgvBreakA.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvBreakA.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dgvBreakA.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.dgvBreakA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvBreakA.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn44, Me.DataGridViewTextBoxColumn45, Me.DataGridViewTextBoxColumn46, Me.DataGridViewTextBoxColumn47})
+        Me.dgvBreakA.Location = New System.Drawing.Point(29, 35)
+        Me.dgvBreakA.Name = "dgvBreakA"
+        Me.dgvBreakA.RowHeadersVisible = False
+        Me.dgvBreakA.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.dgvBreakA.Size = New System.Drawing.Size(635, 102)
+        Me.dgvBreakA.TabIndex = 15
+        '
+        'DataGridViewTextBoxColumn44
+        '
+        Me.DataGridViewTextBoxColumn44.HeaderText = "Deductable Delays"
+        Me.DataGridViewTextBoxColumn44.Name = "DataGridViewTextBoxColumn44"
+        '
+        'DataGridViewTextBoxColumn45
+        '
+        Me.DataGridViewTextBoxColumn45.HeaderText = "Time From"
+        Me.DataGridViewTextBoxColumn45.Name = "DataGridViewTextBoxColumn45"
+        '
+        'DataGridViewTextBoxColumn46
+        '
+        Me.DataGridViewTextBoxColumn46.HeaderText = "Time To"
+        Me.DataGridViewTextBoxColumn46.Name = "DataGridViewTextBoxColumn46"
+        '
+        'DataGridViewTextBoxColumn47
+        '
+        Me.DataGridViewTextBoxColumn47.HeaderText = "Total Hours"
+        Me.DataGridViewTextBoxColumn47.Name = "DataGridViewTextBoxColumn47"
+        '
+        'Label55
+        '
+        Me.Label55.AutoSize = True
+        Me.Label55.Location = New System.Drawing.Point(969, 10)
+        Me.Label55.Name = "Label55"
+        Me.Label55.Size = New System.Drawing.Size(37, 22)
+        Me.Label55.TabIndex = 10
+        Me.Label55.Text = "GC"
+        '
+        'Label56
+        '
+        Me.Label56.AutoSize = True
+        Me.Label56.Location = New System.Drawing.Point(328, 10)
+        Me.Label56.Name = "Label56"
+        Me.Label56.Size = New System.Drawing.Size(37, 22)
+        Me.Label56.TabIndex = 9
+        Me.Label56.Text = "GC"
+        '
         'TabPage5
         '
-        Me.TabPage5.Controls.Add(Me.Button1)
-        Me.TabPage5.Controls.Add(Me.CrystalReportViewer1)
+        Me.TabPage5.Controls.Add(Me.cmdSave)
+        Me.TabPage5.Controls.Add(Me.crvPreview)
         Me.TabPage5.Location = New System.Drawing.Point(4, 29)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
@@ -1708,109 +1664,105 @@ Partial Class frmCLR
         Me.TabPage5.Text = "Preview"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
-        'CrystalReportViewer1
+        'cmdSave
         '
-        Me.CrystalReportViewer1.ActiveViewIndex = -1
-        Me.CrystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.CrystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CrystalReportViewer1.Location = New System.Drawing.Point(6, 6)
-        Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(1114, 476)
-        Me.CrystalReportViewer1.TabIndex = 0
+        Me.cmdSave.Location = New System.Drawing.Point(1160, 391)
+        Me.cmdSave.Name = "cmdSave"
+        Me.cmdSave.Size = New System.Drawing.Size(134, 56)
+        Me.cmdSave.TabIndex = 1
+        Me.cmdSave.Text = "Save | Print"
+        Me.cmdSave.UseVisualStyleBackColor = True
         '
-        'Button1
+        'crvPreview
         '
-        Me.Button1.Location = New System.Drawing.Point(1160, 391)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(134, 56)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Save | Print"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.crvPreview.ActiveViewIndex = -1
+        Me.crvPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.crvPreview.Cursor = System.Windows.Forms.Cursors.Default
+        Me.crvPreview.Location = New System.Drawing.Point(6, 6)
+        Me.crvPreview.Name = "crvPreview"
+        Me.crvPreview.Size = New System.Drawing.Size(1114, 476)
+        Me.crvPreview.TabIndex = 0
         '
         'frmCLR
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1366, 768)
-        Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.tbctlCLR)
+        Me.Controls.Add(Me.gbxVessel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmCLR"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Form1"
         Me.TopMost = True
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
+        Me.gbxVessel.ResumeLayout(False)
+        Me.gbxVessel.PerformLayout()
+        Me.tbctlCLR.ResumeLayout(False)
+        Me.tabGeneral.ResumeLayout(False)
+        Me.tabGeneral.PerformLayout()
+        CType(Me.dgvCummulativeYr, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvCummulativeMoA, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tabSummary.ResumeLayout(False)
+        Me.tabSummary.PerformLayout()
+        CType(Me.dgvHCB, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvGbxB, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvCTNB, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvHCA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvGbxA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvCTNA, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.lblSumMovesA.ResumeLayout(False)
+        Me.lblSumMovesA.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
+        CType(Me.dgvDelayB, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvDelayA, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView8, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView5, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage6.ResumeLayout(False)
-        Me.TabPage6.PerformLayout()
-        CType(Me.DataGridView9, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView11, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView12, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView13, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView14, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView15, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvBerthDelay, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvAddDelayB, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvAddDelayA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvBreakB, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvBreakA, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage5.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents MaskedTextBox6 As MaskedTextBox
-    Friend WithEvents MaskedTextBox5 As MaskedTextBox
-    Friend WithEvents MaskedTextBox4 As MaskedTextBox
-    Friend WithEvents MaskedTextBox3 As MaskedTextBox
-    Friend WithEvents MaskedTextBox2 As MaskedTextBox
-    Friend WithEvents MaskedTextBox1 As MaskedTextBox
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label1 As Label
-    Friend WithEvents TabControl1 As TabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents gbxVessel As GroupBox
+    Friend WithEvents mskLastPort As MaskedTextBox
+    Friend WithEvents mskNextPort As MaskedTextBox
+    Friend WithEvents mskVoyage As MaskedTextBox
+    Friend WithEvents mskRegistry As MaskedTextBox
+    Friend WithEvents mskVessel As MaskedTextBox
+    Friend WithEvents mskShippingLine As MaskedTextBox
+    Friend WithEvents lblVoyage As Label
+    Friend WithEvents lblNextPort As Label
+    Friend WithEvents lblLastPort As Label
+    Friend WithEvents lblRegistry As Label
+    Friend WithEvents lblVessel As Label
+    Friend WithEvents lblShippingLine As Label
+    Friend WithEvents tbctlCLR As TabControl
+    Friend WithEvents tabGeneral As TabPage
+    Friend WithEvents tabSummary As TabPage
     Friend WithEvents TabPage3 As TabPage
     Friend WithEvents TabPage4 As TabPage
-    Friend WithEvents MaskedTextBox7 As MaskedTextBox
-    Friend WithEvents MaskedTextBox8 As MaskedTextBox
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label8 As Label
-    Friend WithEvents Label22 As Label
-    Friend WithEvents Label23 As Label
-    Friend WithEvents Label24 As Label
-    Friend WithEvents Label21 As Label
-    Friend WithEvents Label20 As Label
-    Friend WithEvents Label19 As Label
-    Friend WithEvents Label18 As Label
-    Friend WithEvents Label17 As Label
-    Friend WithEvents Label16 As Label
-    Friend WithEvents Label15 As Label
-    Friend WithEvents Label14 As Label
-    Friend WithEvents Label13 As Label
-    Friend WithEvents Label12 As Label
-    Friend WithEvents Label11 As Label
-    Friend WithEvents DataGridView8 As DataGridView
-    Friend WithEvents DataGridView7 As DataGridView
-    Friend WithEvents DataGridView6 As DataGridView
+    Friend WithEvents lblNBPRB As Label
+    Friend WithEvents lblGBPRB As Label
+    Friend WithEvents lblNBHB As Label
+    Friend WithEvents lblNBPRA As Label
+    Friend WithEvents lblGBPRA As Label
+    Friend WithEvents lblNBHA As Label
+    Friend WithEvents lblMovesB As Label
+    Friend WithEvents lblMovesA As Label
+    Friend WithEvents lblTotalMovesB As Label
+    Friend WithEvents lblTotalMovesA As Label
+    Friend WithEvents lblGCB As Label
+    Friend WithEvents lblGCA As Label
+    Friend WithEvents lblCummulativeYr As Label
+    Friend WithEvents lblCummulativeMoA As Label
+    Friend WithEvents dgvCummulativeYr As DataGridView
+    Friend WithEvents dgvCummulativeMoA As DataGridView
+    Friend WithEvents dgvCTNB As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
@@ -1818,18 +1770,18 @@ Partial Class frmCLR
     Friend WithEvents DataGridViewTextBoxColumn33 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn34 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn35 As DataGridViewTextBoxColumn
-    Friend WithEvents Label10 As Label
-    Friend WithEvents DataGridView3 As DataGridView
-    Friend WithEvents DataGridView2 As DataGridView
-    Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents Label9 As Label
-    Friend WithEvents MaskedTextBox12 As MaskedTextBox
-    Friend WithEvents MaskedTextBox13 As MaskedTextBox
-    Friend WithEvents MaskedTextBox14 As MaskedTextBox
-    Friend WithEvents MaskedTextBox11 As MaskedTextBox
-    Friend WithEvents MaskedTextBox10 As MaskedTextBox
-    Friend WithEvents MaskedTextBox9 As MaskedTextBox
-    Friend WithEvents DataGridView4 As DataGridView
+    Friend WithEvents lblSumGCB As Label
+    Friend WithEvents dgvHCA As DataGridView
+    Friend WithEvents dgvGbxA As DataGridView
+    Friend WithEvents dgvCTNA As DataGridView
+    Friend WithEvents lblSumGCA As Label
+    Friend WithEvents mskNBPRB As MaskedTextBox
+    Friend WithEvents mskGBPRB As MaskedTextBox
+    Friend WithEvents mskNBHB As MaskedTextBox
+    Friend WithEvents mskNBPRA As MaskedTextBox
+    Friend WithEvents mskGBPRA As MaskedTextBox
+    Friend WithEvents mskNBHA As MaskedTextBox
+    Friend WithEvents dgvHCB As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
@@ -1837,7 +1789,7 @@ Partial Class frmCLR
     Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridView5 As DataGridView
+    Friend WithEvents dgvGbxB As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn23 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
@@ -1866,84 +1818,84 @@ Partial Class frmCLR
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
-    Friend WithEvents TabPage6 As TabPage
-    Friend WithEvents MaskedTextBox15 As MaskedTextBox
+    Friend WithEvents lblSumMovesA As TabPage
+    Friend WithEvents mskFMA As MaskedTextBox
     Friend WithEvents Label31 As Label
-    Friend WithEvents Label27 As Label
+    Friend WithEvents lblSumMovesB As Label
     Friend WithEvents Label28 As Label
     Friend WithEvents Label29 As Label
     Friend WithEvents Label30 As Label
     Friend WithEvents Label25 As Label
     Friend WithEvents Label26 As Label
-    Friend WithEvents Label43 As Label
+    Friend WithEvents lblNPRB As Label
     Friend WithEvents Label44 As Label
-    Friend WithEvents Label45 As Label
+    Friend WithEvents lblNWHB As Label
     Friend WithEvents Label46 As Label
-    Friend WithEvents Label47 As Label
+    Friend WithEvents lblGPB As Label
     Friend WithEvents Label48 As Label
-    Friend WithEvents Label49 As Label
+    Friend WithEvents lblGWHB As Label
     Friend WithEvents Label50 As Label
-    Friend WithEvents Label41 As Label
+    Friend WithEvents lblNPRA As Label
     Friend WithEvents Label42 As Label
-    Friend WithEvents Label39 As Label
+    Friend WithEvents lblNWHA As Label
     Friend WithEvents Label40 As Label
-    Friend WithEvents Label37 As Label
+    Friend WithEvents lblGPA As Label
     Friend WithEvents Label38 As Label
-    Friend WithEvents Label36 As Label
+    Friend WithEvents lblGWHA As Label
     Friend WithEvents Label35 As Label
-    Friend WithEvents MaskedTextBox17 As MaskedTextBox
+    Friend WithEvents mskLMB As MaskedTextBox
     Friend WithEvents Label33 As Label
-    Friend WithEvents MaskedTextBox18 As MaskedTextBox
+    Friend WithEvents mskFMB As MaskedTextBox
     Friend WithEvents Label34 As Label
-    Friend WithEvents MaskedTextBox16 As MaskedTextBox
+    Friend WithEvents mskLMA As MaskedTextBox
     Friend WithEvents Label32 As Label
-    Friend WithEvents DataGridView9 As DataGridView
+    Friend WithEvents dgvDelayA As DataGridView
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
     Friend WithEvents Column10 As DataGridViewTextBoxColumn
     Friend WithEvents Column11 As DataGridViewTextBoxColumn
     Friend WithEvents Label51 As Label
     Friend WithEvents Label52 As Label
-    Friend WithEvents MaskedTextBox20 As MaskedTextBox
+    Friend WithEvents mskTotDelayB As MaskedTextBox
     Friend WithEvents Label54 As Label
-    Friend WithEvents MaskedTextBox19 As MaskedTextBox
+    Friend WithEvents mskTotDelayA As MaskedTextBox
     Friend WithEvents Label53 As Label
-    Friend WithEvents DataGridView10 As DataGridView
+    Friend WithEvents dgvDelayB As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn36 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn37 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn38 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn39 As DataGridViewTextBoxColumn
-    Friend WithEvents MaskedTextBox25 As MaskedTextBox
+    Friend WithEvents mskTotBerthDelay As MaskedTextBox
     Friend WithEvents Label61 As Label
-    Friend WithEvents DataGridView15 As DataGridView
+    Friend WithEvents dgvBerthDelay As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn56 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn57 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn58 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn59 As DataGridViewTextBoxColumn
-    Friend WithEvents MaskedTextBox23 As MaskedTextBox
+    Friend WithEvents mskTotAddDelayB As MaskedTextBox
     Friend WithEvents Label59 As Label
-    Friend WithEvents MaskedTextBox24 As MaskedTextBox
+    Friend WithEvents mskTotAddDelayA As MaskedTextBox
     Friend WithEvents Label60 As Label
-    Friend WithEvents DataGridView13 As DataGridView
+    Friend WithEvents dgvAddDelayB As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn48 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn49 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn50 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn51 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridView14 As DataGridView
+    Friend WithEvents dgvAddDelayA As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn52 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn53 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn54 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn55 As DataGridViewTextBoxColumn
-    Friend WithEvents MaskedTextBox21 As MaskedTextBox
+    Friend WithEvents mskTotBreakB As MaskedTextBox
     Friend WithEvents Label57 As Label
-    Friend WithEvents MaskedTextBox22 As MaskedTextBox
+    Friend WithEvents mskTotBreakA As MaskedTextBox
     Friend WithEvents Label58 As Label
-    Friend WithEvents DataGridView11 As DataGridView
+    Friend WithEvents dgvBreakB As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn40 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn41 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn42 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn43 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridView12 As DataGridView
+    Friend WithEvents dgvBreakA As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn44 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn45 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn46 As DataGridViewTextBoxColumn
@@ -1951,6 +1903,6 @@ Partial Class frmCLR
     Friend WithEvents Label55 As Label
     Friend WithEvents Label56 As Label
     Friend WithEvents TabPage5 As TabPage
-    Friend WithEvents Button1 As Button
-    Friend WithEvents CrystalReportViewer1 As CrystalDecisions.Windows.Forms.CrystalReportViewer
+    Friend WithEvents cmdSave As Button
+    Friend WithEvents crvPreview As CrystalDecisions.Windows.Forms.CrystalReportViewer
 End Class

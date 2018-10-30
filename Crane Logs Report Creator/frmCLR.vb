@@ -7,7 +7,7 @@
 
     End Sub
 
-    Private Sub MaskedTextBox2_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles MaskedTextBox2.MaskInputRejected
+    Private Sub MaskedTextBox2_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskVessel.MaskInputRejected
 
     End Sub
 
@@ -15,7 +15,7 @@
 
     End Sub
 
-    Private Sub MaskedTextBox15_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles MaskedTextBox15.MaskInputRejected
+    Private Sub MaskedTextBox15_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskFMA.MaskInputRejected
 
     End Sub
 
