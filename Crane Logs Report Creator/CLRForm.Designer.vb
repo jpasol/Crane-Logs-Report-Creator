@@ -24,37 +24,40 @@ Partial Class CLRForm
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label45 = New System.Windows.Forms.Label()
-        Me.TextBox53 = New System.Windows.Forms.TextBox()
-        Me.Label42 = New System.Windows.Forms.Label()
-        Me.TextBox50 = New System.Windows.Forms.TextBox()
-        Me.Label43 = New System.Windows.Forms.Label()
-        Me.TextBox51 = New System.Windows.Forms.TextBox()
-        Me.Label44 = New System.Windows.Forms.Label()
-        Me.TextBox52 = New System.Windows.Forms.TextBox()
-        Me.Label41 = New System.Windows.Forms.Label()
-        Me.TextBox49 = New System.Windows.Forms.TextBox()
-        Me.Label40 = New System.Windows.Forms.Label()
-        Me.TextBox48 = New System.Windows.Forms.TextBox()
-        Me.TextBox47 = New System.Windows.Forms.TextBox()
-        Me.Label39 = New System.Windows.Forms.Label()
-        Me.TextBox24 = New System.Windows.Forms.TextBox()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.TextBox23 = New System.Windows.Forms.TextBox()
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.TextBox22 = New System.Windows.Forms.TextBox()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.TextBox21 = New System.Windows.Forms.TextBox()
-        Me.Label23 = New System.Windows.Forms.Label()
+        Me.MaskedTextBox11 = New System.Windows.Forms.MaskedTextBox()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.MaskedTextBox10 = New System.Windows.Forms.MaskedTextBox()
+        Me.MaskedTextBox9 = New System.Windows.Forms.MaskedTextBox()
+        Me.MaskedTextBox8 = New System.Windows.Forms.MaskedTextBox()
         Me.MaskedTextBox7 = New System.Windows.Forms.MaskedTextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.MaskedTextBox1 = New System.Windows.Forms.MaskedTextBox()
-        Me.MaskedTextBox2 = New System.Windows.Forms.MaskedTextBox()
         Me.MaskedTextBox4 = New System.Windows.Forms.MaskedTextBox()
         Me.MaskedTextBox5 = New System.Windows.Forms.MaskedTextBox()
         Me.MaskedTextBox6 = New System.Windows.Forms.MaskedTextBox()
+        Me.MaskedTextBox3 = New System.Windows.Forms.MaskedTextBox()
+        Me.MaskedTextBox2 = New System.Windows.Forms.MaskedTextBox()
+        Me.MaskedTextBox1 = New System.Windows.Forms.MaskedTextBox()
+        Me.Label45 = New System.Windows.Forms.Label()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.Label44 = New System.Windows.Forms.Label()
+        Me.mskGVWT = New System.Windows.Forms.TextBox()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.mskMoves = New System.Windows.Forms.MaskedTextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.mskFirstmve = New System.Windows.Forms.MaskedTextBox()
+        Me.mskLastmve = New System.Windows.Forms.MaskedTextBox()
+        Me.mskBerthHours = New System.Windows.Forms.MaskedTextBox()
+        Me.mskATD = New System.Windows.Forms.MaskedTextBox()
+        Me.mskATA = New System.Windows.Forms.MaskedTextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -74,6 +77,8 @@ Partial Class CLRForm
         Me.lblVessel = New System.Windows.Forms.Label()
         Me.lblShippingLine = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.txtGC = New System.Windows.Forms.TextBox()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.TextBox46 = New System.Windows.Forms.TextBox()
@@ -103,7 +108,7 @@ Partial Class CLRForm
         Me.TextBox27 = New System.Windows.Forms.TextBox()
         Me.TextBox28 = New System.Windows.Forms.TextBox()
         Me.TextBox26 = New System.Windows.Forms.TextBox()
-        Me.TextBox25 = New System.Windows.Forms.TextBox()
+        Me.txtdf20 = New System.Windows.Forms.TextBox()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.Label31 = New System.Windows.Forms.Label()
@@ -150,8 +155,6 @@ Partial Class CLRForm
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -188,6 +191,16 @@ Partial Class CLRForm
         Me.TabPage1.Text = "General Information"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'Button6
+        '
+        Me.Button6.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button6.Location = New System.Drawing.Point(45, 594)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(172, 55)
+        Me.Button6.TabIndex = 57
+        Me.Button6.Text = "Exit (F3)"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
         'Button3
         '
         Me.Button3.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -200,35 +213,37 @@ Partial Class CLRForm
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Label45)
-        Me.GroupBox1.Controls.Add(Me.TextBox53)
-        Me.GroupBox1.Controls.Add(Me.Label42)
-        Me.GroupBox1.Controls.Add(Me.TextBox50)
-        Me.GroupBox1.Controls.Add(Me.Label43)
-        Me.GroupBox1.Controls.Add(Me.TextBox51)
-        Me.GroupBox1.Controls.Add(Me.Label44)
-        Me.GroupBox1.Controls.Add(Me.TextBox52)
-        Me.GroupBox1.Controls.Add(Me.Label41)
-        Me.GroupBox1.Controls.Add(Me.TextBox49)
-        Me.GroupBox1.Controls.Add(Me.Label40)
-        Me.GroupBox1.Controls.Add(Me.TextBox48)
-        Me.GroupBox1.Controls.Add(Me.TextBox47)
-        Me.GroupBox1.Controls.Add(Me.Label39)
-        Me.GroupBox1.Controls.Add(Me.TextBox24)
-        Me.GroupBox1.Controls.Add(Me.Label26)
-        Me.GroupBox1.Controls.Add(Me.TextBox23)
-        Me.GroupBox1.Controls.Add(Me.Label25)
-        Me.GroupBox1.Controls.Add(Me.TextBox22)
-        Me.GroupBox1.Controls.Add(Me.Label24)
-        Me.GroupBox1.Controls.Add(Me.TextBox21)
-        Me.GroupBox1.Controls.Add(Me.Label23)
+        Me.GroupBox1.Controls.Add(Me.MaskedTextBox11)
+        Me.GroupBox1.Controls.Add(Me.Label46)
+        Me.GroupBox1.Controls.Add(Me.MaskedTextBox10)
+        Me.GroupBox1.Controls.Add(Me.MaskedTextBox9)
+        Me.GroupBox1.Controls.Add(Me.MaskedTextBox8)
         Me.GroupBox1.Controls.Add(Me.MaskedTextBox7)
-        Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.Controls.Add(Me.MaskedTextBox1)
-        Me.GroupBox1.Controls.Add(Me.MaskedTextBox2)
         Me.GroupBox1.Controls.Add(Me.MaskedTextBox4)
         Me.GroupBox1.Controls.Add(Me.MaskedTextBox5)
         Me.GroupBox1.Controls.Add(Me.MaskedTextBox6)
+        Me.GroupBox1.Controls.Add(Me.MaskedTextBox3)
+        Me.GroupBox1.Controls.Add(Me.MaskedTextBox2)
+        Me.GroupBox1.Controls.Add(Me.MaskedTextBox1)
+        Me.GroupBox1.Controls.Add(Me.Label45)
+        Me.GroupBox1.Controls.Add(Me.Label42)
+        Me.GroupBox1.Controls.Add(Me.Label43)
+        Me.GroupBox1.Controls.Add(Me.Label44)
+        Me.GroupBox1.Controls.Add(Me.mskGVWT)
+        Me.GroupBox1.Controls.Add(Me.Label41)
+        Me.GroupBox1.Controls.Add(Me.Label40)
+        Me.GroupBox1.Controls.Add(Me.Label39)
+        Me.GroupBox1.Controls.Add(Me.Label26)
+        Me.GroupBox1.Controls.Add(Me.Label25)
+        Me.GroupBox1.Controls.Add(Me.Label24)
+        Me.GroupBox1.Controls.Add(Me.Label23)
+        Me.GroupBox1.Controls.Add(Me.mskMoves)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.mskFirstmve)
+        Me.GroupBox1.Controls.Add(Me.mskLastmve)
+        Me.GroupBox1.Controls.Add(Me.mskBerthHours)
+        Me.GroupBox1.Controls.Add(Me.mskATD)
+        Me.GroupBox1.Controls.Add(Me.mskATA)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label4)
@@ -242,6 +257,95 @@ Partial Class CLRForm
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Crane Productivity Summary"
         '
+        'MaskedTextBox11
+        '
+        Me.MaskedTextBox11.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.MaskedTextBox11.Location = New System.Drawing.Point(664, 134)
+        Me.MaskedTextBox11.Name = "MaskedTextBox11"
+        Me.MaskedTextBox11.Size = New System.Drawing.Size(103, 27)
+        Me.MaskedTextBox11.TabIndex = 59
+        '
+        'Label46
+        '
+        Me.Label46.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label46.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold)
+        Me.Label46.Location = New System.Drawing.Point(664, 77)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(103, 54)
+        Me.Label46.TabIndex = 58
+        Me.Label46.Text = "Crane Density"
+        Me.Label46.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'MaskedTextBox10
+        '
+        Me.MaskedTextBox10.Location = New System.Drawing.Point(664, 329)
+        Me.MaskedTextBox10.Name = "MaskedTextBox10"
+        Me.MaskedTextBox10.Size = New System.Drawing.Size(134, 29)
+        Me.MaskedTextBox10.TabIndex = 57
+        '
+        'MaskedTextBox9
+        '
+        Me.MaskedTextBox9.Location = New System.Drawing.Point(524, 329)
+        Me.MaskedTextBox9.Name = "MaskedTextBox9"
+        Me.MaskedTextBox9.Size = New System.Drawing.Size(134, 29)
+        Me.MaskedTextBox9.TabIndex = 56
+        '
+        'MaskedTextBox8
+        '
+        Me.MaskedTextBox8.Location = New System.Drawing.Point(664, 233)
+        Me.MaskedTextBox8.Name = "MaskedTextBox8"
+        Me.MaskedTextBox8.Size = New System.Drawing.Size(134, 29)
+        Me.MaskedTextBox8.TabIndex = 55
+        '
+        'MaskedTextBox7
+        '
+        Me.MaskedTextBox7.Location = New System.Drawing.Point(524, 233)
+        Me.MaskedTextBox7.Name = "MaskedTextBox7"
+        Me.MaskedTextBox7.Size = New System.Drawing.Size(134, 29)
+        Me.MaskedTextBox7.TabIndex = 54
+        '
+        'MaskedTextBox4
+        '
+        Me.MaskedTextBox4.Location = New System.Drawing.Point(1139, 201)
+        Me.MaskedTextBox4.Name = "MaskedTextBox4"
+        Me.MaskedTextBox4.Size = New System.Drawing.Size(134, 29)
+        Me.MaskedTextBox4.TabIndex = 53
+        '
+        'MaskedTextBox5
+        '
+        Me.MaskedTextBox5.Location = New System.Drawing.Point(1139, 271)
+        Me.MaskedTextBox5.Name = "MaskedTextBox5"
+        Me.MaskedTextBox5.Size = New System.Drawing.Size(134, 29)
+        Me.MaskedTextBox5.TabIndex = 52
+        '
+        'MaskedTextBox6
+        '
+        Me.MaskedTextBox6.Location = New System.Drawing.Point(1139, 236)
+        Me.MaskedTextBox6.Name = "MaskedTextBox6"
+        Me.MaskedTextBox6.Size = New System.Drawing.Size(134, 29)
+        Me.MaskedTextBox6.TabIndex = 51
+        '
+        'MaskedTextBox3
+        '
+        Me.MaskedTextBox3.Location = New System.Drawing.Point(291, 201)
+        Me.MaskedTextBox3.Name = "MaskedTextBox3"
+        Me.MaskedTextBox3.Size = New System.Drawing.Size(134, 29)
+        Me.MaskedTextBox3.TabIndex = 50
+        '
+        'MaskedTextBox2
+        '
+        Me.MaskedTextBox2.Location = New System.Drawing.Point(291, 272)
+        Me.MaskedTextBox2.Name = "MaskedTextBox2"
+        Me.MaskedTextBox2.Size = New System.Drawing.Size(134, 29)
+        Me.MaskedTextBox2.TabIndex = 49
+        '
+        'MaskedTextBox1
+        '
+        Me.MaskedTextBox1.Location = New System.Drawing.Point(291, 237)
+        Me.MaskedTextBox1.Name = "MaskedTextBox1"
+        Me.MaskedTextBox1.Size = New System.Drawing.Size(134, 29)
+        Me.MaskedTextBox1.TabIndex = 48
+        '
         'Label45
         '
         Me.Label45.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -252,13 +356,6 @@ Partial Class CLRForm
         Me.Label45.TabIndex = 47
         Me.Label45.Text = "Net Vessel Prod. Rate"
         Me.Label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'TextBox53
-        '
-        Me.TextBox53.Location = New System.Drawing.Point(1134, 271)
-        Me.TextBox53.Name = "TextBox53"
-        Me.TextBox53.Size = New System.Drawing.Size(134, 29)
-        Me.TextBox53.TabIndex = 46
         '
         'Label42
         '
@@ -271,13 +368,6 @@ Partial Class CLRForm
         Me.Label42.Text = "Gross Vessel Prod. Rate"
         Me.Label42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'TextBox50
-        '
-        Me.TextBox50.Location = New System.Drawing.Point(1134, 236)
-        Me.TextBox50.Name = "TextBox50"
-        Me.TextBox50.Size = New System.Drawing.Size(134, 29)
-        Me.TextBox50.TabIndex = 44
-        '
         'Label43
         '
         Me.Label43.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -289,13 +379,6 @@ Partial Class CLRForm
         Me.Label43.Text = "Net Vessel Working Time"
         Me.Label43.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'TextBox51
-        '
-        Me.TextBox51.Location = New System.Drawing.Point(1134, 201)
-        Me.TextBox51.Name = "TextBox51"
-        Me.TextBox51.Size = New System.Drawing.Size(134, 29)
-        Me.TextBox51.TabIndex = 42
-        '
         'Label44
         '
         Me.Label44.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -303,15 +386,15 @@ Partial Class CLRForm
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(135, 29)
         Me.Label44.TabIndex = 41
-        Me.Label44.Text = "GVMT"
+        Me.Label44.Text = "GVWT"
         Me.Label44.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'TextBox52
+        'mskGVWT
         '
-        Me.TextBox52.Location = New System.Drawing.Point(951, 128)
-        Me.TextBox52.Name = "TextBox52"
-        Me.TextBox52.Size = New System.Drawing.Size(251, 29)
-        Me.TextBox52.TabIndex = 40
+        Me.mskGVWT.Location = New System.Drawing.Point(951, 128)
+        Me.mskGVWT.Name = "mskGVWT"
+        Me.mskGVWT.Size = New System.Drawing.Size(251, 29)
+        Me.mskGVWT.TabIndex = 40
         '
         'Label41
         '
@@ -324,13 +407,6 @@ Partial Class CLRForm
         Me.Label41.Text = "Net Berth Prod."
         Me.Label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'TextBox49
-        '
-        Me.TextBox49.Location = New System.Drawing.Point(291, 272)
-        Me.TextBox49.Name = "TextBox49"
-        Me.TextBox49.Size = New System.Drawing.Size(134, 29)
-        Me.TextBox49.TabIndex = 38
-        '
         'Label40
         '
         Me.Label40.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -341,20 +417,6 @@ Partial Class CLRForm
         Me.Label40.TabIndex = 37
         Me.Label40.Text = "Gross Berth Prod. Rate"
         Me.Label40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'TextBox48
-        '
-        Me.TextBox48.Location = New System.Drawing.Point(291, 237)
-        Me.TextBox48.Name = "TextBox48"
-        Me.TextBox48.Size = New System.Drawing.Size(134, 29)
-        Me.TextBox48.TabIndex = 36
-        '
-        'TextBox47
-        '
-        Me.TextBox47.Location = New System.Drawing.Point(524, 233)
-        Me.TextBox47.Name = "TextBox47"
-        Me.TextBox47.Size = New System.Drawing.Size(134, 29)
-        Me.TextBox47.TabIndex = 35
         '
         'Label39
         '
@@ -367,13 +429,6 @@ Partial Class CLRForm
         Me.Label39.Text = "Net Berth Hours"
         Me.Label39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'TextBox24
-        '
-        Me.TextBox24.Location = New System.Drawing.Point(664, 329)
-        Me.TextBox24.Name = "TextBox24"
-        Me.TextBox24.Size = New System.Drawing.Size(134, 29)
-        Me.TextBox24.TabIndex = 33
-        '
         'Label26
         '
         Me.Label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -384,13 +439,6 @@ Partial Class CLRForm
         Me.Label26.TabIndex = 32
         Me.Label26.Text = "Net Crane Productivity"
         Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'TextBox23
-        '
-        Me.TextBox23.Location = New System.Drawing.Point(524, 329)
-        Me.TextBox23.Name = "TextBox23"
-        Me.TextBox23.Size = New System.Drawing.Size(134, 29)
-        Me.TextBox23.TabIndex = 31
         '
         'Label25
         '
@@ -403,13 +451,6 @@ Partial Class CLRForm
         Me.Label25.Text = "Gross Crane Productivity"
         Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'TextBox22
-        '
-        Me.TextBox22.Location = New System.Drawing.Point(664, 233)
-        Me.TextBox22.Name = "TextBox22"
-        Me.TextBox22.Size = New System.Drawing.Size(134, 29)
-        Me.TextBox22.TabIndex = 29
-        '
         'Label24
         '
         Me.Label24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -420,13 +461,6 @@ Partial Class CLRForm
         Me.Label24.TabIndex = 28
         Me.Label24.Text = "Total Net Working Hours"
         Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'TextBox21
-        '
-        Me.TextBox21.Location = New System.Drawing.Point(291, 201)
-        Me.TextBox21.Name = "TextBox21"
-        Me.TextBox21.Size = New System.Drawing.Size(134, 29)
-        Me.TextBox21.TabIndex = 27
         '
         'Label23
         '
@@ -439,64 +473,68 @@ Partial Class CLRForm
         Me.Label23.Text = "Total Gross Working Hours"
         Me.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'MaskedTextBox7
+        'mskMoves
         '
-        Me.MaskedTextBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox7.Location = New System.Drawing.Point(610, 138)
-        Me.MaskedTextBox7.Name = "MaskedTextBox7"
-        Me.MaskedTextBox7.Size = New System.Drawing.Size(103, 27)
-        Me.MaskedTextBox7.TabIndex = 25
+        Me.mskMoves.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskMoves.Location = New System.Drawing.Point(555, 134)
+        Me.mskMoves.Name = "mskMoves"
+        Me.mskMoves.Size = New System.Drawing.Size(103, 27)
+        Me.mskMoves.TabIndex = 25
         '
         'Label7
         '
-        Me.Label7.AutoSize = True
         Me.Label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label7.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold)
-        Me.Label7.Location = New System.Drawing.Point(610, 111)
+        Me.Label7.Location = New System.Drawing.Point(555, 77)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(103, 24)
+        Me.Label7.Size = New System.Drawing.Size(103, 54)
         Me.Label7.TabIndex = 24
         Me.Label7.Text = "Total Moves"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'MaskedTextBox1
+        'mskFirstmve
         '
-        Me.MaskedTextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox1.Location = New System.Drawing.Point(951, 26)
-        Me.MaskedTextBox1.Name = "MaskedTextBox1"
-        Me.MaskedTextBox1.Size = New System.Drawing.Size(251, 27)
-        Me.MaskedTextBox1.TabIndex = 23
+        Me.mskFirstmve.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskFirstmve.Location = New System.Drawing.Point(951, 26)
+        Me.mskFirstmve.Mask = "0000H 00/00/0000"
+        Me.mskFirstmve.Name = "mskFirstmve"
+        Me.mskFirstmve.Size = New System.Drawing.Size(251, 27)
+        Me.mskFirstmve.TabIndex = 23
         '
-        'MaskedTextBox2
+        'mskLastmve
         '
-        Me.MaskedTextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox2.Location = New System.Drawing.Point(951, 77)
-        Me.MaskedTextBox2.Name = "MaskedTextBox2"
-        Me.MaskedTextBox2.Size = New System.Drawing.Size(251, 27)
-        Me.MaskedTextBox2.TabIndex = 22
+        Me.mskLastmve.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskLastmve.Location = New System.Drawing.Point(951, 77)
+        Me.mskLastmve.Mask = "0000H 00/00/0000"
+        Me.mskLastmve.Name = "mskLastmve"
+        Me.mskLastmve.Size = New System.Drawing.Size(251, 27)
+        Me.mskLastmve.TabIndex = 22
         '
-        'MaskedTextBox4
+        'mskBerthHours
         '
-        Me.MaskedTextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox4.Location = New System.Drawing.Point(279, 132)
-        Me.MaskedTextBox4.Name = "MaskedTextBox4"
-        Me.MaskedTextBox4.Size = New System.Drawing.Size(251, 27)
-        Me.MaskedTextBox4.TabIndex = 20
+        Me.mskBerthHours.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskBerthHours.Location = New System.Drawing.Point(279, 132)
+        Me.mskBerthHours.Name = "mskBerthHours"
+        Me.mskBerthHours.Size = New System.Drawing.Size(251, 27)
+        Me.mskBerthHours.TabIndex = 20
         '
-        'MaskedTextBox5
+        'mskATD
         '
-        Me.MaskedTextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox5.Location = New System.Drawing.Point(279, 77)
-        Me.MaskedTextBox5.Name = "MaskedTextBox5"
-        Me.MaskedTextBox5.Size = New System.Drawing.Size(251, 27)
-        Me.MaskedTextBox5.TabIndex = 19
+        Me.mskATD.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskATD.Location = New System.Drawing.Point(279, 77)
+        Me.mskATD.Mask = "0000H 00/00/0000"
+        Me.mskATD.Name = "mskATD"
+        Me.mskATD.Size = New System.Drawing.Size(251, 27)
+        Me.mskATD.TabIndex = 19
         '
-        'MaskedTextBox6
+        'mskATA
         '
-        Me.MaskedTextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
-        Me.MaskedTextBox6.Location = New System.Drawing.Point(279, 26)
-        Me.MaskedTextBox6.Name = "MaskedTextBox6"
-        Me.MaskedTextBox6.Size = New System.Drawing.Size(251, 27)
-        Me.MaskedTextBox6.TabIndex = 18
+        Me.mskATA.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskATA.Location = New System.Drawing.Point(279, 26)
+        Me.mskATA.Mask = "0000H 00/00/0000"
+        Me.mskATA.Name = "mskATA"
+        Me.mskATA.Size = New System.Drawing.Size(251, 27)
+        Me.mskATA.TabIndex = 18
         '
         'Label2
         '
@@ -680,6 +718,7 @@ Partial Class CLRForm
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.txtGC)
         Me.TabPage2.Controls.Add(Me.Button5)
         Me.TabPage2.Controls.Add(Me.Button4)
         Me.TabPage2.Controls.Add(Me.GroupBox4)
@@ -694,6 +733,22 @@ Partial Class CLRForm
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "More Information"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'txtGC
+        '
+        Me.txtGC.Location = New System.Drawing.Point(645, 606)
+        Me.txtGC.Name = "txtGC"
+        Me.txtGC.Size = New System.Drawing.Size(100, 32)
+        Me.txtGC.TabIndex = 57
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(45, 594)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(172, 55)
+        Me.Button5.TabIndex = 56
+        Me.Button5.Text = "Exit (F3)"
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'Button4
         '
@@ -733,7 +788,7 @@ Partial Class CLRForm
         Me.GroupBox4.Controls.Add(Me.TextBox27)
         Me.GroupBox4.Controls.Add(Me.TextBox28)
         Me.GroupBox4.Controls.Add(Me.TextBox26)
-        Me.GroupBox4.Controls.Add(Me.TextBox25)
+        Me.GroupBox4.Controls.Add(Me.txtdf20)
         Me.GroupBox4.Controls.Add(Me.Label32)
         Me.GroupBox4.Controls.Add(Me.Label33)
         Me.GroupBox4.Controls.Add(Me.Label31)
@@ -750,7 +805,7 @@ Partial Class CLRForm
         '
         'TextBox46
         '
-        Me.TextBox46.Location = New System.Drawing.Point(936, 193)
+        Me.TextBox46.Location = New System.Drawing.Point(936, 195)
         Me.TextBox46.Name = "TextBox46"
         Me.TextBox46.Size = New System.Drawing.Size(100, 29)
         Me.TextBox46.TabIndex = 102
@@ -830,143 +885,143 @@ Partial Class CLRForm
         '
         'TextBox41
         '
-        Me.TextBox41.Location = New System.Drawing.Point(936, 164)
+        Me.TextBox41.Location = New System.Drawing.Point(936, 167)
         Me.TextBox41.Name = "TextBox41"
         Me.TextBox41.Size = New System.Drawing.Size(100, 29)
         Me.TextBox41.TabIndex = 94
         '
         'TextBox42
         '
-        Me.TextBox42.Location = New System.Drawing.Point(936, 135)
+        Me.TextBox42.Location = New System.Drawing.Point(936, 138)
         Me.TextBox42.Name = "TextBox42"
         Me.TextBox42.Size = New System.Drawing.Size(100, 29)
         Me.TextBox42.TabIndex = 93
         '
         'TextBox43
         '
-        Me.TextBox43.Location = New System.Drawing.Point(936, 106)
+        Me.TextBox43.Location = New System.Drawing.Point(936, 109)
         Me.TextBox43.Name = "TextBox43"
         Me.TextBox43.Size = New System.Drawing.Size(100, 29)
         Me.TextBox43.TabIndex = 92
         '
         'TextBox44
         '
-        Me.TextBox44.Location = New System.Drawing.Point(936, 77)
+        Me.TextBox44.Location = New System.Drawing.Point(936, 80)
         Me.TextBox44.Name = "TextBox44"
         Me.TextBox44.Size = New System.Drawing.Size(100, 29)
         Me.TextBox44.TabIndex = 91
         '
         'TextBox37
         '
-        Me.TextBox37.Location = New System.Drawing.Point(830, 164)
+        Me.TextBox37.Location = New System.Drawing.Point(830, 166)
         Me.TextBox37.Name = "TextBox37"
         Me.TextBox37.Size = New System.Drawing.Size(100, 29)
         Me.TextBox37.TabIndex = 90
         '
         'TextBox38
         '
-        Me.TextBox38.Location = New System.Drawing.Point(830, 135)
+        Me.TextBox38.Location = New System.Drawing.Point(830, 137)
         Me.TextBox38.Name = "TextBox38"
         Me.TextBox38.Size = New System.Drawing.Size(100, 29)
         Me.TextBox38.TabIndex = 89
         '
         'TextBox39
         '
-        Me.TextBox39.Location = New System.Drawing.Point(830, 106)
+        Me.TextBox39.Location = New System.Drawing.Point(830, 108)
         Me.TextBox39.Name = "TextBox39"
         Me.TextBox39.Size = New System.Drawing.Size(100, 29)
         Me.TextBox39.TabIndex = 88
         '
         'TextBox40
         '
-        Me.TextBox40.Location = New System.Drawing.Point(830, 77)
+        Me.TextBox40.Location = New System.Drawing.Point(830, 79)
         Me.TextBox40.Name = "TextBox40"
         Me.TextBox40.Size = New System.Drawing.Size(100, 29)
         Me.TextBox40.TabIndex = 87
         '
         'TextBox33
         '
-        Me.TextBox33.Location = New System.Drawing.Point(724, 164)
+        Me.TextBox33.Location = New System.Drawing.Point(724, 166)
         Me.TextBox33.Name = "TextBox33"
         Me.TextBox33.Size = New System.Drawing.Size(100, 29)
         Me.TextBox33.TabIndex = 86
         '
         'TextBox34
         '
-        Me.TextBox34.Location = New System.Drawing.Point(724, 135)
+        Me.TextBox34.Location = New System.Drawing.Point(724, 137)
         Me.TextBox34.Name = "TextBox34"
         Me.TextBox34.Size = New System.Drawing.Size(100, 29)
         Me.TextBox34.TabIndex = 85
         '
         'TextBox35
         '
-        Me.TextBox35.Location = New System.Drawing.Point(724, 106)
+        Me.TextBox35.Location = New System.Drawing.Point(724, 108)
         Me.TextBox35.Name = "TextBox35"
         Me.TextBox35.Size = New System.Drawing.Size(100, 29)
         Me.TextBox35.TabIndex = 84
         '
         'TextBox36
         '
-        Me.TextBox36.Location = New System.Drawing.Point(724, 77)
+        Me.TextBox36.Location = New System.Drawing.Point(724, 79)
         Me.TextBox36.Name = "TextBox36"
         Me.TextBox36.Size = New System.Drawing.Size(100, 29)
         Me.TextBox36.TabIndex = 83
         '
         'TextBox29
         '
-        Me.TextBox29.Location = New System.Drawing.Point(618, 164)
+        Me.TextBox29.Location = New System.Drawing.Point(618, 166)
         Me.TextBox29.Name = "TextBox29"
         Me.TextBox29.Size = New System.Drawing.Size(100, 29)
         Me.TextBox29.TabIndex = 82
         '
         'TextBox30
         '
-        Me.TextBox30.Location = New System.Drawing.Point(618, 135)
+        Me.TextBox30.Location = New System.Drawing.Point(618, 137)
         Me.TextBox30.Name = "TextBox30"
         Me.TextBox30.Size = New System.Drawing.Size(100, 29)
         Me.TextBox30.TabIndex = 81
         '
         'TextBox31
         '
-        Me.TextBox31.Location = New System.Drawing.Point(618, 106)
+        Me.TextBox31.Location = New System.Drawing.Point(618, 108)
         Me.TextBox31.Name = "TextBox31"
         Me.TextBox31.Size = New System.Drawing.Size(100, 29)
         Me.TextBox31.TabIndex = 80
         '
         'TextBox32
         '
-        Me.TextBox32.Location = New System.Drawing.Point(618, 77)
+        Me.TextBox32.Location = New System.Drawing.Point(618, 79)
         Me.TextBox32.Name = "TextBox32"
         Me.TextBox32.Size = New System.Drawing.Size(100, 29)
         Me.TextBox32.TabIndex = 79
         '
         'TextBox27
         '
-        Me.TextBox27.Location = New System.Drawing.Point(512, 164)
+        Me.TextBox27.Location = New System.Drawing.Point(512, 166)
         Me.TextBox27.Name = "TextBox27"
         Me.TextBox27.Size = New System.Drawing.Size(100, 29)
         Me.TextBox27.TabIndex = 78
         '
         'TextBox28
         '
-        Me.TextBox28.Location = New System.Drawing.Point(512, 135)
+        Me.TextBox28.Location = New System.Drawing.Point(512, 137)
         Me.TextBox28.Name = "TextBox28"
         Me.TextBox28.Size = New System.Drawing.Size(100, 29)
         Me.TextBox28.TabIndex = 77
         '
         'TextBox26
         '
-        Me.TextBox26.Location = New System.Drawing.Point(512, 106)
+        Me.TextBox26.Location = New System.Drawing.Point(512, 108)
         Me.TextBox26.Name = "TextBox26"
         Me.TextBox26.Size = New System.Drawing.Size(100, 29)
         Me.TextBox26.TabIndex = 76
         '
-        'TextBox25
+        'txtdf20
         '
-        Me.TextBox25.Location = New System.Drawing.Point(512, 80)
-        Me.TextBox25.Name = "TextBox25"
-        Me.TextBox25.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox25.TabIndex = 75
+        Me.txtdf20.Location = New System.Drawing.Point(512, 80)
+        Me.txtdf20.Name = "txtdf20"
+        Me.txtdf20.Size = New System.Drawing.Size(100, 29)
+        Me.txtdf20.TabIndex = 75
         '
         'Label32
         '
@@ -1440,25 +1495,6 @@ Partial Class CLRForm
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(45, 594)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(172, 55)
-        Me.Button5.TabIndex = 56
-        Me.Button5.Text = "Exit (F3)"
-        Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.Location = New System.Drawing.Point(45, 594)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(172, 55)
-        Me.Button6.TabIndex = 57
-        Me.Button6.Text = "Exit (F3)"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
         'CLRForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1477,6 +1513,7 @@ Partial Class CLRForm
         Me.gbxVessel.ResumeLayout(False)
         Me.gbxVessel.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
+        Me.TabPage2.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
@@ -1490,13 +1527,13 @@ Partial Class CLRForm
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents MaskedTextBox7 As MaskedTextBox
+    Friend WithEvents mskMoves As MaskedTextBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents MaskedTextBox1 As MaskedTextBox
-    Friend WithEvents MaskedTextBox2 As MaskedTextBox
-    Friend WithEvents MaskedTextBox4 As MaskedTextBox
-    Friend WithEvents MaskedTextBox5 As MaskedTextBox
-    Friend WithEvents MaskedTextBox6 As MaskedTextBox
+    Friend WithEvents mskFirstmve As MaskedTextBox
+    Friend WithEvents mskLastmve As MaskedTextBox
+    Friend WithEvents mskBerthHours As MaskedTextBox
+    Friend WithEvents mskATD As MaskedTextBox
+    Friend WithEvents mskATA As MaskedTextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
@@ -1515,13 +1552,9 @@ Partial Class CLRForm
     Friend WithEvents lblRegistry As Label
     Friend WithEvents lblVessel As Label
     Friend WithEvents lblShippingLine As Label
-    Friend WithEvents TextBox24 As TextBox
     Friend WithEvents Label26 As Label
-    Friend WithEvents TextBox23 As TextBox
     Friend WithEvents Label25 As Label
-    Friend WithEvents TextBox22 As TextBox
     Friend WithEvents Label24 As Label
-    Friend WithEvents TextBox21 As TextBox
     Friend WithEvents Label23 As Label
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents GroupBox3 As GroupBox
@@ -1593,7 +1626,7 @@ Partial Class CLRForm
     Friend WithEvents TextBox27 As TextBox
     Friend WithEvents TextBox28 As TextBox
     Friend WithEvents TextBox26 As TextBox
-    Friend WithEvents TextBox25 As TextBox
+    Friend WithEvents txtdf20 As TextBox
     Friend WithEvents Label32 As Label
     Friend WithEvents Label33 As Label
     Friend WithEvents Label31 As Label
@@ -1602,19 +1635,26 @@ Partial Class CLRForm
     Friend WithEvents Label27 As Label
     Friend WithEvents Button4 As Button
     Friend WithEvents Label45 As Label
-    Friend WithEvents TextBox53 As TextBox
     Friend WithEvents Label42 As Label
-    Friend WithEvents TextBox50 As TextBox
     Friend WithEvents Label43 As Label
-    Friend WithEvents TextBox51 As TextBox
     Friend WithEvents Label44 As Label
-    Friend WithEvents TextBox52 As TextBox
+    Friend WithEvents mskGVWT As TextBox
     Friend WithEvents Label41 As Label
-    Friend WithEvents TextBox49 As TextBox
     Friend WithEvents Label40 As Label
-    Friend WithEvents TextBox48 As TextBox
-    Friend WithEvents TextBox47 As TextBox
     Friend WithEvents Label39 As Label
     Friend WithEvents Button6 As Button
     Friend WithEvents Button5 As Button
+    Friend WithEvents MaskedTextBox10 As MaskedTextBox
+    Friend WithEvents MaskedTextBox9 As MaskedTextBox
+    Friend WithEvents MaskedTextBox8 As MaskedTextBox
+    Friend WithEvents MaskedTextBox7 As MaskedTextBox
+    Friend WithEvents MaskedTextBox4 As MaskedTextBox
+    Friend WithEvents MaskedTextBox5 As MaskedTextBox
+    Friend WithEvents MaskedTextBox6 As MaskedTextBox
+    Friend WithEvents MaskedTextBox3 As MaskedTextBox
+    Friend WithEvents MaskedTextBox2 As MaskedTextBox
+    Friend WithEvents MaskedTextBox1 As MaskedTextBox
+    Friend WithEvents MaskedTextBox11 As MaskedTextBox
+    Friend WithEvents Label46 As Label
+    Friend WithEvents txtGC As TextBox
 End Class
