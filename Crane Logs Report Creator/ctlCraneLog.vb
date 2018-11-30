@@ -27,7 +27,6 @@ Public Class CraneCtl
         Dim cntSizes() As Short = {20, 40, 45}
 
         For Each freight In strFreight
-            Dim rowMoves As DataRow
             Dim category As String
             Dim boxes(3) As String
 
@@ -97,5 +96,13 @@ Public Class CraneCtl
         txtD20.Text = Total(1)
         txtD40.Text = Total(2)
         txtD45.Text = Total(3)
+    End Sub
+
+    Private Sub mskFirst_LostFocus(sender As Object, e As EventArgs) Handles mskFirst.LostFocus
+        crnCrane.FirstMove = ReportFunctions.getDateTime(mskFirst.Text)
+    End Sub
+
+    Private Sub mskLast_LostFocus(sender As Object, e As EventArgs) Handles mskLast.LostFocus
+        crnCrane.FirstMove = ReportFunctions.getDateTime(mskLast.Text)
     End Sub
 End Class

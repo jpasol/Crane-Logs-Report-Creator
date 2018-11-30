@@ -83,58 +83,11 @@ Partial Class CLRForm
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.TextBox46 = New System.Windows.Forms.TextBox()
         Me.TextBox45 = New System.Windows.Forms.TextBox()
-        Me.Label38 = New System.Windows.Forms.Label()
-        Me.Label37 = New System.Windows.Forms.Label()
-        Me.Label36 = New System.Windows.Forms.Label()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.Label34 = New System.Windows.Forms.Label()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.TextBox41 = New System.Windows.Forms.TextBox()
-        Me.TextBox42 = New System.Windows.Forms.TextBox()
-        Me.TextBox43 = New System.Windows.Forms.TextBox()
-        Me.TextBox44 = New System.Windows.Forms.TextBox()
-        Me.TextBox37 = New System.Windows.Forms.TextBox()
-        Me.TextBox38 = New System.Windows.Forms.TextBox()
-        Me.TextBox39 = New System.Windows.Forms.TextBox()
-        Me.TextBox40 = New System.Windows.Forms.TextBox()
-        Me.TextBox33 = New System.Windows.Forms.TextBox()
-        Me.TextBox34 = New System.Windows.Forms.TextBox()
-        Me.TextBox35 = New System.Windows.Forms.TextBox()
-        Me.TextBox36 = New System.Windows.Forms.TextBox()
-        Me.TextBox29 = New System.Windows.Forms.TextBox()
-        Me.TextBox30 = New System.Windows.Forms.TextBox()
-        Me.TextBox31 = New System.Windows.Forms.TextBox()
-        Me.TextBox32 = New System.Windows.Forms.TextBox()
-        Me.TextBox27 = New System.Windows.Forms.TextBox()
-        Me.TextBox28 = New System.Windows.Forms.TextBox()
-        Me.TextBox26 = New System.Windows.Forms.TextBox()
-        Me.txtdf20 = New System.Windows.Forms.TextBox()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.Label33 = New System.Windows.Forms.Label()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.TextBox19 = New System.Windows.Forms.TextBox()
-        Me.TextBox20 = New System.Windows.Forms.TextBox()
         Me.TextBox18 = New System.Windows.Forms.TextBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.Label18 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.TextBox11 = New System.Windows.Forms.TextBox()
-        Me.TextBox12 = New System.Windows.Forms.TextBox()
-        Me.TextBox13 = New System.Windows.Forms.TextBox()
-        Me.TextBox14 = New System.Windows.Forms.TextBox()
-        Me.TextBox15 = New System.Windows.Forms.TextBox()
-        Me.TextBox16 = New System.Windows.Forms.TextBox()
         Me.TextBox17 = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -155,6 +108,28 @@ Partial Class CLRForm
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.ProdDsc = New System.Windows.Forms.DataGridView()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.freight = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnt20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnt40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnt45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cntUnits = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cntTEU = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdLoad = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VolumeTEU = New System.Windows.Forms.DataGridView()
+        Me.teuType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.moTeu = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.yearTEU = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -163,6 +138,9 @@ Partial Class CLRForm
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.ProdDsc, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProdLoad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VolumeTEU, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -761,40 +739,14 @@ Partial Class CLRForm
         '
         'GroupBox4
         '
-        Me.GroupBox4.Controls.Add(Me.TextBox46)
-        Me.GroupBox4.Controls.Add(Me.TextBox45)
-        Me.GroupBox4.Controls.Add(Me.Label38)
-        Me.GroupBox4.Controls.Add(Me.Label37)
-        Me.GroupBox4.Controls.Add(Me.Label36)
-        Me.GroupBox4.Controls.Add(Me.Label35)
-        Me.GroupBox4.Controls.Add(Me.Label34)
+        Me.GroupBox4.Controls.Add(Me.ProdLoad)
         Me.GroupBox4.Controls.Add(Me.Label30)
-        Me.GroupBox4.Controls.Add(Me.TextBox41)
-        Me.GroupBox4.Controls.Add(Me.TextBox42)
-        Me.GroupBox4.Controls.Add(Me.TextBox43)
-        Me.GroupBox4.Controls.Add(Me.TextBox44)
-        Me.GroupBox4.Controls.Add(Me.TextBox37)
-        Me.GroupBox4.Controls.Add(Me.TextBox38)
-        Me.GroupBox4.Controls.Add(Me.TextBox39)
-        Me.GroupBox4.Controls.Add(Me.TextBox40)
-        Me.GroupBox4.Controls.Add(Me.TextBox33)
-        Me.GroupBox4.Controls.Add(Me.TextBox34)
-        Me.GroupBox4.Controls.Add(Me.TextBox35)
-        Me.GroupBox4.Controls.Add(Me.TextBox36)
-        Me.GroupBox4.Controls.Add(Me.TextBox29)
-        Me.GroupBox4.Controls.Add(Me.TextBox30)
-        Me.GroupBox4.Controls.Add(Me.TextBox31)
-        Me.GroupBox4.Controls.Add(Me.TextBox32)
-        Me.GroupBox4.Controls.Add(Me.TextBox27)
-        Me.GroupBox4.Controls.Add(Me.TextBox28)
-        Me.GroupBox4.Controls.Add(Me.TextBox26)
-        Me.GroupBox4.Controls.Add(Me.txtdf20)
-        Me.GroupBox4.Controls.Add(Me.Label32)
-        Me.GroupBox4.Controls.Add(Me.Label33)
-        Me.GroupBox4.Controls.Add(Me.Label31)
         Me.GroupBox4.Controls.Add(Me.Label29)
         Me.GroupBox4.Controls.Add(Me.Label28)
         Me.GroupBox4.Controls.Add(Me.Label27)
+        Me.GroupBox4.Controls.Add(Me.ProdDsc)
+        Me.GroupBox4.Controls.Add(Me.TextBox46)
+        Me.GroupBox4.Controls.Add(Me.TextBox45)
         Me.GroupBox4.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox4.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox4.Name = "GroupBox4"
@@ -805,289 +757,17 @@ Partial Class CLRForm
         '
         'TextBox46
         '
-        Me.TextBox46.Location = New System.Drawing.Point(936, 195)
+        Me.TextBox46.Location = New System.Drawing.Point(717, 237)
         Me.TextBox46.Name = "TextBox46"
         Me.TextBox46.Size = New System.Drawing.Size(100, 29)
         Me.TextBox46.TabIndex = 102
         '
         'TextBox45
         '
-        Me.TextBox45.Location = New System.Drawing.Point(830, 195)
+        Me.TextBox45.Location = New System.Drawing.Point(505, 237)
         Me.TextBox45.Name = "TextBox45"
         Me.TextBox45.Size = New System.Drawing.Size(100, 29)
         Me.TextBox45.TabIndex = 101
-        '
-        'Label38
-        '
-        Me.Label38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label38.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label38.Location = New System.Drawing.Point(286, 195)
-        Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(538, 29)
-        Me.Label38.TabIndex = 100
-        Me.Label38.Text = "TOTAL"
-        Me.Label38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label37
-        '
-        Me.Label37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label37.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label37.Location = New System.Drawing.Point(936, 45)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(100, 29)
-        Me.Label37.TabIndex = 99
-        Me.Label37.Text = "TEUs"
-        Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label36
-        '
-        Me.Label36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label36.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label36.Location = New System.Drawing.Point(830, 45)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(100, 29)
-        Me.Label36.TabIndex = 98
-        Me.Label36.Text = "Units"
-        Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label35
-        '
-        Me.Label35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label35.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label35.Location = New System.Drawing.Point(724, 45)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(100, 29)
-        Me.Label35.TabIndex = 97
-        Me.Label35.Text = "45'"
-        Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label34
-        '
-        Me.Label34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label34.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label34.Location = New System.Drawing.Point(618, 45)
-        Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(100, 29)
-        Me.Label34.TabIndex = 96
-        Me.Label34.Text = "40'"
-        Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label30
-        '
-        Me.Label30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label30.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.Location = New System.Drawing.Point(512, 45)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(100, 29)
-        Me.Label30.TabIndex = 95
-        Me.Label30.Text = "20'"
-        Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'TextBox41
-        '
-        Me.TextBox41.Location = New System.Drawing.Point(936, 167)
-        Me.TextBox41.Name = "TextBox41"
-        Me.TextBox41.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox41.TabIndex = 94
-        '
-        'TextBox42
-        '
-        Me.TextBox42.Location = New System.Drawing.Point(936, 138)
-        Me.TextBox42.Name = "TextBox42"
-        Me.TextBox42.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox42.TabIndex = 93
-        '
-        'TextBox43
-        '
-        Me.TextBox43.Location = New System.Drawing.Point(936, 109)
-        Me.TextBox43.Name = "TextBox43"
-        Me.TextBox43.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox43.TabIndex = 92
-        '
-        'TextBox44
-        '
-        Me.TextBox44.Location = New System.Drawing.Point(936, 80)
-        Me.TextBox44.Name = "TextBox44"
-        Me.TextBox44.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox44.TabIndex = 91
-        '
-        'TextBox37
-        '
-        Me.TextBox37.Location = New System.Drawing.Point(830, 166)
-        Me.TextBox37.Name = "TextBox37"
-        Me.TextBox37.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox37.TabIndex = 90
-        '
-        'TextBox38
-        '
-        Me.TextBox38.Location = New System.Drawing.Point(830, 137)
-        Me.TextBox38.Name = "TextBox38"
-        Me.TextBox38.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox38.TabIndex = 89
-        '
-        'TextBox39
-        '
-        Me.TextBox39.Location = New System.Drawing.Point(830, 108)
-        Me.TextBox39.Name = "TextBox39"
-        Me.TextBox39.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox39.TabIndex = 88
-        '
-        'TextBox40
-        '
-        Me.TextBox40.Location = New System.Drawing.Point(830, 79)
-        Me.TextBox40.Name = "TextBox40"
-        Me.TextBox40.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox40.TabIndex = 87
-        '
-        'TextBox33
-        '
-        Me.TextBox33.Location = New System.Drawing.Point(724, 166)
-        Me.TextBox33.Name = "TextBox33"
-        Me.TextBox33.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox33.TabIndex = 86
-        '
-        'TextBox34
-        '
-        Me.TextBox34.Location = New System.Drawing.Point(724, 137)
-        Me.TextBox34.Name = "TextBox34"
-        Me.TextBox34.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox34.TabIndex = 85
-        '
-        'TextBox35
-        '
-        Me.TextBox35.Location = New System.Drawing.Point(724, 108)
-        Me.TextBox35.Name = "TextBox35"
-        Me.TextBox35.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox35.TabIndex = 84
-        '
-        'TextBox36
-        '
-        Me.TextBox36.Location = New System.Drawing.Point(724, 79)
-        Me.TextBox36.Name = "TextBox36"
-        Me.TextBox36.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox36.TabIndex = 83
-        '
-        'TextBox29
-        '
-        Me.TextBox29.Location = New System.Drawing.Point(618, 166)
-        Me.TextBox29.Name = "TextBox29"
-        Me.TextBox29.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox29.TabIndex = 82
-        '
-        'TextBox30
-        '
-        Me.TextBox30.Location = New System.Drawing.Point(618, 137)
-        Me.TextBox30.Name = "TextBox30"
-        Me.TextBox30.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox30.TabIndex = 81
-        '
-        'TextBox31
-        '
-        Me.TextBox31.Location = New System.Drawing.Point(618, 108)
-        Me.TextBox31.Name = "TextBox31"
-        Me.TextBox31.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox31.TabIndex = 80
-        '
-        'TextBox32
-        '
-        Me.TextBox32.Location = New System.Drawing.Point(618, 79)
-        Me.TextBox32.Name = "TextBox32"
-        Me.TextBox32.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox32.TabIndex = 79
-        '
-        'TextBox27
-        '
-        Me.TextBox27.Location = New System.Drawing.Point(512, 166)
-        Me.TextBox27.Name = "TextBox27"
-        Me.TextBox27.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox27.TabIndex = 78
-        '
-        'TextBox28
-        '
-        Me.TextBox28.Location = New System.Drawing.Point(512, 137)
-        Me.TextBox28.Name = "TextBox28"
-        Me.TextBox28.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox28.TabIndex = 77
-        '
-        'TextBox26
-        '
-        Me.TextBox26.Location = New System.Drawing.Point(512, 108)
-        Me.TextBox26.Name = "TextBox26"
-        Me.TextBox26.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox26.TabIndex = 76
-        '
-        'txtdf20
-        '
-        Me.txtdf20.Location = New System.Drawing.Point(512, 80)
-        Me.txtdf20.Name = "txtdf20"
-        Me.txtdf20.Size = New System.Drawing.Size(100, 29)
-        Me.txtdf20.TabIndex = 75
-        '
-        'Label32
-        '
-        Me.Label32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label32.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label32.Location = New System.Drawing.Point(421, 166)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(85, 29)
-        Me.Label32.TabIndex = 74
-        Me.Label32.Text = "EMPTY"
-        Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label33
-        '
-        Me.Label33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label33.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.Location = New System.Drawing.Point(421, 137)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(85, 29)
-        Me.Label33.TabIndex = 73
-        Me.Label33.Text = "FULL"
-        Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label31
-        '
-        Me.Label31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label31.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.Location = New System.Drawing.Point(421, 108)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(85, 29)
-        Me.Label31.TabIndex = 72
-        Me.Label31.Text = "EMPTY"
-        Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label29
-        '
-        Me.Label29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label29.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(421, 79)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(85, 29)
-        Me.Label29.TabIndex = 71
-        Me.Label29.Text = "FULL"
-        Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label28
-        '
-        Me.Label28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label28.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.Location = New System.Drawing.Point(286, 137)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(136, 58)
-        Me.Label28.TabIndex = 70
-        Me.Label28.Text = "LOAD"
-        Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label27
-        '
-        Me.Label27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label27.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.Location = New System.Drawing.Point(286, 79)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(136, 58)
-        Me.Label27.TabIndex = 69
-        Me.Label27.Text = "DISCHARGE"
-        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Button2
         '
@@ -1109,23 +789,9 @@ Partial Class CLRForm
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.Label15)
-        Me.GroupBox3.Controls.Add(Me.TextBox19)
-        Me.GroupBox3.Controls.Add(Me.TextBox20)
+        Me.GroupBox3.Controls.Add(Me.VolumeTEU)
         Me.GroupBox3.Controls.Add(Me.TextBox18)
-        Me.GroupBox3.Controls.Add(Me.Label16)
-        Me.GroupBox3.Controls.Add(Me.Label17)
-        Me.GroupBox3.Controls.Add(Me.Label18)
         Me.GroupBox3.Controls.Add(Me.Label19)
-        Me.GroupBox3.Controls.Add(Me.Label20)
-        Me.GroupBox3.Controls.Add(Me.Label21)
-        Me.GroupBox3.Controls.Add(Me.Label22)
-        Me.GroupBox3.Controls.Add(Me.TextBox11)
-        Me.GroupBox3.Controls.Add(Me.TextBox12)
-        Me.GroupBox3.Controls.Add(Me.TextBox13)
-        Me.GroupBox3.Controls.Add(Me.TextBox14)
-        Me.GroupBox3.Controls.Add(Me.TextBox15)
-        Me.GroupBox3.Controls.Add(Me.TextBox16)
         Me.GroupBox3.Controls.Add(Me.TextBox17)
         Me.GroupBox3.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(669, 284)
@@ -1135,32 +801,6 @@ Partial Class CLRForm
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Cummulative Volume"
         '
-        'Label15
-        '
-        Me.Label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label15.Location = New System.Drawing.Point(48, 178)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(350, 29)
-        Me.Label15.TabIndex = 38
-        Me.Label15.Text = "EXPORT EMPTY"
-        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'TextBox19
-        '
-        Me.TextBox19.Location = New System.Drawing.Point(404, 178)
-        Me.TextBox19.Name = "TextBox19"
-        Me.TextBox19.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox19.TabIndex = 37
-        Me.TextBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox20
-        '
-        Me.TextBox20.Location = New System.Drawing.Point(510, 178)
-        Me.TextBox20.Name = "TextBox20"
-        Me.TextBox20.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox20.TabIndex = 36
-        Me.TextBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'TextBox18
         '
         Me.TextBox18.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1169,39 +809,6 @@ Partial Class CLRForm
         Me.TextBox18.Size = New System.Drawing.Size(100, 29)
         Me.TextBox18.TabIndex = 35
         Me.TextBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label16
-        '
-        Me.Label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label16.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(510, 38)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(100, 29)
-        Me.Label16.TabIndex = 34
-        Me.Label16.Text = "YEAR"
-        Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label17
-        '
-        Me.Label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label17.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(404, 38)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(100, 29)
-        Me.Label17.TabIndex = 33
-        Me.Label17.Text = "MONTHLY"
-        Me.Label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label18
-        '
-        Me.Label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label18.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(48, 38)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(350, 29)
-        Me.Label18.TabIndex = 32
-        Me.Label18.Text = "TWENTY-FOOT EQUIVALENT UNITS"
-        Me.Label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label19
         '
@@ -1213,84 +820,6 @@ Partial Class CLRForm
         Me.Label19.TabIndex = 31
         Me.Label19.Text = "TOTAL"
         Me.Label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label20
-        '
-        Me.Label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label20.Location = New System.Drawing.Point(48, 143)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(350, 29)
-        Me.Label20.TabIndex = 30
-        Me.Label20.Text = "IMPORT EMPTY"
-        Me.Label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label21
-        '
-        Me.Label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label21.Location = New System.Drawing.Point(48, 108)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(350, 29)
-        Me.Label21.TabIndex = 29
-        Me.Label21.Text = "EXPORT FULL"
-        Me.Label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label22
-        '
-        Me.Label22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label22.Location = New System.Drawing.Point(48, 73)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(350, 29)
-        Me.Label22.TabIndex = 28
-        Me.Label22.Text = "IMPORT FULL"
-        Me.Label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'TextBox11
-        '
-        Me.TextBox11.Location = New System.Drawing.Point(404, 143)
-        Me.TextBox11.Name = "TextBox11"
-        Me.TextBox11.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox11.TabIndex = 27
-        Me.TextBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox12
-        '
-        Me.TextBox12.Location = New System.Drawing.Point(404, 108)
-        Me.TextBox12.Name = "TextBox12"
-        Me.TextBox12.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox12.TabIndex = 26
-        Me.TextBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox13
-        '
-        Me.TextBox13.Location = New System.Drawing.Point(404, 73)
-        Me.TextBox13.Name = "TextBox13"
-        Me.TextBox13.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox13.TabIndex = 25
-        Me.TextBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox14
-        '
-        Me.TextBox14.Location = New System.Drawing.Point(510, 143)
-        Me.TextBox14.Name = "TextBox14"
-        Me.TextBox14.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox14.TabIndex = 24
-        Me.TextBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox15
-        '
-        Me.TextBox15.Location = New System.Drawing.Point(510, 108)
-        Me.TextBox15.Name = "TextBox15"
-        Me.TextBox15.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox15.TabIndex = 23
-        Me.TextBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox16
-        '
-        Me.TextBox16.Location = New System.Drawing.Point(510, 73)
-        Me.TextBox16.Name = "TextBox16"
-        Me.TextBox16.Size = New System.Drawing.Size(100, 29)
-        Me.TextBox16.TabIndex = 22
-        Me.TextBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TextBox17
         '
@@ -1495,6 +1024,180 @@ Partial Class CLRForm
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'ProdDsc
+        '
+        Me.ProdDsc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ProdDsc.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.freight, Me.cnt20, Me.cnt40, Me.cnt45, Me.cntUnits, Me.cntTEU})
+        Me.ProdDsc.Location = New System.Drawing.Point(6, 57)
+        Me.ProdDsc.Name = "ProdDsc"
+        Me.ProdDsc.Size = New System.Drawing.Size(652, 174)
+        Me.ProdDsc.TabIndex = 103
+        '
+        'Label27
+        '
+        Me.Label27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label27.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.Location = New System.Drawing.Point(6, 25)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(652, 29)
+        Me.Label27.TabIndex = 104
+        Me.Label27.Text = "DISCHARGE"
+        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label28
+        '
+        Me.Label28.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label28.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.Location = New System.Drawing.Point(664, 25)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(652, 29)
+        Me.Label28.TabIndex = 105
+        Me.Label28.Text = "LOADING"
+        Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label29
+        '
+        Me.Label29.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label29.Location = New System.Drawing.Point(399, 237)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(100, 29)
+        Me.Label29.TabIndex = 107
+        Me.Label29.Text = "UNITS"
+        Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label30
+        '
+        Me.Label30.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.Location = New System.Drawing.Point(611, 237)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(100, 29)
+        Me.Label30.TabIndex = 108
+        Me.Label30.Text = "TEUs"
+        Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'freight
+        '
+        Me.freight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.freight.FillWeight = 182.7411!
+        Me.freight.HeaderText = "Freight"
+        Me.freight.Name = "freight"
+        '
+        'cnt20
+        '
+        Me.cnt20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cnt20.FillWeight = 83.45177!
+        Me.cnt20.HeaderText = "20"
+        Me.cnt20.Name = "cnt20"
+        '
+        'cnt40
+        '
+        Me.cnt40.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cnt40.FillWeight = 83.45177!
+        Me.cnt40.HeaderText = "40"
+        Me.cnt40.Name = "cnt40"
+        '
+        'cnt45
+        '
+        Me.cnt45.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cnt45.FillWeight = 83.45177!
+        Me.cnt45.HeaderText = "45"
+        Me.cnt45.Name = "cnt45"
+        '
+        'cntUnits
+        '
+        Me.cntUnits.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cntUnits.FillWeight = 83.45177!
+        Me.cntUnits.HeaderText = "Units"
+        Me.cntUnits.Name = "cntUnits"
+        '
+        'cntTEU
+        '
+        Me.cntTEU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cntTEU.FillWeight = 83.45177!
+        Me.cntTEU.HeaderText = "TEUs"
+        Me.cntTEU.Name = "cntTEU"
+        '
+        'ProdLoad
+        '
+        Me.ProdLoad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ProdLoad.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
+        Me.ProdLoad.Location = New System.Drawing.Point(664, 57)
+        Me.ProdLoad.Name = "ProdLoad"
+        Me.ProdLoad.Size = New System.Drawing.Size(652, 174)
+        Me.ProdLoad.TabIndex = 109
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn1.FillWeight = 182.7411!
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Freight"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn2.FillWeight = 83.45177!
+        Me.DataGridViewTextBoxColumn2.HeaderText = "20"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn3.FillWeight = 83.45177!
+        Me.DataGridViewTextBoxColumn3.HeaderText = "40"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn4.FillWeight = 83.45177!
+        Me.DataGridViewTextBoxColumn4.HeaderText = "45"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn5.FillWeight = 83.45177!
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Units"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn6.FillWeight = 83.45177!
+        Me.DataGridViewTextBoxColumn6.HeaderText = "TEUs"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        '
+        'VolumeTEU
+        '
+        Me.VolumeTEU.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.VolumeTEU.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.teuType, Me.moTeu, Me.yearTEU})
+        Me.VolumeTEU.Location = New System.Drawing.Point(48, 28)
+        Me.VolumeTEU.Name = "VolumeTEU"
+        Me.VolumeTEU.Size = New System.Drawing.Size(562, 182)
+        Me.VolumeTEU.TabIndex = 36
+        '
+        'teuType
+        '
+        Me.teuType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.teuType.FillWeight = 152.2843!
+        Me.teuType.HeaderText = "Twenty Foot Equivalent"
+        Me.teuType.Name = "teuType"
+        '
+        'moTeu
+        '
+        Me.moTeu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.moTeu.FillWeight = 73.85786!
+        Me.moTeu.HeaderText = "Monthly"
+        Me.moTeu.Name = "moTeu"
+        '
+        'yearTEU
+        '
+        Me.yearTEU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.yearTEU.FillWeight = 73.85786!
+        Me.yearTEU.HeaderText = "Year"
+        Me.yearTEU.Name = "yearTEU"
+        '
         'CLRForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1520,6 +1223,9 @@ Partial Class CLRForm
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.ProdDsc, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProdLoad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VolumeTEU, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1577,23 +1283,8 @@ Partial Class CLRForm
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Label15 As Label
-    Friend WithEvents TextBox19 As TextBox
-    Friend WithEvents TextBox20 As TextBox
     Friend WithEvents TextBox18 As TextBox
-    Friend WithEvents Label16 As Label
-    Friend WithEvents Label17 As Label
-    Friend WithEvents Label18 As Label
     Friend WithEvents Label19 As Label
-    Friend WithEvents Label20 As Label
-    Friend WithEvents Label21 As Label
-    Friend WithEvents Label22 As Label
-    Friend WithEvents TextBox11 As TextBox
-    Friend WithEvents TextBox12 As TextBox
-    Friend WithEvents TextBox13 As TextBox
-    Friend WithEvents TextBox14 As TextBox
-    Friend WithEvents TextBox15 As TextBox
-    Friend WithEvents TextBox16 As TextBox
     Friend WithEvents TextBox17 As TextBox
     Friend WithEvents Button2 As Button
     Friend WithEvents Button1 As Button
@@ -1601,38 +1292,6 @@ Partial Class CLRForm
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents TextBox46 As TextBox
     Friend WithEvents TextBox45 As TextBox
-    Friend WithEvents Label38 As Label
-    Friend WithEvents Label37 As Label
-    Friend WithEvents Label36 As Label
-    Friend WithEvents Label35 As Label
-    Friend WithEvents Label34 As Label
-    Friend WithEvents Label30 As Label
-    Friend WithEvents TextBox41 As TextBox
-    Friend WithEvents TextBox42 As TextBox
-    Friend WithEvents TextBox43 As TextBox
-    Friend WithEvents TextBox44 As TextBox
-    Friend WithEvents TextBox37 As TextBox
-    Friend WithEvents TextBox38 As TextBox
-    Friend WithEvents TextBox39 As TextBox
-    Friend WithEvents TextBox40 As TextBox
-    Friend WithEvents TextBox33 As TextBox
-    Friend WithEvents TextBox34 As TextBox
-    Friend WithEvents TextBox35 As TextBox
-    Friend WithEvents TextBox36 As TextBox
-    Friend WithEvents TextBox29 As TextBox
-    Friend WithEvents TextBox30 As TextBox
-    Friend WithEvents TextBox31 As TextBox
-    Friend WithEvents TextBox32 As TextBox
-    Friend WithEvents TextBox27 As TextBox
-    Friend WithEvents TextBox28 As TextBox
-    Friend WithEvents TextBox26 As TextBox
-    Friend WithEvents txtdf20 As TextBox
-    Friend WithEvents Label32 As Label
-    Friend WithEvents Label33 As Label
-    Friend WithEvents Label31 As Label
-    Friend WithEvents Label29 As Label
-    Friend WithEvents Label28 As Label
-    Friend WithEvents Label27 As Label
     Friend WithEvents Button4 As Button
     Friend WithEvents Label45 As Label
     Friend WithEvents Label42 As Label
@@ -1657,4 +1316,26 @@ Partial Class CLRForm
     Friend WithEvents MaskedTextBox11 As MaskedTextBox
     Friend WithEvents Label46 As Label
     Friend WithEvents txtGC As TextBox
+    Friend WithEvents Label29 As Label
+    Friend WithEvents Label28 As Label
+    Friend WithEvents Label27 As Label
+    Friend WithEvents ProdDsc As DataGridView
+    Friend WithEvents Label30 As Label
+    Friend WithEvents ProdLoad As DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents freight As DataGridViewTextBoxColumn
+    Friend WithEvents cnt20 As DataGridViewTextBoxColumn
+    Friend WithEvents cnt40 As DataGridViewTextBoxColumn
+    Friend WithEvents cnt45 As DataGridViewTextBoxColumn
+    Friend WithEvents cntUnits As DataGridViewTextBoxColumn
+    Friend WithEvents cntTEU As DataGridViewTextBoxColumn
+    Friend WithEvents VolumeTEU As DataGridView
+    Friend WithEvents teuType As DataGridViewTextBoxColumn
+    Friend WithEvents moTeu As DataGridViewTextBoxColumn
+    Friend WithEvents yearTEU As DataGridViewTextBoxColumn
 End Class

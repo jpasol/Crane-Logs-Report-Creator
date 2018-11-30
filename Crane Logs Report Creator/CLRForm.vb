@@ -15,6 +15,8 @@
     Private connOP As ADODB.Connection
     Private clrRegistry As String
     Private cranes(4) As CraneCtl
+    Private dtContrMoves As New DataTable
+    Private dtHCGBMoves As New DataTable
 
     Private Sub mapDetails()
         With clsCLR
@@ -29,6 +31,15 @@
 
     Private Sub CLRForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         mapDetails()
+
+        '''''''''''Populate Columns for Container Moves datatable''''''''''''''
+        dtContrMoves.Columns.Add("Move Kind")
+        dtContrMoves.Columns.Add("Container")
+        dtContrMoves.Columns.Add("20")
+        dtContrMoves.Columns.Add("40")
+        dtContrMoves.Columns.Add("45")
+        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
     End Sub
 
     Private Sub mskATA_LostFocus(sender As Object, e As EventArgs) Handles mskATA.LostFocus
@@ -63,25 +74,59 @@
 
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
         Dim tabSelected As TabPage = DirectCast(sender, TabControl).SelectedTab
-        Select Case tabSelected.Name.ToString
+        Select Case tabSelected.Text.ToString
             Case "More Information"
-                Dim dscfull(2) As Short
-                Dim dscempty(2) As Short
-                Dim loadfull(2) As Short
-                Dim loadempty(2) As Short
+                Dim Freight() As String = {"Full", "Empty"}
+                Dim Volume() As String = {"Import", "Export"}
 
-                For Each gcrane In cranes
+                dtContrMoves.Clear()
+                dtHCGBMoves.Clear()
+
+                ProdDsc.Rows.Clear()
+                ProdLoad.Rows.Clear()
+                VolumeTEU.Rows.Clear()
+
+
+                For Each gcrane In cranes 'fill moves 
                     If Not IsNothing(gcrane) Then
-                        For count As Integer = 0 To 2
-                            dscfull(count) += gcrane.ContainerDsc.Rows(0).Cells(count).ToString
-                            dscempty(count) += gcrane.ContainerDsc.Rows(0).Cells(count).ToString
-                            loadfull(count) += gcrane.ContainerDsc.Rows(1).Cells(count).ToString
-                            loadempty(count) += gcrane.ContainerDsc.Rows(1).Cells(count).ToString
+
+                        For Each row As DataGridViewRow In gcrane.ContainerDsc.Rows
+                            Dim tempRow As DataRow
+                            tempRow = dtContrMoves.NewRow
+
+                            tempRow.Item(0) = "Discharge"
+                            tempRow.Item(1) = row.Cells(0).Value
+                            tempRow.Item(2) = row.Cells(1).Value
+                            tempRow.Item(3) = row.Cells(2).Value
+                            tempRow.Item(4) = row.Cells(3).Value
+
+                            dtContrMoves.Rows.Add(tempRow)
                         Next
+                        For Each row As DataGridViewRow In gcrane.ContainerLoad.Rows
+                            Dim tempRow As DataRow
+                            tempRow = dtContrMoves.NewRow
+
+                            tempRow.Item(0) = "Loading"
+                            tempRow.Item(1) = row.Cells(0).Value
+                            tempRow.Item(2) = row.Cells(1).Value
+                            tempRow.Item(3) = row.Cells(2).Value
+                            tempRow.Item(4) = row.Cells(3).Value
+
+                            dtContrMoves.Rows.Add(tempRow)
+                        Next
+
                     End If
                 Next
 
+                For Each frght In Freight 'Populate Productivity Data grid views
+                    ProdDsc.Rows.Add({frght})
+                    ProdLoad.Rows.Add({frght})
+                    For Each vol In Volume
+                        VolumeTEU.Rows.Add({vol & " " & frght})
+                    Next
+                Next
 
         End Select
     End Sub
+
 End Class
