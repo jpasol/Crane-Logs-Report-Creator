@@ -2,69 +2,155 @@
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Windows.Forms
 Imports Reports
+Imports Reports.ReportFunctions
 Public Class CLRClass
     Implements IReportswSave
+    Implements ICraneLogsReport
 
     Public Sub New(Registry As String, ByRef N4connection As ADODB.Connection, ByRef OPConnection As ADODB.Connection)
         CLRVessel = New Vessel(Registry, N4connection)
-        RetrieveData()
+        Me.N4Connection = N4connection
+        Me.OPConnection = OPConnection
+        Me.Crane = New List(Of Crane)
     End Sub
-    Private strRegistry As String
-    Private clrDetails(System.Enum.GetNames(GetType(clrInfo)).Count) As String
+    Private clrData As New CraneLogsData
     Public ReadOnly Property N4Connection As Connection Implements IReportswSave.N4Connection
-
     Public ReadOnly Property OPConnection As Connection Implements IReportswSave.OPConnection
+    Public ReadOnly Property CLRVessel As Vessel Implements ICraneLogsReport.Vessel
+    Public ReadOnly Property Crane As List(Of Crane) Implements ICraneLogsReport.Crane
+
+    Public Property LastPort As Object Implements ICraneLogsReport.LastPort
         Get
             Throw New NotImplementedException()
         End Get
-    End Property
-    Public ReadOnly Property CLRVessel As Vessel
-    Public Property Details(index) As String
-        Get
-            Return clrDetails(index)
-        End Get
-        Set(value As String)
-            clrDetails(index) = value
+        Set(value As Object)
+            Throw New NotImplementedException()
         End Set
     End Property
-    Public Enum clrInfo
-        shiplines
-        name
-        registry
-        lstport
-        nxtport
-        voynum
-        ata
-        atd
-        berthhours
-        frstmove
-        lstmove
-        gvmt
-        netberth
-        grsberthrate
-        netberthrate
-        networktime
-        grsprodrate
-        netprodrate
-        moves
-        cranedensity
-        grsworkhrs
-        networkhrs
-        grscraneprod
-        netcraneprod
-    End Enum
+
+    Public Property NextPort As Object Implements ICraneLogsReport.NextPort
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As Object)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Public ReadOnly Property TotalMoves As Double Implements ICraneLogsReport.TotalMoves
+        Get
+            For Each crn As Crane In Crane
+                If Crane IsNot Nothing Then TotalMoves += crn.Moves.TotalMoves
+            Next
+            Return TotalMoves
+        End Get
+    End Property
+
+    Public ReadOnly Property FirstMove As Date Implements ICraneLogsReport.FirstMove
+        Get
+            Return Crane.AsEnumerable.Where(Function(crn) crn IsNot Nothing).Min(Function(mve) mve.FirstMove)
+        End Get
+    End Property
+
+    Public ReadOnly Property LastMove As Date Implements ICraneLogsReport.LastMove
+        Get
+            Return Crane.AsEnumerable.Where(Function(crn) crn IsNot Nothing).Max(Function(mve) mve.LastMove)
+        End Get
+    End Property
+
+    Public ReadOnly Property CraneDensity As Double Implements ICraneLogsReport.CraneDensity
+        Get
+            Return TotalMoves / Crane.AsEnumerable.Where(Function(crn) crn IsNot Nothing).Max(Function(mve) mve.Moves.TotalMoves)
+        End Get
+    End Property
+
+    Public ReadOnly Property TotalBerthHours As Double Implements ICraneLogsReport.TotalBerthHours
+        Get
+            With CLRVessel
+                Return getSpanHours(.ATA, .ATD)
+            End With
+        End Get
+    End Property
+
+    Public ReadOnly Property NetBerthHours As Double Implements ICraneLogsReport.NetBerthHours
+        Get
+            Return TotalBerthHours - clrData.BerthingHourDelays.Totalhours
+        End Get
+    End Property
+
+    Public ReadOnly Property GrossBerthProdRate As Double Implements ICraneLogsReport.GrossBerthProdRate
+        Get
+            Return TotalMoves / TotalBerthHours
+        End Get
+    End Property
+
+    Public ReadOnly Property NetBerthProdRate As Double Implements ICraneLogsReport.NetBerthProdRate
+        Get
+            Return TotalMoves / NetBerthHours
+        End Get
+    End Property
+
+    Public ReadOnly Property GrossVesselWorkingTime As Double Implements ICraneLogsReport.GrossVesselWorkingTime
+        Get
+            Return getSpanHours(FirstMove, LastMove)
+        End Get
+    End Property
+
+    Public ReadOnly Property NetVesselWorkingTime As Double Implements ICraneLogsReport.NetVesselWorkingTime
+        Get
+            NetVesselWorkingTime = GrossVesselWorkingTime
+            For Each crn As Crane In Crane
+                If Crane IsNot Nothing Then NetVesselWorkingTime -= (crn.Delays.Deductable.Totalhours + crn.Delays.Break.Totalhours)
+            Next
+            Return NetVesselWorkingTime
+        End Get
+    End Property
+
+    Public ReadOnly Property GrossVesselProdRate As Double Implements ICraneLogsReport.GrossVesselProdRate
+        Get
+            Return TotalMoves / GrossVesselWorkingTime
+        End Get
+    End Property
+
+    Public ReadOnly Property NetVesselProdRate As Double Implements ICraneLogsReport.NetVesselProdRate
+        Get
+            Return TotalMoves / NetVesselWorkingTime
+        End Get
+    End Property
+
+    Public ReadOnly Property TotalGrossWorkingHours As Double Implements ICraneLogsReport.TotalGrossWorkingHours
+        Get
+            For Each crn As Crane In Crane
+                If Crane IsNot Nothing Then TotalGrossWorkingHours += crn.GrossWorkingHours
+            Next
+            Return TotalGrossWorkingHours
+        End Get
+    End Property
+
+    Public ReadOnly Property TotalNetWorkingHours As Double Implements ICraneLogsReport.TotalNetWorkingHours
+        Get
+            For Each crn As Crane In Crane
+                If Crane IsNot Nothing Then TotalNetWorkingHours += crn.NetWorkingHours
+            Next
+            Return TotalGrossWorkingHours
+        End Get
+    End Property
+
+    Public ReadOnly Property GrossCraneProductivity As Double Implements ICraneLogsReport.GrossCraneProductivity
+        Get
+            Return TotalMoves / TotalGrossWorkingHours
+        End Get
+    End Property
+
+    Public ReadOnly Property NetCraneProductivity As Double Implements ICraneLogsReport.NetCraneProductivity
+        Get
+            Return TotalMoves / TotalNetWorkingHours
+        End Get
+    End Property
 
 
-    Public Function CalculateInfo(strFunction As String, Inputs() As String) As Object Implements IReportswSave.CalculateInfo
-        Select Case strFunction
-            Case "Hours between two Dates"
-                Dim ata As Date = getDateTime(Inputs(0))
-                Dim atd As Date = getDateTime(Inputs(1))
-                Dim span As TimeSpan = atd.Subtract(ata)
-
-                Return span.TotalHours
-
-        End Select
+    Private Function CalculateInfo(strFunction As String, Inputs() As String) As Object Implements IReportswSave.CalculateInfo
+        Throw New NotImplementedException()
     End Function
 
     Public Sub Format(ByRef crReport As ReportClass) Implements IReportswSave.Format
@@ -80,23 +166,11 @@ Public Class CLRClass
     End Sub
 
     Public Sub RetrieveData() Implements IReportswSave.RetrieveData
-        With CLRVessel
-            clrDetails(clrInfo.shiplines) = .Owner
-            clrDetails(clrInfo.name) = .Name
-            clrDetails(clrInfo.registry) = .Registry
-            clrDetails(clrInfo.voynum) = .InboundVoyage & " - " & .OutboundVoyage
-            clrDetails(clrInfo.ata) = getMilTime(.ATA)
-            clrDetails(clrInfo.atd) = getMilTime(.ATD)
-        End With
+
     End Sub
-    Public Function getMilTime(strLDate As String) As String
-        Dim dteDate As DateTime
 
-        dteDate = Convert.ToDateTime(strLDate)
-        getMilTime = dteDate.ToString("HHmm\H MM/dd/yyyy")
-    End Function
-
-    Public Function getDateTime(strMDate As String) As Date
-        Return Date.ParseExact(strMDate, "HHmm\H MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture)
-    End Function
+    Public Sub IntializeCrane(GantryName As String) Implements ICraneLogsReport.IntializeCrane
+        Dim number As Integer = GantryName.Substring(GantryName.Length - 1, 1)
+        Crane.Add(New Crane(GantryName, CLRVessel.Registry, N4Connection))
+    End Sub
 End Class

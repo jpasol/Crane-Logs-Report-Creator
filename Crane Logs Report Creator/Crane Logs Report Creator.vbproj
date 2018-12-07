@@ -95,6 +95,14 @@
       <DependentUpon>CLRForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CraneLogsData.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CraneLogsData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CraneLogsData.vb">
+      <DependentUpon>CraneLogsData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -132,6 +140,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="CraneLogsData.xsc">
+      <DependentUpon>CraneLogsData.xsd</DependentUpon>
+    </None>
+    <None Include="CraneLogsData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CraneLogsData.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="CraneLogsData.xss">
+      <DependentUpon>CraneLogsData.xsd</DependentUpon>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

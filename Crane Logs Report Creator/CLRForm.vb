@@ -1,10 +1,10 @@
-﻿Public Class CLRForm
+﻿Imports Reports.ReportFunctions
+Public Class CLRForm
     Public Sub New(Registry As String, ByRef N4Connection As ADODB.Connection, ByRef OPConnection As ADODB.Connection)
 
         ' This call is required by the designer.
         InitializeComponent()
         clsCLR = New CLRClass(Registry, N4Connection, OPConnection)
-        clrRegistry = Registry
         connN4 = N4Connection
         connOP = OPConnection
         ' Add any initialization after the InitializeComponent() call.
@@ -13,120 +13,172 @@
     Private clsCLR As CLRClass
     Private connN4 As ADODB.Connection
     Private connOP As ADODB.Connection
-    Private clrRegistry As String
-    Private cranes(4) As CraneCtl
-    Private dtContrMoves As New DataTable
-    Private dtHCGBMoves As New DataTable
+    Private ctlCrane As CraneCtl
 
     Private Sub mapDetails()
-        With clsCLR
-            mskShippingLine.Text = .Details(.clrInfo.shiplines)
-            mskVessel.Text = .Details(.clrInfo.name)
-            mskRegistry.Text = .Details(.clrInfo.registry)
-            mskVoyage.Text = .Details(.clrInfo.voynum)
-            mskATA.Text = .Details(.clrInfo.ata)
-            mskATD.Text = .Details(.clrInfo.atd)
+        With clsCLR.CLRVessel
+            mskShippingLine.Text = .Owner
+            mskVessel.Text = .Name
+            mskRegistry.Text = .Registry
+            mskVoyage.Text = .InboundVoyage & " - " & .OutboundVoyage
+            mskATA.Text = getMilTime(.ATA)
+            mskATD.Text = getMilTime(.ATD)
         End With
     End Sub
 
     Private Sub CLRForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         mapDetails()
 
-        '''''''''''Populate Columns for Container Moves datatable''''''''''''''
-        dtContrMoves.Columns.Add("Move Kind")
-        dtContrMoves.Columns.Add("Container")
-        dtContrMoves.Columns.Add("20")
-        dtContrMoves.Columns.Add("40")
-        dtContrMoves.Columns.Add("45")
-        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-
+        'ADD BERTHING HOUR DELAYS TO DELAYSUM
+        DelaySum.Rows.Add({"Vessel Formalities"})
+        DelaySum.Rows.Add({"GOB Unlashing and GC positioning"})
+        DelaySum.Rows.Add({"Waiting for Tug Boat / POB"})
     End Sub
 
     Private Sub mskATA_LostFocus(sender As Object, e As EventArgs) Handles mskATA.LostFocus
-        mskBerthHours.Text = clsCLR.CalculateInfo("Hours between two Dates", {mskATA.Text, mskATD.Text})
     End Sub
 
     Private Sub mskATD_LostFocus(sender As Object, e As EventArgs) Handles mskATD.LostFocus
-        mskBerthHours.Text = clsCLR.CalculateInfo("Hours between two Dates", {mskATA.Text, mskATD.Text})
     End Sub
 
     Private Sub mskFirstmve_LostFocus(sender As Object, e As EventArgs) Handles mskFirstmve.LostFocus
-        mskGVWT.Text = clsCLR.CalculateInfo("Hours between two Dates", {mskFirstmve.Text, mskLastmve.Text})
     End Sub
 
     Private Sub mskLastmve_LostFocus(sender As Object, e As EventArgs) Handles mskLastmve.LostFocus
-        mskGVWT.Text = clsCLR.CalculateInfo("Hours between two Dates", {mskFirstmve.Text, mskLastmve.Text})
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Dim strGC As String = "GC0" & txtGC.Text
+        Dim tempcrane As Reports.Crane
         Try
-            TabControl1.SelectTab(strGC)
+            TabControl1.SelectTab("tab" & strGC)
         Catch ex As Exception
-            cranes(txtGC.Text) = New CraneCtl(strGC, clrRegistry, connN4)
+            With clsCLR
+                clsCLR.IntializeCrane(strGC)
 
-            TabControl1.TabPages.Add(cranes(txtGC.Text).tabCraneLog.TabPages(strGC))
-            TabControl1.SelectTab(strGC)
+                tempcrane = (.Crane.AsEnumerable.Where(Function(crn) crn.CraneName = strGC).Select(Function(crn) crn))(0)
+                ctlCrane = New CraneCtl(tempcrane)
+                TabControl1.TabPages.Add(ctlCrane.tabCraneLog.TabPages("tab" & strGC))
+                TabControl1.SelectTab("tab" & strGC)
+            End With
         End Try
 
 
     End Sub
 
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
+        On Error Resume Next
         Dim tabSelected As TabPage = DirectCast(sender, TabControl).SelectedTab
+
         Select Case tabSelected.Text.ToString
+            Case "General Information"
+                With clsCLR
+                    mskFirstmve.Text = getMilTime(.FirstMove)
+                    mskLastmve.Text = getMilTime(.LastMove)
+                    mskMoves.Text = .TotalMoves
+                    mskDensity.Text = .CraneDensity
+                    mskBerthHours.Text = .TotalBerthHours
+                    mskNetBerth.Text = .NetBerthHours
+                    mskGrossBerthProd.Text = .GrossBerthProdRate
+                    mskNetBerthProd.Text = .NetBerthProdRate
+                    mskGrossWorkingTime.Text = .GrossVesselWorkingTime
+                    mskNetWorkingTime.Text = .NetVesselWorkingTime
+                    mskGrossVesselProd.Text = .GrossVesselProdRate
+                    mskNetVesselProd.Text = .NetVesselProdRate
+                    mskGrossHours.Text = .TotalGrossWorkingHours
+                    mskNetHours.Text = .TotalNetWorkingHours
+                    mskGrossCraneProd.Text = .GrossCraneProductivity
+                    mskNetCraneProd.Text = .NetCraneProductivity
+                End With
+
             Case "More Information"
-                Dim Freight() As String = {"Full", "Empty"}
-                Dim Volume() As String = {"Import", "Export"}
-
-                dtContrMoves.Clear()
-                dtHCGBMoves.Clear()
-
-                ProdDsc.Rows.Clear()
-                ProdLoad.Rows.Clear()
-                VolumeTEU.Rows.Clear()
-
-
-                For Each gcrane In cranes 'fill moves 
-                    If Not IsNothing(gcrane) Then
-
-                        For Each row As DataGridViewRow In gcrane.ContainerDsc.Rows
-                            Dim tempRow As DataRow
-                            tempRow = dtContrMoves.NewRow
-
-                            tempRow.Item(0) = "Discharge"
-                            tempRow.Item(1) = row.Cells(0).Value
-                            tempRow.Item(2) = row.Cells(1).Value
-                            tempRow.Item(3) = row.Cells(2).Value
-                            tempRow.Item(4) = row.Cells(3).Value
-
-                            dtContrMoves.Rows.Add(tempRow)
-                        Next
-                        For Each row As DataGridViewRow In gcrane.ContainerLoad.Rows
-                            Dim tempRow As DataRow
-                            tempRow = dtContrMoves.NewRow
-
-                            tempRow.Item(0) = "Loading"
-                            tempRow.Item(1) = row.Cells(0).Value
-                            tempRow.Item(2) = row.Cells(1).Value
-                            tempRow.Item(3) = row.Cells(2).Value
-                            tempRow.Item(4) = row.Cells(3).Value
-
-                            dtContrMoves.Rows.Add(tempRow)
-                        Next
-
-                    End If
-                Next
-
-                For Each frght In Freight 'Populate Productivity Data grid views
-                    ProdDsc.Rows.Add({frght})
-                    ProdLoad.Rows.Add({frght})
-                    For Each vol In Volume
-                        VolumeTEU.Rows.Add({vol & " " & frght})
-                    Next
-                Next
-
+                CraneSummary()
+                DelaySummary()
         End Select
     End Sub
+    Private Sub CraneSummary()
+        ProdSum.Rows.Clear()
+        txtUnits.Text = 0
+        txtTEUs.Text = 0
 
+
+        Dim freight() As String = {"Discharge", "Loading"}
+        Dim freightkind() As String = {"Full", "Empty"}
+
+
+        For Each frght In freight
+
+            For Each frtknd In freightkind
+                Dim twenty As Short
+                Dim forty As Short
+                Dim ffive As Short
+                Dim unit As Short
+                Dim teu As Single
+
+                With clsCLR.Crane.AsEnumerable
+                    twenty = .Sum(Function(crn) crn.Moves.Container.Total20(frght, frtknd))
+                    forty = .Sum(Function(crn) crn.Moves.Container.Total40(frght, frtknd))
+                    ffive = .Sum(Function(crn) crn.Moves.Container.Total45(frght, frtknd))
+                    unit = twenty + forty + ffive
+                    teu = (twenty) + (forty * 2) + (ffive * 2.25)
+
+                    ProdSum.Rows.Add({frght, frtknd, twenty, forty, ffive, unit, teu})
+
+                    txtUnits.Text = CShort(txtUnits.Text) + unit
+                    txtTEUs.Text = CDbl(txtTEUs.Text) + teu
+                End With
+            Next
+        Next
+
+    End Sub
+
+    Public Sub DelaySummary()
+        txtDelaySum.Text = 0
+        For Each row As DataGridViewRow In DelaySum.Rows
+            With row.Cells
+                txtDelaySum.Text = CDbl(txtDelaySum.Text) + .Item(3).Value
+            End With
+
+        Next
+    End Sub
+
+    Private Sub cmbDelay_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbDelay.SelectedIndexChanged
+        Dim rowindex As Integer
+        Dim desclist As New List(Of String)
+        For Each row As DataGridViewRow In DelaySum.Rows
+            desclist.Add(row.Cells.Item(0).Value)
+        Next
+
+        rowindex = desclist.IndexOf(cmbDelay.Text)
+
+        With DelaySum.Rows(rowindex).Cells
+            mskDelaystart.Text = getMilTime(.Item(1).Value)
+            mskDelayend.Text = getMilTime(.Item(2).Value)
+        End With
+    End Sub
+
+    Private Sub mskDelayend_KeyDown(sender As Object, e As KeyEventArgs) Handles mskDelayend.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            Dim rowindex As Integer
+            Dim desclist As New List(Of String)
+            Dim delaystart As Date
+            Dim delayend As Date
+
+            For Each row As DataGridViewRow In DelaySum.Rows
+                desclist.Add(row.Cells.Item(0).Value)
+            Next
+
+            rowindex = desclist.IndexOf(cmbDelay.Text)
+
+            With DelaySum.Rows(rowindex).Cells
+                delaystart = getDateTime(mskDelaystart.Text)
+                delayend = getDateTime(mskDelayend.Text)
+                .Item(1).Value = delaystart
+                .Item(2).Value = delayend
+                .Item(3).Value = getSpanHours(delaystart, delayend)
+            End With
+        End If
+
+        DelaySummary()
+    End Sub
 End Class

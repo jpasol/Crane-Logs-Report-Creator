@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CraneLogsData" targetNamespace="http://tempuri.org/CraneLogsData.xsd" xmlns:mstns="http://tempuri.org/CraneLogsData.xsd" xmlns="http://tempuri.org/CraneLogsData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="CraneLogsData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="CraneLogsData" msprop:Generator_UserDSName="CraneLogsData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CraneProductivity" msprop:Generator_TableClassName="CraneProductivityDataTable" msprop:Generator_TableVarName="tableCraneProductivity" msprop:Generator_RowChangedName="CraneProductivityRowChanged" msprop:Generator_TablePropName="CraneProductivity" msprop:Generator_RowDeletingName="CraneProductivityRowDeleting" msprop:Generator_RowChangingName="CraneProductivityRowChanging" msprop:Generator_RowEvHandlerName="CraneProductivityRowChangeEventHandler" msprop:Generator_RowDeletedName="CraneProductivityRowDeleted" msprop:Generator_RowClassName="CraneProductivityRow" msprop:Generator_UserTableName="CraneProductivity" msprop:Generator_RowEvArgName="CraneProductivityRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="move_kind" msprop:Generator_ColumnVarNameInTable="columnmove_kind" msprop:Generator_ColumnPropNameInRow="move_kind" msprop:Generator_ColumnPropNameInTable="move_kindColumn" msprop:Generator_UserColumnName="move_kind" type="xs:string" minOccurs="0" />
+              <xs:element name="freight_kind" msprop:Generator_ColumnVarNameInTable="columnfreight_kind" msprop:Generator_ColumnPropNameInRow="freight_kind" msprop:Generator_ColumnPropNameInTable="freight_kindColumn" msprop:Generator_UserColumnName="freight_kind" type="xs:string" minOccurs="0" />
+              <xs:element name="cntsze20" msprop:Generator_ColumnVarNameInTable="columncntsze20" msprop:Generator_ColumnPropNameInRow="cntsze20" msprop:Generator_ColumnPropNameInTable="cntsze20Column" msprop:Generator_UserColumnName="cntsze20" type="xs:string" minOccurs="0" />
+              <xs:element name="cntsze40" msprop:Generator_ColumnVarNameInTable="columncntsze40" msprop:Generator_ColumnPropNameInRow="cntsze40" msprop:Generator_ColumnPropNameInTable="cntsze40Column" msprop:Generator_UserColumnName="cntsze40" type="xs:string" minOccurs="0" />
+              <xs:element name="cntsze45" msprop:Generator_ColumnVarNameInTable="columncntsze45" msprop:Generator_ColumnPropNameInRow="cntsze45" msprop:Generator_ColumnPropNameInTable="cntsze45Column" msprop:Generator_UserColumnName="cntsze45" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BerthingHourDelays" msprop:Generator_TableClassName="BerthingHourDelaysDataTable" msprop:Generator_TableVarName="tableBerthingHourDelays" msprop:Generator_RowChangedName="BerthingHourDelaysRowChanged" msprop:Generator_TablePropName="BerthingHourDelays" msprop:Generator_RowDeletingName="BerthingHourDelaysRowDeleting" msprop:Generator_RowChangingName="BerthingHourDelaysRowChanging" msprop:Generator_RowEvHandlerName="BerthingHourDelaysRowChangeEventHandler" msprop:Generator_RowDeletedName="BerthingHourDelaysRowDeleted" msprop:Generator_RowClassName="BerthingHourDelaysRow" msprop:Generator_UserTableName="BerthingHourDelays" msprop:Generator_RowEvArgName="BerthingHourDelaysRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="berthdelay" msprop:Generator_ColumnVarNameInTable="columnberthdelay" msprop:Generator_ColumnPropNameInRow="berthdelay" msprop:Generator_ColumnPropNameInTable="berthdelayColumn" msprop:Generator_UserColumnName="berthdelay" type="xs:string" minOccurs="0" />
+              <xs:element name="delaystart" msprop:Generator_ColumnVarNameInTable="columndelaystart" msprop:Generator_ColumnPropNameInRow="delaystart" msprop:Generator_ColumnPropNameInTable="delaystartColumn" msprop:Generator_UserColumnName="delaystart" type="xs:string" minOccurs="0" />
+              <xs:element name="delayend" msprop:Generator_ColumnVarNameInTable="columndelayend" msprop:Generator_ColumnPropNameInRow="delayend" msprop:Generator_ColumnPropNameInTable="delayendColumn" msprop:Generator_UserColumnName="delayend" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CummulativeVolume" msprop:Generator_TableClassName="CummulativeVolumeDataTable" msprop:Generator_TableVarName="tableCummulativeVolume" msprop:Generator_RowChangedName="CummulativeVolumeRowChanged" msprop:Generator_TablePropName="CummulativeVolume" msprop:Generator_RowDeletingName="CummulativeVolumeRowDeleting" msprop:Generator_RowChangingName="CummulativeVolumeRowChanging" msprop:Generator_RowEvHandlerName="CummulativeVolumeRowChangeEventHandler" msprop:Generator_RowDeletedName="CummulativeVolumeRowDeleted" msprop:Generator_RowClassName="CummulativeVolumeRow" msprop:Generator_UserTableName="CummulativeVolume" msprop:Generator_RowEvArgName="CummulativeVolumeRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="category" msprop:Generator_ColumnVarNameInTable="columncategory" msprop:Generator_ColumnPropNameInRow="category" msprop:Generator_ColumnPropNameInTable="categoryColumn" msprop:Generator_UserColumnName="category" type="xs:string" minOccurs="0" />
+              <xs:element name="freight_kind" msprop:Generator_ColumnVarNameInTable="columnfreight_kind" msprop:Generator_ColumnPropNameInRow="freight_kind" msprop:Generator_ColumnPropNameInTable="freight_kindColumn" msprop:Generator_UserColumnName="freight_kind" type="xs:string" minOccurs="0" />
+              <xs:element name="teu" msprop:Generator_ColumnVarNameInTable="columnteu" msprop:Generator_ColumnPropNameInRow="teu" msprop:Generator_ColumnPropNameInTable="teuColumn" msprop:Generator_UserColumnName="teu" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
