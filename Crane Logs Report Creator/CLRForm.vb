@@ -1,12 +1,13 @@
 ﻿Imports Reports.ReportFunctions
 Public Class CLRForm
-    Public Sub New(Registry As String, ByRef N4Connection As ADODB.Connection, ByRef OPConnection As ADODB.Connection)
+    Public Sub New(Registry As String, ByRef N4Connection As ADODB.Connection, ByRef OPConnection As ADODB.Connection, Username As String)
 
         ' This call is required by the designer.
         InitializeComponent()
-        clsCLR = New CLRClass(Registry, N4Connection, OPConnection)
+        clsCLR = New CLRClass(Registry, N4Connection, OPConnection, Username)
         connN4 = N4Connection
         connOP = OPConnection
+        Me.username = Username
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
@@ -14,6 +15,7 @@ Public Class CLRForm
     Private connN4 As ADODB.Connection
     Private connOP As ADODB.Connection
     Private ctlCrane As CraneCtl
+    Private username As String
 
     Private Sub mapDetails()
         With clsCLR.CLRVessel
@@ -180,5 +182,21 @@ Public Class CLRForm
         End If
 
         DelaySummary()
+    End Sub
+
+    Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
+        'set remaning details to respective properties
+        With clsCLR
+            .LastPort = mskLastPort.Text
+            .NextPort = mskNextPort.Text
+        End With
+
+        clsCLR.Save()
+
+
+    End Sub
+
+    Private Sub mskShippingLine_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskShippingLine.MaskInputRejected
+
     End Sub
 End Class

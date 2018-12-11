@@ -93,7 +93,7 @@ Partial Class CLRForm
         Me.cntTEU = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtTEUs = New System.Windows.Forms.TextBox()
         Me.txtUnits = New System.Windows.Forms.TextBox()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.cmdSave = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.VolumeTEU = New System.Windows.Forms.DataGridView()
@@ -104,6 +104,9 @@ Partial Class CLRForm
         Me.Label19 = New System.Windows.Forms.Label()
         Me.TextBox17 = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.mskDelayend = New System.Windows.Forms.MaskedTextBox()
+        Me.mskDelaystart = New System.Windows.Forms.MaskedTextBox()
+        Me.cmbDelay = New System.Windows.Forms.ComboBox()
         Me.DelaySum = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -111,9 +114,6 @@ Partial Class CLRForm
         Me.delayhours = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtDelaySum = New System.Windows.Forms.TextBox()
-        Me.cmbDelay = New System.Windows.Forms.ComboBox()
-        Me.mskDelaystart = New System.Windows.Forms.MaskedTextBox()
-        Me.mskDelayend = New System.Windows.Forms.MaskedTextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -170,7 +170,7 @@ Partial Class CLRForm
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(172, 55)
         Me.Button3.TabIndex = 54
-        Me.Button3.Text = "Next"
+        Me.Button3.Text = "Next (F12)"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'GroupBox1
@@ -684,7 +684,7 @@ Partial Class CLRForm
         Me.TabPage2.Controls.Add(Me.Button5)
         Me.TabPage2.Controls.Add(Me.Button4)
         Me.TabPage2.Controls.Add(Me.GroupBox4)
-        Me.TabPage2.Controls.Add(Me.Button2)
+        Me.TabPage2.Controls.Add(Me.cmdSave)
         Me.TabPage2.Controls.Add(Me.Button1)
         Me.TabPage2.Controls.Add(Me.GroupBox3)
         Me.TabPage2.Controls.Add(Me.GroupBox2)
@@ -829,14 +829,14 @@ Partial Class CLRForm
         Me.txtUnits.Size = New System.Drawing.Size(100, 29)
         Me.txtUnits.TabIndex = 101
         '
-        'Button2
+        'cmdSave
         '
-        Me.Button2.Location = New System.Drawing.Point(1107, 594)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(172, 55)
-        Me.Button2.TabIndex = 53
-        Me.Button2.Text = "Next"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.cmdSave.Location = New System.Drawing.Point(1107, 594)
+        Me.cmdSave.Name = "cmdSave"
+        Me.cmdSave.Size = New System.Drawing.Size(172, 55)
+        Me.cmdSave.TabIndex = 53
+        Me.cmdSave.Text = "Save"
+        Me.cmdSave.UseVisualStyleBackColor = True
         '
         'Button1
         '
@@ -844,7 +844,7 @@ Partial Class CLRForm
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(172, 55)
         Me.Button1.TabIndex = 52
-        Me.Button1.Text = "Prev"
+        Me.Button1.Text = "Prev (F11)"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'GroupBox3
@@ -939,6 +939,31 @@ Partial Class CLRForm
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Berthing Hour Delays"
         '
+        'mskDelayend
+        '
+        Me.mskDelayend.Location = New System.Drawing.Point(421, 47)
+        Me.mskDelayend.Mask = "0000\H 00/00/0000"
+        Me.mskDelayend.Name = "mskDelayend"
+        Me.mskDelayend.Size = New System.Drawing.Size(198, 29)
+        Me.mskDelayend.TabIndex = 40
+        '
+        'mskDelaystart
+        '
+        Me.mskDelaystart.Location = New System.Drawing.Point(217, 47)
+        Me.mskDelaystart.Mask = "0000\H 00/00/0000"
+        Me.mskDelaystart.Name = "mskDelaystart"
+        Me.mskDelaystart.Size = New System.Drawing.Size(198, 29)
+        Me.mskDelaystart.TabIndex = 39
+        '
+        'cmbDelay
+        '
+        Me.cmbDelay.FormattingEnabled = True
+        Me.cmbDelay.Items.AddRange(New Object() {"Vessel Formalities", "GOB Unlashing and GC positioning", "Waiting for Tug Boat / POB"})
+        Me.cmbDelay.Location = New System.Drawing.Point(39, 47)
+        Me.cmbDelay.Name = "cmbDelay"
+        Me.cmbDelay.Size = New System.Drawing.Size(172, 29)
+        Me.cmbDelay.TabIndex = 38
+        '
         'DelaySum
         '
         Me.DelaySum.AllowUserToAddRows = False
@@ -996,31 +1021,6 @@ Partial Class CLRForm
         Me.txtDelaySum.Size = New System.Drawing.Size(100, 29)
         Me.txtDelaySum.TabIndex = 3
         Me.txtDelaySum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'cmbDelay
-        '
-        Me.cmbDelay.FormattingEnabled = True
-        Me.cmbDelay.Items.AddRange(New Object() {"Vessel Formalities", "GOB Unlashing and GC positioning", "Waiting for Tug Boat / POB"})
-        Me.cmbDelay.Location = New System.Drawing.Point(39, 47)
-        Me.cmbDelay.Name = "cmbDelay"
-        Me.cmbDelay.Size = New System.Drawing.Size(172, 29)
-        Me.cmbDelay.TabIndex = 38
-        '
-        'mskDelaystart
-        '
-        Me.mskDelaystart.Location = New System.Drawing.Point(217, 47)
-        Me.mskDelaystart.Mask = "0000\H 00/00/0000"
-        Me.mskDelaystart.Name = "mskDelaystart"
-        Me.mskDelaystart.Size = New System.Drawing.Size(198, 29)
-        Me.mskDelaystart.TabIndex = 39
-        '
-        'mskDelayend
-        '
-        Me.mskDelayend.Location = New System.Drawing.Point(421, 47)
-        Me.mskDelayend.Mask = "0000\H 00/00/0000"
-        Me.mskDelayend.Name = "mskDelayend"
-        Me.mskDelayend.Size = New System.Drawing.Size(198, 29)
-        Me.mskDelayend.TabIndex = 40
         '
         'CLRForm
         '
@@ -1094,7 +1094,7 @@ Partial Class CLRForm
     Friend WithEvents TextBox18 As TextBox
     Friend WithEvents Label19 As Label
     Friend WithEvents TextBox17 As TextBox
-    Friend WithEvents Button2 As Button
+    Friend WithEvents cmdSave As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents GroupBox4 As GroupBox
