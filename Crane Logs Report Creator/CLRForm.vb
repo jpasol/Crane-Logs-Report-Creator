@@ -140,7 +140,6 @@ Public Class CLRForm
             With row.Cells
                 txtDelaySum.Text = CDbl(txtDelaySum.Text) + .Item(3).Value
             End With
-
         Next
     End Sub
 
@@ -179,9 +178,20 @@ Public Class CLRForm
                 .Item(2).Value = delayend
                 .Item(3).Value = getSpanHours(delaystart, delayend)
             End With
-        End If
 
-        DelaySummary()
+
+            With clsCLR.CraneLogsData.BerthingHourDelays 'clear then add all
+                .Clear()
+                For Each row As DataGridViewRow In DelaySum.Rows
+                    If CDbl(row.Cells(3).Value) > 0 Then 'only add delays that has total value > 0
+                        .AddBerthingHourDelaysRow(berthdelay:=row.Cells(0).Value,
+                                                 delaystart:=row.Cells(1).Value,
+                                                 delayend:=row.Cells(2).Value)
+                    End If
+                Next
+            End With
+            DelaySummary()
+        End If
     End Sub
 
     Private Sub cmdSave_Click(sender As Object, e As EventArgs) Handles cmdSave.Click
@@ -196,7 +206,4 @@ Public Class CLRForm
 
     End Sub
 
-    Private Sub mskShippingLine_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskShippingLine.MaskInputRejected
-
-    End Sub
 End Class

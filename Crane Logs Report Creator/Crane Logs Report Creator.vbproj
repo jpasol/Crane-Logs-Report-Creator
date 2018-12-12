@@ -103,6 +103,7 @@
     <Compile Include="CraneLogsData.vb">
       <DependentUpon>CraneLogsData.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ICraneLogsReport.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

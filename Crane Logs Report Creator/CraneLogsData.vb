@@ -7,6 +7,11 @@
             Next
             Return hours
         End Function
+
+        Private Sub BerthingHourDelaysDataTable_BerthingHourDelaysRowChanging(sender As Object, e As BerthingHourDelaysRowChangeEvent) Handles Me.BerthingHourDelaysRowChanging
+
+        End Sub
+
     End Class
 
     Partial Public Class CummulativeVolumeDataTable
