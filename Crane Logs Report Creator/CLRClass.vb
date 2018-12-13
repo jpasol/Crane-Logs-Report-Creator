@@ -10,26 +10,18 @@ Public Class CLRClass
 
     Public Sub New(Registry As String, ByRef N4connection As ADODB.Connection, ByRef OPConnection As ADODB.Connection, Username As String)
         CLRVessel = New Vessel(Registry, N4connection)
-        Me.Crane = New List(Of Crane)
-        Me.CraneLogsData = New CraneLogsData
+        Crane = New List(Of Crane)
+        CraneLogsData = New CraneLogsData
+        ReportFunctions = New ReportFunctions(OPConnection, N4connection) 'so you dont need to explicitly include the connection as parameter
         Me.N4Connection = N4connection
         Me.OPConnection = OPConnection
-        Me.username = Username
+        Me.UserName = Username
 
     End Sub
-    Enum KeyType
-        Port
-        Shipline
-        BerthDelay
-        QuayCrane
-        Move_kind
-        Ctrtyp
-        Freight
-        Delaykind
-    End Enum
 
-    Private username As String
-    Private datenow As Date
+    Private Property UserName As String
+    Private Property DateNow As Date
+    Private Property ReportFunctions As ReportFunctions
     Public ReadOnly Property N4Connection As Connection Implements IReportswSave.N4Connection
     Public ReadOnly Property OPConnection As Connection Implements IReportswSave.OPConnection
     Public ReadOnly Property CLRVessel As Vessel Implements ICraneLogsReport.Vessel
@@ -68,7 +60,7 @@ Public Class CLRClass
     Public ReadOnly Property TotalBerthHours As Double Implements ICraneLogsReport.TotalBerthHours
         Get
             With CLRVessel
-                Return getSpanHours(.ATA, .ATD)
+                Return GetSpanHours(.ATA, .ATD)
             End With
         End Get
     End Property
@@ -93,7 +85,7 @@ Public Class CLRClass
 
     Public ReadOnly Property GrossVesselWorkingTime As Double Implements ICraneLogsReport.GrossVesselWorkingTime
         Get
-            Return getSpanHours(FirstMove, LastMove)
+            Return GetSpanHours(FirstMove, LastMove)
         End Get
     End Property
 
@@ -167,15 +159,19 @@ Public Class CLRClass
         Dim refkeyCrane As Integer
         Dim insertcommand As New ADODB.Command
         insertcommand.ActiveConnection = OPConnection
-        datenow = Date.Now 'get date   
+        DateNow = Date.Now 'get date   
 
 #Region "Save Crane Logs Report"
         insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[reports_clr]
            ([registry]
+           ,[registry_refley]
            ,[vslname]
+           ,[owner]
            ,[owner_refkey]
+           ,[last_port]
            ,[last_port_refkey]
+           ,[next_port]
            ,[next_port_refkey]
            ,[ata]
            ,[atd]
@@ -185,18 +181,22 @@ INSERT INTO [opreports].[dbo].[reports_clr]
            ,[created]
            ,[userid])
      VALUES
-           ('{CLRVessel.Registry}'
+           ('{ReportFunctions.GetRefkey(KeyType.Registry, CLRVessel.Registry)}'
+           ,'{CLRVessel.Registry}'
            ,'{CLRVessel.Name}'
-           ,{GetRefkey(KeyType.Shipline, CLRVessel.Owner)}
-           ,{GetRefkey(KeyType.Port, Me.LastPort)}
-           ,{GetRefkey(KeyType.Port, Me.NextPort)}
+           ,'{CLRVessel.Owner}'
+           ,{ReportFunctions.GetRefkey(KeyType.Shipline, CLRVessel.Owner)}
+           ,'{Me.LastPort}'
+           ,{ReportFunctions.GetRefkey(KeyType.Port, Me.LastPort)}
+           ,'{Me.NextPort}'
+           ,{ReportFunctions.GetRefkey(KeyType.Port, Me.NextPort)}
            ,'{CLRVessel.ATA}'
            ,'{CLRVessel.ATD}'
            ,'{Me.FirstMove}'
            ,'{Me.LastMove}'
            ,{Me.TotalMoves}
-           ,'{datenow}'
-           ,'{username}'
+           ,'{DateNow}'
+           ,'{UserName}'
            )
 
       Select Scope_Identity() as NewID
@@ -209,12 +209,16 @@ INSERT INTO [opreports].[dbo].[reports_clr]
             insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[clr_berthdelays]
            ([clr_refkey]
+           ,[registry]
+           ,[berthdelay]
            ,[berthdelay_refkey]
            ,[delaystart]
            ,[delayend])
      VALUES
            ({refkeyCLR}
-           ,{GetRefkey(KeyType.BerthDelay, bhdrow("berthdelay").ToString)}
+           ,{CLRVessel.Registry}
+           ,'{bhdrow("berthdelay").ToString}'
+           ,{ReportFunctions.GetRefkey(KeyType.BerthDelay, bhdrow("berthdelay").ToString)}
            ,'{bhdrow("delaystart").ToString}'
            ,'{bhdrow("delayend").ToString}')
 "
@@ -226,13 +230,17 @@ INSERT INTO [opreports].[dbo].[clr_berthdelays]
             'save crane then get generated refkey
             insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane]
-           ([qc_refkey]
+           ([qc_shortname]
+           ,[qc_refkey]
+           ,[registry]
            ,[clr_refkey]
            ,[first_move]
            ,[lastmove]
            ,[moves])
      VALUES
-           ({GetRefkey(KeyType.QuayCrane, crn.CraneName)}
+           ('{crn.CraneName}'
+           ,{ReportFunctions.GetRefkey(KeyType.QuayCrane, crn.CraneName)}
+           ,'{CLRVessel.Registry}'
            ,{refkeyCLR}
            ,'{crn.FirstMove}'
            ,'{crn.LastMove}'
@@ -248,18 +256,26 @@ INSERT INTO [opreports].[dbo].[crane]
             For Each mve As DataRow In crn.Moves.Container.Rows
                 insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_containers]
-           ([qc_refkey]
+           ([crane_refkey]
+           ,[qc_shortname]
            ,[move_kind]
+           ,[move_kind_refkey]
            ,[ctrtyp]
-           ,[freight]
+           ,[ctrtyp_refkey]
+           ,[freigh]
+           ,[freight_refkey]
            ,[20]
            ,[40]
            ,[45])
      VALUES
            ({refkeyCrane}
-           ,{GetRefkey(KeyType.Move_kind, mve("move_kind").ToString)}
-           ,{GetRefkey(KeyType.Move_kind, mve("ctrtyp").ToString)}
-           ,{GetRefkey(KeyType.Move_kind, mve("freight").ToString)}
+           ,'{crn.CraneName}'
+           ,'{mve("move_kind").ToString}'
+           ,{ReportFunctions.GetRefkey(KeyType.Move_kind, mve("move_kind").ToString)}
+           ,'{mve("ctrtyp").ToString}'
+           ,{ReportFunctions.GetRefkey(KeyType.Move_kind, mve("ctrtyp").ToString)}
+           ,'{mve("freight").ToString}'
+           ,{ReportFunctions.GetRefkey(KeyType.Move_kind, mve("freight").ToString)}
            ,{mve("cntsze20").ToString}
            ,{mve("cntsze40").ToString}
            ,{mve("cntsze45").ToString}
@@ -268,7 +284,7 @@ INSERT INTO [opreports].[dbo].[crane_containers]
             Next
 
             'save gearbox moves
-            For Each mve As DataRow In crn.Moves.Container.Rows
+            For Each mve As DataRow In crn.Moves.Gearbox.Rows
                 insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_gearboxes]
            ([qc_refkey]
@@ -278,7 +294,7 @@ INSERT INTO [opreports].[dbo].[crane_gearboxes]
            ,[40])
      VALUES
            ({refkeyCrane}
-           ,{GetRefkey(KeyType.Move_kind, mve("move_kind").ToString)}
+           ,{ReportFunctions.GetRefkey(KeyType.Move_kind, mve("move_kind").ToString)}
            ,{mve("baynum").ToString}
            ,{mve("cntsze20").ToString}
            ,{mve("cntsze40").ToString}
@@ -287,7 +303,7 @@ INSERT INTO [opreports].[dbo].[crane_gearboxes]
             Next
 
             'save hatchcover moves
-            For Each mve As DataRow In crn.Moves.Container.Rows
+            For Each mve As DataRow In crn.Moves.Hatchcover.Rows
                 insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_hatchcovers]
            ([qc_refkey]
@@ -297,7 +313,7 @@ INSERT INTO [opreports].[dbo].[crane_hatchcovers]
            ,[40])
      VALUES
            ({refkeyCrane}
-           ,{GetRefkey(KeyType.Move_kind, mve("move_kind").ToString)}
+           ,{ReportFunctions.GetRefkey(KeyType.Move_kind, mve("move_kind").ToString)}
            ,{mve("baynum").ToString}
            ,{mve("cntsze20").ToString}
            ,{mve("cntsze40").ToString}
@@ -306,7 +322,8 @@ INSERT INTO [opreports].[dbo].[crane_hatchcovers]
             Next
 
             'save delays
-            For Each mve As DataRow In crn.Moves.Container.Rows
+            'deductable
+            For Each mve As DataRow In crn.Delays.Deductable.Rows
                 insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_delays]
            ([qc_refkey]
@@ -316,7 +333,45 @@ INSERT INTO [opreports].[dbo].[crane_delays]
            ,[delayend])
      VALUES
            ({refkeyCrane}
-           ,{GetRefkey(KeyType.Delaykind, mve("delaykind"))}
+           ,{ReportFunctions.GetRefkey(KeyType.Delaykind, "Deductable")}
+           ,'{mve("description").ToString}'
+           ,'{mve("delaystart").ToString}'
+           ,'{mve("delayend").ToString}'
+"
+                insertcommand.Execute()
+            Next
+
+            'break
+            For Each mve As DataRow In crn.Delays.Break.Rows
+                insertcommand.CommandText = $"
+INSERT INTO [opreports].[dbo].[crane_delays]
+           ([qc_refkey]
+           ,[delay_kind]
+           ,[description]
+           ,[delaystart]
+           ,[delayend])
+     VALUES
+           ({refkeyCrane}
+           ,{ReportFunctions.GetRefkey(KeyType.Delaykind, "Breaktime")}
+           ,'{mve("description").ToString}'
+           ,'{mve("delaystart").ToString}'
+           ,'{mve("delayend").ToString}'
+"
+                insertcommand.Execute()
+            Next
+
+            'nondeductable
+            For Each mve As DataRow In crn.Delays.Nondeductable.Rows
+                insertcommand.CommandText = $"
+INSERT INTO [opreports].[dbo].[crane_delays]
+           ([qc_refkey]
+           ,[delay_kind]
+           ,[description]
+           ,[delaystart]
+           ,[delayend])
+     VALUES
+           ({refkeyCrane}
+           ,{ReportFunctions.GetRefkey(KeyType.Delaykind, "Nondeductable")}
            ,'{mve("description").ToString}'
            ,'{mve("delaystart").ToString}'
            ,'{mve("delayend").ToString}'
@@ -326,8 +381,20 @@ INSERT INTO [opreports].[dbo].[crane_delays]
         Next
     End Sub
 
-    Public Sub RetrieveData() Implements IReportswSave.RetrieveData
+    Public Sub RetrieveData() Implements IReportswSave.RetrieveData 'different implementation; used only if clr is existing
+        Dim cranelogRetriever As New ADODB.Command
+        cranelogRetriever.ActiveConnection = OPConnection
 
+        'GET Refkey
+        cranelogRetriever.CommandText = $"
+SELECT [refkey]
+FROM [opreports].[dbo].[ref_registry]
+Where registry = {CLRVessel.Registry}"
+        Dim cranelogRefkey As Integer = cranelogRetriever.Execute.Fields("refkey").Value.ToString 'tostring just to be safe
+
+        'get bhd using cranelogRefkey
+        cranelogRetriever.CommandText = $"
+"
     End Sub
 
     Public Sub IntializeCrane(GantryName As String) Implements ICraneLogsReport.IntializeCrane
@@ -335,48 +402,18 @@ INSERT INTO [opreports].[dbo].[crane_delays]
         Crane.Add(New Crane(GantryName, CLRVessel.Registry, N4Connection))
     End Sub
 
-    Public Function Exists(Registry As String) As Boolean Implements IReportswSave.Exists
-        Throw New NotImplementedException()
-    End Function
+    Public Function Exists() As Boolean Implements IReportswSave.Exists ' no need register parameter since this can only be used when clr class is instantiated
+        Dim craneLogsFinder As New ADODB.Command
+        craneLogsFinder.ActiveConnection = OPConnection
+        craneLogsFinder.CommandText = $"Select refkey from reports_clr where registry = '{CLRVessel.Registry}'" 'shortcut to registry since they will only point to the same thing  
 
-    Private Function GetRefkey(keyName As KeyType, keyValue As String) As Integer
-        Dim refkeyCommand As New ADODB.Command
-        Dim insertRefkey As String
-        Dim selectRefkey As String
-        Dim refkey As Integer
-        Dim database As String
-        Dim field As String
+        Dim craneLogs As New ADODB.Recordset
+        craneLogs = craneLogsFinder.Execute()
 
-        Select Case keyName
-            Case KeyType.Port
-                database = "ref_ports"
-                field = "port"
-            Case KeyType.Shipline
-                database = "ref_shiplines"
-                field = "shipline"
-            Case KeyType.BerthDelay
-                database = "ref_berthdelays"
-                field = "berthdelay"
-            Case KeyType.QuayCrane
-                database = "ref_quaycranes"
-                field = "qc_shortname"
-            Case 
-        End Select
+        With craneLogs
+            Return Not (.BOF And .EOF)
+        End With
 
-        refkeyCommand.ActiveConnection = OPConnection
-
-        insertRefkey = $"insert into {database}({field}) values('{keyValue}') select scope_identity() as newid "
-        selectRefkey = $"select refkey from {database} where {field} = '{keyValue}'"
-        ' $ for string interpolation, to lessen string concatenation when building sql statements etc.
-        Try
-            refkeyCommand.CommandText = selectRefkey
-            refkey = refkeyCommand.Execute.Fields("refkey").Value.ToString
-        Catch 'insert shipline then return refkey
-            refkeyCommand.CommandText = insertRefkey
-            refkey = refkeyCommand.Execute.Fields("newid").Value
-        End Try
-
-        Return refkey
     End Function
 
 End Class

@@ -17,24 +17,28 @@ Public Class CLRForm
     Private ctlCrane As CraneCtl
     Private username As String
 
-    Private Sub mapDetails()
+    Private Sub MapDetails()
         With clsCLR.CLRVessel
             mskShippingLine.Text = .Owner
             mskVessel.Text = .Name
             mskRegistry.Text = .Registry
             mskVoyage.Text = .InboundVoyage & " - " & .OutboundVoyage
-            mskATA.Text = getMilTime(.ATA)
-            mskATD.Text = getMilTime(.ATD)
+            mskATA.Text = GetMilTime(.ATA)
+            mskATD.Text = GetMilTime(.ATD)
         End With
     End Sub
 
     Private Sub CLRForm_Load(sender As Object, e As EventArgs) Handles Me.Load
-        mapDetails()
+        MapDetails()
 
         'ADD BERTHING HOUR DELAYS TO DELAYSUM
         DelaySum.Rows.Add({"Vessel Formalities"})
         DelaySum.Rows.Add({"GOB Unlashing and GC positioning"})
         DelaySum.Rows.Add({"Waiting for Tug Boat / POB"})
+
+        If clsCLR.Exists() Then
+            clsCLR.RetrieveData()
+        End If
     End Sub
 
     Private Sub mskATA_LostFocus(sender As Object, e As EventArgs) Handles mskATA.LostFocus
@@ -62,6 +66,8 @@ Public Class CLRForm
                 ctlCrane = New CraneCtl(tempcrane)
                 TabControl1.TabPages.Add(ctlCrane.tabCraneLog.TabPages("tab" & strGC))
                 TabControl1.SelectTab("tab" & strGC)
+                ctlCrane.mapMoves()
+
             End With
         End Try
 
@@ -75,8 +81,8 @@ Public Class CLRForm
         Select Case tabSelected.Text.ToString
             Case "General Information"
                 With clsCLR
-                    mskFirstmve.Text = getMilTime(.FirstMove)
-                    mskLastmve.Text = getMilTime(.LastMove)
+                    mskFirstmve.Text = GetMilTime(.FirstMove)
+                    mskLastmve.Text = GetMilTime(.LastMove)
                     mskMoves.Text = .TotalMoves
                     mskDensity.Text = .CraneDensity
                     mskBerthHours.Text = .TotalBerthHours
@@ -153,8 +159,8 @@ Public Class CLRForm
         rowindex = desclist.IndexOf(cmbDelay.Text)
 
         With DelaySum.Rows(rowindex).Cells
-            mskDelaystart.Text = getMilTime(.Item(1).Value)
-            mskDelayend.Text = getMilTime(.Item(2).Value)
+            mskDelaystart.Text = GetMilTime(.Item(1).Value)
+            mskDelayend.Text = GetMilTime(.Item(2).Value)
         End With
     End Sub
 
@@ -172,11 +178,11 @@ Public Class CLRForm
             rowindex = desclist.IndexOf(cmbDelay.Text)
 
             With DelaySum.Rows(rowindex).Cells
-                delaystart = getDateTime(mskDelaystart.Text)
-                delayend = getDateTime(mskDelayend.Text)
+                delaystart = GetDateTime(mskDelaystart.Text)
+                delayend = GetDateTime(mskDelayend.Text)
                 .Item(1).Value = delaystart
                 .Item(2).Value = delayend
-                .Item(3).Value = getSpanHours(delaystart, delayend)
+                .Item(3).Value = GetSpanHours(delaystart, delayend)
             End With
 
 

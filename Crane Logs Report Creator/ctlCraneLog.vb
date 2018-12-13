@@ -13,16 +13,15 @@ Public Class CraneCtl
             Me.lblGantry.Text = .CraneName
         End With
         crnCrane = Crane
-        mapMoves()
-        Call ContainerDsc_LostFocus(ContainerDsc, New EventArgs)
-        Call ContainerLoad_LostFocus(ContainerDsc, New EventArgs)
 
     End Sub
     Private crnCrane As Crane
-    Private Sub mapMoves()
+    Public Sub mapMoves() 'turned to public for procing only by addcrane button
         SummarizeMoves(crnCrane.Moves.Tables("Inbound"), ContainerDsc)
         SummarizeMoves(crnCrane.Moves.Tables("Outbound"), ContainerLoad)
 
+        Call ContainerDsc_LostFocus(ContainerDsc, New EventArgs) 'replaced here from new for integrity of access modifier 
+        Call ContainerLoad_LostFocus(ContainerDsc, New EventArgs)
 
     End Sub
     Private Sub SummarizeMoves(Moves As DataTable, ByRef SumMoves As DataGridView)
@@ -202,13 +201,13 @@ Public Class CraneCtl
     End Sub
 
     Private Sub mskFirst_LostFocus(sender As Object, e As EventArgs) Handles mskFirst.LostFocus
-        crnCrane.FirstMove = ReportFunctions.getDateTime(mskFirst.Text)
+        crnCrane.FirstMove = ReportFunctions.GetDateTime(mskFirst.Text)
 
         Refresh_info()
     End Sub
 
     Private Sub mskLast_LostFocus(sender As Object, e As EventArgs) Handles mskLast.LostFocus
-        crnCrane.LastMove = ReportFunctions.getDateTime(mskLast.Text)
+        crnCrane.LastMove = ReportFunctions.GetDateTime(mskLast.Text)
 
         Refresh_info()
     End Sub
@@ -244,8 +243,8 @@ Public Class CraneCtl
     Private Sub btnAddDelay_Click(sender As Object, e As EventArgs) Handles btnAddDelay.Click
         Dim delaykind As String = cmbDelays.Text
         Dim description As String = mskDescription.Text
-        Dim delayfrom As Date = ReportFunctions.getDateTime(mskFrom.Text)
-        Dim delayto As Date = ReportFunctions.getDateTime(mskTo.Text)
+        Dim delayfrom As Date = ReportFunctions.GetDateTime(mskFrom.Text)
+        Dim delayto As Date = ReportFunctions.GetDateTime(mskTo.Text)
         Dim span As TimeSpan = delayto.Subtract(delayfrom)
 
 
@@ -255,22 +254,26 @@ Public Class CraneCtl
     End Sub
 
     Private Sub btnCtnAdd_Click(sender As Object, e As EventArgs) Handles btnCtnAdd.Click
-        Dim gridname As String
-        Dim dgview As DataGridView
-        Select Case cmbMoveknd.Text
-            Case "DISCHARGE"
-                gridname = "ContainerDsc"
-            Case "LOADING"
-                gridname = "ContainerLoad"
-        End Select
-        dgview = tabCntrs.Controls(gridname)
-        With dgview
-            .Rows.Add({cmdCntmove.Text, txtBox20.Text, txtBox40.Text, txtBox45.Text})
-        End With
+        'Dim gridname As String
+        'Dim dgview As DataGridView
+        'Select Case cmbMoveknd.Text
+        '    Case "DISCHARGE"
+        '        gridname = "ContainerDsc"
+        '    Case "LOADING"
+        '        gridname = "ContainerLoad"
+        'End Select
+        'dgview = tabCntrs.Controls(gridname)
+        'With dgview
+        '    .Rows.Add({cmdCntmove.Text, txtBox20.Text, txtBox40.Text, txtBox45.Text})
+        'End With
+
+        crnCrane.Moves.Container.AddContainerRow(cmdCntmove.Text, StrConv(cmbMoveknd.Text, vbProperCase), txtBox20.Text, txtBox40.Text, txtBox45.Text)
+        ContainerDsc.
+
 
         ContainerDsc_LostFocus(ContainerDsc, New EventArgs)
         ContainerLoad_LostFocus(ContainerLoad, New EventArgs)
-        ContainerMoves()
+        'ContainerMoves()
     End Sub
 
     Private Sub btnGearAdd_Click(sender As Object, e As EventArgs) Handles btnGearAdd.Click
