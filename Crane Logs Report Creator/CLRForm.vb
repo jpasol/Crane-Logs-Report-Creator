@@ -1,4 +1,5 @@
 ﻿Imports Reports.ReportFunctions
+Imports Reports
 Public Class CLRForm
     Public Sub New(Registry As String, ByRef N4Connection As ADODB.Connection, ByRef OPConnection As ADODB.Connection, Username As String)
 
@@ -38,6 +39,13 @@ Public Class CLRForm
 
         If clsCLR.Exists() Then
             clsCLR.RetrieveData()
+
+            For Each crn As Crane In clsCLR.Crane
+                Dim CraneControl As New CraneCtl(crn)
+                CraneControl.PopulateDataGridViews()
+                TabControl1.TabPages.Add(CraneControl.tabCraneLog.TabPages($"tab{crn.CraneName}"))
+
+            Next
         End If
     End Sub
 

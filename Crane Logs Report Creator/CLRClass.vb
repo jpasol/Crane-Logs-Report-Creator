@@ -382,6 +382,14 @@ INSERT INTO [opreports].[dbo].[crane_delays]
     End Sub
 
     Public Sub RetrieveData() Implements IReportswSave.RetrieveData 'different implementation; used only if clr is existing
+        Dim cranelogsRefkey As Integer = GetRefkey()
+        GetBerthDelays(cranelogsRefkey)
+
+
+
+    End Sub
+
+    Private Function GetRefkey() As Integer
         Dim cranelogRetriever As New ADODB.Command
         cranelogRetriever.ActiveConnection = OPConnection
 
@@ -390,12 +398,84 @@ INSERT INTO [opreports].[dbo].[crane_delays]
 SELECT [refkey]
 FROM [opreports].[dbo].[ref_registry]
 Where registry = {CLRVessel.Registry}"
-        Dim cranelogRefkey As Integer = cranelogRetriever.Execute.Fields("refkey").Value.ToString 'tostring just to be safe
 
-        'get bhd using cranelogRefkey
-        cranelogRetriever.CommandText = $"
+        Return cranelogRetriever.Execute.Fields("refkey").Value.ToString 'tostring just to be safe
+    End Function
+    Private Sub GetBerthDelays(Refkey As Integer)
+        Dim berthdelayRetriever As New ADODB.Command
+        berthdelayRetriever.ActiveConnection = OPConnection
+        berthdelayRetriever.CommandText = $"SELECt [berthdelay]
+      ,[delaystart]
+      ,[delayend]
+  FROM [opreports].[dbo].[clr_berthdelays]
+	
+	WHERE [clr_refkey] = {Refkey}
 "
+        Dim dataAdapter As New OleDb.OleDbDataAdapter
+        dataAdapter.Fill(CraneLogsData.BerthingHourDelays, berthdelayRetriever.Execute) 'shortcut to fill instead of copying the returned recordset of execute
+
     End Sub
+    Private Sub GetCranes(Refkey As Integer)
+        Dim craneRetriever As ADODB.Command
+        craneRetriever.ActiveConnection = OPConnection
+        craneRetriever.CommandText = $"
+SELECT  [refkey
+      ,[qc_shortname]
+      ,[first_move]
+      ,[last_move]
+      ,[moves]
+  FROM [opreports].[dbo].[crane]
+	
+	WHERE [clr_refkey] = {Refkey}
+"
+        Dim cranes As ADODB.Recordset = craneRetriever.Execute 'shortcut to fill recordset with execute
+        With cranes
+            Try
+                .MoveFirst()
+            Finally
+                While Not (.EOF Or .BOF)
+                    Dim temporaryCrane As New Crane(.Fields("qc_shortname").Value, CLRVessel.Registry, N4Connection)
+                    temporaryCrane.FirstMove = .Fields("first_move").Value
+                    temporaryCrane.LastMove = .Fields("last_move").Value
+
+                    Dim craneRefkey = .Fields("refkey").Value
+                    Dim informationFiller As New OleDb.OleDbDataAdapter
+                    With informationFiller
+                        .Fill(temporaryCrane.Moves.Container, GetContainerMoves(craneRefkey))
+                        .Fill(temporaryCrane.Moves.Gearbox, GetGearboxMoves(craneRefkey))
+                        .Fill(temporaryCrane.Moves.Hatchcover, GetHatchcoverMoves(craneRefkey))
+                        .Fill(temporaryCrane.Delays, GetCraneDelays(craneRefkey))
+                    End With
+                End While
+            End Try
+        End With
+    End Sub
+
+    Private Function GetGearboxMoves(craneRefkey As Object) As ADODB.Recordset
+        Dim gearboxMoves As New ADODB.Command
+        With gearboxMoves
+            .ActiveConnection = OPConnection
+            .CommandText = & "
+"
+        End With
+    End Function
+
+    Private Function GetContainerMoves(craneRefkey As Object) As ADODB.Recordset
+        Dim containerMoves As New ADODB.Command
+        containerMoves.ActiveConnection = OPConnection
+        containerMoves.CommandText = $"
+SELECT [move_kind]
+      ,[ctrtyp]
+      ,[freigh]
+      ,[20]
+      ,[40]
+      ,[45]
+  FROM [opreports].[dbo].[crane_containers]
+	
+	WHERE [crane_refkey] = {craneRefkey}
+"
+        Return containerMoves.Execute
+    End Function
 
     Public Sub IntializeCrane(GantryName As String) Implements ICraneLogsReport.IntializeCrane
         Dim number As Integer = GantryName.Substring(GantryName.Length - 1, 1)
