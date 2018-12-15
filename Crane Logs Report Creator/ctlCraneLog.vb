@@ -15,6 +15,11 @@ Public Class CraneCtl
         End With
         crnCrane = Crane
 
+        With ContainerDsc
+            .AutoGenerateColumns = False
+            .Columns(0).DataPropertyName = "move_kind"
+        End With
+
     End Sub
     Private crnCrane As Crane
     Public Sub mapMoves() 'turned to public for procing only by addcrane button

@@ -208,15 +208,15 @@ INSERT INTO [opreports].[dbo].[reports_clr]
         For Each bhdrow As DataRow In CraneLogsData.BerthingHourDelays.Rows
             insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[clr_berthdelays]
-           ([clr_refkey]
-           ,[registry]
+           ([registry]
+           ,[clr_refkey]
            ,[berthdelay]
            ,[berthdelay_refkey]
            ,[delaystart]
            ,[delayend])
      VALUES
-           ({refkeyCLR}
-           ,{CLRVessel.Registry}
+           ({CLRVessel.Registry}
+           ,{refkeyCLR}       
            ,'{bhdrow("berthdelay").ToString}'
            ,{ReportFunctions.GetRefkey(KeyType.BerthDelay, bhdrow("berthdelay").ToString)}
            ,'{bhdrow("delaystart").ToString}'
@@ -226,7 +226,9 @@ INSERT INTO [opreports].[dbo].[clr_berthdelays]
         Next
 #End Region
 
+
         For Each crn As Crane In Crane
+            Dim quaycraneRefkey As Integer = ReportFunctions.GetRefkey(KeyType.QuayCrane, crn.CraneName)
             'save crane then get generated refkey
             insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane]
@@ -235,11 +237,11 @@ INSERT INTO [opreports].[dbo].[crane]
            ,[registry]
            ,[clr_refkey]
            ,[first_move]
-           ,[lastmove]
+           ,[last_move]
            ,[moves])
      VALUES
            ('{crn.CraneName}'
-           ,{ReportFunctions.GetRefkey(KeyType.QuayCrane, crn.CraneName)}
+           ,{quaycraneRefkey}
            ,'{CLRVessel.Registry}'
            ,{refkeyCLR}
            ,'{crn.FirstMove}'
@@ -258,11 +260,12 @@ INSERT INTO [opreports].[dbo].[crane]
 INSERT INTO [opreports].[dbo].[crane_containers]
            ([crane_refkey]
            ,[qc_shortname]
+           ,[qc_refkey]
            ,[move_kind]
            ,[move_kind_refkey]
            ,[ctrtyp]
            ,[ctrtyp_refkey]
-           ,[freigh]
+           ,[freight]
            ,[freight_refkey]
            ,[20]
            ,[40]
@@ -270,6 +273,7 @@ INSERT INTO [opreports].[dbo].[crane_containers]
      VALUES
            ({refkeyCrane}
            ,'{crn.CraneName}'
+           ,{quaycraneRefkey}
            ,'{mve("move_kind").ToString}'
            ,{ReportFunctions.GetRefkey(KeyType.Move_kind, mve("move_kind").ToString)}
            ,'{mve("ctrtyp").ToString}'
@@ -287,13 +291,17 @@ INSERT INTO [opreports].[dbo].[crane_containers]
             For Each mve As DataRow In crn.Moves.Gearbox.Rows
                 insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_gearboxes]
-           ([qc_refkey]
+           ([crane_refkey]
+           ,[qc_shortname]
+           ,[qc_refkey]
            ,[move_kind]
            ,[baynum]
            ,[20]
            ,[40])
      VALUES
            ({refkeyCrane}
+           ,{crn.CraneName}
+           ,{quaycraneRefkey}
            ,{ReportFunctions.GetRefkey(KeyType.Move_kind, mve("move_kind").ToString)}
            ,{mve("baynum").ToString}
            ,{mve("cntsze20").ToString}
@@ -306,13 +314,17 @@ INSERT INTO [opreports].[dbo].[crane_gearboxes]
             For Each mve As DataRow In crn.Moves.Hatchcover.Rows
                 insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_hatchcovers]
-           ([qc_refkey]
+           ([crane_refkey]
+           ,[qc_shortname]
+           ,[qc_refkey]
            ,[move_kind]
            ,[baynum]
            ,[20]
            ,[40])
      VALUES
            ({refkeyCrane}
+           ,{crn.CraneName}
+           ,{quaycraneRefkey}
            ,{ReportFunctions.GetRefkey(KeyType.Move_kind, mve("move_kind").ToString)}
            ,{mve("baynum").ToString}
            ,{mve("cntsze20").ToString}
@@ -323,58 +335,76 @@ INSERT INTO [opreports].[dbo].[crane_hatchcovers]
 
             'save delays
             'deductable
-            For Each mve As DataRow In crn.Delays.Deductable.Rows
+            For Each delay As DataRow In crn.Delays.Deductable.Rows
                 insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_delays]
-           ([qc_refkey]
+           ([crane_refkey]
+           ,[qc_shortname]
+           ,[qc_refkey]
            ,[delay_kind]
+           ,[delay_kind_refkey]
            ,[description]
            ,[delaystart]
            ,[delayend])
      VALUES
            ({refkeyCrane}
+           ,{crn.CraneName}
+           ,{quaycraneRefkey}
+           ,{"Deductable"}
            ,{ReportFunctions.GetRefkey(KeyType.Delaykind, "Deductable")}
-           ,'{mve("description").ToString}'
-           ,'{mve("delaystart").ToString}'
-           ,'{mve("delayend").ToString}'
+           ,'{delay("description").ToString}'
+           ,'{delay("delaystart").ToString}'
+           ,'{delay("delayend").ToString}'
 "
                 insertcommand.Execute()
             Next
 
             'break
-            For Each mve As DataRow In crn.Delays.Break.Rows
+            For Each delay As DataRow In crn.Delays.Break.Rows
                 insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_delays]
-           ([qc_refkey]
+           ([crane_refkey]
+           ,[qc_shortname]
+           ,[qc_refkey]
            ,[delay_kind]
+           ,[delay_kind_refkey]
            ,[description]
            ,[delaystart]
            ,[delayend])
      VALUES
            ({refkeyCrane}
+           ,{crn.CraneName}
+           ,{quaycraneRefkey}
+           ,{"Breaktime"}
            ,{ReportFunctions.GetRefkey(KeyType.Delaykind, "Breaktime")}
-           ,'{mve("description").ToString}'
-           ,'{mve("delaystart").ToString}'
-           ,'{mve("delayend").ToString}'
+           ,'{delay("description").ToString}'
+           ,'{delay("delaystart").ToString}'
+           ,'{delay("delayend").ToString}'
 "
                 insertcommand.Execute()
             Next
 
             'nondeductable
-            For Each mve As DataRow In crn.Delays.Nondeductable.Rows
+            For Each delay As DataRow In crn.Delays.Nondeductable.Rows
                 insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_delays]
-           ([qc_refkey]
+           ([crane_refkey]
+           ,[qc_shortname]
+           ,[qc_refkey]
            ,[delay_kind]
+           ,[delay_kind_refkey]
            ,[description]
            ,[delaystart]
            ,[delayend])
      VALUES
            ({refkeyCrane}
+           ,{crn.CraneName}
+           ,{quaycraneRefkey}
+           ,{"Nondeductable"}
            ,{ReportFunctions.GetRefkey(KeyType.Delaykind, "Nondeductable")}
-           ,'{mve("description").ToString}'
-           ,'{mve("delaystart").ToString}'
-           ,'{mve("delayend").ToString}'
+           ,'{delay("description").ToString}'
+           ,'{delay("delaystart").ToString}'
+           ,'{delay("delayend").ToString}'
 "
                 insertcommand.Execute()
             Next
@@ -444,19 +474,81 @@ SELECT  [refkey
                         .Fill(temporaryCrane.Moves.Container, GetContainerMoves(craneRefkey))
                         .Fill(temporaryCrane.Moves.Gearbox, GetGearboxMoves(craneRefkey))
                         .Fill(temporaryCrane.Moves.Hatchcover, GetHatchcoverMoves(craneRefkey))
-                        .Fill(temporaryCrane.Delays, GetCraneDelays(craneRefkey))
+
+                        PopulateDelays(temporaryCrane, GetCraneDelays(craneRefkey))
+
+
                     End With
                 End While
             End Try
         End With
     End Sub
 
+    Private Sub PopulateDelays(ByRef temporaryCrane As Crane, recordset As Recordset)
+        With recordset
+            Try
+                .MoveFirst()
+            Finally
+                While Not (.EOF Or .BOF)
+                    Dim tableName As String = .Fields("delay_kind").Value
+                    Dim description As String = .Fields("description").Value
+                    Dim delayFrom As Date = .Fields("delayfrom").Value
+                    Dim delayTo As Date = .Fields("delayto").Value
+                    Dim span As TimeSpan = delayTo.Subtract(delayFrom)
+
+                    temporaryCrane.Delays.Tables.Item(tableName).Rows.Add({description,
+                                                                          delayFrom,
+                                                                          delayTo,
+                                                                          span.TotalHours})
+                End While
+            End Try
+        End With
+    End Sub
+
+    Private Function GetCraneDelays(craneRefkey As Object) As ADODB.Recordset
+        Dim craneDelays As New ADODB.Command
+        craneDelays.ActiveConnection = OPConnection
+        craneDelays.CommandText = $"
+SELECT [delay_kind]
+      ,[description]
+      ,[delaystart]
+      ,[delayend]
+  FROM [opreports].[dbo].[crane_delays]
+    WHERE [crane_refkey] = {craneRefkey}
+"
+        Return craneDelays.Execute
+
+    End Function
+
+    Private Function GetHatchcoverMoves(craneRefkey As Object) As Object
+        Dim hatchCoverMoves As New ADODB.Command
+        With hatchCoverMoves
+            .ActiveConnection = OPConnection
+            .CommandText = $"
+SELECT [move_kind]
+      ,[baynum]
+      ,[20]
+      ,[40]
+  FROM [opreports].[dbo].[crane_hatchcovers]
+    WHERE crane_refkey = {craneRefkey}
+"
+            Return hatchCoverMoves.Execute
+        End With
+    End Function
+
     Private Function GetGearboxMoves(craneRefkey As Object) As ADODB.Recordset
         Dim gearboxMoves As New ADODB.Command
         With gearboxMoves
             .ActiveConnection = OPConnection
-            .CommandText = & "
+            .CommandText = $"
+SELECT [move_kind]
+      ,[baynum]
+      ,[20]
+      ,[40]
+  FROM [opreports].[dbo].[crane_gearboxes]
+    WHERE crane_refkey = {craneRefkey}
 "
+            Return gearboxMoves.Execute
         End With
     End Function
 
@@ -471,7 +563,6 @@ SELECT [move_kind]
       ,[40]
       ,[45]
   FROM [opreports].[dbo].[crane_containers]
-	
 	WHERE [crane_refkey] = {craneRefkey}
 "
         Return containerMoves.Execute
