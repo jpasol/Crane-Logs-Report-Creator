@@ -74,8 +74,8 @@ Public Class CLRForm
                 ctlCrane = New CraneCtl(tempcrane)
                 TabControl1.TabPages.Add(ctlCrane.tabCraneLog.TabPages("tab" & strGC))
                 TabControl1.SelectTab("tab" & strGC)
-                ctlCrane.mapMoves()
-
+                ctlCrane.FillContainerMovesUsingN4Data()
+                ctlCrane.Refresh()
             End With
         End Try
 
@@ -219,5 +219,6 @@ Public Class CLRForm
 
 
     End Sub
+
 
 End Class

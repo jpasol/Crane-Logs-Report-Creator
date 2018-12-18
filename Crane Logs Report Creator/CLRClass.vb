@@ -412,8 +412,11 @@ INSERT INTO [opreports].[dbo].[crane_delays]
     End Sub
 
     Public Sub RetrieveData() Implements IReportswSave.RetrieveData 'different implementation; used only if clr is existing
-        Dim cranelogsRefkey As Integer = GetRefkey()
-        GetBerthDelays(cranelogsRefkey)
+        If Exists() Then
+            Dim cranelogsRefkey As Integer = GetRefkey()
+            GetBerthDelays(cranelogsRefkey)
+            GetCranes(cranelogsRefkey)
+        End If
 
 
 
@@ -427,7 +430,7 @@ INSERT INTO [opreports].[dbo].[crane_delays]
         cranelogRetriever.CommandText = $"
 SELECT [refkey]
 FROM [opreports].[dbo].[ref_registry]
-Where registry = {CLRVessel.Registry}"
+Where registry = '{CLRVessel.Registry}'"
 
         Return cranelogRetriever.Execute.Fields("refkey").Value.ToString 'tostring just to be safe
     End Function
@@ -446,10 +449,10 @@ Where registry = {CLRVessel.Registry}"
 
     End Sub
     Private Sub GetCranes(Refkey As Integer)
-        Dim craneRetriever As ADODB.Command
-        craneRetriever.ActiveConnection = OPConnection
-        craneRetriever.CommandText = $"
-SELECT  [refkey
+        Dim craneRetriever As New ADODB.Command With {
+            .ActiveConnection = OPConnection,
+            .CommandText = $"
+SELECT  [refkey]
       ,[qc_shortname]
       ,[first_move]
       ,[last_move]
@@ -458,10 +461,12 @@ SELECT  [refkey
 	
 	WHERE [clr_refkey] = {Refkey}
 "
-        Dim cranes As ADODB.Recordset = craneRetriever.Execute 'shortcut to fill recordset with execute
-        With cranes
+        }
+
+        With craneRetriever.Execute
             Try
                 .MoveFirst()
+            Catch
             Finally
                 While Not (.EOF Or .BOF)
                     Dim temporaryCrane As New Crane(.Fields("qc_shortname").Value, CLRVessel.Registry, N4Connection)

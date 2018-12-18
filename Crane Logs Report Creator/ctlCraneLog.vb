@@ -15,158 +15,210 @@ Public Class CraneCtl
         End With
         crnCrane = Crane
 
-        With ContainerDsc
-            .AutoGenerateColumns = False
-            .Columns(0).DataPropertyName = "move_kind"
+        ContainerDsc.AutoGenerateColumns = False
+        ContainerLoad.AutoGenerateColumns = False
+        GearboxDsc.AutoGenerateColumns = False
+        GearboxLoad.AutoGenerateColumns = False
+        HatchDsc.AutoGenerateColumns = False
+        HatchLoad.AutoGenerateColumns = False
+
+        With crnCrane
+            dischargeContainers.Table = .Moves.Container
+            loadContainers.Table = .Moves.Container
+            dischargeGearboxes.Table = .Moves.Gearbox
+            loadGearboxes.Table = .Moves.Gearbox
+            openingHatchcovers.Table = .Moves.Hatchcover
+            closingHatchcovers.Table = .Moves.Hatchcover
+            'pending for delays
         End With
 
+        ContainerDsc.DataSource = dischargeContainers
+        ContainerLoad.DataSource = loadContainers
+        GearboxDsc.DataSource = dischargeGearboxes
+        GearboxLoad.DataSource = loadGearboxes
+        HatchDsc.DataSource = openingHatchcovers
+        HatchLoad.DataSource = closingHatchcovers
+
     End Sub
+    Private dischargeContainers As New DataView
+    Private loadContainers As New DataView
+    Private dischargeGearboxes As New DataView
+    Private loadGearboxes As New DataView
+    Private openingHatchcovers As New DataView
+    Private closingHatchcovers As New DataView
+    Private delaysBinding As New BindingSource
+    ' pending for delays
     Private crnCrane As Crane
-    Public Sub mapMoves() 'turned to public for procing only by addcrane button
-        SummarizeMoves(crnCrane.Moves.Tables("Inbound"), ContainerDsc)
-        SummarizeMoves(crnCrane.Moves.Tables("Outbound"), ContainerLoad)
 
-        Call ContainerDsc_LostFocus(ContainerDsc, New EventArgs) 'replaced here from new for integrity of access modifier 
-        Call ContainerLoad_LostFocus(ContainerDsc, New EventArgs)
 
-    End Sub
-    Private Sub SummarizeMoves(Moves As DataTable, ByRef SumMoves As DataGridView)
+    Public Sub FillContainerMovesUsingN4Data() 'turned to public for procing only by addcrane button
         Dim strFreight() As String = {"FCL", "MTY"}
         Dim cntSizes() As Short = {20, 40, 45}
 
         For Each freight In strFreight
             Dim category As String
-            Dim boxes(3) As String
+            Dim movekind As String
+            Dim boxes(4) As String
 
             If freight = "FCL" Then category = "Full"
             If freight = "MTY" Then category = "Empty"
+
             boxes(0) = category
             For count As Integer = 1 To 3
                 Dim col = count
-                boxes(col) = (From units In Moves
+                boxes(col) = (From units In crnCrane.Moves.Inbound.AsEnumerable.Union(crnCrane.Moves.Outbound.AsEnumerable)
                               Where units("freight_kind") = freight And
                                    units("nominal_length") = "NOM" & cntSizes(col - 1)
                               Select units).Count
+
             Next
-            SumMoves.Rows.Add(boxes)
+            crnCrane.Moves.Container.Rows.Add(boxes)
         Next
+
+        'SummarizeMoves(crnCrane.Moves.Tables("Inbound"))
+        'SummarizeMoves(crnCrane.Moves.Tables("Outbound")
+
+        ''Call ContainerDsc_LostFocus(ContainerDsc, New EventArgs) 'replaced here from new for integrity of access modifier 
+        ''Call ContainerLoad_LostFocus(ContainerDsc, New EventArgs)
+
     End Sub
-    Private Sub ContainerMoves()
-        On Error Resume Next
-        With crnCrane.Moves.Tables("Container")
-            .Clear() 'empty out datatable
-            For Each row As DataGridViewRow In ContainerDsc.Rows 'ADD DSCH DATA GRID VIEW ROWS TO DATATABLE
-                Dim temprow As DataRow = .NewRow
-                temprow("ctrmve") = row.Cells(0).Value
-                temprow("move_kind") = "Discharge"
-                temprow("cntsze20") = row.Cells(1).Value
-                temprow("cntsze40") = row.Cells(2).Value
-                temprow("cntsze45") = row.Cells(3).Value
+    'Private Sub SummarizeMoves(Moves As DataTable, CraneMoves As DataTable)
+    '    Dim strFreight() As String = {"FCL", "MTY"}
+    '    Dim cntSizes() As Short = {20, 40, 45}
 
-                .Rows.Add(temprow)
-            Next
-            For Each row As DataGridViewRow In ContainerLoad.Rows 'ADD LOADING DATA GRID VIEW ROWS TO DATATABLE
-                Dim temprow As DataRow = .NewRow
-                temprow("ctrmve") = row.Cells(0).Value
-                temprow("move_kind") = "Loading"
-                temprow("cntsze20") = row.Cells(1).Value
-                temprow("cntsze40") = row.Cells(2).Value
-                temprow("cntsze45") = row.Cells(3).Value
+    '    For Each freight In strFreight
+    '        Dim category As String
+    '        Dim boxes(3) As String
 
-                .Rows.Add(temprow)
-            Next
+    '        If freight = "FCL" Then category = "Full"
+    '        If freight = "MTY" Then category = "Empty"
+    '        boxes(0) = category
+    '        For count As Integer = 1 To 3
+    '            Dim col = count
+    '            boxes(col) = (From units In Moves
+    '                          Where units("freight_kind") = freight And
+    '                               units("nominal_length") = "NOM" & cntSizes(col - 1)
+    '                          Select units).Count
+    '            CraneMoves.Rows.Add()
+    '        Next
+    '    Next
+    'End Sub
+    'Private Sub ContainerMoves()
+    '    On Error Resume Next
+    '    With crnCrane.Moves.Tables("Container")
+    '        .Clear() 'empty out datatable
+    '        For Each row As DataGridViewRow In ContainerDsc.Rows 'ADD DSCH DATA GRID VIEW ROWS TO DATATABLE
+    '            Dim temprow As DataRow = .NewRow
+    '            temprow("ctrmve") = row.Cells(0).Value
+    '            temprow("move_kind") = "Discharge"
+    '            temprow("cntsze20") = row.Cells(1).Value
+    '            temprow("cntsze40") = row.Cells(2).Value
+    '            temprow("cntsze45") = row.Cells(3).Value
 
-        End With
-        Refresh_info()
-    End Sub
-    Private Sub GearboxMoves()
-        On Error Resume Next
-        With crnCrane.Moves.Tables("Gearbox")
-            .Clear() 'empty out datatable
-            For Each row As DataGridViewRow In GearboxDsc.Rows 'ADD DSCH DATA GRID VIEW ROWS TO DATATABLE
-                If Len(row.Cells(0).Value) <> 0 Then
-                    Dim temprow As DataRow = .NewRow
-                    temprow("move_kind") = "Discharge"
-                    temprow("baynum") = row.Cells(0).Value
-                    temprow("gbxsze20") = row.Cells(1).Value
-                    temprow("gbxsze40") = row.Cells(2).Value
+    '            .Rows.Add(temprow)
+    '        Next
+    '        For Each row As DataGridViewRow In ContainerLoad.Rows 'ADD LOADING DATA GRID VIEW ROWS TO DATATABLE
+    '            Dim temprow As DataRow = .NewRow
+    '            temprow("ctrmve") = row.Cells(0).Value
+    '            temprow("move_kind") = "Loading"
+    '            temprow("cntsze20") = row.Cells(1).Value
+    '            temprow("cntsze40") = row.Cells(2).Value
+    '            temprow("cntsze45") = row.Cells(3).Value
 
-                    .Rows.Add(temprow)
-                End If
-            Next
-            For Each row As DataGridViewRow In GearboxLoad.Rows 'ADD LOADING DATA GRID VIEW ROWS TO DATATABLE
-                If Len(row.Cells(0).Value) <> 0 Then
-                    Dim temprow As DataRow = .NewRow
-                    temprow("move_kind") = "Loading"
-                    temprow("baynum") = row.Cells(0).Value
-                    temprow("gbxsze20") = row.Cells(1).Value
-                    temprow("gbxsze40") = row.Cells(2).Value
+    '            .Rows.Add(temprow)
+    '        Next
 
-                    .Rows.Add(temprow)
-                End If
-            Next
+    '    End With
+    '    Refresh_info()
+    'End Sub
+    'Private Sub GearboxMoves()
+    '    On Error Resume Next
+    '    With crnCrane.Moves.Tables("Gearbox")
+    '        .Clear() 'empty out datatable
+    '        For Each row As DataGridViewRow In GearboxDsc.Rows 'ADD DSCH DATA GRID VIEW ROWS TO DATATABLE
+    '            If Len(row.Cells(0).Value) <> 0 Then
+    '                Dim temprow As DataRow = .NewRow
+    '                temprow("move_kind") = "Discharge"
+    '                temprow("baynum") = row.Cells(0).Value
+    '                temprow("gbxsze20") = row.Cells(1).Value
+    '                temprow("gbxsze40") = row.Cells(2).Value
 
-        End With
-        Refresh_info()
-    End Sub
-    Private Sub HatchMoves()
-        On Error Resume Next
-        With crnCrane.Moves.Tables("Hatchcover")
-                .Clear() 'empty out datatable
-                For Each row As DataGridViewRow In HatchDsc.Rows 'ADD DSCH DATA GRID VIEW ROWS TO DATATABLE
-                    If Len(row.Cells(0).Value) <> 0 Then
-                        Dim temprow As DataRow = .NewRow
-                        temprow("move_kind") = "Discharge"
-                        temprow("baynum") = row.Cells(0).Value
-                        temprow("cvrsze20") = row.Cells(1).Value
-                        temprow("cvrsze40") = row.Cells(2).Value
+    '                .Rows.Add(temprow)
+    '            End If
+    '        Next
+    '        For Each row As DataGridViewRow In GearboxLoad.Rows 'ADD LOADING DATA GRID VIEW ROWS TO DATATABLE
+    '            If Len(row.Cells(0).Value) <> 0 Then
+    '                Dim temprow As DataRow = .NewRow
+    '                temprow("move_kind") = "Loading"
+    '                temprow("baynum") = row.Cells(0).Value
+    '                temprow("gbxsze20") = row.Cells(1).Value
+    '                temprow("gbxsze40") = row.Cells(2).Value
 
-                        .Rows.Add(temprow)
-                    End If
-                Next
-                For Each row As DataGridViewRow In HatchLoad.Rows 'ADD LOADING DATA GRID VIEW ROWS TO DATATABLE
-                    If Len(row.Cells(0).Value) <> 0 Then
-                        Dim temprow As DataRow = .NewRow
-                        temprow("move_kind") = "Loading"
-                        temprow("baynum") = row.Cells(0).Value
-                        temprow("cvrsze20") = row.Cells(1).Value
-                        temprow("cvrsze40") = row.Cells(2).Value
+    '                .Rows.Add(temprow)
+    '            End If
+    '        Next
 
-                        .Rows.Add(temprow)
-                    End If
-                Next
+    '    End With
+    '    Refresh_info()
+    'End Sub
+    'Private Sub HatchMoves()
+    '    On Error Resume Next
+    '    With crnCrane.Moves.Tables("Hatchcover")
+    '            .Clear() 'empty out datatable
+    '            For Each row As DataGridViewRow In HatchDsc.Rows 'ADD DSCH DATA GRID VIEW ROWS TO DATATABLE
+    '                If Len(row.Cells(0).Value) <> 0 Then
+    '                    Dim temprow As DataRow = .NewRow
+    '                    temprow("move_kind") = "Discharge"
+    '                    temprow("baynum") = row.Cells(0).Value
+    '                    temprow("cvrsze20") = row.Cells(1).Value
+    '                    temprow("cvrsze40") = row.Cells(2).Value
 
-            End With
+    '                    .Rows.Add(temprow)
+    '                End If
+    '            Next
+    '            For Each row As DataGridViewRow In HatchLoad.Rows 'ADD LOADING DATA GRID VIEW ROWS TO DATATABLE
+    '                If Len(row.Cells(0).Value) <> 0 Then
+    '                    Dim temprow As DataRow = .NewRow
+    '                    temprow("move_kind") = "Loading"
+    '                    temprow("baynum") = row.Cells(0).Value
+    '                    temprow("cvrsze20") = row.Cells(1).Value
+    '                    temprow("cvrsze40") = row.Cells(2).Value
 
-        Refresh_info()
-    End Sub
-    Private Sub Delays()
-        crnCrane.Delays.Tables("Deductable").Clear()
-        crnCrane.Delays.Tables("Break").Clear()
-        crnCrane.Delays.Tables("Nondeductable").Clear()
+    '                    .Rows.Add(temprow)
+    '                End If
+    '            Next
+
+    '        End With
+
+    '    Refresh_info()
+    'End Sub
+    'Private Sub Delays()
+    '    crnCrane.Delays.Tables("Deductable").Clear()
+    '    crnCrane.Delays.Tables("Break").Clear()
+    '    crnCrane.Delays.Tables("Nondeductable").Clear()
 
 
-        Try
-            For Each row As DataGridViewRow In dgvDelays.Rows
-                Dim table = row.Cells(0).Value
-                Dim temprow As DataRow
-                With crnCrane.Delays.Tables(table)
-                    temprow = .NewRow
+    '    Try
+    '        For Each row As DataGridViewRow In dgvDelays.Rows
+    '            Dim table = row.Cells(0).Value
+    '            Dim temprow As DataRow
+    '            With crnCrane.Delays.Tables(table)
+    '                temprow = .NewRow
 
-                    temprow(0) = row.Cells(1).Value
-                    temprow(1) = row.Cells(2).Value
-                    temprow(2) = row.Cells(3).Value
-                    temprow(3) = row.Cells(4).Value
+    '                temprow(0) = row.Cells(1).Value
+    '                temprow(1) = row.Cells(2).Value
+    '                temprow(2) = row.Cells(3).Value
+    '                temprow(3) = row.Cells(4).Value
 
-                    .Rows.Add(temprow)
-                End With
-            Next
+    '                .Rows.Add(temprow)
+    '            End With
+    '        Next
 
-        Catch ex As Exception
+    '    Catch ex As Exception
 
-        End Try
-        Refresh_info()
-    End Sub
+    '    End Try
+    '    Refresh_info()
+    'End Sub
 
     Private Sub Refresh_info()
         With crnCrane
@@ -218,33 +270,35 @@ Public Class CraneCtl
         Refresh_info()
     End Sub
 
-    Private Sub ContainerDsc_LostFocus(sender As Object, e As EventArgs) Handles ContainerDsc.LostFocus
-        ContainerMoves()
-    End Sub
+    'removed to pave way for dataview
 
-    Private Sub ContainerLoad_LostFocus(sender As Object, e As EventArgs) Handles ContainerLoad.LostFocus
-        ContainerMoves()
-    End Sub
+    'Private Sub ContainerDsc_LostFocus(sender As Object, e As EventArgs) Handles ContainerDsc.LostFocus
+    '    ContainerMoves()
+    'End Sub
 
-    Private Sub GearboxDsc_LostFocus(sender As Object, e As EventArgs) Handles GearboxDsc.LostFocus
-        GearboxMoves()
-    End Sub
+    'Private Sub ContainerLoad_LostFocus(sender As Object, e As EventArgs) Handles ContainerLoad.LostFocus
+    '    ContainerMoves()
+    'End Sub
 
-    Private Sub GearboxLoad_LostFocus(sender As Object, e As EventArgs) Handles GearboxLoad.LostFocus
-        GearboxMoves()
-    End Sub
+    'Private Sub GearboxDsc_LostFocus(sender As Object, e As EventArgs) Handles GearboxDsc.LostFocus
+    '    GearboxMoves()
+    'End Sub
 
-    Private Sub HatchDsc_LostFocus(sender As Object, e As EventArgs) Handles HatchDsc.LostFocus
-        HatchMoves()
-    End Sub
+    'Private Sub GearboxLoad_LostFocus(sender As Object, e As EventArgs) Handles GearboxLoad.LostFocus
+    '    GearboxMoves()
+    'End Sub
 
-    Private Sub HatchLoad_LostFocus(sender As Object, e As EventArgs) Handles HatchLoad.LostFocus
-        HatchMoves()
-    End Sub
+    'Private Sub HatchDsc_LostFocus(sender As Object, e As EventArgs) Handles HatchDsc.LostFocus
+    '    HatchMoves()
+    'End Sub
 
-    Private Sub dgvDelays_LostFocus(sender As Object, e As EventArgs) Handles dgvDelays.LostFocus
-        Delays()
-    End Sub
+    'Private Sub HatchLoad_LostFocus(sender As Object, e As EventArgs) Handles HatchLoad.LostFocus
+    '    HatchMoves()
+    'End Sub
+
+    'Private Sub dgvDelays_LostFocus(sender As Object, e As EventArgs) Handles dgvDelays.LostFocus
+    '    Delays()
+    'End Sub
 
     Private Sub btnAddDelay_Click(sender As Object, e As EventArgs) Handles btnAddDelay.Click
         Dim delayTable As DataTable = crnCrane.Delays.Tables(cmbDelays.Text)
@@ -259,74 +313,80 @@ Public Class CraneCtl
     Private Sub btnCtnAdd_Click(sender As Object, e As EventArgs) Handles btnCtnAdd.Click
 
         crnCrane.Moves.Container.AddContainerRow(cmdCntmove.Text, StrConv(cmbMoveknd.Text, vbProperCase), txtBox20.Text, txtBox40.Text, txtBox45.Text)
-        PopulateDataGridViews()
-
+        'PopulateDataGridViews()
+        ContainerDsc.Refresh()
+        ContainerLoad.Refresh()
     End Sub
 
     Private Sub btnGearAdd_Click(sender As Object, e As EventArgs) Handles btnGearAdd.Click
 
         crnCrane.Moves.Gearbox.AddGearboxRow(cmbGearmove.Text, txtGearbay.Text, txtGear20.Text, txtGear40.Text)
 
-        PopulateDataGridViews()
+        'PopulateDataGridViews()
+        GearboxDsc.Refresh()
+        GearboxLoad.Refresh()
 
     End Sub
 
     Private Sub btnHatchAdd_Click(sender As Object, e As EventArgs) Handles btnHatchAdd.Click
 
         crnCrane.Moves.Hatchcover.AddHatchcoverRow(cmbHatchmove.Text, txtHatchbay.Text, txtHatch20.Text, txtHatch40.Text)
-        PopulateDataGridViews()
+        'PopulateDataGridViews()
+        HatchDsc.Refresh()
+        HatchLoad.Refresh()
+
 
     End Sub
 
     Public Sub PopulateDataGridViews()
-        'container
+        ''container
 
-        ContainerDsc.Rows.Clear()
-        ContainerLoad.Rows.Clear()
+        'ContainerDsc.Rows.Clear()
+        'ContainerLoad.Rows.Clear()
 
-        For Each row As DataRow In crnCrane.Moves.Container.Rows 'reflection to container view
-            Dim containerTable As DataGridView
-            If row("move_kind") = "Discharge" Then containerTable = ContainerDsc
-            If row("move_kind") = "Loading" Then containerTable = ContainerLoad
+        'For Each row As DataRow In crnCrane.Moves.Container.Rows 'reflection to container view
+        '    Dim containerTable As DataGridView
+        '    If row("move_kind") = "Discharge" Then containerTable = ContainerDsc
+        '    If row("move_kind") = "Loading" Then containerTable = ContainerLoad
 
-            With containerTable.Rows
-                .Add(row("ctrmve"), row("cntsze20"), row("cntsze40"), row("cntsze45"))
-            End With
-        Next
-
-
-        'gearbox
-
-        GearboxDsc.Rows.Clear()
-        GearboxLoad.Rows.Clear()
-
-        For Each row As DataRow In crnCrane.Moves.Gearbox.Rows 'reflection to gearbox view
-            Dim gearboxTable As DataGridView
-            If row("move_kind") = "Discharge" Then gearboxTable = GearboxDsc
-            If row("move_kind") = "Loading" Then gearboxTable = GearboxLoad
-
-            With gearboxTable.Rows
-                .Add(row("baynum"), row("gbxsze20"), row("gbxsze40"))
-            End With
-        Next
+        '    With containerTable.Rows
+        '        .Add(row("ctrmve"), row("cntsze20"), row("cntsze40"), row("cntsze45"))
+        '    End With
+        'Next
 
 
-        'hatchcover
+        ''gearbox
 
-        HatchDsc.Rows.Clear()
-        HatchLoad.Rows.Clear()
+        'GearboxDsc.Rows.Clear()
+        'GearboxLoad.Rows.Clear()
 
-        For Each row As DataRow In crnCrane.Moves.Hatchcover.Rows 'reflection to hatchcover view
-            Dim hatchTable As DataGridView
-            If row("move_kind") = "Discharge" Then hatchTable = HatchDsc
-            If row("move_kind") = "Loading" Then hatchTable = HatchLoad
+        'For Each row As DataRow In crnCrane.Moves.Gearbox.Rows 'reflection to gearbox view
+        '    Dim gearboxTable As DataGridView
+        '    If row("move_kind") = "Discharge" Then gearboxTable = GearboxDsc
+        '    If row("move_kind") = "Loading" Then gearboxTable = GearboxLoad
 
-            With hatchTable.Rows
-                .Add(row("baynum"), row("cvrsze20"), row("cvrsze40"))
-            End With
-        Next
+        '    With gearboxTable.Rows
+        '        .Add(row("baynum"), row("gbxsze20"), row("gbxsze40"))
+        '    End With
+        'Next
 
-        'delays
+
+        ''hatchcover
+
+        'HatchDsc.Rows.Clear()
+        'HatchLoad.Rows.Clear()
+
+        'For Each row As DataRow In crnCrane.Moves.Hatchcover.Rows 'reflection to hatchcover view
+        '    Dim hatchTable As DataGridView
+        '    If row("move_kind") = "Discharge" Then hatchTable = HatchDsc
+        '    If row("move_kind") = "Loading" Then hatchTable = HatchLoad
+
+        '    With hatchTable.Rows
+        '        .Add(row("baynum"), row("cvrsze20"), row("cvrsze40"))
+        '    End With
+        'Next
+
+        ''delays
 
         dgvDelays.Rows.Clear()
 
@@ -342,5 +402,4 @@ Public Class CraneCtl
         Refresh_info()
 
     End Sub
-
 End Class
