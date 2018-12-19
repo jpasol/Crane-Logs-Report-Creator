@@ -32,7 +32,6 @@ Partial Class CraneCtl
         Me.cmdCntmove = New System.Windows.Forms.ComboBox()
         Me.btnCtnAdd = New System.Windows.Forms.Button()
         Me.cmbMoveknd = New System.Windows.Forms.ComboBox()
-        Me.ContainerLoad = New System.Windows.Forms.DataGridView()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtL20 = New System.Windows.Forms.TextBox()
         Me.txtL40 = New System.Windows.Forms.TextBox()
@@ -51,6 +50,9 @@ Partial Class CraneCtl
         Me.btnGearAdd = New System.Windows.Forms.Button()
         Me.cmbGearmove = New System.Windows.Forms.ComboBox()
         Me.GearboxLoad = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.txtGL20 = New System.Windows.Forms.TextBox()
         Me.txtGL40 = New System.Windows.Forms.TextBox()
@@ -58,6 +60,9 @@ Partial Class CraneCtl
         Me.txtGD20 = New System.Windows.Forms.TextBox()
         Me.txtGD40 = New System.Windows.Forms.TextBox()
         Me.GearboxDsc = New System.Windows.Forms.DataGridView()
+        Me.baynum = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.gbxsze20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.gbxsze40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.tabHatchcover = New System.Windows.Forms.TabPage()
@@ -67,6 +72,9 @@ Partial Class CraneCtl
         Me.btnHatchAdd = New System.Windows.Forms.Button()
         Me.cmbHatchmove = New System.Windows.Forms.ComboBox()
         Me.HatchLoad = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.txtHL20 = New System.Windows.Forms.TextBox()
         Me.txtHL40 = New System.Windows.Forms.TextBox()
@@ -75,6 +83,9 @@ Partial Class CraneCtl
         Me.txtHD40 = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.HatchDsc = New System.Windows.Forms.DataGridView()
+        Me.hc_baynum = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.hcsze20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.hcsze40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.tabDelays = New System.Windows.Forms.TabPage()
         Me.txtDDelay = New System.Windows.Forms.TextBox()
@@ -112,30 +123,20 @@ Partial Class CraneCtl
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblGantry = New System.Windows.Forms.Label()
         Me.ctrCategory = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cntsze20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cntsze40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cntsze45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.container = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.twenty = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.forty = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fortyfive = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.baynum = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.gbxsze20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.gbxsze40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.hc_baynum = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.hcsze20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.hcsze40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContainerLoad = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabCraneLog.SuspendLayout()
         Me.tabCrane.SuspendLayout()
         Me.tabMoves.SuspendLayout()
         Me.tabCntrs.SuspendLayout()
-        CType(Me.ContainerLoad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ContainerDsc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabGearbox.SuspendLayout()
         CType(Me.GearboxLoad, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -146,6 +147,7 @@ Partial Class CraneCtl
         Me.tabDelays.SuspendLayout()
         CType(Me.dgvDelays, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.ContainerLoad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tabCraneLog
@@ -185,13 +187,13 @@ Partial Class CraneCtl
         '
         'tabCntrs
         '
+        Me.tabCntrs.Controls.Add(Me.ContainerLoad)
         Me.tabCntrs.Controls.Add(Me.txtBox45)
         Me.tabCntrs.Controls.Add(Me.txtBox40)
         Me.tabCntrs.Controls.Add(Me.txtBox20)
         Me.tabCntrs.Controls.Add(Me.cmdCntmove)
         Me.tabCntrs.Controls.Add(Me.btnCtnAdd)
         Me.tabCntrs.Controls.Add(Me.cmbMoveknd)
-        Me.tabCntrs.Controls.Add(Me.ContainerLoad)
         Me.tabCntrs.Controls.Add(Me.Label5)
         Me.tabCntrs.Controls.Add(Me.txtL20)
         Me.tabCntrs.Controls.Add(Me.txtL40)
@@ -258,18 +260,6 @@ Partial Class CraneCtl
         Me.cmbMoveknd.Name = "cmbMoveknd"
         Me.cmbMoveknd.Size = New System.Drawing.Size(211, 32)
         Me.cmbMoveknd.TabIndex = 29
-        '
-        'ContainerLoad
-        '
-        Me.ContainerLoad.AllowUserToAddRows = False
-        Me.ContainerLoad.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
-        Me.ContainerLoad.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
-        Me.ContainerLoad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.ContainerLoad.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.container, Me.twenty, Me.forty, Me.fortyfive})
-        Me.ContainerLoad.Location = New System.Drawing.Point(655, 128)
-        Me.ContainerLoad.Name = "ContainerLoad"
-        Me.ContainerLoad.Size = New System.Drawing.Size(641, 183)
-        Me.ContainerLoad.TabIndex = 28
         '
         'Label5
         '
@@ -347,7 +337,7 @@ Partial Class CraneCtl
         Me.ContainerDsc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
         Me.ContainerDsc.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.ContainerDsc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.ContainerDsc.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ctrCategory, Me.cntsze20, Me.cntsze40, Me.cntsze45})
+        Me.ContainerDsc.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ctrCategory, Me.Column1, Me.cntsze20, Me.cntsze40, Me.cntsze45})
         Me.ContainerDsc.Location = New System.Drawing.Point(12, 128)
         Me.ContainerDsc.Name = "ContainerDsc"
         Me.ContainerDsc.Size = New System.Drawing.Size(641, 183)
@@ -437,6 +427,27 @@ Partial Class CraneCtl
         Me.GearboxLoad.Size = New System.Drawing.Size(641, 176)
         Me.GearboxLoad.TabIndex = 36
         '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "baynum"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Bay No."
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "gbxsze20"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "20"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "gbxsze40"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "40"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        '
         'Label15
         '
         Me.Label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -492,6 +503,27 @@ Partial Class CraneCtl
         Me.GearboxDsc.Name = "GearboxDsc"
         Me.GearboxDsc.Size = New System.Drawing.Size(641, 176)
         Me.GearboxDsc.TabIndex = 23
+        '
+        'baynum
+        '
+        Me.baynum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.baynum.DataPropertyName = "baynum"
+        Me.baynum.HeaderText = "Bay No."
+        Me.baynum.Name = "baynum"
+        '
+        'gbxsze20
+        '
+        Me.gbxsze20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.gbxsze20.DataPropertyName = "gbxsze20"
+        Me.gbxsze20.HeaderText = "20"
+        Me.gbxsze20.Name = "gbxsze20"
+        '
+        'gbxsze40
+        '
+        Me.gbxsze40.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.gbxsze40.DataPropertyName = "gbxsze40"
+        Me.gbxsze40.HeaderText = "40"
+        Me.gbxsze40.Name = "gbxsze40"
         '
         'Label13
         '
@@ -587,6 +619,27 @@ Partial Class CraneCtl
         Me.HatchLoad.Size = New System.Drawing.Size(641, 173)
         Me.HatchLoad.TabIndex = 40
         '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "baynum"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Bay No."
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "cvrsze20"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "20"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "cvrsze40"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "40"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        '
         'Label17
         '
         Me.Label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -652,6 +705,27 @@ Partial Class CraneCtl
         Me.HatchDsc.Name = "HatchDsc"
         Me.HatchDsc.Size = New System.Drawing.Size(641, 173)
         Me.HatchDsc.TabIndex = 30
+        '
+        'hc_baynum
+        '
+        Me.hc_baynum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.hc_baynum.DataPropertyName = "baynum"
+        Me.hc_baynum.HeaderText = "Bay No."
+        Me.hc_baynum.Name = "hc_baynum"
+        '
+        'hcsze20
+        '
+        Me.hcsze20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.hcsze20.DataPropertyName = "cvrsze20"
+        Me.hcsze20.HeaderText = "20"
+        Me.hcsze20.Name = "hcsze20"
+        '
+        'hcsze40
+        '
+        Me.hcsze40.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.hcsze40.DataPropertyName = "cvrsze40"
+        Me.hcsze40.HeaderText = "40"
+        Me.hcsze40.Name = "hcsze40"
         '
         'Label20
         '
@@ -1004,11 +1078,18 @@ Partial Class CraneCtl
         'ctrCategory
         '
         Me.ctrCategory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ctrCategory.DataPropertyName = "ctrmve"
+        Me.ctrCategory.DataPropertyName = "move_kind"
         Me.ctrCategory.FillWeight = 203.0457!
-        Me.ctrCategory.HeaderText = "Container"
+        Me.ctrCategory.HeaderText = "Move Kind"
         Me.ctrCategory.Name = "ctrCategory"
         Me.ctrCategory.ReadOnly = True
+        '
+        'Column1
+        '
+        Me.Column1.DataPropertyName = "freight_kind"
+        Me.Column1.HeaderText = "Freight"
+        Me.Column1.Name = "Column1"
+        Me.Column1.Width = 93
         '
         'cntsze20
         '
@@ -1034,121 +1115,57 @@ Partial Class CraneCtl
         Me.cntsze45.HeaderText = "45"
         Me.cntsze45.Name = "cntsze45"
         '
-        'container
+        'ContainerLoad
         '
-        Me.container.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.container.DataPropertyName = "ctrmve"
-        Me.container.FillWeight = 203.0457!
-        Me.container.HeaderText = "Container"
-        Me.container.Name = "container"
+        Me.ContainerLoad.AllowUserToAddRows = False
+        Me.ContainerLoad.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.ContainerLoad.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
+        Me.ContainerLoad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ContainerLoad.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn11})
+        Me.ContainerLoad.Location = New System.Drawing.Point(655, 128)
+        Me.ContainerLoad.Name = "ContainerLoad"
+        Me.ContainerLoad.Size = New System.Drawing.Size(641, 183)
+        Me.ContainerLoad.TabIndex = 38
         '
-        'twenty
+        'DataGridViewTextBoxColumn1
         '
-        Me.twenty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.twenty.DataPropertyName = "cntsze20"
-        Me.twenty.FillWeight = 65.65144!
-        Me.twenty.HeaderText = "20"
-        Me.twenty.Name = "twenty"
+        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "move_kind"
+        Me.DataGridViewTextBoxColumn1.FillWeight = 203.0457!
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Move Kind"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
         '
-        'forty
+        'DataGridViewTextBoxColumn2
         '
-        Me.forty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.forty.DataPropertyName = "cntsze40"
-        Me.forty.FillWeight = 65.65144!
-        Me.forty.HeaderText = "40"
-        Me.forty.Name = "forty"
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "freight_kind"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Freight"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.Width = 93
         '
-        'fortyfive
+        'DataGridViewTextBoxColumn3
         '
-        Me.fortyfive.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.fortyfive.DataPropertyName = "cntsze45"
-        Me.fortyfive.FillWeight = 65.65144!
-        Me.fortyfive.HeaderText = "45"
-        Me.fortyfive.Name = "fortyfive"
+        Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "cntsze20"
+        Me.DataGridViewTextBoxColumn3.FillWeight = 65.65144!
+        Me.DataGridViewTextBoxColumn3.HeaderText = "20"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         '
-        'baynum
+        'DataGridViewTextBoxColumn4
         '
-        Me.baynum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.baynum.DataPropertyName = "baynum"
-        Me.baynum.HeaderText = "Bay No."
-        Me.baynum.Name = "baynum"
+        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "cntsze40"
+        Me.DataGridViewTextBoxColumn4.FillWeight = 65.65144!
+        Me.DataGridViewTextBoxColumn4.HeaderText = "40"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         '
-        'gbxsze20
+        'DataGridViewTextBoxColumn11
         '
-        Me.gbxsze20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.gbxsze20.DataPropertyName = "gbxsze20"
-        Me.gbxsze20.HeaderText = "20"
-        Me.gbxsze20.Name = "gbxsze20"
-        '
-        'gbxsze40
-        '
-        Me.gbxsze40.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.gbxsze40.DataPropertyName = "gbxsze40"
-        Me.gbxsze40.HeaderText = "40"
-        Me.gbxsze40.Name = "gbxsze40"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "baynum"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Bay No."
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "gbxsze20"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "20"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "gbxsze40"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "40"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        '
-        'hc_baynum
-        '
-        Me.hc_baynum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.hc_baynum.DataPropertyName = "baynum"
-        Me.hc_baynum.HeaderText = "Bay No."
-        Me.hc_baynum.Name = "hc_baynum"
-        '
-        'hcsze20
-        '
-        Me.hcsze20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.hcsze20.DataPropertyName = "cvrsze20"
-        Me.hcsze20.HeaderText = "20"
-        Me.hcsze20.Name = "hcsze20"
-        '
-        'hcsze40
-        '
-        Me.hcsze40.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.hcsze40.DataPropertyName = "cvrsze40"
-        Me.hcsze40.HeaderText = "40"
-        Me.hcsze40.Name = "hcsze40"
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "baynum"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Bay No."
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "cvrsze20"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "20"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "cvrsze40"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "40"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "cntsze45"
+        Me.DataGridViewTextBoxColumn11.FillWeight = 65.65144!
+        Me.DataGridViewTextBoxColumn11.HeaderText = "45"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
         '
         'CraneCtl
         '
@@ -1162,7 +1179,6 @@ Partial Class CraneCtl
         Me.tabMoves.ResumeLayout(False)
         Me.tabCntrs.ResumeLayout(False)
         Me.tabCntrs.PerformLayout()
-        CType(Me.ContainerLoad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ContainerDsc, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabGearbox.ResumeLayout(False)
         Me.tabGearbox.PerformLayout()
@@ -1177,6 +1193,7 @@ Partial Class CraneCtl
         CType(Me.dgvDelays, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.ContainerLoad, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1185,7 +1202,6 @@ Partial Class CraneCtl
     Friend WithEvents tabCrane As TabPage
     Friend WithEvents tabMoves As TabControl
     Friend WithEvents tabCntrs As TabPage
-    Friend WithEvents ContainerLoad As DataGridView
     Friend WithEvents Label5 As Label
     Friend WithEvents txtL20 As TextBox
     Friend WithEvents txtL40 As TextBox
@@ -1270,14 +1286,6 @@ Partial Class CraneCtl
     Friend WithEvents txtHatchbay As TextBox
     Friend WithEvents btnHatchAdd As Button
     Friend WithEvents cmbHatchmove As ComboBox
-    Friend WithEvents container As DataGridViewTextBoxColumn
-    Friend WithEvents twenty As DataGridViewTextBoxColumn
-    Friend WithEvents forty As DataGridViewTextBoxColumn
-    Friend WithEvents fortyfive As DataGridViewTextBoxColumn
-    Friend WithEvents ctrCategory As DataGridViewTextBoxColumn
-    Friend WithEvents cntsze20 As DataGridViewTextBoxColumn
-    Friend WithEvents cntsze40 As DataGridViewTextBoxColumn
-    Friend WithEvents cntsze45 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
@@ -1290,4 +1298,15 @@ Partial Class CraneCtl
     Friend WithEvents hc_baynum As DataGridViewTextBoxColumn
     Friend WithEvents hcsze20 As DataGridViewTextBoxColumn
     Friend WithEvents hcsze40 As DataGridViewTextBoxColumn
+    Friend WithEvents ContainerLoad As DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
+    Friend WithEvents ctrCategory As DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents cntsze20 As DataGridViewTextBoxColumn
+    Friend WithEvents cntsze40 As DataGridViewTextBoxColumn
+    Friend WithEvents cntsze45 As DataGridViewTextBoxColumn
 End Class

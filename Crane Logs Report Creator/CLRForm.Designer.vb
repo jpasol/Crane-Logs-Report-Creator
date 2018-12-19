@@ -84,13 +84,6 @@ Partial Class CLRForm
         Me.Label30 = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.ProdSum = New System.Windows.Forms.DataGridView()
-        Me.freight = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.freight_kind = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cnt20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cnt40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cnt45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cntUnits = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cntTEU = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtTEUs = New System.Windows.Forms.TextBox()
         Me.txtUnits = New System.Windows.Forms.TextBox()
         Me.cmdSave = New System.Windows.Forms.Button()
@@ -114,6 +107,13 @@ Partial Class CLRForm
         Me.delayhours = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtDelaySum = New System.Windows.Forms.TextBox()
+        Me.col1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnt20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnt40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnt45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cntUnits = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cntTEU = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -761,59 +761,11 @@ Partial Class CLRForm
         Me.ProdSum.AllowUserToAddRows = False
         Me.ProdSum.AllowUserToDeleteRows = False
         Me.ProdSum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.ProdSum.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.freight, Me.freight_kind, Me.cnt20, Me.cnt40, Me.cnt45, Me.cntUnits, Me.cntTEU})
+        Me.ProdSum.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col1, Me.col2, Me.cnt20, Me.cnt40, Me.cnt45, Me.cntUnits, Me.cntTEU})
         Me.ProdSum.Location = New System.Drawing.Point(217, 32)
         Me.ProdSum.Name = "ProdSum"
         Me.ProdSum.Size = New System.Drawing.Size(889, 174)
         Me.ProdSum.TabIndex = 103
-        '
-        'freight
-        '
-        Me.freight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.freight.FillWeight = 182.7411!
-        Me.freight.HeaderText = "Freight"
-        Me.freight.Name = "freight"
-        '
-        'freight_kind
-        '
-        Me.freight_kind.HeaderText = "Freight Kind"
-        Me.freight_kind.Name = "freight_kind"
-        Me.freight_kind.Width = 135
-        '
-        'cnt20
-        '
-        Me.cnt20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.cnt20.FillWeight = 83.45177!
-        Me.cnt20.HeaderText = "20"
-        Me.cnt20.Name = "cnt20"
-        '
-        'cnt40
-        '
-        Me.cnt40.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.cnt40.FillWeight = 83.45177!
-        Me.cnt40.HeaderText = "40"
-        Me.cnt40.Name = "cnt40"
-        '
-        'cnt45
-        '
-        Me.cnt45.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.cnt45.FillWeight = 83.45177!
-        Me.cnt45.HeaderText = "45"
-        Me.cnt45.Name = "cnt45"
-        '
-        'cntUnits
-        '
-        Me.cntUnits.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.cntUnits.FillWeight = 83.45177!
-        Me.cntUnits.HeaderText = "Units"
-        Me.cntUnits.Name = "cntUnits"
-        '
-        'cntTEU
-        '
-        Me.cntTEU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.cntTEU.FillWeight = 83.45177!
-        Me.cntTEU.HeaderText = "TEUs"
-        Me.cntTEU.Name = "cntTEU"
         '
         'txtTEUs
         '
@@ -1022,6 +974,54 @@ Partial Class CLRForm
         Me.txtDelaySum.TabIndex = 3
         Me.txtDelaySum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'col1
+        '
+        Me.col1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.col1.FillWeight = 182.7411!
+        Me.col1.HeaderText = "Freight"
+        Me.col1.Name = "col1"
+        '
+        'col2
+        '
+        Me.col2.HeaderText = "Freight Kind"
+        Me.col2.Name = "col2"
+        Me.col2.Width = 135
+        '
+        'cnt20
+        '
+        Me.cnt20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cnt20.FillWeight = 83.45177!
+        Me.cnt20.HeaderText = "20"
+        Me.cnt20.Name = "cnt20"
+        '
+        'cnt40
+        '
+        Me.cnt40.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cnt40.FillWeight = 83.45177!
+        Me.cnt40.HeaderText = "40"
+        Me.cnt40.Name = "cnt40"
+        '
+        'cnt45
+        '
+        Me.cnt45.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cnt45.FillWeight = 83.45177!
+        Me.cnt45.HeaderText = "45"
+        Me.cnt45.Name = "cnt45"
+        '
+        'cntUnits
+        '
+        Me.cntUnits.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cntUnits.FillWeight = 83.45177!
+        Me.cntUnits.HeaderText = "Units"
+        Me.cntUnits.Name = "cntUnits"
+        '
+        'cntTEU
+        '
+        Me.cntTEU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cntTEU.FillWeight = 83.45177!
+        Me.cntTEU.HeaderText = "TEUs"
+        Me.cntTEU.Name = "cntTEU"
+        '
         'CLRForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1136,14 +1136,14 @@ Partial Class CLRForm
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
     Friend WithEvents delayhours As DataGridViewTextBoxColumn
-    Friend WithEvents freight As DataGridViewTextBoxColumn
-    Friend WithEvents freight_kind As DataGridViewTextBoxColumn
+    Friend WithEvents mskDelayend As MaskedTextBox
+    Friend WithEvents mskDelaystart As MaskedTextBox
+    Friend WithEvents cmbDelay As ComboBox
+    Friend WithEvents col1 As DataGridViewTextBoxColumn
+    Friend WithEvents col2 As DataGridViewTextBoxColumn
     Friend WithEvents cnt20 As DataGridViewTextBoxColumn
     Friend WithEvents cnt40 As DataGridViewTextBoxColumn
     Friend WithEvents cnt45 As DataGridViewTextBoxColumn
     Friend WithEvents cntUnits As DataGridViewTextBoxColumn
     Friend WithEvents cntTEU As DataGridViewTextBoxColumn
-    Friend WithEvents mskDelayend As MaskedTextBox
-    Friend WithEvents mskDelaystart As MaskedTextBox
-    Friend WithEvents cmbDelay As ComboBox
 End Class

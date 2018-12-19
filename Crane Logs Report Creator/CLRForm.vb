@@ -44,7 +44,6 @@ Public Class CLRForm
                 Dim CraneControl As New CraneCtl(crn)
                 CraneControl.PopulateDataGridViews()
                 TabControl1.TabPages.Add(CraneControl.tabCraneLog.TabPages($"tab{crn.CraneName}"))
-
             Next
         End If
     End Sub
@@ -74,7 +73,6 @@ Public Class CLRForm
                 ctlCrane = New CraneCtl(tempcrane)
                 TabControl1.TabPages.Add(ctlCrane.tabCraneLog.TabPages("tab" & strGC))
                 TabControl1.SelectTab("tab" & strGC)
-                ctlCrane.FillContainerMovesUsingN4Data()
                 ctlCrane.Refresh()
             End With
         End Try
@@ -118,13 +116,13 @@ Public Class CLRForm
         txtTEUs.Text = 0
 
 
-        Dim freight() As String = {"Discharge", "Loading"}
+        Dim movekind() As String = {"Discharge", "Loading"}
         Dim freightkind() As String = {"Full", "Empty"}
 
 
-        For Each frght In freight
+        For Each cranemove In movekind
 
-            For Each frtknd In freightkind
+            For Each freight In freightkind
                 Dim twenty As Short
                 Dim forty As Short
                 Dim ffive As Short
@@ -132,13 +130,13 @@ Public Class CLRForm
                 Dim teu As Single
 
                 With clsCLR.Crane.AsEnumerable
-                    twenty = .Sum(Function(crn) crn.Moves.Container.Total20(frght, frtknd))
-                    forty = .Sum(Function(crn) crn.Moves.Container.Total40(frght, frtknd))
-                    ffive = .Sum(Function(crn) crn.Moves.Container.Total45(frght, frtknd))
+                    twenty = .Sum(Function(crn) crn.Moves.Container.TotalMoves(20, freight, cranemove))
+                    forty = .Sum(Function(crn) crn.Moves.Container.TotalMoves(40, freight, cranemove))
+                    ffive = .Sum(Function(crn) crn.Moves.Container.TotalMoves(45, freight, cranemove))
                     unit = twenty + forty + ffive
                     teu = (twenty) + (forty * 2) + (ffive * 2.25)
 
-                    ProdSum.Rows.Add({frght, frtknd, twenty, forty, ffive, unit, teu})
+                    ProdSum.Rows.Add({cranemove, freight, twenty, forty, ffive, unit, teu})
 
                     txtUnits.Text = CShort(txtUnits.Text) + unit
                     txtTEUs.Text = CDbl(txtTEUs.Text) + teu
