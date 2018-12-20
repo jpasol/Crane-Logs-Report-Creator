@@ -116,11 +116,11 @@ Public Class CLRForm
         txtTEUs.Text = 0
 
 
-        Dim movekind() As String = {"Discharge", "Loading"}
-        Dim freightkind() As String = {"Full", "Empty"}
+        Dim bound() As String = {"Discharge", "Loading"}
+        Dim freightkind() As String = {"FCL", "MTY"}
 
 
-        For Each cranemove In movekind
+        For Each cranemove In bound
 
             For Each freight In freightkind
                 Dim twenty As Short

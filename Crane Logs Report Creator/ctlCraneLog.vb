@@ -7,6 +7,25 @@ Public Class CraneCtl
 
         ' This call is required by the designer.
         InitializeComponent()
+
+        'ADD HANDLERS TO RESTRICT TEXTBOXES TO NUMERIC INPUT
+        AddHandler txtBox20.KeyPress, AddressOf Common_Numeric
+        AddHandler txtBox40.KeyPress, AddressOf Common_Numeric
+        AddHandler txtBox45.KeyPress, AddressOf Common_Numeric
+        AddHandler txtGear20.KeyPress, AddressOf Common_Numeric
+        AddHandler txtGear40.KeyPress, AddressOf Common_Numeric
+        AddHandler txtHatch20.KeyPress, AddressOf Common_Numeric
+        AddHandler txtHatch40.KeyPress, AddressOf Common_Numeric
+
+        'add handlers when losing focus from all datagridviews
+        AddHandler ContainerDsc.LostFocus, AddressOf Refresh_info
+        AddHandler ContainerLoad.LostFocus, AddressOf Refresh_info
+        AddHandler GearboxDsc.LostFocus, AddressOf Refresh_info
+        AddHandler GearboxLoad.LostFocus, AddressOf Refresh_info
+        AddHandler HatchDsc.LostFocus, AddressOf Refresh_info
+        AddHandler HatchLoad.LostFocus, AddressOf Refresh_info
+        AddHandler dgvDelays.LostFocus, AddressOf Refresh_info
+
         ' Add any initialization after the InitializeComponent() call.
         With Crane
             Me.tabCrane.Name = "tab" & .CraneName
@@ -24,7 +43,9 @@ Public Class CraneCtl
 
         With crnCrane
             dischargeContainers.Table = .Moves.Container
+            dischargeContainers.RowFilter = "actual_ib is not null"
             loadContainers.Table = .Moves.Container
+            loadContainers.RowFilter = "actual_ob is not null"
             dischargeGearboxes.Table = .Moves.Gearbox
             loadGearboxes.Table = .Moves.Gearbox
             openingHatchcovers.Table = .Moves.Hatchcover
@@ -58,26 +79,26 @@ Public Class CraneCtl
             txtNhours.Text = .NetWorkingHours
             txtNprod.Text = .NetProductivity
 
-            With .Moves.Tables("Container")
-                txtD20.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Discharge").Sum(Function(row) CInt(row("cntsze20").ToString))
-                txtD40.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Discharge").Sum(Function(row) CInt(row("cntsze40").ToString))
-                txtD45.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Discharge").Sum(Function(row) CInt(row("cntsze45").ToString))
-                txtL20.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Loading").Sum(Function(row) CInt(row("cntsze20").ToString))
-                txtL40.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Loading").Sum(Function(row) CInt(row("cntsze40").ToString))
-                txtL45.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Loading").Sum(Function(row) CInt(row("cntsze45").ToString))
+            With .Moves.Container
+                txtD20.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze20").ToString))
+                txtD40.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze40").ToString))
+                txtD45.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze45").ToString))
+                txtL20.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze20").ToString))
+                txtL40.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze40").ToString))
+                txtL45.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze45").ToString))
             End With
-            With .Moves.Tables("Hatchcover")
-                txtHD20.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Discharge").Sum(Function(row) CInt(row("cvrsze20").ToString))
-                txtHD40.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Discharge").Sum(Function(row) CInt(row("cvrsze40").ToString))
-                txtHL20.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Loading").Sum(Function(row) CInt(row("cvrsze20").ToString))
-                txtHL40.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Loading").Sum(Function(row) CInt(row("cvrsze40").ToString))
+            With .Moves.Hatchcover
+                txtHD20.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("cvrsze20").ToString))
+                txtHD40.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("cvrsze40").ToString))
+                txtHL20.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("cvrsze20").ToString))
+                txtHL40.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("cvrsze40").ToString))
             End With
 
-            With .Moves.Tables("Gearbox")
-                txtGD20.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Discharge").Sum(Function(row) CInt(row("gbxsze20").ToString))
-                txtGD40.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Discharge").Sum(Function(row) CInt(row("gbxsze40").ToString))
-                txtGL20.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Loading").Sum(Function(row) CInt(row("gbxsze20").ToString))
-                txtGL40.Text = .AsEnumerable.Where(Function(row) row("move_kind") = "Loading").Sum(Function(row) CInt(row("gbxsze40").ToString))
+            With .Moves.Gearbox
+                txtGD20.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("gbxsze20").ToString))
+                txtGD40.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("gbxsze40").ToString))
+                txtGL20.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("gbxsze20").ToString))
+                txtGL40.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("gbxsze40").ToString))
             End With
 
 
@@ -89,100 +110,179 @@ Public Class CraneCtl
     End Sub
 
     Private Sub mskFirst_LostFocus(sender As Object, e As EventArgs) Handles mskFirst.LostFocus
-        crnCrane.FirstMove = ReportFunctions.GetDateTime(mskFirst.Text)
-
-        Refresh_info()
+        If IsValidDate({mskFirst, mskLast}) Then
+            crnCrane.FirstMove = GetDateTime(mskFirst.Text)
+            Refresh_info()
+        End If
     End Sub
 
     Private Sub mskLast_LostFocus(sender As Object, e As EventArgs) Handles mskLast.LostFocus
-        crnCrane.LastMove = ReportFunctions.GetDateTime(mskLast.Text)
-
-        Refresh_info()
+        If IsValidDate({mskFirst, mskLast}) Then
+            crnCrane.LastMove = GetDateTime(mskLast.Text)
+            Refresh_info()
+        End If
     End Sub
 
     Private Sub btnAddDelay_Click(sender As Object, e As EventArgs) Handles btnAddDelay.Click
-        Dim delayTable As DataTable = crnCrane.Delays.Tables(cmbDelays.Text)
-        Dim delayfrom As Date = GetDateTime(mskFrom.Text)
-        Dim delayto As Date = GetDateTime(mskTo.Text)
-        Dim span As TimeSpan = delayto.Subtract(delayfrom)
+        If IsInputValid({cmbDelays, mskDescription}) And IsValidDate({mskFrom, mskTo}) Then
+            Dim delayTable As DataTable = crnCrane.Delays.Tables(cmbDelays.Text)
+            Dim delayfrom As Date = GetDateTime(mskFrom.Text)
+            Dim delayto As Date = GetDateTime(mskTo.Text)
+            Dim span As TimeSpan = delayto.Subtract(delayfrom)
 
-        delayTable.Rows.Add(mskDescription.Text, delayfrom, delayto, span.TotalHours)
-        PopulateDataGridViews()
+            delayTable.Rows.Add(mskDescription.Text, delayfrom, delayto, span.TotalHours)
+            PopulateDataGridViews()
+        End If
     End Sub
+
+    Private Function IsValidDate(p() As MaskedTextBox) As Boolean
+        For Each msk As Control In p
+            If msk.Text.Contains("_") Then
+                msk.ForeColor = Color.Red
+                Return False
+            Else
+                msk.ForeColor = Color.Empty
+            End If
+
+        Next
+
+        If GetDateTime(mskFrom.Text) > GetDateTime(mskTo.Text) Then
+            mskFrom.ForeColor = Color.Red
+            mskTo.ForeColor = Color.Red
+            Return False
+        Else
+            mskFrom.ForeColor = Color.Empty
+            mskTo.ForeColor = Color.Empty
+        End If
+        Return True
+    End Function
 
     Private Sub btnCtnAdd_Click(sender As Object, e As EventArgs) Handles btnCtnAdd.Click
+        If IsInputValid({cmbBound, cmbMovekind, cmbFreight, txtBox20, txtBox40, txtBox45}) Then
+            Dim actualOB As String = GetBound(cmbBound.Text)(0)
+            Dim actualIB As String = GetBound(cmbBound.Text)(1)
 
-        crnCrane.Moves.Container.AddContainerRow(cmdCntmove.Text, StrConv(cmbMoveknd.Text, vbProperCase), txtBox20.Text, txtBox40.Text, txtBox45.Text)
-        ContainerDsc.Refresh()
-        ContainerLoad.Refresh()
+            Dim movekind As String = TranslateMoveKind(cmbMovekind.Text)
+            Dim category As String = TranslateCategory(cmbMovekind.Text)
+            Dim Freight As String = GetFreight(cmbFreight.Text)
+
+            Dim count20 As Long = CLng(0 & txtBox20.Text)
+            Dim count40 As Long = CLng(0 & txtBox40.Text)
+            Dim count45 As Long = CLng(0 & txtBox45.Text)
+
+            crnCrane.Moves.Container.AddContainerRow(movekind,
+                                                     actualOB,
+                                                     actualIB,
+                                                     Freight,
+                                                     category,
+                                                     count20,
+                                                     count40,
+                                                     count45)
+            Refresh_info()
+            ContainerDsc.Refresh()
+            ContainerLoad.Refresh()
+        End If
     End Sub
+
+    Private Function GetFreight(text As String) As String
+        Select Case text
+            Case "FULL"
+                Return "FCL"
+            Case "EMPTY"
+                Return "MTY"
+            Case Else
+                Return Nothing
+        End Select
+    End Function
+
+
+    Private Function TranslateCategory(text As String) As String
+        Select Case text
+            Case "TRANSHIPMENT"
+                Return "TRSHP"
+            Case Else
+                Return Nothing
+        End Select
+    End Function
+
+    Private Function TranslateMoveKind(text As String) As String
+        Select Case text
+            Case "DISCHARGE"
+                Return "DSCH"
+            Case "LOADING"
+                Return "LOAD"
+            Case "SVD"
+                Return "SHFT"
+            Case "SOB"
+                Return "SHOB"
+            Case Else
+                Return Nothing
+        End Select
+    End Function
+
+    Private Function GetBound(text As String) As String()
+        Select Case text
+            Case "DISCHARGE"
+                Return {Nothing, crnCrane.Registry}
+            Case "LOADING"
+                Return {crnCrane.Registry, Nothing}
+            Case Else
+                Return {Nothing, Nothing}
+        End Select
+    End Function
 
     Private Sub btnGearAdd_Click(sender As Object, e As EventArgs) Handles btnGearAdd.Click
+        If IsInputValid({cmbGearmove, txtGearbay, txtGear20, txtGear40}) Then
+            Dim actualOB As String = GetBound(cmbGearmove.Text)(0)
+            Dim actualIB As String = GetBound(cmbGearmove.Text)(1)
 
-        crnCrane.Moves.Gearbox.AddGearboxRow(cmbGearmove.Text, txtGearbay.Text, txtGear20.Text, txtGear40.Text)
-        GearboxDsc.Refresh()
-        GearboxLoad.Refresh()
+            Dim count20 As Long = CLng(0 & txtGear20.Text)
+            Dim count40 As Long = CLng(0 & txtGear40.Text)
 
+            crnCrane.Moves.Gearbox.AddGearboxRow(actualOB,
+                                                 actualIB,
+                                                 txtGearbay.Text,
+                                                 count20,
+                                                 count40)
+            Refresh_info()
+            GearboxDsc.Refresh()
+            GearboxLoad.Refresh()
+        End If
     End Sub
 
+    Private Function IsInputValid(p() As Control) As Boolean
+        For Each txtbox As Control In p
+            If txtbox.Text = "" Then
+                txtbox.Focus()
+                txtbox.BackColor = Color.Red
+                Return False
+            Else
+                txtbox.BackColor = Color.Empty
+            End If
+        Next
+        Return True
+    End Function
+
     Private Sub btnHatchAdd_Click(sender As Object, e As EventArgs) Handles btnHatchAdd.Click
+        If IsInputValid({cmbHatchmove, txtHatchbay, txtHatch20, txtHatch40}) Then
+            Dim actualOB As String = GetBound(cmbGearmove.Text)(0)
+            Dim actualIB As String = GetBound(cmbGearmove.Text)(1)
 
-        crnCrane.Moves.Hatchcover.AddHatchcoverRow(cmbHatchmove.Text, txtHatchbay.Text, txtHatch20.Text, txtHatch40.Text)
-        HatchDsc.Refresh()
-        HatchLoad.Refresh()
+            Dim count20 As Long = CLng(0 & txtHatch20.Text)
+            Dim count40 As Long = CLng(0 & txtHatch40.Text)
 
-
+            crnCrane.Moves.Hatchcover.AddHatchcoverRow(actualOB,
+                                                       actualIB,
+                                                       txtHatchbay.Text,
+                                                       count20,
+                                                       count40)
+            Refresh_info()
+            HatchDsc.Refresh()
+            HatchLoad.Refresh()
+        End If
     End Sub
 
     Public Sub PopulateDataGridViews()
-        ''container
-
-        'ContainerDsc.Rows.Clear()
-        'ContainerLoad.Rows.Clear()
-
-        'For Each row As DataRow In crnCrane.Moves.Container.Rows 'reflection to container view
-        '    Dim containerTable As DataGridView
-        '    If row("move_kind") = "Discharge" Then containerTable = ContainerDsc
-        '    If row("move_kind") = "Loading" Then containerTable = ContainerLoad
-
-        '    With containerTable.Rows
-        '        .Add(row("ctrmve"), row("cntsze20"), row("cntsze40"), row("cntsze45"))
-        '    End With
-        'Next
-
-
-        ''gearbox
-
-        'GearboxDsc.Rows.Clear()
-        'GearboxLoad.Rows.Clear()
-
-        'For Each row As DataRow In crnCrane.Moves.Gearbox.Rows 'reflection to gearbox view
-        '    Dim gearboxTable As DataGridView
-        '    If row("move_kind") = "Discharge" Then gearboxTable = GearboxDsc
-        '    If row("move_kind") = "Loading" Then gearboxTable = GearboxLoad
-
-        '    With gearboxTable.Rows
-        '        .Add(row("baynum"), row("gbxsze20"), row("gbxsze40"))
-        '    End With
-        'Next
-
-
-        ''hatchcover
-
-        'HatchDsc.Rows.Clear()
-        'HatchLoad.Rows.Clear()
-
-        'For Each row As DataRow In crnCrane.Moves.Hatchcover.Rows 'reflection to hatchcover view
-        '    Dim hatchTable As DataGridView
-        '    If row("move_kind") = "Discharge" Then hatchTable = HatchDsc
-        '    If row("move_kind") = "Loading" Then hatchTable = HatchLoad
-
-        '    With hatchTable.Rows
-        '        .Add(row("baynum"), row("cvrsze20"), row("cvrsze40"))
-        '    End With
-        'Next
-
-        ''delays
 
         dgvDelays.Rows.Clear()
 
@@ -198,4 +298,17 @@ Public Class CraneCtl
         Refresh_info()
 
     End Sub
+
+    Private Sub Common_Numeric(sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) 'Handler for Numeric Fields
+        If Asc(e.KeyChar) <> 8 Then
+            If Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57 Then
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub Refresh_LostFocus(sender As Object, ByVal e As EventArgs)
+        Refresh_info()
+    End Sub
+
 End Class

@@ -441,7 +441,7 @@ INSERT INTO [opreports].[dbo].[reports_clr]
         'GET Refkey
         cranelogRetriever.CommandText = $"
 SELECT [refkey]
-FROM [opreports].[dbo].[ref_registry]
+FROM [opreports].[dbo].[reports_clr]
 Where registry = '{CLRVessel.Registry}'"
 
         Return cranelogRetriever.Execute.Fields("refkey").Value.ToString 'tostring just to be safe
@@ -465,7 +465,7 @@ Where registry = '{CLRVessel.Registry}'"
             .ActiveConnection = OPConnection,
             .CommandText = $"
 SELECT  [refkey]
-      ,[qc_shortname]
+      ,[che_qc]
       ,[first_move]
       ,[last_move]
       ,[moves]
