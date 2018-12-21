@@ -227,10 +227,12 @@ Partial Class CraneCtl
         'ContainerLoad
         '
         Me.ContainerLoad.AllowUserToAddRows = False
+        Me.ContainerLoad.AllowUserToResizeRows = False
         Me.ContainerLoad.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
         Me.ContainerLoad.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.ContainerLoad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ContainerLoad.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn11})
+        Me.ContainerLoad.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.ContainerLoad.Location = New System.Drawing.Point(655, 128)
         Me.ContainerLoad.Name = "ContainerLoad"
         Me.ContainerLoad.Size = New System.Drawing.Size(641, 183)
@@ -337,6 +339,7 @@ Partial Class CraneCtl
         '
         Me.txtL20.Location = New System.Drawing.Point(991, 314)
         Me.txtL20.Name = "txtL20"
+        Me.txtL20.ReadOnly = True
         Me.txtL20.Size = New System.Drawing.Size(100, 32)
         Me.txtL20.TabIndex = 26
         '
@@ -344,6 +347,7 @@ Partial Class CraneCtl
         '
         Me.txtL40.Location = New System.Drawing.Point(1097, 314)
         Me.txtL40.Name = "txtL40"
+        Me.txtL40.ReadOnly = True
         Me.txtL40.Size = New System.Drawing.Size(100, 32)
         Me.txtL40.TabIndex = 25
         '
@@ -351,6 +355,7 @@ Partial Class CraneCtl
         '
         Me.txtL45.Location = New System.Drawing.Point(1203, 314)
         Me.txtL45.Name = "txtL45"
+        Me.txtL45.ReadOnly = True
         Me.txtL45.Size = New System.Drawing.Size(93, 32)
         Me.txtL45.TabIndex = 24
         '
@@ -367,6 +372,7 @@ Partial Class CraneCtl
         '
         Me.txtD20.Location = New System.Drawing.Point(348, 314)
         Me.txtD20.Name = "txtD20"
+        Me.txtD20.ReadOnly = True
         Me.txtD20.Size = New System.Drawing.Size(100, 32)
         Me.txtD20.TabIndex = 22
         '
@@ -374,6 +380,7 @@ Partial Class CraneCtl
         '
         Me.txtD40.Location = New System.Drawing.Point(454, 314)
         Me.txtD40.Name = "txtD40"
+        Me.txtD40.ReadOnly = True
         Me.txtD40.Size = New System.Drawing.Size(100, 32)
         Me.txtD40.TabIndex = 21
         '
@@ -381,6 +388,7 @@ Partial Class CraneCtl
         '
         Me.txtD45.Location = New System.Drawing.Point(560, 314)
         Me.txtD45.Name = "txtD45"
+        Me.txtD45.ReadOnly = True
         Me.txtD45.Size = New System.Drawing.Size(93, 32)
         Me.txtD45.TabIndex = 20
         '
@@ -397,10 +405,12 @@ Partial Class CraneCtl
         'ContainerDsc
         '
         Me.ContainerDsc.AllowUserToAddRows = False
+        Me.ContainerDsc.AllowUserToResizeRows = False
         Me.ContainerDsc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
         Me.ContainerDsc.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
         Me.ContainerDsc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ContainerDsc.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ctrCategory, Me.Column1, Me.cntsze20, Me.cntsze40, Me.cntsze45})
+        Me.ContainerDsc.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.ContainerDsc.Location = New System.Drawing.Point(12, 128)
         Me.ContainerDsc.Name = "ContainerDsc"
         Me.ContainerDsc.Size = New System.Drawing.Size(641, 183)
@@ -523,8 +533,10 @@ Partial Class CraneCtl
         'GearboxLoad
         '
         Me.GearboxLoad.AllowUserToAddRows = False
+        Me.GearboxLoad.AllowUserToResizeRows = False
         Me.GearboxLoad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GearboxLoad.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7})
+        Me.GearboxLoad.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.GearboxLoad.Location = New System.Drawing.Point(655, 134)
         Me.GearboxLoad.Name = "GearboxLoad"
         Me.GearboxLoad.Size = New System.Drawing.Size(641, 176)
@@ -564,6 +576,7 @@ Partial Class CraneCtl
         '
         Me.txtGL20.Location = New System.Drawing.Point(1097, 314)
         Me.txtGL20.Name = "txtGL20"
+        Me.txtGL20.ReadOnly = True
         Me.txtGL20.Size = New System.Drawing.Size(100, 32)
         Me.txtGL20.TabIndex = 33
         '
@@ -571,6 +584,7 @@ Partial Class CraneCtl
         '
         Me.txtGL40.Location = New System.Drawing.Point(1203, 314)
         Me.txtGL40.Name = "txtGL40"
+        Me.txtGL40.ReadOnly = True
         Me.txtGL40.Size = New System.Drawing.Size(93, 32)
         Me.txtGL40.TabIndex = 32
         '
@@ -587,6 +601,7 @@ Partial Class CraneCtl
         '
         Me.txtGD20.Location = New System.Drawing.Point(454, 314)
         Me.txtGD20.Name = "txtGD20"
+        Me.txtGD20.ReadOnly = True
         Me.txtGD20.Size = New System.Drawing.Size(100, 32)
         Me.txtGD20.TabIndex = 29
         '
@@ -594,14 +609,17 @@ Partial Class CraneCtl
         '
         Me.txtGD40.Location = New System.Drawing.Point(560, 314)
         Me.txtGD40.Name = "txtGD40"
+        Me.txtGD40.ReadOnly = True
         Me.txtGD40.Size = New System.Drawing.Size(93, 32)
         Me.txtGD40.TabIndex = 28
         '
         'GearboxDsc
         '
         Me.GearboxDsc.AllowUserToAddRows = False
+        Me.GearboxDsc.AllowUserToResizeRows = False
         Me.GearboxDsc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GearboxDsc.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.baynum, Me.gbxsze20, Me.gbxsze40})
+        Me.GearboxDsc.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.GearboxDsc.Location = New System.Drawing.Point(12, 135)
         Me.GearboxDsc.Name = "GearboxDsc"
         Me.GearboxDsc.Size = New System.Drawing.Size(641, 176)
@@ -715,8 +733,10 @@ Partial Class CraneCtl
         'HatchLoad
         '
         Me.HatchLoad.AllowUserToAddRows = False
+        Me.HatchLoad.AllowUserToResizeRows = False
         Me.HatchLoad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.HatchLoad.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10})
+        Me.HatchLoad.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.HatchLoad.Location = New System.Drawing.Point(655, 137)
         Me.HatchLoad.Name = "HatchLoad"
         Me.HatchLoad.Size = New System.Drawing.Size(641, 173)
@@ -756,6 +776,7 @@ Partial Class CraneCtl
         '
         Me.txtHL20.Location = New System.Drawing.Point(1097, 314)
         Me.txtHL20.Name = "txtHL20"
+        Me.txtHL20.ReadOnly = True
         Me.txtHL20.Size = New System.Drawing.Size(100, 32)
         Me.txtHL20.TabIndex = 37
         '
@@ -763,6 +784,7 @@ Partial Class CraneCtl
         '
         Me.txtHL40.Location = New System.Drawing.Point(1203, 314)
         Me.txtHL40.Name = "txtHL40"
+        Me.txtHL40.ReadOnly = True
         Me.txtHL40.Size = New System.Drawing.Size(93, 32)
         Me.txtHL40.TabIndex = 36
         '
@@ -779,6 +801,7 @@ Partial Class CraneCtl
         '
         Me.txtHD20.Location = New System.Drawing.Point(454, 314)
         Me.txtHD20.Name = "txtHD20"
+        Me.txtHD20.ReadOnly = True
         Me.txtHD20.Size = New System.Drawing.Size(100, 32)
         Me.txtHD20.TabIndex = 33
         '
@@ -786,6 +809,7 @@ Partial Class CraneCtl
         '
         Me.txtHD40.Location = New System.Drawing.Point(560, 314)
         Me.txtHD40.Name = "txtHD40"
+        Me.txtHD40.ReadOnly = True
         Me.txtHD40.Size = New System.Drawing.Size(93, 32)
         Me.txtHD40.TabIndex = 32
         '
@@ -802,8 +826,10 @@ Partial Class CraneCtl
         'HatchDsc
         '
         Me.HatchDsc.AllowUserToAddRows = False
+        Me.HatchDsc.AllowUserToResizeRows = False
         Me.HatchDsc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.HatchDsc.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.hc_baynum, Me.hcsze20, Me.hcsze40})
+        Me.HatchDsc.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.HatchDsc.Location = New System.Drawing.Point(12, 138)
         Me.HatchDsc.Name = "HatchDsc"
         Me.HatchDsc.Size = New System.Drawing.Size(641, 173)
@@ -867,6 +893,7 @@ Partial Class CraneCtl
         '
         Me.txtDDelay.Location = New System.Drawing.Point(990, 320)
         Me.txtDDelay.Name = "txtDDelay"
+        Me.txtDDelay.ReadOnly = True
         Me.txtDDelay.Size = New System.Drawing.Size(100, 32)
         Me.txtDDelay.TabIndex = 33
         '
@@ -874,6 +901,7 @@ Partial Class CraneCtl
         '
         Me.txtBreaks.Location = New System.Drawing.Point(1096, 320)
         Me.txtBreaks.Name = "txtBreaks"
+        Me.txtBreaks.ReadOnly = True
         Me.txtBreaks.Size = New System.Drawing.Size(100, 32)
         Me.txtBreaks.TabIndex = 32
         '
@@ -954,8 +982,10 @@ Partial Class CraneCtl
         'dgvDelays
         '
         Me.dgvDelays.AllowUserToAddRows = False
+        Me.dgvDelays.AllowUserToResizeRows = False
         Me.dgvDelays.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDelays.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.delaykind, Me.DataGridViewTextBoxColumn19, Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn21, Me.DataGridViewTextBoxColumn22})
+        Me.dgvDelays.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvDelays.Location = New System.Drawing.Point(6, 107)
         Me.dgvDelays.Name = "dgvDelays"
         Me.dgvDelays.Size = New System.Drawing.Size(1296, 207)
@@ -1009,6 +1039,7 @@ Partial Class CraneCtl
         '
         Me.txtNDelays.Location = New System.Drawing.Point(1202, 320)
         Me.txtNDelays.Name = "txtNDelays"
+        Me.txtNDelays.ReadOnly = True
         Me.txtNDelays.Size = New System.Drawing.Size(100, 32)
         Me.txtNDelays.TabIndex = 7
         '

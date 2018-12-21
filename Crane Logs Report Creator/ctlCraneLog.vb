@@ -26,6 +26,10 @@ Public Class CraneCtl
         AddHandler HatchLoad.LostFocus, AddressOf Refresh_info
         AddHandler dgvDelays.LostFocus, AddressOf Refresh_info
 
+        'Reflect First and Last Move
+        AddHandler mskFirst.LostFocus, AddressOf FirstLastMove_LostFocus
+        AddHandler mskLast.LostFocus, AddressOf FirstLastMove_LostFocus
+
         ' Add any initialization after the InitializeComponent() call.
         With Crane
             Me.tabCrane.Name = "tab" & .CraneName
@@ -46,10 +50,16 @@ Public Class CraneCtl
             dischargeContainers.RowFilter = "actual_ib is not null"
             loadContainers.Table = .Moves.Container
             loadContainers.RowFilter = "actual_ob is not null"
+
             dischargeGearboxes.Table = .Moves.Gearbox
+            dischargeGearboxes.RowFilter = "actual_ib is not null"
             loadGearboxes.Table = .Moves.Gearbox
+            loadGearboxes.RowFilter = "actual_ob is not null"
+
             openingHatchcovers.Table = .Moves.Hatchcover
+            openingHatchcovers.RowFilter = "actual_ib is not null"
             closingHatchcovers.Table = .Moves.Hatchcover
+            closingHatchcovers.RowFilter = "actual_ob is not null"
             'pending for delays
         End With
 
@@ -67,17 +77,16 @@ Public Class CraneCtl
     Private loadGearboxes As New DataView
     Private openingHatchcovers As New DataView
     Private closingHatchcovers As New DataView
-    Private delaysBinding As New BindingSource
     ' pending for delays
     Private crnCrane As Crane
 
     Private Sub Refresh_info()
         With crnCrane
             txtMoves.Text = .Moves.TotalMoves
-            txtGhours.Text = .GrossWorkingHours
-            txtGprod.Text = .GrossProductivity
-            txtNhours.Text = .NetWorkingHours
-            txtNprod.Text = .NetProductivity
+            txtGhours.Text = Format(.GrossWorkingHours, "0.00")
+            txtGprod.Text = Format(.GrossProductivity, "0.00")
+            txtNhours.Text = Format(.NetWorkingHours, "0.00")
+            txtNprod.Text = Format(.NetProductivity, "0.00")
 
             With .Moves.Container
                 txtD20.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze20").ToString))
@@ -104,20 +113,14 @@ Public Class CraneCtl
 
         End With
 
-        txtDDelay.Text = crnCrane.Delays.Deductable.Totalhours
-        txtBreaks.Text = crnCrane.Delays.Break.Totalhours
-        txtNDelays.Text = crnCrane.Delays.Nondeductable.Totalhours
+        txtDDelay.Text = Format(crnCrane.Delays.Deductable.Totalhours, "0.00")
+        txtBreaks.Text = Format(crnCrane.Delays.Break.Totalhours, "0.00")
+        txtNDelays.Text = Format(crnCrane.Delays.Nondeductable.Totalhours, "0.00")
     End Sub
 
-    Private Sub mskFirst_LostFocus(sender As Object, e As EventArgs) Handles mskFirst.LostFocus
+    Private Sub FirstLastMove_LostFocus(sender As Object, e As EventArgs) 'handler for mskFirst and mskLast
         If IsValidDate({mskFirst, mskLast}) Then
             crnCrane.FirstMove = GetDateTime(mskFirst.Text)
-            Refresh_info()
-        End If
-    End Sub
-
-    Private Sub mskLast_LostFocus(sender As Object, e As EventArgs) Handles mskLast.LostFocus
-        If IsValidDate({mskFirst, mskLast}) Then
             crnCrane.LastMove = GetDateTime(mskLast.Text)
             Refresh_info()
         End If
@@ -131,7 +134,7 @@ Public Class CraneCtl
             Dim span As TimeSpan = delayto.Subtract(delayfrom)
 
             delayTable.Rows.Add(mskDescription.Text, delayfrom, delayto, span.TotalHours)
-            PopulateDataGridViews()
+            PopulateDelays()
         End If
     End Sub
 
@@ -222,9 +225,9 @@ Public Class CraneCtl
 
     Private Function GetBound(text As String) As String()
         Select Case text
-            Case "DISCHARGE"
+            Case "DISCHARGE", "OPENING"
                 Return {Nothing, crnCrane.Registry}
-            Case "LOADING"
+            Case "LOADING", "CLOSING"
                 Return {crnCrane.Registry, Nothing}
             Case Else
                 Return {Nothing, Nothing}
@@ -265,8 +268,8 @@ Public Class CraneCtl
 
     Private Sub btnHatchAdd_Click(sender As Object, e As EventArgs) Handles btnHatchAdd.Click
         If IsInputValid({cmbHatchmove, txtHatchbay, txtHatch20, txtHatch40}) Then
-            Dim actualOB As String = GetBound(cmbGearmove.Text)(0)
-            Dim actualIB As String = GetBound(cmbGearmove.Text)(1)
+            Dim actualOB As String = GetBound(cmbHatchmove.Text)(0)
+            Dim actualIB As String = GetBound(cmbHatchmove.Text)(1)
 
             Dim count20 As Long = CLng(0 & txtHatch20.Text)
             Dim count40 As Long = CLng(0 & txtHatch40.Text)
@@ -282,7 +285,7 @@ Public Class CraneCtl
         End If
     End Sub
 
-    Public Sub PopulateDataGridViews()
+    Public Sub PopulateDelays()
 
         dgvDelays.Rows.Clear()
 
@@ -311,4 +314,19 @@ Public Class CraneCtl
         Refresh_info()
     End Sub
 
+    Private Sub dgvDelays_LostFocus(sender As Object, e As EventArgs) Handles dgvDelays.LostFocus
+
+        crnCrane.Delays.Clear()
+
+        For Each row As DataGridViewRow In dgvDelays.Rows
+            Dim tempDatatable As DataTable = crnCrane.Delays.Tables(row.Cells(0).Value)
+            With tempDatatable
+                tempDatatable.Rows.Add(row.Cells(1).Value,
+                                        row.Cells(2).Value,
+                                        row.Cells(3).Value,
+                                        row.Cells(4).Value)
+            End With
+        Next
+
+    End Sub
 End Class

@@ -84,6 +84,13 @@ Partial Class CLRForm
         Me.Label30 = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.ProdSum = New System.Windows.Forms.DataGridView()
+        Me.col1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.col2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnt20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnt40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnt45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cntUnits = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cntTEU = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtTEUs = New System.Windows.Forms.TextBox()
         Me.txtUnits = New System.Windows.Forms.TextBox()
         Me.cmdSave = New System.Windows.Forms.Button()
@@ -107,13 +114,6 @@ Partial Class CLRForm
         Me.delayhours = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtDelaySum = New System.Windows.Forms.TextBox()
-        Me.col1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.col2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cnt20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cnt40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cnt45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cntUnits = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cntTEU = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -221,10 +221,11 @@ Partial Class CLRForm
         '
         'mskDensity
         '
-        Me.mskDensity.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskDensity.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskDensity.Location = New System.Drawing.Point(951, 131)
         Me.mskDensity.Name = "mskDensity"
-        Me.mskDensity.Size = New System.Drawing.Size(251, 27)
+        Me.mskDensity.ReadOnly = True
+        Me.mskDensity.Size = New System.Drawing.Size(251, 28)
         Me.mskDensity.TabIndex = 59
         '
         'Label46
@@ -239,72 +240,92 @@ Partial Class CLRForm
         '
         'mskNetCraneProd
         '
+        Me.mskNetCraneProd.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskNetCraneProd.Location = New System.Drawing.Point(664, 329)
         Me.mskNetCraneProd.Name = "mskNetCraneProd"
-        Me.mskNetCraneProd.Size = New System.Drawing.Size(134, 29)
+        Me.mskNetCraneProd.ReadOnly = True
+        Me.mskNetCraneProd.Size = New System.Drawing.Size(134, 28)
         Me.mskNetCraneProd.TabIndex = 57
         '
         'mskGrossCraneProd
         '
+        Me.mskGrossCraneProd.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskGrossCraneProd.Location = New System.Drawing.Point(524, 329)
         Me.mskGrossCraneProd.Name = "mskGrossCraneProd"
-        Me.mskGrossCraneProd.Size = New System.Drawing.Size(134, 29)
+        Me.mskGrossCraneProd.ReadOnly = True
+        Me.mskGrossCraneProd.Size = New System.Drawing.Size(134, 28)
         Me.mskGrossCraneProd.TabIndex = 56
         '
         'mskNetHours
         '
+        Me.mskNetHours.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskNetHours.Location = New System.Drawing.Point(664, 233)
         Me.mskNetHours.Name = "mskNetHours"
-        Me.mskNetHours.Size = New System.Drawing.Size(134, 29)
+        Me.mskNetHours.ReadOnly = True
+        Me.mskNetHours.Size = New System.Drawing.Size(134, 28)
         Me.mskNetHours.TabIndex = 55
         '
         'mskGrossHours
         '
+        Me.mskGrossHours.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskGrossHours.Location = New System.Drawing.Point(524, 233)
         Me.mskGrossHours.Name = "mskGrossHours"
-        Me.mskGrossHours.Size = New System.Drawing.Size(134, 29)
+        Me.mskGrossHours.ReadOnly = True
+        Me.mskGrossHours.Size = New System.Drawing.Size(134, 28)
         Me.mskGrossHours.TabIndex = 54
         '
         'mskNetWorkingTime
         '
+        Me.mskNetWorkingTime.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskNetWorkingTime.Location = New System.Drawing.Point(1139, 234)
         Me.mskNetWorkingTime.Name = "mskNetWorkingTime"
-        Me.mskNetWorkingTime.Size = New System.Drawing.Size(134, 29)
+        Me.mskNetWorkingTime.ReadOnly = True
+        Me.mskNetWorkingTime.Size = New System.Drawing.Size(134, 28)
         Me.mskNetWorkingTime.TabIndex = 53
         '
         'mskNetVesselProd
         '
+        Me.mskNetVesselProd.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskNetVesselProd.Location = New System.Drawing.Point(1139, 304)
         Me.mskNetVesselProd.Name = "mskNetVesselProd"
-        Me.mskNetVesselProd.Size = New System.Drawing.Size(134, 29)
+        Me.mskNetVesselProd.ReadOnly = True
+        Me.mskNetVesselProd.Size = New System.Drawing.Size(134, 28)
         Me.mskNetVesselProd.TabIndex = 52
         '
         'mskGrossVesselProd
         '
+        Me.mskGrossVesselProd.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskGrossVesselProd.Location = New System.Drawing.Point(1139, 269)
         Me.mskGrossVesselProd.Name = "mskGrossVesselProd"
-        Me.mskGrossVesselProd.Size = New System.Drawing.Size(134, 29)
+        Me.mskGrossVesselProd.ReadOnly = True
+        Me.mskGrossVesselProd.Size = New System.Drawing.Size(134, 28)
         Me.mskGrossVesselProd.TabIndex = 51
         '
         'mskNetBerth
         '
+        Me.mskNetBerth.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskNetBerth.Location = New System.Drawing.Point(291, 233)
         Me.mskNetBerth.Name = "mskNetBerth"
-        Me.mskNetBerth.Size = New System.Drawing.Size(134, 29)
+        Me.mskNetBerth.ReadOnly = True
+        Me.mskNetBerth.Size = New System.Drawing.Size(134, 28)
         Me.mskNetBerth.TabIndex = 50
         '
         'mskNetBerthProd
         '
+        Me.mskNetBerthProd.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskNetBerthProd.Location = New System.Drawing.Point(291, 304)
         Me.mskNetBerthProd.Name = "mskNetBerthProd"
-        Me.mskNetBerthProd.Size = New System.Drawing.Size(134, 29)
+        Me.mskNetBerthProd.ReadOnly = True
+        Me.mskNetBerthProd.Size = New System.Drawing.Size(134, 28)
         Me.mskNetBerthProd.TabIndex = 49
         '
         'mskGrossBerthProd
         '
+        Me.mskGrossBerthProd.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskGrossBerthProd.Location = New System.Drawing.Point(291, 269)
         Me.mskGrossBerthProd.Name = "mskGrossBerthProd"
-        Me.mskGrossBerthProd.Size = New System.Drawing.Size(134, 29)
+        Me.mskGrossBerthProd.ReadOnly = True
+        Me.mskGrossBerthProd.Size = New System.Drawing.Size(134, 28)
         Me.mskGrossBerthProd.TabIndex = 48
         '
         'Label45
@@ -353,9 +374,11 @@ Partial Class CLRForm
         '
         'mskGrossWorkingTime
         '
+        Me.mskGrossWorkingTime.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskGrossWorkingTime.Location = New System.Drawing.Point(1139, 199)
         Me.mskGrossWorkingTime.Name = "mskGrossWorkingTime"
-        Me.mskGrossWorkingTime.Size = New System.Drawing.Size(134, 29)
+        Me.mskGrossWorkingTime.ReadOnly = True
+        Me.mskGrossWorkingTime.Size = New System.Drawing.Size(134, 28)
         Me.mskGrossWorkingTime.TabIndex = 40
         '
         'Label41
@@ -437,10 +460,11 @@ Partial Class CLRForm
         '
         'mskMoves
         '
-        Me.mskMoves.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskMoves.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskMoves.Location = New System.Drawing.Point(279, 132)
         Me.mskMoves.Name = "mskMoves"
-        Me.mskMoves.Size = New System.Drawing.Size(251, 27)
+        Me.mskMoves.ReadOnly = True
+        Me.mskMoves.Size = New System.Drawing.Size(251, 28)
         Me.mskMoves.TabIndex = 25
         '
         'Label7
@@ -455,46 +479,51 @@ Partial Class CLRForm
         '
         'mskFirstmve
         '
-        Me.mskFirstmve.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskFirstmve.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskFirstmve.Location = New System.Drawing.Point(951, 28)
         Me.mskFirstmve.Mask = "0000H 00/00/0000"
         Me.mskFirstmve.Name = "mskFirstmve"
-        Me.mskFirstmve.Size = New System.Drawing.Size(251, 27)
+        Me.mskFirstmve.ReadOnly = True
+        Me.mskFirstmve.Size = New System.Drawing.Size(251, 28)
         Me.mskFirstmve.TabIndex = 23
         '
         'mskLastmve
         '
-        Me.mskLastmve.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskLastmve.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskLastmve.Location = New System.Drawing.Point(951, 79)
         Me.mskLastmve.Mask = "0000H 00/00/0000"
         Me.mskLastmve.Name = "mskLastmve"
-        Me.mskLastmve.Size = New System.Drawing.Size(251, 27)
+        Me.mskLastmve.ReadOnly = True
+        Me.mskLastmve.Size = New System.Drawing.Size(251, 28)
         Me.mskLastmve.TabIndex = 22
         '
         'mskBerthHours
         '
-        Me.mskBerthHours.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskBerthHours.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskBerthHours.Location = New System.Drawing.Point(291, 200)
         Me.mskBerthHours.Name = "mskBerthHours"
-        Me.mskBerthHours.Size = New System.Drawing.Size(134, 27)
+        Me.mskBerthHours.ReadOnly = True
+        Me.mskBerthHours.Size = New System.Drawing.Size(134, 28)
         Me.mskBerthHours.TabIndex = 20
         '
         'mskATD
         '
-        Me.mskATD.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskATD.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskATD.Location = New System.Drawing.Point(279, 79)
         Me.mskATD.Mask = "0000H 00/00/0000"
         Me.mskATD.Name = "mskATD"
-        Me.mskATD.Size = New System.Drawing.Size(251, 27)
+        Me.mskATD.ReadOnly = True
+        Me.mskATD.Size = New System.Drawing.Size(251, 28)
         Me.mskATD.TabIndex = 19
         '
         'mskATA
         '
-        Me.mskATA.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskATA.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskATA.Location = New System.Drawing.Point(279, 26)
         Me.mskATA.Mask = "0000H 00/00/0000"
         Me.mskATA.Name = "mskATA"
-        Me.mskATA.Size = New System.Drawing.Size(251, 27)
+        Me.mskATA.ReadOnly = True
+        Me.mskATA.Size = New System.Drawing.Size(251, 28)
         Me.mskATA.TabIndex = 18
         '
         'Label2
@@ -572,50 +601,54 @@ Partial Class CLRForm
         '
         'mskLastPort
         '
-        Me.mskLastPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskLastPort.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskLastPort.Location = New System.Drawing.Point(951, 22)
         Me.mskLastPort.Name = "mskLastPort"
-        Me.mskLastPort.Size = New System.Drawing.Size(251, 27)
+        Me.mskLastPort.Size = New System.Drawing.Size(251, 28)
         Me.mskLastPort.TabIndex = 23
         '
         'mskNextPort
         '
-        Me.mskNextPort.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskNextPort.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskNextPort.Location = New System.Drawing.Point(951, 73)
         Me.mskNextPort.Name = "mskNextPort"
-        Me.mskNextPort.Size = New System.Drawing.Size(251, 27)
+        Me.mskNextPort.Size = New System.Drawing.Size(251, 28)
         Me.mskNextPort.TabIndex = 22
         '
         'mskVoyage
         '
-        Me.mskVoyage.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskVoyage.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskVoyage.Location = New System.Drawing.Point(951, 125)
         Me.mskVoyage.Name = "mskVoyage"
-        Me.mskVoyage.Size = New System.Drawing.Size(251, 27)
+        Me.mskVoyage.ReadOnly = True
+        Me.mskVoyage.Size = New System.Drawing.Size(251, 28)
         Me.mskVoyage.TabIndex = 21
         '
         'mskRegistry
         '
-        Me.mskRegistry.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskRegistry.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskRegistry.Location = New System.Drawing.Point(271, 125)
         Me.mskRegistry.Name = "mskRegistry"
-        Me.mskRegistry.Size = New System.Drawing.Size(251, 27)
+        Me.mskRegistry.ReadOnly = True
+        Me.mskRegistry.Size = New System.Drawing.Size(251, 28)
         Me.mskRegistry.TabIndex = 20
         '
         'mskVessel
         '
-        Me.mskVessel.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskVessel.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskVessel.Location = New System.Drawing.Point(271, 75)
         Me.mskVessel.Name = "mskVessel"
-        Me.mskVessel.Size = New System.Drawing.Size(251, 27)
+        Me.mskVessel.ReadOnly = True
+        Me.mskVessel.Size = New System.Drawing.Size(251, 28)
         Me.mskVessel.TabIndex = 19
         '
         'mskShippingLine
         '
-        Me.mskShippingLine.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
+        Me.mskShippingLine.Font = New System.Drawing.Font("Calibri", 12.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.mskShippingLine.Location = New System.Drawing.Point(271, 23)
         Me.mskShippingLine.Name = "mskShippingLine"
-        Me.mskShippingLine.Size = New System.Drawing.Size(251, 27)
+        Me.mskShippingLine.ReadOnly = True
+        Me.mskShippingLine.Size = New System.Drawing.Size(251, 28)
         Me.mskShippingLine.TabIndex = 18
         '
         'lblVoyage
@@ -699,6 +732,7 @@ Partial Class CLRForm
         'txtGC
         '
         Me.txtGC.Location = New System.Drawing.Point(645, 606)
+        Me.txtGC.MaxLength = 1
         Me.txtGC.Name = "txtGC"
         Me.txtGC.Size = New System.Drawing.Size(100, 32)
         Me.txtGC.TabIndex = 57
@@ -760,17 +794,69 @@ Partial Class CLRForm
         '
         Me.ProdSum.AllowUserToAddRows = False
         Me.ProdSum.AllowUserToDeleteRows = False
+        Me.ProdSum.AllowUserToResizeRows = False
         Me.ProdSum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ProdSum.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.col1, Me.col2, Me.cnt20, Me.cnt40, Me.cnt45, Me.cntUnits, Me.cntTEU})
+        Me.ProdSum.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.ProdSum.Location = New System.Drawing.Point(217, 32)
         Me.ProdSum.Name = "ProdSum"
+        Me.ProdSum.RowHeadersVisible = False
         Me.ProdSum.Size = New System.Drawing.Size(889, 174)
         Me.ProdSum.TabIndex = 103
+        '
+        'col1
+        '
+        Me.col1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.col1.FillWeight = 182.7411!
+        Me.col1.HeaderText = "Freight"
+        Me.col1.Name = "col1"
+        '
+        'col2
+        '
+        Me.col2.HeaderText = "Freight Kind"
+        Me.col2.Name = "col2"
+        Me.col2.Width = 135
+        '
+        'cnt20
+        '
+        Me.cnt20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cnt20.FillWeight = 83.45177!
+        Me.cnt20.HeaderText = "20"
+        Me.cnt20.Name = "cnt20"
+        '
+        'cnt40
+        '
+        Me.cnt40.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cnt40.FillWeight = 83.45177!
+        Me.cnt40.HeaderText = "40"
+        Me.cnt40.Name = "cnt40"
+        '
+        'cnt45
+        '
+        Me.cnt45.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cnt45.FillWeight = 83.45177!
+        Me.cnt45.HeaderText = "45"
+        Me.cnt45.Name = "cnt45"
+        '
+        'cntUnits
+        '
+        Me.cntUnits.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cntUnits.FillWeight = 83.45177!
+        Me.cntUnits.HeaderText = "Units"
+        Me.cntUnits.Name = "cntUnits"
+        '
+        'cntTEU
+        '
+        Me.cntTEU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.cntTEU.FillWeight = 83.45177!
+        Me.cntTEU.HeaderText = "TEUs"
+        Me.cntTEU.Name = "cntTEU"
         '
         'txtTEUs
         '
         Me.txtTEUs.Location = New System.Drawing.Point(717, 212)
         Me.txtTEUs.Name = "txtTEUs"
+        Me.txtTEUs.ReadOnly = True
         Me.txtTEUs.Size = New System.Drawing.Size(100, 29)
         Me.txtTEUs.TabIndex = 102
         '
@@ -778,6 +864,7 @@ Partial Class CLRForm
         '
         Me.txtUnits.Location = New System.Drawing.Point(505, 212)
         Me.txtUnits.Name = "txtUnits"
+        Me.txtUnits.ReadOnly = True
         Me.txtUnits.Size = New System.Drawing.Size(100, 29)
         Me.txtUnits.TabIndex = 101
         '
@@ -817,11 +904,13 @@ Partial Class CLRForm
         '
         Me.VolumeTEU.AllowUserToAddRows = False
         Me.VolumeTEU.AllowUserToDeleteRows = False
-        Me.VolumeTEU.AllowUserToResizeColumns = False
+        Me.VolumeTEU.AllowUserToResizeRows = False
         Me.VolumeTEU.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.VolumeTEU.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.teuType, Me.moTeu, Me.yearTEU})
+        Me.VolumeTEU.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.VolumeTEU.Location = New System.Drawing.Point(48, 33)
         Me.VolumeTEU.Name = "VolumeTEU"
+        Me.VolumeTEU.RowHeadersVisible = False
         Me.VolumeTEU.Size = New System.Drawing.Size(562, 182)
         Me.VolumeTEU.TabIndex = 36
         '
@@ -851,6 +940,7 @@ Partial Class CLRForm
         Me.TextBox18.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox18.Location = New System.Drawing.Point(510, 218)
         Me.TextBox18.Name = "TextBox18"
+        Me.TextBox18.ReadOnly = True
         Me.TextBox18.Size = New System.Drawing.Size(100, 29)
         Me.TextBox18.TabIndex = 35
         Me.TextBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -871,6 +961,7 @@ Partial Class CLRForm
         Me.TextBox17.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox17.Location = New System.Drawing.Point(404, 218)
         Me.TextBox17.Name = "TextBox17"
+        Me.TextBox17.ReadOnly = True
         Me.TextBox17.Size = New System.Drawing.Size(100, 29)
         Me.TextBox17.TabIndex = 21
         Me.TextBox17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -920,11 +1011,13 @@ Partial Class CLRForm
         '
         Me.DelaySum.AllowUserToAddRows = False
         Me.DelaySum.AllowUserToDeleteRows = False
-        Me.DelaySum.AllowUserToResizeColumns = False
+        Me.DelaySum.AllowUserToResizeRows = False
         Me.DelaySum.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DelaySum.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.delayhours})
+        Me.DelaySum.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DelaySum.Location = New System.Drawing.Point(39, 82)
         Me.DelaySum.Name = "DelaySum"
+        Me.DelaySum.RowHeadersVisible = False
         Me.DelaySum.Size = New System.Drawing.Size(581, 133)
         Me.DelaySum.TabIndex = 37
         '
@@ -970,57 +1063,10 @@ Partial Class CLRForm
         Me.txtDelaySum.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDelaySum.Location = New System.Drawing.Point(520, 218)
         Me.txtDelaySum.Name = "txtDelaySum"
+        Me.txtDelaySum.ReadOnly = True
         Me.txtDelaySum.Size = New System.Drawing.Size(100, 29)
         Me.txtDelaySum.TabIndex = 3
         Me.txtDelaySum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'col1
-        '
-        Me.col1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.col1.FillWeight = 182.7411!
-        Me.col1.HeaderText = "Freight"
-        Me.col1.Name = "col1"
-        '
-        'col2
-        '
-        Me.col2.HeaderText = "Freight Kind"
-        Me.col2.Name = "col2"
-        Me.col2.Width = 135
-        '
-        'cnt20
-        '
-        Me.cnt20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.cnt20.FillWeight = 83.45177!
-        Me.cnt20.HeaderText = "20"
-        Me.cnt20.Name = "cnt20"
-        '
-        'cnt40
-        '
-        Me.cnt40.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.cnt40.FillWeight = 83.45177!
-        Me.cnt40.HeaderText = "40"
-        Me.cnt40.Name = "cnt40"
-        '
-        'cnt45
-        '
-        Me.cnt45.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.cnt45.FillWeight = 83.45177!
-        Me.cnt45.HeaderText = "45"
-        Me.cnt45.Name = "cnt45"
-        '
-        'cntUnits
-        '
-        Me.cntUnits.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.cntUnits.FillWeight = 83.45177!
-        Me.cntUnits.HeaderText = "Units"
-        Me.cntUnits.Name = "cntUnits"
-        '
-        'cntTEU
-        '
-        Me.cntTEU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.cntTEU.FillWeight = 83.45177!
-        Me.cntTEU.HeaderText = "TEUs"
-        Me.cntTEU.Name = "cntTEU"
         '
         'CLRForm
         '

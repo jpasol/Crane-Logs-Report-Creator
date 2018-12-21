@@ -663,6 +663,8 @@ Partial Public Class CraneLogsData
         
         Private columndelayend As Global.System.Data.DataColumn
         
+        Private columndelayhours As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
@@ -723,6 +725,14 @@ Partial Public Class CraneLogsData
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property delayhoursColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndelayhours
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -759,9 +769,9 @@ Partial Public Class CraneLogsData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddBerthingHourDelaysRow(ByVal berthdelay As String, ByVal delaystart As String, ByVal delayend As String) As BerthingHourDelaysRow
+        Public Overloads Function AddBerthingHourDelaysRow(ByVal berthdelay As String, ByVal delaystart As String, ByVal delayend As String, ByVal delayhours As String) As BerthingHourDelaysRow
             Dim rowBerthingHourDelaysRow As BerthingHourDelaysRow = CType(Me.NewRow,BerthingHourDelaysRow)
-            Dim columnValuesArray() As Object = New Object() {berthdelay, delaystart, delayend}
+            Dim columnValuesArray() As Object = New Object() {berthdelay, delaystart, delayend, delayhours}
             rowBerthingHourDelaysRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowBerthingHourDelaysRow)
             Return rowBerthingHourDelaysRow
@@ -787,6 +797,7 @@ Partial Public Class CraneLogsData
             Me.columnberthdelay = MyBase.Columns("berthdelay")
             Me.columndelaystart = MyBase.Columns("delaystart")
             Me.columndelayend = MyBase.Columns("delayend")
+            Me.columndelayhours = MyBase.Columns("delayhours")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -798,6 +809,8 @@ Partial Public Class CraneLogsData
             MyBase.Columns.Add(Me.columndelaystart)
             Me.columndelayend = New Global.System.Data.DataColumn("delayend", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columndelayend)
+            Me.columndelayhours = New Global.System.Data.DataColumn("delayhours", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndelayhours)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1418,6 +1431,21 @@ Partial Public Class CraneLogsData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property delayhours() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableBerthingHourDelays.delayhoursColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'delayhours' in table 'BerthingHourDelays' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableBerthingHourDelays.delayhoursColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Function IsberthdelayNull() As Boolean
             Return Me.IsNull(Me.tableBerthingHourDelays.berthdelayColumn)
         End Function
@@ -1450,6 +1478,18 @@ Partial Public Class CraneLogsData
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub SetdelayendNull()
             Me(Me.tableBerthingHourDelays.delayendColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function IsdelayhoursNull() As Boolean
+            Return Me.IsNull(Me.tableBerthingHourDelays.delayhoursColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub SetdelayhoursNull()
+            Me(Me.tableBerthingHourDelays.delayhoursColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

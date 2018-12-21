@@ -42,25 +42,14 @@ Public Class CLRForm
 
             For Each crn As Crane In clsCLR.Crane
                 Dim CraneControl As New CraneCtl(crn)
-                CraneControl.PopulateDataGridViews()
+                CraneControl.PopulateDelays()
                 TabControl1.TabPages.Add(CraneControl.tabCraneLog.TabPages($"tab{crn.CraneName}"))
             Next
         End If
     End Sub
 
-    Private Sub mskATA_LostFocus(sender As Object, e As EventArgs) Handles mskATA.LostFocus
-    End Sub
-
-    Private Sub mskATD_LostFocus(sender As Object, e As EventArgs) Handles mskATD.LostFocus
-    End Sub
-
-    Private Sub mskFirstmve_LostFocus(sender As Object, e As EventArgs) Handles mskFirstmve.LostFocus
-    End Sub
-
-    Private Sub mskLastmve_LostFocus(sender As Object, e As EventArgs) Handles mskLastmve.LostFocus
-    End Sub
-
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+
         Dim strGC As String = "GC0" & txtGC.Text
         Dim tempcrane As Reports.Crane
         Try
@@ -90,19 +79,19 @@ Public Class CLRForm
                     mskFirstmve.Text = GetMilTime(.FirstMove)
                     mskLastmve.Text = GetMilTime(.LastMove)
                     mskMoves.Text = .TotalMoves
-                    mskDensity.Text = .CraneDensity
-                    mskBerthHours.Text = .TotalBerthHours
-                    mskNetBerth.Text = .NetBerthHours
-                    mskGrossBerthProd.Text = .GrossBerthProdRate
-                    mskNetBerthProd.Text = .NetBerthProdRate
-                    mskGrossWorkingTime.Text = .GrossVesselWorkingTime
-                    mskNetWorkingTime.Text = .NetVesselWorkingTime
-                    mskGrossVesselProd.Text = .GrossVesselProdRate
-                    mskNetVesselProd.Text = .NetVesselProdRate
-                    mskGrossHours.Text = .TotalGrossWorkingHours
-                    mskNetHours.Text = .TotalNetWorkingHours
-                    mskGrossCraneProd.Text = .GrossCraneProductivity
-                    mskNetCraneProd.Text = .NetCraneProductivity
+                    mskDensity.Text = Format(.CraneDensity, "0.00")
+                    mskBerthHours.Text = Format(.TotalBerthHours, "0.00")
+                    mskNetBerth.Text = Format(.NetBerthHours, "0.00")
+                    mskGrossBerthProd.Text = Format(.GrossBerthProdRate, "0.00")
+                    mskNetBerthProd.Text = Format(.NetBerthProdRate, "0.00")
+                    mskGrossWorkingTime.Text = Format(.GrossVesselWorkingTime, "0.00")
+                    mskNetWorkingTime.Text = Format(.NetVesselWorkingTime, "0.00")
+                    mskGrossVesselProd.Text = Format(.GrossVesselProdRate, "0.00")
+                    mskNetVesselProd.Text = Format(.NetVesselProdRate, "0.00")
+                    mskGrossHours.Text = Format(.TotalGrossWorkingHours, "0.00")
+                    mskNetHours.Text = Format(.TotalNetWorkingHours, "0.00")
+                    mskGrossCraneProd.Text = Format(.GrossCraneProductivity, "0.00")
+                    mskNetCraneProd.Text = Format(.NetCraneProductivity, "0.00")
                 End With
 
             Case "More Information"
@@ -171,7 +160,7 @@ Public Class CLRForm
     End Sub
 
     Private Sub mskDelayend_KeyDown(sender As Object, e As KeyEventArgs) Handles mskDelayend.KeyDown
-        If e.KeyCode = Keys.Enter Then
+If e.KeyCode = Keys.Enter Then
             Dim rowindex As Integer
             Dim desclist As New List(Of String)
             Dim delaystart As Date
@@ -198,7 +187,8 @@ Public Class CLRForm
                     If CDbl(row.Cells(3).Value) > 0 Then 'only add delays that has total value > 0
                         .AddBerthingHourDelaysRow(berthdelay:=row.Cells(0).Value,
                                                  delaystart:=row.Cells(1).Value,
-                                                 delayend:=row.Cells(2).Value)
+                                                 delayend:=row.Cells(2).Value,
+                                                 delayhours:=row.Cells(3).Value)
                     End If
                 Next
             End With
@@ -218,5 +208,12 @@ Public Class CLRForm
 
     End Sub
 
+    Private Sub txtGC_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtGC.KeyPress
+        If Asc(e.KeyChar) <> 8 Then
+            If Asc(e.KeyChar) < 49 Or Asc(e.KeyChar) > 52 Then
+                e.Handled = True
+            End If
+        End If
+    End Sub
 
 End Class
