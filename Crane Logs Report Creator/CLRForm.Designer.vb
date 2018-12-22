@@ -114,6 +114,7 @@ Partial Class CLRForm
         Me.delayhours = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtDelaySum = New System.Windows.Forms.TextBox()
+        Me.cmdDelete = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -713,6 +714,7 @@ Partial Class CLRForm
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.cmdDelete)
         Me.TabPage2.Controls.Add(Me.txtGC)
         Me.TabPage2.Controls.Add(Me.Button5)
         Me.TabPage2.Controls.Add(Me.Button4)
@@ -1068,6 +1070,16 @@ Partial Class CLRForm
         Me.txtDelaySum.TabIndex = 3
         Me.txtDelaySum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'cmdDelete
+        '
+        Me.cmdDelete.BackColor = System.Drawing.Color.Red
+        Me.cmdDelete.Location = New System.Drawing.Point(607, 605)
+        Me.cmdDelete.Name = "cmdDelete"
+        Me.cmdDelete.Size = New System.Drawing.Size(32, 32)
+        Me.cmdDelete.TabIndex = 58
+        Me.cmdDelete.Text = "X"
+        Me.cmdDelete.UseVisualStyleBackColor = False
+        '
         'CLRForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1192,4 +1204,5 @@ Partial Class CLRForm
     Friend WithEvents cnt45 As DataGridViewTextBoxColumn
     Friend WithEvents cntUnits As DataGridViewTextBoxColumn
     Friend WithEvents cntTEU As DataGridViewTextBoxColumn
+    Friend WithEvents cmdDelete As Button
 End Class

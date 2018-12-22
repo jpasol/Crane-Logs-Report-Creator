@@ -217,6 +217,7 @@ Partial Class CraneCtl
         '
         'cmbFreight
         '
+        Me.cmbFreight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbFreight.FormattingEnabled = True
         Me.cmbFreight.Items.AddRange(New Object() {"FULL", "EMPTY"})
         Me.cmbFreight.Location = New System.Drawing.Point(525, 52)
@@ -301,6 +302,7 @@ Partial Class CraneCtl
         '
         'cmbMovekind
         '
+        Me.cmbMovekind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbMovekind.FormattingEnabled = True
         Me.cmbMovekind.Items.AddRange(New Object() {"DISCHARGE", "LOADING", "SVD", "SOB", "TRANSHIPMENT"})
         Me.cmbMovekind.Location = New System.Drawing.Point(415, 52)
@@ -319,6 +321,7 @@ Partial Class CraneCtl
         '
         'cmbBound
         '
+        Me.cmbBound.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbBound.FormattingEnabled = True
         Me.cmbBound.Items.AddRange(New Object() {"DISCHARGE", "LOADING"})
         Me.cmbBound.Location = New System.Drawing.Point(198, 52)
@@ -523,6 +526,7 @@ Partial Class CraneCtl
         '
         'cmbGearmove
         '
+        Me.cmbGearmove.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbGearmove.FormattingEnabled = True
         Me.cmbGearmove.Items.AddRange(New Object() {"DISCHARGE", "LOADING"})
         Me.cmbGearmove.Location = New System.Drawing.Point(306, 58)
@@ -723,6 +727,7 @@ Partial Class CraneCtl
         '
         'cmbHatchmove
         '
+        Me.cmbHatchmove.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbHatchmove.FormattingEnabled = True
         Me.cmbHatchmove.Items.AddRange(New Object() {"OPENING", "CLOSING"})
         Me.cmbHatchmove.Location = New System.Drawing.Point(306, 62)
@@ -971,6 +976,7 @@ Partial Class CraneCtl
         '
         'cmbDelays
         '
+        Me.cmbDelays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbDelays.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbDelays.FormattingEnabled = True
         Me.cmbDelays.Items.AddRange(New Object() {"Deductable", "Break", "Nondeductable"})

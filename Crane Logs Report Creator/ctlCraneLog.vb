@@ -31,12 +31,13 @@ Public Class CraneCtl
         AddHandler mskLast.LostFocus, AddressOf FirstLastMove_LostFocus
 
         ' Add any initialization after the InitializeComponent() call.
+        crnCrane = Crane
         With Crane
             Me.tabCrane.Name = "tab" & .CraneName
             Me.tabCrane.Text = .CraneName
             Me.lblGantry.Text = .CraneName
         End With
-        crnCrane = Crane
+
 
         ContainerDsc.AutoGenerateColumns = False
         ContainerLoad.AutoGenerateColumns = False
@@ -327,6 +328,10 @@ Public Class CraneCtl
                                         row.Cells(4).Value)
             End With
         Next
+
+    End Sub
+
+    Private Sub cmdDelete_Click(sender As Object, e As EventArgs)
 
     End Sub
 End Class

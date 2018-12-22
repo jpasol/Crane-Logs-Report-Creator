@@ -37,6 +37,7 @@ Public Class CLRForm
         DelaySum.Rows.Add({"GOB Unlashing and GC positioning"})
         DelaySum.Rows.Add({"Waiting for Tug Boat / POB"})
 
+
         If clsCLR.Exists() Then
             clsCLR.RetrieveData()
 
@@ -46,6 +47,7 @@ Public Class CLRForm
                 TabControl1.TabPages.Add(CraneControl.tabCraneLog.TabPages($"tab{crn.CraneName}"))
             Next
         End If
+
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -203,7 +205,21 @@ If e.KeyCode = Keys.Enter Then
             .NextPort = mskNextPort.Text
         End With
 
-        clsCLR.Save()
+        Dim result As MsgBoxResult
+        If clsCLR.Exists Then
+            result = MsgBox("Update Crane Log Report?", vbYesNo)
+            If result = vbYes Then
+                If clsCLR.CancelExistingCraneLogsReport() Then 'cancelled succesfully
+                    clsCLR.Save()
+                End If
+            End If
+            Else
+            result = MsgBox("Continue Saving?", vbYesNo)
+            If result = vbYes Then
+                clsCLR.Save()
+            End If
+        End If
+
 
 
     End Sub
@@ -216,4 +232,24 @@ If e.KeyCode = Keys.Enter Then
         End If
     End Sub
 
+    Private Sub cmdDelete_Click(sender As Object, e As EventArgs) Handles cmdDelete.Click
+        Dim craneName As String = $"GC0{txtGC.Text}"
+        Dim craneTab As String = $"tab{craneName}"
+        RemoveCrane(craneName, craneTab)
+    End Sub
+
+    Private Sub RemoveCrane(craneName As String, craneTab As String)
+        Dim result As MsgBoxResult = MsgBox("Continue Deleting Crane?", vbYesNo)
+        If result = vbYes Then
+            Try
+                Dim removeCrane As Crane = clsCLR.Crane.Find(Function(crane) crane.CraneName = craneName)
+                Dim removeTab As TabPage = TabControl1.TabPages.Item(craneTab)
+                clsCLR.Crane.Remove(removeCrane)
+                TabControl1.TabPages.Remove(removeTab)
+            Catch
+                MsgBox("Error in Removing Crane: Crane to be removed cannot be accessed")
+                Exit Sub
+            End Try
+        End If
+    End Sub
 End Class

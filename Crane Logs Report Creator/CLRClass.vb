@@ -17,11 +17,15 @@ Public Class CLRClass
         Me.OPConnection = OPConnection
         Me.UserName = Username
 
+
+
+
     End Sub
 
     Private Property UserName As String
     Private Property DateNow As Date
     Private Property ReportFunctions As ReportFunctions
+    Private Property Refkey As Integer
     Public ReadOnly Property N4Connection As Connection Implements IReportswSave.N4Connection
     Public ReadOnly Property OPConnection As Connection Implements IReportswSave.OPConnection
     Public ReadOnly Property CLRVessel As Vessel Implements ICraneLogsReport.Vessel
@@ -165,11 +169,19 @@ Public Class CLRClass
             SaveBerthDelays(refkeyCLR)
             SaveCranes(refkeyCLR)
             OPConnection.CommitTrans()
+            OPConnection.Close()
         Catch ex As Exception
+            MsgBox("Save Unsuccessful, Rolling Back Changes" & vbNewLine &
+                   "Error Message: " & ex.Message)
             OPConnection.RollbackTrans()
+            OPConnection.Close()
         End Try
 
     End Sub
+
+    Private Function SaveCraneLogsReport() As Integer
+        Throw New NotImplementedException()
+    End Function
 
     Private Sub SaveCranes(refkeyCLR As Integer)
         Dim insertcommand As New ADODB.Command
@@ -186,6 +198,7 @@ INSERT INTO [opreports].[dbo].[crane]
            ,[first_move]
            ,[last_move]
            ,[moves])
+    OUTPUT INSERTED.refkey
      VALUES
            ('{crn.CraneName}'
            ,'{CLRVessel.Registry}'
@@ -193,8 +206,7 @@ INSERT INTO [opreports].[dbo].[crane]
            ,'{crn.FirstMove}'
            ,'{crn.LastMove}'
            ,{crn.Moves.TotalMoves}
-
-    Select Scope_Identity() as NewID
+           )
 "
             refkeyCrane = insertcommand.Execute.Fields(0).Value
 
@@ -233,9 +245,126 @@ INSERT INTO [opreports].[dbo].[crane_delays]
            ,'{delay("description").ToString}'
            ,'{delay("delaystart").ToString}'
            ,'{delay("delayend").ToString}'
+           )
 "
             insertcommand.Execute()
         Next
+    End Sub
+
+    Friend Function CancelExistingCraneLogsReport() As Boolean
+        OPConnection.Open()
+        OPConnection.BeginTrans()
+        Try
+            CancelCraneLogReport(Refkey)
+            CancelBerthDelays(Refkey)
+            CancelCrane(Refkey)
+            OPConnection.CommitTrans()
+            OPConnection.Close()
+            Return True
+        Catch ex As Exception
+            MsgBox("Cancellation Unsuccessful, Rolling Back Changes" & vbNewLine &
+                   "Error Message: " & ex.Message)
+            OPConnection.RollbackTrans()
+            OPConnection.Close()
+            Return False
+        End Try
+    End Function
+
+    Private Sub CancelCrane(refkey As Integer)
+        Dim craneRefkey As Integer = GetCraneRefkey(refkey)
+
+        Dim cancelCLR As New ADODB.Command
+        cancelCLR.ActiveConnection = OPConnection
+        cancelCLR.CommandText = $"
+UPDATE [opreports].[dbo].[clr_berthdelays]
+   SET [status] = 'VOID'
+ WHERE [clr_refkey] = {refkey}
+"
+        cancelCLR.Execute()
+
+        CancelCraneContainers(craneRefkey)
+        CancelCraneGearboxes(craneRefkey)
+        CancelCraneHatchcovers(craneRefkey)
+        CancelCraneDelays(craneRefkey)
+
+    End Sub
+
+    Private Sub CancelCraneDelays(craneRefkey As Integer)
+        Dim cancelCraneDelays As New ADODB.Command
+        cancelCraneDelays.ActiveConnection = OPConnection
+        cancelCraneDelays.CommandText = $"
+UPDATE [opreports].[dbo].[crane_containers]
+   SET [status] = 'VOID'
+ WHERE [crane_refkey] = {Refkey}
+"
+        cancelCraneDelays.Execute()
+    End Sub
+
+    Private Sub CancelCraneHatchcovers(craneRefkey As Integer)
+        Dim cancelCraneHatchcovers As New ADODB.Command
+        cancelCraneHatchcovers.ActiveConnection = OPConnection
+        cancelCraneHatchcovers.CommandText = $"
+UPDATE [opreports].[dbo].[crane_containers]
+   SET [status] = 'VOID'
+ WHERE [crane_refkey] = {Refkey}
+"
+        cancelCraneHatchcovers.Execute()
+    End Sub
+
+    Private Sub CancelCraneGearboxes(craneRefkey As Integer)
+        Dim cancelCraneGearboxes As New ADODB.Command
+        cancelCraneGearboxes.ActiveConnection = OPConnection
+        cancelCraneGearboxes.CommandText = $"
+UPDATE [opreports].[dbo].[crane_containers]
+   SET [status] = 'VOID'
+ WHERE [crane_refkey] = {Refkey}
+"
+        cancelCraneGearboxes.Execute()
+    End Sub
+
+    Private Sub CancelCraneContainers(craneRefkey As Integer)
+        Dim cancelCraneContainers As New ADODB.Command
+        cancelCraneContainers.ActiveConnection = OPConnection
+        cancelCraneContainers.CommandText = $"
+UPDATE [opreports].[dbo].[crane_containers]
+   SET [status] = 'VOID'
+ WHERE [crane_refkey] = {Refkey}
+"
+        cancelCraneContainers.Execute()
+
+    End Sub
+
+    Private Function GetCraneRefkey(refkey As Integer) As Integer
+        Dim craneRefkey As New ADODB.Command
+        craneRefkey.ActiveConnection = OPConnection
+        craneRefkey.CommandText = $"
+SELECT TOP 1 [refkey]
+  FROM [opreports].[dbo].[crane]
+	WHERE [clr_refkey] = {refkey}
+"
+        Return craneRefkey.Execute.Fields("refkey").Value
+    End Function
+
+    Private Sub CancelBerthDelays(refkey As Integer)
+        Dim cancelCLR As New ADODB.Command
+        cancelCLR.ActiveConnection = OPConnection
+        cancelCLR.CommandText = $"
+UPDATE [opreports].[dbo].[clr_berthdelays]
+   SET [status] = 'VOID'
+ WHERE [clr_refkey] = {refkey}
+"
+        cancelCLR.Execute()
+    End Sub
+
+    Private Sub CancelCraneLogReport(refkey As Integer)
+        Dim cancelCLR As New ADODB.Command
+        cancelCLR.ActiveConnection = OPConnection
+        cancelCLR.CommandText = $"
+UPDATE [opreports].[dbo].[reports_clr]
+   SET [status] = 'VOID'
+ WHERE [refkey] = {refkey}
+"
+        cancelCLR.Execute()
     End Sub
 
     Private Sub SaveBreaktimeDelays(crn As Crane, refkeyCrane As Integer)
@@ -257,6 +386,7 @@ INSERT INTO [opreports].[dbo].[crane_delays]
            ,'{delay("description").ToString}'
            ,'{delay("delaystart").ToString}'
            ,'{delay("delayend").ToString}'
+           )
 "
             insertcommand.Execute()
         Next
@@ -281,6 +411,7 @@ INSERT INTO [opreports].[dbo].[crane_delays]
            ,'{delay("description").ToString}'
            ,'{delay("delaystart").ToString}'
            ,'{delay("delayend").ToString}'
+           )
 "
             insertcommand.Execute()
         Next
@@ -363,6 +494,7 @@ INSERT INTO [opreports].[dbo].[crane_containers]
            ,{mve("cntsze20").ToString}
            ,{mve("cntsze40").ToString}
            ,{mve("cntsze45").ToString}
+           )
 "
             insertcommand.Execute()
         Next
@@ -379,6 +511,7 @@ INSERT INTO [opreports].[dbo].[clr_berthdelays]
            ,[berthdelay]
            ,[delaystart]
            ,[delayend])
+
      VALUES
            ({CLRVessel.Registry}
            ,{refkeyCLR}       
@@ -390,61 +523,28 @@ INSERT INTO [opreports].[dbo].[clr_berthdelays]
         Next
     End Sub
 
-    Private Function SaveCraneLogsReport() As Integer
-        Dim insertcommand As New ADODB.Command
-        insertcommand.ActiveConnection = OPConnection
-        insertcommand.CommandText = $"
-INSERT INTO [opreports].[dbo].[reports_clr]
-           ([registry]
-           ,[vslname]
-           ,[owner]
-           ,[last_port]
-           ,[next_port]
-           ,[ata]
-           ,[atd]
-           ,[first_move]
-           ,[last_move]
-           ,[moves]
-           ,[created]
-           ,[userid])
-     VALUES
-           ('{CLRVessel.Registry}'
-           ,'{CLRVessel.Name}'
-           ,'{CLRVessel.Owner}'
-           ,'{Me.LastPort}'
-           ,'{Me.NextPort}'
-           ,'{CLRVessel.ATA}'
-           ,'{CLRVessel.ATD}'
-           ,'{Me.FirstMove}'
-           ,'{Me.LastMove}'
-           ,{Me.TotalMoves}
-           ,'{UserName}'
-           ,'{DateNow}'
-           )
-
-      Select Scope_Identity() as NewID
-"
-        Return insertcommand.Execute.Fields(0).Value 'Jumper to catch value of insert command after execution
-    End Function
 
     Public Sub RetrieveData() Implements IReportswSave.RetrieveData 'different implementation; used only if clr is existing
+        OPConnection.Open()
+        Refkey = GetCraneLogsReportRefkey()
 
-        Dim cranelogsRefkey As Integer = GetRefkey()
-        GetBerthDelays(cranelogsRefkey)
-        GetCranes(cranelogsRefkey)
+        GetBerthDelays(Refkey)
+        GetCranes(Refkey)
+        OPConnection.Close()
     End Sub
 
-    Private Function GetRefkey() As Integer
+    Private Function GetCraneLogsReportRefkey() As Integer
         Dim cranelogRetriever As New ADODB.Command
         cranelogRetriever.ActiveConnection = OPConnection
-
         'GET Refkey
         cranelogRetriever.CommandText = $"
-SELECT [refkey]
+SELECT top 1 [refkey]
 FROM [opreports].[dbo].[reports_clr]
-Where registry = '{CLRVessel.Registry}'"
-
+Where registry = '{CLRVessel.Registry}' and status <> 'VOID'
+order by refkey desc
+"
         Return cranelogRetriever.Execute.Fields("refkey").Value.ToString 'tostring just to be safe
+
     End Function
     Private Sub GetBerthDelays(Refkey As Integer)
         Dim berthdelayRetriever As New ADODB.Command
@@ -454,7 +554,7 @@ Where registry = '{CLRVessel.Registry}'"
       ,[delayend]
   FROM [opreports].[dbo].[clr_berthdelays]
 	
-	WHERE [clr_refkey] = {Refkey}
+	WHERE [clr_refkey] = {Refkey} and status <> 'VOID'
 "
         Dim dataAdapter As New OleDb.OleDbDataAdapter
         dataAdapter.Fill(CraneLogsData.BerthingHourDelays, berthdelayRetriever.Execute) 'shortcut to fill instead of copying the returned recordset of execute
@@ -471,7 +571,7 @@ SELECT  [refkey]
       ,[moves]
   FROM [opreports].[dbo].[crane]
 	
-	WHERE [clr_refkey] = {Refkey}
+	WHERE [clr_refkey] = {Refkey} status <> 'VOID'
 "
         }
         With craneRetriever.Execute
@@ -530,7 +630,7 @@ SELECT [delay_kind]
       ,[delaystart]
       ,[delayend]
   FROM [opreports].[dbo].[crane_delays]
-    WHERE [crane_refkey] = {craneRefkey}
+    WHERE [crane_refkey] = {craneRefkey} and status <> 'VOID'
 "
         Return craneDelays.Execute
 
@@ -546,7 +646,7 @@ SELECT [move_kind]
       ,[20]
       ,[40]
   FROM [opreports].[dbo].[crane_hatchcovers]
-    WHERE crane_refkey = {craneRefkey}
+    WHERE crane_refkey = {craneRefkey} and status <> 'VOID'
 "
             Return hatchCoverMoves.Execute
         End With
@@ -562,7 +662,7 @@ SELECT [move_kind]
       ,[20]
       ,[40]
   FROM [opreports].[dbo].[crane_gearboxes]
-    WHERE crane_refkey = {craneRefkey}
+    WHERE crane_refkey = {craneRefkey} and status <> 'VOID'
 "
             Return gearboxMoves.Execute
         End With
@@ -579,7 +679,7 @@ SELECT [move_kind]
       ,[40]
       ,[45]
   FROM [opreports].[dbo].[crane_containers]
-	WHERE [crane_refkey] = {craneRefkey}
+	WHERE [crane_refkey] = {craneRefkey} and status <> 'VOID'
 "
         Return containerMoves.Execute
     End Function
@@ -591,14 +691,18 @@ SELECT [move_kind]
 
     Public Function Exists() As Boolean Implements IReportswSave.Exists ' no need register parameter since this can only be used when clr class is instantiated
         Dim craneLogsFinder As New ADODB.Command
+
+        OPConnection.Open()
         craneLogsFinder.ActiveConnection = OPConnection
-        craneLogsFinder.CommandText = $"Select refkey from reports_clr where registry = '{CLRVessel.Registry}'" 'shortcut to registry since they will only point to the same thing  
+        craneLogsFinder.CommandText = $"Select refkey from reports_clr where registry = '{CLRVessel.Registry}' and status <> 'VOID'" 'shortcut to registry since they will only point to the same thing  
 
         Dim craneLogs As New ADODB.Recordset
         craneLogs = craneLogsFinder.Execute()
 
         With craneLogs
-            Return Not (.BOF And .EOF)
+            Dim result As Boolean = Not (.BOF And .EOF)
+            OPConnection.Close()
+            Return result
         End With
 
     End Function
