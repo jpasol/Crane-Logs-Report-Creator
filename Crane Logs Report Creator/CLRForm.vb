@@ -33,9 +33,9 @@ Public Class CLRForm
         MapDetails()
 
         'ADD BERTHING HOUR DELAYS TO DELAYSUM
-        DelaySum.Rows.Add({"Vessel Formalities"})
-        DelaySum.Rows.Add({"GOB Unlashing and GC positioning"})
-        DelaySum.Rows.Add({"Waiting for Tug Boat / POB"})
+        DelaySum.Rows.Add({"VFM"})
+        DelaySum.Rows.Add({"GOB"})
+        DelaySum.Rows.Add({"POB"})
 
 
         If clsCLR.Exists() Then
@@ -252,4 +252,5 @@ If e.KeyCode = Keys.Enter Then
             End Try
         End If
     End Sub
+
 End Class

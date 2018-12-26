@@ -523,7 +523,6 @@ INSERT INTO [opreports].[dbo].[clr_berthdelays]
         Next
     End Sub
 
-
     Public Sub RetrieveData() Implements IReportswSave.RetrieveData 'different implementation; used only if clr is existing
         OPConnection.Open()
         Refkey = GetCraneLogsReportRefkey()
@@ -540,7 +539,7 @@ INSERT INTO [opreports].[dbo].[clr_berthdelays]
         cranelogRetriever.CommandText = $"
 SELECT top 1 [refkey]
 FROM [opreports].[dbo].[reports_clr]
-Where registry = '{CLRVessel.Registry}' and status <> 'VOID'
+Where registry = '{CLRVessel.Registry}' and (status <> 'VOID' or status IS NULL)
 order by refkey desc
 "
         Return cranelogRetriever.Execute.Fields("refkey").Value.ToString 'tostring just to be safe
@@ -549,17 +548,29 @@ order by refkey desc
     Private Sub GetBerthDelays(Refkey As Integer)
         Dim berthdelayRetriever As New ADODB.Command
         berthdelayRetriever.ActiveConnection = OPConnection
-        berthdelayRetriever.CommandText = $"SELECt [berthdelay]
+        berthdelayRetriever.CommandText = $"SELECT [berthdelay]
       ,[delaystart]
       ,[delayend]
   FROM [opreports].[dbo].[clr_berthdelays]
 	
-	WHERE [clr_refkey] = {Refkey} and status <> 'VOID'
+	WHERE [clr_refkey] = {Refkey} and (status <> 'VOID' or status IS NULL)
 "
         Dim dataAdapter As New OleDb.OleDbDataAdapter
         dataAdapter.Fill(CraneLogsData.BerthingHourDelays, berthdelayRetriever.Execute) 'shortcut to fill instead of copying the returned recordset of execute
 
+        ComputeBerthDelayHours()
+
     End Sub
+
+    Private Sub ComputeBerthDelayHours()
+        For Each row As DataRow In CraneLogsData.BerthingHourDelays.Rows
+            Dim delaystart As DateTime = CDate(row("delaystart").ToString)
+            Dim delayend As DateTime = CDate(row("delayend"))
+
+            row("delayhours") = GetSpanHours(delaystart, delayend)
+        Next
+    End Sub
+
     Private Sub GetCranes(Refkey As Integer)
         Dim craneRetriever As New ADODB.Command With {
             .ActiveConnection = OPConnection,
@@ -571,16 +582,18 @@ SELECT  [refkey]
       ,[moves]
   FROM [opreports].[dbo].[crane]
 	
-	WHERE [clr_refkey] = {Refkey} status <> 'VOID'
+	WHERE [clr_refkey] = {Refkey} and (status <> 'VOID' or status IS NULL)
 "
         }
-        With craneRetriever.Execute
+        Dim cranes As New ADODB.Recordset
+        cranes = craneRetriever.Execute
+        With cranes
             Try
                 .MoveFirst()
             Catch
             Finally
                 While Not (.EOF Or .BOF)
-                    Dim temporaryCrane As New Crane(.Fields("qc_shortname").Value, CLRVessel.Registry, N4Connection)
+                    Dim temporaryCrane As New Crane(.Fields("che_qc").Value, CLRVessel.Registry, N4Connection)
                     temporaryCrane.Moves.Container.Clear() 'removes preloaded data
 
                     temporaryCrane.FirstMove = .Fields("first_move").Value
@@ -630,7 +643,7 @@ SELECT [delay_kind]
       ,[delaystart]
       ,[delayend]
   FROM [opreports].[dbo].[crane_delays]
-    WHERE [crane_refkey] = {craneRefkey} and status <> 'VOID'
+    WHERE [crane_refkey] = {craneRefkey} and (status <> 'VOID' or status IS NULL)
 "
         Return craneDelays.Execute
 
@@ -641,12 +654,13 @@ SELECT [delay_kind]
         With hatchCoverMoves
             .ActiveConnection = OPConnection
             .CommandText = $"
-SELECT [move_kind]
+SELECT [actual_ib]
+      ,[actual_ob]
       ,[baynum]
       ,[20]
       ,[40]
   FROM [opreports].[dbo].[crane_hatchcovers]
-    WHERE crane_refkey = {craneRefkey} and status <> 'VOID'
+    WHERE crane_refkey = {craneRefkey} and (status <> 'VOID' or status IS NULL)
 "
             Return hatchCoverMoves.Execute
         End With
@@ -657,12 +671,13 @@ SELECT [move_kind]
         With gearboxMoves
             .ActiveConnection = OPConnection
             .CommandText = $"
-SELECT [move_kind]
+SELECT [actual_ib]
+      ,[actual_ob]
       ,[baynum]
       ,[20]
       ,[40]
   FROM [opreports].[dbo].[crane_gearboxes]
-    WHERE crane_refkey = {craneRefkey} and status <> 'VOID'
+    WHERE crane_refkey = {craneRefkey} and (status <> 'VOID' or status IS NULL)
 "
             Return gearboxMoves.Execute
         End With
@@ -673,13 +688,15 @@ SELECT [move_kind]
         containerMoves.ActiveConnection = OPConnection
         containerMoves.CommandText = $"
 SELECT [move_kind]
-      ,[ctrtyp]
-      ,[freigh]
+      ,[actual_ib]
+      ,[actual_ob]
+      ,[freight_kind]
+      ,[category]
       ,[20]
       ,[40]
       ,[45]
   FROM [opreports].[dbo].[crane_containers]
-	WHERE [crane_refkey] = {craneRefkey} and status <> 'VOID'
+	WHERE [crane_refkey] = {craneRefkey} and (status <> 'VOID' or status IS NULL)
 "
         Return containerMoves.Execute
     End Function
@@ -694,7 +711,7 @@ SELECT [move_kind]
 
         OPConnection.Open()
         craneLogsFinder.ActiveConnection = OPConnection
-        craneLogsFinder.CommandText = $"Select refkey from reports_clr where registry = '{CLRVessel.Registry}' and status <> 'VOID'" 'shortcut to registry since they will only point to the same thing  
+        craneLogsFinder.CommandText = $"Select refkey from reports_clr where registry = '{CLRVessel.Registry}' and (status <> 'VOID' or status IS NULL)" 'shortcut to registry since they will only point to the same thing  
 
         Dim craneLogs As New ADODB.Recordset
         craneLogs = craneLogsFinder.Execute()

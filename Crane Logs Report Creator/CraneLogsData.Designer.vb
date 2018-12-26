@@ -29,7 +29,7 @@ Partial Public Class CraneLogsData
     
     Private tableBerthingHourDelays As BerthingHourDelaysDataTable
     
-    Private tableCummulativeVolume As CummulativeVolumeDataTable
+    Private tableMonthlyCummulativeVolume As MonthlyCummulativeVolumeDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -66,8 +66,8 @@ Partial Public Class CraneLogsData
             If (Not (ds.Tables("BerthingHourDelays")) Is Nothing) Then
                 MyBase.Tables.Add(New BerthingHourDelaysDataTable(ds.Tables("BerthingHourDelays")))
             End If
-            If (Not (ds.Tables("CummulativeVolume")) Is Nothing) Then
-                MyBase.Tables.Add(New CummulativeVolumeDataTable(ds.Tables("CummulativeVolume")))
+            If (Not (ds.Tables("MonthlyCummulativeVolume")) Is Nothing) Then
+                MyBase.Tables.Add(New MonthlyCummulativeVolumeDataTable(ds.Tables("MonthlyCummulativeVolume")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -110,9 +110,9 @@ Partial Public Class CraneLogsData
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property CummulativeVolume() As CummulativeVolumeDataTable
+    Public ReadOnly Property MonthlyCummulativeVolume() As MonthlyCummulativeVolumeDataTable
         Get
-            Return Me.tableCummulativeVolume
+            Return Me.tableMonthlyCummulativeVolume
         End Get
     End Property
     
@@ -189,8 +189,8 @@ Partial Public Class CraneLogsData
             If (Not (ds.Tables("BerthingHourDelays")) Is Nothing) Then
                 MyBase.Tables.Add(New BerthingHourDelaysDataTable(ds.Tables("BerthingHourDelays")))
             End If
-            If (Not (ds.Tables("CummulativeVolume")) Is Nothing) Then
-                MyBase.Tables.Add(New CummulativeVolumeDataTable(ds.Tables("CummulativeVolume")))
+            If (Not (ds.Tables("MonthlyCummulativeVolume")) Is Nothing) Then
+                MyBase.Tables.Add(New MonthlyCummulativeVolumeDataTable(ds.Tables("MonthlyCummulativeVolume")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -236,10 +236,10 @@ Partial Public Class CraneLogsData
                 Me.tableBerthingHourDelays.InitVars
             End If
         End If
-        Me.tableCummulativeVolume = CType(MyBase.Tables("CummulativeVolume"),CummulativeVolumeDataTable)
+        Me.tableMonthlyCummulativeVolume = CType(MyBase.Tables("MonthlyCummulativeVolume"),MonthlyCummulativeVolumeDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableCummulativeVolume) Is Nothing) Then
-                Me.tableCummulativeVolume.InitVars
+            If (Not (Me.tableMonthlyCummulativeVolume) Is Nothing) Then
+                Me.tableMonthlyCummulativeVolume.InitVars
             End If
         End If
     End Sub
@@ -256,8 +256,8 @@ Partial Public Class CraneLogsData
         MyBase.Tables.Add(Me.tableCraneProductivity)
         Me.tableBerthingHourDelays = New BerthingHourDelaysDataTable()
         MyBase.Tables.Add(Me.tableBerthingHourDelays)
-        Me.tableCummulativeVolume = New CummulativeVolumeDataTable()
-        MyBase.Tables.Add(Me.tableCummulativeVolume)
+        Me.tableMonthlyCummulativeVolume = New MonthlyCummulativeVolumeDataTable()
+        MyBase.Tables.Add(Me.tableMonthlyCummulativeVolume)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -274,7 +274,7 @@ Partial Public Class CraneLogsData
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Private Function ShouldSerializeCummulativeVolume() As Boolean
+    Private Function ShouldSerializeMonthlyCummulativeVolume() As Boolean
         Return false
     End Function
     
@@ -343,7 +343,7 @@ Partial Public Class CraneLogsData
     Public Delegate Sub BerthingHourDelaysRowChangeEventHandler(ByVal sender As Object, ByVal e As BerthingHourDelaysRowChangeEvent)
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Delegate Sub CummulativeVolumeRowChangeEventHandler(ByVal sender As Object, ByVal e As CummulativeVolumeRowChangeEvent)
+    Public Delegate Sub MonthlyCummulativeVolumeRowChangeEventHandler(ByVal sender As Object, ByVal e As MonthlyCummulativeVolumeRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -945,20 +945,24 @@ Partial Public Class CraneLogsData
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class CummulativeVolumeDataTable
-        Inherits Global.System.Data.TypedTableBase(Of CummulativeVolumeRow)
+    Partial Public Class MonthlyCummulativeVolumeDataTable
+        Inherits Global.System.Data.TypedTableBase(Of MonthlyCummulativeVolumeRow)
         
-        Private columncategory As Global.System.Data.DataColumn
+        Private columnactual_ob As Global.System.Data.DataColumn
         
-        Private columnfreight_kind As Global.System.Data.DataColumn
+        Private columnactual_ib As Global.System.Data.DataColumn
         
-        Private columnteu As Global.System.Data.DataColumn
+        Private columncntsze20 As Global.System.Data.DataColumn
+        
+        Private columncntsze40 As Global.System.Data.DataColumn
+        
+        Private columncntsze45 As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "CummulativeVolume"
+            Me.TableName = "MonthlyCummulativeVolume"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -991,25 +995,41 @@ Partial Public Class CraneLogsData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property categoryColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property actual_obColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columncategory
+                Return Me.columnactual_ob
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property freight_kindColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property actual_ibColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnfreight_kind
+                Return Me.columnactual_ib
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property teuColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property cntsze20Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnteu
+                Return Me.columncntsze20
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property cntsze40Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncntsze40
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property cntsze45Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncntsze45
             End Get
         End Property
         
@@ -1024,44 +1044,44 @@ Partial Public Class CraneLogsData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As CummulativeVolumeRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As MonthlyCummulativeVolumeRow
             Get
-                Return CType(Me.Rows(index),CummulativeVolumeRow)
+                Return CType(Me.Rows(index),MonthlyCummulativeVolumeRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event CummulativeVolumeRowChanging As CummulativeVolumeRowChangeEventHandler
+        Public Event MonthlyCummulativeVolumeRowChanging As MonthlyCummulativeVolumeRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event CummulativeVolumeRowChanged As CummulativeVolumeRowChangeEventHandler
+        Public Event MonthlyCummulativeVolumeRowChanged As MonthlyCummulativeVolumeRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event CummulativeVolumeRowDeleting As CummulativeVolumeRowChangeEventHandler
+        Public Event MonthlyCummulativeVolumeRowDeleting As MonthlyCummulativeVolumeRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event CummulativeVolumeRowDeleted As CummulativeVolumeRowChangeEventHandler
+        Public Event MonthlyCummulativeVolumeRowDeleted As MonthlyCummulativeVolumeRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Sub AddCummulativeVolumeRow(ByVal row As CummulativeVolumeRow)
+        Public Overloads Sub AddMonthlyCummulativeVolumeRow(ByVal row As MonthlyCummulativeVolumeRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddCummulativeVolumeRow(ByVal category As String, ByVal freight_kind As String, ByVal teu As String) As CummulativeVolumeRow
-            Dim rowCummulativeVolumeRow As CummulativeVolumeRow = CType(Me.NewRow,CummulativeVolumeRow)
-            Dim columnValuesArray() As Object = New Object() {category, freight_kind, teu}
-            rowCummulativeVolumeRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowCummulativeVolumeRow)
-            Return rowCummulativeVolumeRow
+        Public Overloads Function AddMonthlyCummulativeVolumeRow(ByVal actual_ob As String, ByVal actual_ib As String, ByVal cntsze20 As String, ByVal cntsze40 As String, ByVal cntsze45 As String) As MonthlyCummulativeVolumeRow
+            Dim rowMonthlyCummulativeVolumeRow As MonthlyCummulativeVolumeRow = CType(Me.NewRow,MonthlyCummulativeVolumeRow)
+            Dim columnValuesArray() As Object = New Object() {actual_ob, actual_ib, cntsze20, cntsze40, cntsze45}
+            rowMonthlyCummulativeVolumeRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowMonthlyCummulativeVolumeRow)
+            Return rowMonthlyCummulativeVolumeRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As CummulativeVolumeDataTable = CType(MyBase.Clone,CummulativeVolumeDataTable)
+            Dim cln As MonthlyCummulativeVolumeDataTable = CType(MyBase.Clone,MonthlyCummulativeVolumeDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -1069,52 +1089,58 @@ Partial Public Class CraneLogsData
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New CummulativeVolumeDataTable()
+            Return New MonthlyCummulativeVolumeDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columncategory = MyBase.Columns("category")
-            Me.columnfreight_kind = MyBase.Columns("freight_kind")
-            Me.columnteu = MyBase.Columns("teu")
+            Me.columnactual_ob = MyBase.Columns("actual_ob")
+            Me.columnactual_ib = MyBase.Columns("actual_ib")
+            Me.columncntsze20 = MyBase.Columns("cntsze20")
+            Me.columncntsze40 = MyBase.Columns("cntsze40")
+            Me.columncntsze45 = MyBase.Columns("cntsze45")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitClass()
-            Me.columncategory = New Global.System.Data.DataColumn("category", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columncategory)
-            Me.columnfreight_kind = New Global.System.Data.DataColumn("freight_kind", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnfreight_kind)
-            Me.columnteu = New Global.System.Data.DataColumn("teu", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnteu)
+            Me.columnactual_ob = New Global.System.Data.DataColumn("actual_ob", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnactual_ob)
+            Me.columnactual_ib = New Global.System.Data.DataColumn("actual_ib", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnactual_ib)
+            Me.columncntsze20 = New Global.System.Data.DataColumn("cntsze20", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncntsze20)
+            Me.columncntsze40 = New Global.System.Data.DataColumn("cntsze40", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncntsze40)
+            Me.columncntsze45 = New Global.System.Data.DataColumn("cntsze45", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncntsze45)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function NewCummulativeVolumeRow() As CummulativeVolumeRow
-            Return CType(Me.NewRow,CummulativeVolumeRow)
+        Public Function NewMonthlyCummulativeVolumeRow() As MonthlyCummulativeVolumeRow
+            Return CType(Me.NewRow,MonthlyCummulativeVolumeRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New CummulativeVolumeRow(builder)
+            Return New MonthlyCummulativeVolumeRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(CummulativeVolumeRow)
+            Return GetType(MonthlyCummulativeVolumeRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.CummulativeVolumeRowChangedEvent) Is Nothing) Then
-                RaiseEvent CummulativeVolumeRowChanged(Me, New CummulativeVolumeRowChangeEvent(CType(e.Row,CummulativeVolumeRow), e.Action))
+            If (Not (Me.MonthlyCummulativeVolumeRowChangedEvent) Is Nothing) Then
+                RaiseEvent MonthlyCummulativeVolumeRowChanged(Me, New MonthlyCummulativeVolumeRowChangeEvent(CType(e.Row,MonthlyCummulativeVolumeRow), e.Action))
             End If
         End Sub
         
@@ -1122,8 +1148,8 @@ Partial Public Class CraneLogsData
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.CummulativeVolumeRowChangingEvent) Is Nothing) Then
-                RaiseEvent CummulativeVolumeRowChanging(Me, New CummulativeVolumeRowChangeEvent(CType(e.Row,CummulativeVolumeRow), e.Action))
+            If (Not (Me.MonthlyCummulativeVolumeRowChangingEvent) Is Nothing) Then
+                RaiseEvent MonthlyCummulativeVolumeRowChanging(Me, New MonthlyCummulativeVolumeRowChangeEvent(CType(e.Row,MonthlyCummulativeVolumeRow), e.Action))
             End If
         End Sub
         
@@ -1131,8 +1157,8 @@ Partial Public Class CraneLogsData
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.CummulativeVolumeRowDeletedEvent) Is Nothing) Then
-                RaiseEvent CummulativeVolumeRowDeleted(Me, New CummulativeVolumeRowChangeEvent(CType(e.Row,CummulativeVolumeRow), e.Action))
+            If (Not (Me.MonthlyCummulativeVolumeRowDeletedEvent) Is Nothing) Then
+                RaiseEvent MonthlyCummulativeVolumeRowDeleted(Me, New MonthlyCummulativeVolumeRowChangeEvent(CType(e.Row,MonthlyCummulativeVolumeRow), e.Action))
             End If
         End Sub
         
@@ -1140,14 +1166,14 @@ Partial Public Class CraneLogsData
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.CummulativeVolumeRowDeletingEvent) Is Nothing) Then
-                RaiseEvent CummulativeVolumeRowDeleting(Me, New CummulativeVolumeRowChangeEvent(CType(e.Row,CummulativeVolumeRow), e.Action))
+            If (Not (Me.MonthlyCummulativeVolumeRowDeletingEvent) Is Nothing) Then
+                RaiseEvent MonthlyCummulativeVolumeRowDeleting(Me, New MonthlyCummulativeVolumeRowChangeEvent(CType(e.Row,MonthlyCummulativeVolumeRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub RemoveCummulativeVolumeRow(ByVal row As CummulativeVolumeRow)
+        Public Sub RemoveMonthlyCummulativeVolumeRow(ByVal row As MonthlyCummulativeVolumeRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -1174,7 +1200,7 @@ Partial Public Class CraneLogsData
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "CummulativeVolumeDataTable"
+            attribute2.FixedValue = "MonthlyCummulativeVolumeDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -1496,97 +1522,151 @@ Partial Public Class CraneLogsData
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class CummulativeVolumeRow
+    Partial Public Class MonthlyCummulativeVolumeRow
         Inherits Global.System.Data.DataRow
         
-        Private tableCummulativeVolume As CummulativeVolumeDataTable
+        Private tableMonthlyCummulativeVolume As MonthlyCummulativeVolumeDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableCummulativeVolume = CType(Me.Table,CummulativeVolumeDataTable)
+            Me.tableMonthlyCummulativeVolume = CType(Me.Table,MonthlyCummulativeVolumeDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property category() As String
+        Public Property actual_ob() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCummulativeVolume.categoryColumn),String)
+                    Return CType(Me(Me.tableMonthlyCummulativeVolume.actual_obColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'category' in table 'CummulativeVolume' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'actual_ob' in table 'MonthlyCummulativeVolume' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCummulativeVolume.categoryColumn) = value
+                Me(Me.tableMonthlyCummulativeVolume.actual_obColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property freight_kind() As String
+        Public Property actual_ib() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCummulativeVolume.freight_kindColumn),String)
+                    Return CType(Me(Me.tableMonthlyCummulativeVolume.actual_ibColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'freight_kind' in table 'CummulativeVolume' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'actual_ib' in table 'MonthlyCummulativeVolume' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCummulativeVolume.freight_kindColumn) = value
+                Me(Me.tableMonthlyCummulativeVolume.actual_ibColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property teu() As String
+        Public Property cntsze20() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableCummulativeVolume.teuColumn),String)
+                    Return CType(Me(Me.tableMonthlyCummulativeVolume.cntsze20Column),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'teu' in table 'CummulativeVolume' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'cntsze20' in table 'MonthlyCummulativeVolume' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCummulativeVolume.teuColumn) = value
+                Me(Me.tableMonthlyCummulativeVolume.cntsze20Column) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IscategoryNull() As Boolean
-            Return Me.IsNull(Me.tableCummulativeVolume.categoryColumn)
+        Public Property cntsze40() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMonthlyCummulativeVolume.cntsze40Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'cntsze40' in table 'MonthlyCummulativeVolume' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMonthlyCummulativeVolume.cntsze40Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property cntsze45() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMonthlyCummulativeVolume.cntsze45Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'cntsze45' in table 'MonthlyCummulativeVolume' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMonthlyCummulativeVolume.cntsze45Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Isactual_obNull() As Boolean
+            Return Me.IsNull(Me.tableMonthlyCummulativeVolume.actual_obColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetcategoryNull()
-            Me(Me.tableCummulativeVolume.categoryColumn) = Global.System.Convert.DBNull
+        Public Sub Setactual_obNull()
+            Me(Me.tableMonthlyCummulativeVolume.actual_obColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function Isfreight_kindNull() As Boolean
-            Return Me.IsNull(Me.tableCummulativeVolume.freight_kindColumn)
+        Public Function Isactual_ibNull() As Boolean
+            Return Me.IsNull(Me.tableMonthlyCummulativeVolume.actual_ibColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub Setfreight_kindNull()
-            Me(Me.tableCummulativeVolume.freight_kindColumn) = Global.System.Convert.DBNull
+        Public Sub Setactual_ibNull()
+            Me(Me.tableMonthlyCummulativeVolume.actual_ibColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsteuNull() As Boolean
-            Return Me.IsNull(Me.tableCummulativeVolume.teuColumn)
+        Public Function Iscntsze20Null() As Boolean
+            Return Me.IsNull(Me.tableMonthlyCummulativeVolume.cntsze20Column)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetteuNull()
-            Me(Me.tableCummulativeVolume.teuColumn) = Global.System.Convert.DBNull
+        Public Sub Setcntsze20Null()
+            Me(Me.tableMonthlyCummulativeVolume.cntsze20Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Iscntsze40Null() As Boolean
+            Return Me.IsNull(Me.tableMonthlyCummulativeVolume.cntsze40Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setcntsze40Null()
+            Me(Me.tableMonthlyCummulativeVolume.cntsze40Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Function Iscntsze45Null() As Boolean
+            Return Me.IsNull(Me.tableMonthlyCummulativeVolume.cntsze45Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Sub Setcntsze45Null()
+            Me(Me.tableMonthlyCummulativeVolume.cntsze45Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1666,16 +1746,16 @@ Partial Public Class CraneLogsData
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Class CummulativeVolumeRowChangeEvent
+    Public Class MonthlyCummulativeVolumeRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As CummulativeVolumeRow
+        Private eventRow As MonthlyCummulativeVolumeRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub New(ByVal row As CummulativeVolumeRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As MonthlyCummulativeVolumeRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -1683,7 +1763,7 @@ Partial Public Class CraneLogsData
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property Row() As CummulativeVolumeRow
+        Public ReadOnly Property Row() As MonthlyCummulativeVolumeRow
             Get
                 Return Me.eventRow
             End Get

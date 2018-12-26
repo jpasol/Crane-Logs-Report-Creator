@@ -8,7 +8,7 @@
   <Shapes>
     <Shape ID="DesignTable:CraneProductivity" ZOrder="3" X="70" Y="70" Height="124" Width="170" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="86" />
     <Shape ID="DesignTable:BerthingHourDelays" ZOrder="2" X="310" Y="70" Height="144" Width="183" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
-    <Shape ID="DesignTable:CummulativeVolume" ZOrder="1" X="563" Y="70" Height="86" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="86" />
+    <Shape ID="DesignTable:MonthlyCummulativeVolume" ZOrder="1" X="563" Y="70" Height="125" Width="237" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

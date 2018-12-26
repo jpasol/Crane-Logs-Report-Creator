@@ -77,6 +77,7 @@ Partial Class CLRForm
         Me.lblVessel = New System.Windows.Forms.Label()
         Me.lblShippingLine = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.cmdDelete = New System.Windows.Forms.Button()
         Me.txtGC = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
@@ -108,13 +109,12 @@ Partial Class CLRForm
         Me.mskDelaystart = New System.Windows.Forms.MaskedTextBox()
         Me.cmbDelay = New System.Windows.Forms.ComboBox()
         Me.DelaySum = New System.Windows.Forms.DataGridView()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtDelaySum = New System.Windows.Forms.TextBox()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.delayhours = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.txtDelaySum = New System.Windows.Forms.TextBox()
-        Me.cmdDelete = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -731,6 +731,16 @@ Partial Class CLRForm
         Me.TabPage2.Text = "More Information"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'cmdDelete
+        '
+        Me.cmdDelete.BackColor = System.Drawing.Color.Red
+        Me.cmdDelete.Location = New System.Drawing.Point(607, 605)
+        Me.cmdDelete.Name = "cmdDelete"
+        Me.cmdDelete.Size = New System.Drawing.Size(32, 32)
+        Me.cmdDelete.TabIndex = 58
+        Me.cmdDelete.Text = "X"
+        Me.cmdDelete.UseVisualStyleBackColor = False
+        '
         'txtGC
         '
         Me.txtGC.Location = New System.Drawing.Point(645, 606)
@@ -1003,7 +1013,7 @@ Partial Class CLRForm
         'cmbDelay
         '
         Me.cmbDelay.FormattingEnabled = True
-        Me.cmbDelay.Items.AddRange(New Object() {"Vessel Formalities", "GOB Unlashing and GC positioning", "Waiting for Tug Boat / POB"})
+        Me.cmbDelay.Items.AddRange(New Object() {"VFM", "GOB", "POB"})
         Me.cmbDelay.Location = New System.Drawing.Point(39, 47)
         Me.cmbDelay.Name = "cmbDelay"
         Me.cmbDelay.Size = New System.Drawing.Size(172, 29)
@@ -1022,32 +1032,6 @@ Partial Class CLRForm
         Me.DelaySum.RowHeadersVisible = False
         Me.DelaySum.Size = New System.Drawing.Size(581, 133)
         Me.DelaySum.TabIndex = 37
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn7.FillWeight = 152.2843!
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Berthing Hour Delay"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn8.FillWeight = 73.85786!
-        Me.DataGridViewTextBoxColumn8.HeaderText = "From"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn9.FillWeight = 73.85786!
-        Me.DataGridViewTextBoxColumn9.HeaderText = "To"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        '
-        'delayhours
-        '
-        Me.delayhours.HeaderText = "Total"
-        Me.delayhours.Name = "delayhours"
         '
         'Label10
         '
@@ -1070,15 +1054,31 @@ Partial Class CLRForm
         Me.txtDelaySum.TabIndex = 3
         Me.txtDelaySum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'cmdDelete
+        'DataGridViewTextBoxColumn7
         '
-        Me.cmdDelete.BackColor = System.Drawing.Color.Red
-        Me.cmdDelete.Location = New System.Drawing.Point(607, 605)
-        Me.cmdDelete.Name = "cmdDelete"
-        Me.cmdDelete.Size = New System.Drawing.Size(32, 32)
-        Me.cmdDelete.TabIndex = 58
-        Me.cmdDelete.Text = "X"
-        Me.cmdDelete.UseVisualStyleBackColor = False
+        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn7.FillWeight = 77.31956!
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Berthing Hour Delay"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn8.FillWeight = 111.3402!
+        Me.DataGridViewTextBoxColumn8.HeaderText = "From"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn9.FillWeight = 111.3402!
+        Me.DataGridViewTextBoxColumn9.HeaderText = "To"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        '
+        'delayhours
+        '
+        Me.delayhours.HeaderText = "Total"
+        Me.delayhours.Name = "delayhours"
         '
         'CLRForm
         '
@@ -1190,10 +1190,6 @@ Partial Class CLRForm
     Friend WithEvents moTeu As DataGridViewTextBoxColumn
     Friend WithEvents yearTEU As DataGridViewTextBoxColumn
     Friend WithEvents DelaySum As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
-    Friend WithEvents delayhours As DataGridViewTextBoxColumn
     Friend WithEvents mskDelayend As MaskedTextBox
     Friend WithEvents mskDelaystart As MaskedTextBox
     Friend WithEvents cmbDelay As ComboBox
@@ -1205,4 +1201,8 @@ Partial Class CLRForm
     Friend WithEvents cntUnits As DataGridViewTextBoxColumn
     Friend WithEvents cntTEU As DataGridViewTextBoxColumn
     Friend WithEvents cmdDelete As Button
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
+    Friend WithEvents delayhours As DataGridViewTextBoxColumn
 End Class
