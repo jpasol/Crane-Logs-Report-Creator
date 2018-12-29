@@ -8,6 +8,15 @@
             Return hours
         End Function
 
+        Friend Function GetRowIndexOfBerthDelay(text As String) As Integer
+            Try
+                Dim berthDelayRow As DataRow = Me.AsEnumerable.Single(Function(row) row("berthdelay").ToString = text)
+                Return Me.Rows.IndexOf(berthDelayRow)
+            Catch ex As Exception
+                Return -1 'not found
+            End Try
+        End Function
+
     End Class
 
     Partial Public Class MonthlyCummulativeVolumeDataTable

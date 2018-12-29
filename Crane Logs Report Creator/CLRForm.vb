@@ -32,10 +32,13 @@ Public Class CLRForm
     Private Sub CLRForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         MapDetails()
 
-        'ADD BERTHING HOUR DELAYS TO DELAYSUM
-        DelaySum.Rows.Add({"VFM"})
-        DelaySum.Rows.Add({"GOB"})
-        DelaySum.Rows.Add({"POB"})
+        'removed to pave way for reformating 12282018
+        ''ADD BERTHING HOUR DELAYS TO DELAYSUM
+        'DelaySum.Rows.Add({"VFM"})
+        'DelaySum.Rows.Add({"GOB"})
+        'DelaySum.Rows.Add({"POB"})
+
+        DelaySum.DataSource = clsCLR.CraneLogsData.BerthingHourDelays
 
 
         If clsCLR.Exists() Then
@@ -147,54 +150,48 @@ Public Class CLRForm
     End Sub
 
     Private Sub cmbDelay_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbDelay.SelectedIndexChanged
+        On Error Resume Next
         Dim rowindex As Integer
-        Dim desclist As New List(Of String)
-        For Each row As DataGridViewRow In DelaySum.Rows
-            desclist.Add(row.Cells.Item(0).Value)
-        Next
 
-        rowindex = desclist.IndexOf(cmbDelay.Text)
+        rowindex = clsCLR.CraneLogsData.BerthingHourDelays.GetRowIndexOfBerthDelay(cmbDelay.Text)
+        mskDelaystart.Text = GetMilTime(clsCLR.CraneLogsData.BerthingHourDelays.Rows(rowindex)(1))
+        mskDelayend.Text = GetMilTime(clsCLR.CraneLogsData.BerthingHourDelays.Rows(rowindex)(2))
 
-        With DelaySum.Rows(rowindex).Cells
-            mskDelaystart.Text = GetMilTime(.Item(1).Value)
-            mskDelayend.Text = GetMilTime(.Item(2).Value)
-        End With
+        'removed 12282018 for reformatting
+        'Dim desclist As New List(Of String)
+        '    For Each row As DataGridViewRow In DelaySum.Rows
+        '        desclist.Add(row.Cells.Item(0).Value)
+        '    Next
+
+        '    rowindex = desclist.IndexOf(cmbDelay.Text)
+
+        '    With DelaySum.Rows(rowindex).Cells
+        '        mskDelaystart.Text = GetMilTime(.Item(1).Value)
+        '        mskDelayend.Text = GetMilTime(.Item(2).Value)
+        '    End With
     End Sub
 
     Private Sub mskDelayend_KeyDown(sender As Object, e As KeyEventArgs) Handles mskDelayend.KeyDown
 If e.KeyCode = Keys.Enter Then
             Dim rowindex As Integer
-            Dim desclist As New List(Of String)
-            Dim delaystart As Date
-            Dim delayend As Date
+            Dim delaystart As Date = GetDateTime(mskDelaystart.Text)
+            Dim delayend As Date = GetDateTime(mskDelayend.Text)
+            Dim delayhours As Double = GetSpanHours(delaystart, delayend)
 
-            For Each row As DataGridViewRow In DelaySum.Rows
-                desclist.Add(row.Cells.Item(0).Value)
-            Next
-
-            rowindex = desclist.IndexOf(cmbDelay.Text)
-
-            With DelaySum.Rows(rowindex).Cells
-                delaystart = GetDateTime(mskDelaystart.Text)
-                delayend = GetDateTime(mskDelayend.Text)
-                .Item(1).Value = delaystart
-                .Item(2).Value = delayend
-                .Item(3).Value = GetSpanHours(delaystart, delayend)
-            End With
-
-
-            With clsCLR.CraneLogsData.BerthingHourDelays 'clear then add all
-                .Clear()
-                For Each row As DataGridViewRow In DelaySum.Rows
-                    If CDbl(row.Cells(3).Value) > 0 Then 'only add delays that has total value > 0
-                        .AddBerthingHourDelaysRow(berthdelay:=row.Cells(0).Value,
-                                                 delaystart:=row.Cells(1).Value,
-                                                 delayend:=row.Cells(2).Value,
-                                                 delayhours:=row.Cells(3).Value)
-                    End If
-                Next
-            End With
-            DelaySummary()
+            rowindex = clsCLR.CraneLogsData.BerthingHourDelays.GetRowIndexOfBerthDelay(cmbDelay.Text)
+            If rowindex >= 0 Then 'if index is found
+                With clsCLR.CraneLogsData.BerthingHourDelays.Rows(rowindex)
+                    .Item("delaystart") = delaystart
+                    .Item("delayend") = delayend
+                    .Item("delayhours") = delayhours
+                End With
+            Else 'If Not found
+                clsCLR.CraneLogsData.BerthingHourDelays.AddBerthingHourDelaysRow(cmbDelay.Text,
+                                                                                 delaystart,
+                                                                                 delayend,
+                                                                                 delayhours)
+            End If
+            DelaySummary() 'sum delays
         End If
     End Sub
 
@@ -206,19 +203,30 @@ If e.KeyCode = Keys.Enter Then
         End With
 
         Dim result As MsgBoxResult
-        If clsCLR.Exists Then
-            result = MsgBox("Update Crane Log Report?", vbYesNo)
-            If result = vbYes Then
-                If clsCLR.CancelExistingCraneLogsReport() Then 'cancelled succesfully
+
+        Try
+            Dim existsResult As Boolean = clsCLR.Exists
+            connOP.Open()
+            connOP.BeginTrans()
+            If existsResult = True Then
+                result = MsgBox("Update Crane Log Report?", vbYesNo)
+                If result = vbYes Then
+                    clsCLR.CancelExistingCraneLogsReport() 'cancelled succesfully
+                    clsCLR.Save()
+                End If
+            Else
+                result = MsgBox("Continue Saving?", vbYesNo)
+                If result = vbYes Then
                     clsCLR.Save()
                 End If
             End If
-            Else
-            result = MsgBox("Continue Saving?", vbYesNo)
-            If result = vbYes Then
-                clsCLR.Save()
-            End If
-        End If
+
+            connOP.CommitTrans()
+            connOP.Close()
+        Catch ex As Exception
+            connOP.RollbackTrans()
+            connOP.Close()
+        End Try
 
 
 
@@ -253,4 +261,7 @@ If e.KeyCode = Keys.Enter Then
         End If
     End Sub
 
+    Private Sub mskDelayend_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskDelayend.MaskInputRejected
+
+    End Sub
 End Class

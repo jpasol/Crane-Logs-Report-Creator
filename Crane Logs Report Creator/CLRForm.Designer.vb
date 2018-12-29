@@ -109,12 +109,12 @@ Partial Class CLRForm
         Me.mskDelaystart = New System.Windows.Forms.MaskedTextBox()
         Me.cmbDelay = New System.Windows.Forms.ComboBox()
         Me.DelaySum = New System.Windows.Forms.DataGridView()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.txtDelaySum = New System.Windows.Forms.TextBox()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.delayhours = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtDelaySum = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -1033,6 +1033,36 @@ Partial Class CLRForm
         Me.DelaySum.Size = New System.Drawing.Size(581, 133)
         Me.DelaySum.TabIndex = 37
         '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "berthdelay"
+        Me.DataGridViewTextBoxColumn7.FillWeight = 77.31956!
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Berthing Hour Delay"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "delaystart"
+        Me.DataGridViewTextBoxColumn8.FillWeight = 111.3402!
+        Me.DataGridViewTextBoxColumn8.HeaderText = "From"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "delayend"
+        Me.DataGridViewTextBoxColumn9.FillWeight = 111.3402!
+        Me.DataGridViewTextBoxColumn9.HeaderText = "To"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        '
+        'delayhours
+        '
+        Me.delayhours.DataPropertyName = "delayhours"
+        Me.delayhours.HeaderText = "Total"
+        Me.delayhours.Name = "delayhours"
+        '
         'Label10
         '
         Me.Label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -1053,32 +1083,6 @@ Partial Class CLRForm
         Me.txtDelaySum.Size = New System.Drawing.Size(100, 29)
         Me.txtDelaySum.TabIndex = 3
         Me.txtDelaySum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn7.FillWeight = 77.31956!
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Berthing Hour Delay"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn8.FillWeight = 111.3402!
-        Me.DataGridViewTextBoxColumn8.HeaderText = "From"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn9.FillWeight = 111.3402!
-        Me.DataGridViewTextBoxColumn9.HeaderText = "To"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        '
-        'delayhours
-        '
-        Me.delayhours.HeaderText = "Total"
-        Me.delayhours.Name = "delayhours"
         '
         'CLRForm
         '

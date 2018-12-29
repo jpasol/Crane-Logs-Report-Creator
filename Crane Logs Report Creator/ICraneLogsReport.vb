@@ -2,6 +2,7 @@
 
 Public Interface ICraneLogsReport
     ReadOnly Property Vessel As Vessel
+    ReadOnly Property Registry As String
     ReadOnly Property Crane() As List(Of Crane)
     ReadOnly Property CraneLogsData As CraneLogsData
     ReadOnly Property TotalMoves As Double

@@ -48,19 +48,19 @@ Public Class CraneCtl
 
         With crnCrane
             dischargeContainers.Table = .Moves.Container
-            dischargeContainers.RowFilter = "actual_ib is not null"
+            dischargeContainers.RowFilter = "actual_ib is not null and actual_ib <> ''"
             loadContainers.Table = .Moves.Container
-            loadContainers.RowFilter = "actual_ob is not null"
+            loadContainers.RowFilter = "actual_ob is not null and actual_ob <> ''"
 
             dischargeGearboxes.Table = .Moves.Gearbox
-            dischargeGearboxes.RowFilter = "actual_ib is not null"
+            dischargeGearboxes.RowFilter = "actual_ib is not null and actual_ib <> ''"
             loadGearboxes.Table = .Moves.Gearbox
-            loadGearboxes.RowFilter = "actual_ob is not null"
+            loadGearboxes.RowFilter = "actual_ob is not null and actual_ob <> ''"
 
             openingHatchcovers.Table = .Moves.Hatchcover
-            openingHatchcovers.RowFilter = "actual_ib is not null"
+            openingHatchcovers.RowFilter = "actual_ib is not null and actual_ib <> ''"
             closingHatchcovers.Table = .Moves.Hatchcover
-            closingHatchcovers.RowFilter = "actual_ob is not null"
+            closingHatchcovers.RowFilter = "actual_ob is not null and actual_ob <> ''"
             'pending for delays
         End With
 
@@ -70,6 +70,9 @@ Public Class CraneCtl
         GearboxLoad.DataSource = loadGearboxes
         HatchDsc.DataSource = openingHatchcovers
         HatchLoad.DataSource = closingHatchcovers
+
+        mskFirst.Text = GetMilTime(crnCrane.FirstMove)
+        mskLast.Text = GetMilTime(crnCrane.LastMove)
 
     End Sub
     Private dischargeContainers As New DataView
@@ -90,25 +93,25 @@ Public Class CraneCtl
             txtNprod.Text = Format(.NetProductivity, "0.00")
 
             With .Moves.Container
-                txtD20.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze20").ToString))
-                txtD40.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze40").ToString))
-                txtD45.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze45").ToString))
-                txtL20.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze20").ToString))
-                txtL40.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze40").ToString))
-                txtL45.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("cntsze45").ToString))
+                txtD20.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ib")) <> "").Sum(Function(row) CInt(row("cntsze20").ToString))
+                txtD40.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ib")) <> "").Sum(Function(row) CInt(row("cntsze40").ToString))
+                txtD45.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ib")) <> "").Sum(Function(row) CInt(row("cntsze45").ToString))
+                txtL20.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ob")) <> "").Sum(Function(row) CInt(row("cntsze20").ToString))
+                txtL40.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ob")) <> "").Sum(Function(row) CInt(row("cntsze40").ToString))
+                txtL45.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ob")) <> "").Sum(Function(row) CInt(row("cntsze45").ToString))
             End With
             With .Moves.Hatchcover
-                txtHD20.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("cvrsze20").ToString))
-                txtHD40.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("cvrsze40").ToString))
-                txtHL20.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("cvrsze20").ToString))
-                txtHL40.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("cvrsze40").ToString))
+                txtHD20.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ib")) <> "").Sum(Function(row) CInt(row("cvrsze20").ToString))
+                txtHD40.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ib")) <> "").Sum(Function(row) CInt(row("cvrsze40").ToString))
+                txtHL20.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ob")) <> "").Sum(Function(row) CInt(row("cvrsze20").ToString))
+                txtHL40.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ob")) <> "").Sum(Function(row) CInt(row("cvrsze40").ToString))
             End With
 
             With .Moves.Gearbox
-                txtGD20.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("gbxsze20").ToString))
-                txtGD40.Text = .AsEnumerable.Where(Function(row) row("actual_ib") IsNot DBNull.Value).Sum(Function(row) CInt(row("gbxsze40").ToString))
-                txtGL20.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("gbxsze20").ToString))
-                txtGL40.Text = .AsEnumerable.Where(Function(row) row("actual_ob") IsNot DBNull.Value).Sum(Function(row) CInt(row("gbxsze40").ToString))
+                txtGD20.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ib")) <> "").Sum(Function(row) CInt(row("gbxsze20").ToString))
+                txtGD40.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ib")) <> "").Sum(Function(row) CInt(row("gbxsze40").ToString))
+                txtGL20.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ob")) <> "").Sum(Function(row) CInt(row("gbxsze20").ToString))
+                txtGL40.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ob")) <> "").Sum(Function(row) CInt(row("gbxsze40").ToString))
             End With
 
 
@@ -331,7 +334,4 @@ Public Class CraneCtl
 
     End Sub
 
-    Private Sub cmdDelete_Click(sender As Object, e As EventArgs)
-
-    End Sub
 End Class

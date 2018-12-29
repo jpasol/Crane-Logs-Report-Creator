@@ -17,9 +17,6 @@ Public Class CLRClass
         Me.OPConnection = OPConnection
         Me.UserName = Username
 
-
-
-
     End Sub
 
     Private Property UserName As String
@@ -33,6 +30,12 @@ Public Class CLRClass
     Public ReadOnly Property CraneLogsData As CraneLogsData Implements ICraneLogsReport.CraneLogsData
     Public Property LastPort As Object Implements ICraneLogsReport.LastPort
     Public Property NextPort As Object Implements ICraneLogsReport.NextPort
+
+    Public ReadOnly Property Registry As String Implements ICraneLogsReport.Registry
+        Get
+            Return CLRVessel.Registry
+        End Get
+    End Property
 
     Public ReadOnly Property TotalMoves As Double Implements ICraneLogsReport.TotalMoves
         Get
@@ -150,6 +153,7 @@ Public Class CLRClass
         Throw New NotImplementedException()
     End Function
 
+
     Public Sub Format(ByRef crReport As ReportClass) Implements IReportswSave.Format
         Throw New NotImplementedException()
     End Sub
@@ -162,25 +166,55 @@ Public Class CLRClass
         Dim refkeyCLR As Integer
         DateNow = Date.Now 'get date   
 
-        OPConnection.Open()
-        OPConnection.BeginTrans()
         Try
             refkeyCLR = SaveCraneLogsReport()
             SaveBerthDelays(refkeyCLR)
             SaveCranes(refkeyCLR)
-            OPConnection.CommitTrans()
-            OPConnection.Close()
         Catch ex As Exception
             MsgBox("Save Unsuccessful, Rolling Back Changes" & vbNewLine &
                    "Error Message: " & ex.Message)
-            OPConnection.RollbackTrans()
-            OPConnection.Close()
+            Throw ex
         End Try
 
     End Sub
 
     Private Function SaveCraneLogsReport() As Integer
-        Throw New NotImplementedException()
+        Dim insertcommand As New ADODB.Command
+        insertcommand.ActiveConnection = OPConnection
+        insertcommand.CommandText = $"
+INSERT INTO [opreports].[dbo].[reports_clr]
+           ([registry]
+           ,[vslname]
+           ,[owner]
+           ,[last_port]
+           ,[next_port]
+           ,[ata]
+           ,[atd]
+           ,[first_move]
+           ,[last_move]
+           ,[moves]
+           ,[created]
+           ,[userid]
+           ,[status])
+    OUTPUT INSERTED.refkey  
+     VALUES
+           ('{Registry}'
+           ,'{CLRVessel.Name}'
+           ,'{CLRVessel.Owner}'
+           ,'{LastPort}'
+           ,'{NextPort}'
+           ,'{CLRVessel.ATA}'
+           ,'{CLRVessel.ATD}'
+           ,'{FirstMove}'
+           ,'{LastMove}'
+           ,{TotalMoves}
+           ,'{DateNow}'
+           ,'{UserName}'
+           ,NULL)
+        "
+
+        Return insertcommand.Execute.Fields("refkey").Value
+
     End Function
 
     Private Sub SaveCranes(refkeyCLR As Integer)
@@ -240,7 +274,7 @@ INSERT INTO [opreports].[dbo].[crane_delays]
            ,[delayend])
      VALUES
            ({refkeyCrane}
-           ,{crn.CraneName}
+           ,'{crn.CraneName}'
            ,'NONDE'
            ,'{delay("description").ToString}'
            ,'{delay("delaystart").ToString}'
@@ -251,24 +285,18 @@ INSERT INTO [opreports].[dbo].[crane_delays]
         Next
     End Sub
 
-    Friend Function CancelExistingCraneLogsReport() As Boolean
-        OPConnection.Open()
-        OPConnection.BeginTrans()
+    Friend Sub CancelExistingCraneLogsReport()
         Try
             CancelCraneLogReport(Refkey)
             CancelBerthDelays(Refkey)
             CancelCrane(Refkey)
-            OPConnection.CommitTrans()
-            OPConnection.Close()
-            Return True
         Catch ex As Exception
             MsgBox("Cancellation Unsuccessful, Rolling Back Changes" & vbNewLine &
-                   "Error Message: " & ex.Message)
-            OPConnection.RollbackTrans()
-            OPConnection.Close()
-            Return False
+        "Error Message: " & ex.Message)
+            Throw ex
         End Try
-    End Function
+
+    End Sub
 
     Private Sub CancelCrane(refkey As Integer)
         Dim craneRefkey As Integer = GetCraneRefkey(refkey)
@@ -381,7 +409,7 @@ INSERT INTO [opreports].[dbo].[crane_delays]
            ,[delayend])
      VALUES
            ({refkeyCrane}
-           ,{crn.CraneName}
+           ,'{crn.CraneName}'
            ,'BREAK'
            ,'{delay("description").ToString}'
            ,'{delay("delaystart").ToString}'
@@ -406,7 +434,7 @@ INSERT INTO [opreports].[dbo].[crane_delays]
            ,[delayend])
      VALUES
            ({refkeyCrane}
-           ,{crn.CraneName}
+           ,'{crn.CraneName}'
            ,'DEDUC'
            ,'{delay("description").ToString}'
            ,'{delay("delaystart").ToString}'
@@ -432,12 +460,12 @@ INSERT INTO [opreports].[dbo].[crane_hatchcovers]
            ,[40])
      VALUES
            ({refkeyCrane}
-           ,{crn.CraneName}
-           ,{mve("actual_ib").ToString}
-           ,{mve("actual_ob").ToString}
+           ,'{crn.CraneName}'
+           ,'{mve("actual_ib").ToString}'
+           ,'{mve("actual_ob").ToString}'
            ,{mve("baynum").ToString}
-           ,{mve("cntsze20").ToString}
-           ,{mve("cntsze40").ToString}
+           ,{mve("cvrsze20").ToString}
+           ,{mve("cvrsze40").ToString})
 "
             insertcommand.Execute()
         Next
@@ -458,12 +486,12 @@ INSERT INTO [opreports].[dbo].[crane_gearboxes]
            ,[40])
      VALUES
            ({refkeyCrane}
-           ,{crn.CraneName}
-           ,{mve("actual_ib").ToString}
-           ,{mve("actual_ob").ToString}
+           ,'{crn.CraneName}'
+           ,'{mve("actual_ib").ToString}'
+           ,'{mve("actual_ob").ToString}'
            ,{mve("baynum").ToString}
-           ,{mve("cntsze20").ToString}
-           ,{mve("cntsze40").ToString}
+           ,{mve("gbxsze20").ToString}
+           ,{mve("gbxsze40").ToString})
 "
             insertcommand.Execute()
         Next
@@ -513,7 +541,7 @@ INSERT INTO [opreports].[dbo].[clr_berthdelays]
            ,[delayend])
 
      VALUES
-           ({CLRVessel.Registry}
+           ('{Registry}'
            ,{refkeyCLR}       
            ,'{bhdrow("berthdelay").ToString}'
            ,'{bhdrow("delaystart").ToString}'
@@ -606,8 +634,11 @@ SELECT  [refkey]
                         .Fill(temporaryCrane.Moves.Gearbox, GetGearboxMoves(craneRefkey))
                         .Fill(temporaryCrane.Moves.Hatchcover, GetHatchcoverMoves(craneRefkey))
 
+
                         PopulateDelays(temporaryCrane, GetCraneDelays(craneRefkey))
                     End With
+                    Crane.Add(temporaryCrane)
+                    .MoveNext()
                 End While
             End Try
         End With
@@ -617,18 +648,20 @@ SELECT  [refkey]
         With recordset
             Try
                 .MoveFirst()
+            Catch
             Finally
                 While Not (.EOF Or .BOF)
-                    Dim tableName As String = .Fields("delay_kind").Value
+                    Dim tableName As String = ReportFunctions.ConvertDelayKindtoTableName(.Fields("delay_kind").Value)
                     Dim description As String = .Fields("description").Value
-                    Dim delayFrom As Date = .Fields("delayfrom").Value
-                    Dim delayTo As Date = .Fields("delayto").Value
+                    Dim delayFrom As Date = .Fields("delaystart").Value
+                    Dim delayTo As Date = .Fields("delayend").Value
                     Dim span As TimeSpan = delayTo.Subtract(delayFrom)
 
                     temporaryCrane.Delays.Tables.Item(tableName).Rows.Add({description,
                                                                           delayFrom,
                                                                           delayTo,
                                                                           span.TotalHours})
+                    .MoveNext()
                 End While
             End Try
         End With
@@ -657,8 +690,8 @@ SELECT [delay_kind]
 SELECT [actual_ib]
       ,[actual_ob]
       ,[baynum]
-      ,[20]
-      ,[40]
+      ,[20]  as 'cvrsze20'
+      ,[40]  as 'cvrsze40'
   FROM [opreports].[dbo].[crane_hatchcovers]
     WHERE crane_refkey = {craneRefkey} and (status <> 'VOID' or status IS NULL)
 "
@@ -674,8 +707,8 @@ SELECT [actual_ib]
 SELECT [actual_ib]
       ,[actual_ob]
       ,[baynum]
-      ,[20]
-      ,[40]
+      ,[20]  as 'gbxsze20'
+      ,[40]  as 'gbxsze40'
   FROM [opreports].[dbo].[crane_gearboxes]
     WHERE crane_refkey = {craneRefkey} and (status <> 'VOID' or status IS NULL)
 "
@@ -692,9 +725,9 @@ SELECT [move_kind]
       ,[actual_ob]
       ,[freight_kind]
       ,[category]
-      ,[20]
-      ,[40]
-      ,[45]
+      ,[20] as 'cntsze20'
+      ,[40] as 'cntsze40'
+      ,[45] as 'cntsze45'
   FROM [opreports].[dbo].[crane_containers]
 	WHERE [crane_refkey] = {craneRefkey} and (status <> 'VOID' or status IS NULL)
 "
@@ -721,7 +754,6 @@ SELECT [move_kind]
             OPConnection.Close()
             Return result
         End With
-
     End Function
 
 End Class
