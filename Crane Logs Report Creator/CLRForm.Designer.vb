@@ -24,8 +24,8 @@ Partial Class CLRForm
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.cmdExit1 = New System.Windows.Forms.Button()
+        Me.cmdNext1 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.mskDensity = New System.Windows.Forms.MaskedTextBox()
         Me.Label46 = New System.Windows.Forms.Label()
@@ -79,7 +79,7 @@ Partial Class CLRForm
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.cmdDelete = New System.Windows.Forms.Button()
         Me.txtGC = New System.Windows.Forms.TextBox()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.cmdExit2 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Label30 = New System.Windows.Forms.Label()
@@ -95,7 +95,7 @@ Partial Class CLRForm
         Me.txtTEUs = New System.Windows.Forms.TextBox()
         Me.txtUnits = New System.Windows.Forms.TextBox()
         Me.cmdSave = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.cmdPrev1 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.VolumeTEU = New System.Windows.Forms.DataGridView()
         Me.teuType = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -141,8 +141,8 @@ Partial Class CLRForm
         '
         'TabPage1
         '
-        Me.TabPage1.Controls.Add(Me.Button6)
-        Me.TabPage1.Controls.Add(Me.Button3)
+        Me.TabPage1.Controls.Add(Me.cmdExit1)
+        Me.TabPage1.Controls.Add(Me.cmdNext1)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Controls.Add(Me.gbxVessel)
         Me.TabPage1.Font = New System.Drawing.Font("Calibri", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -154,25 +154,25 @@ Partial Class CLRForm
         Me.TabPage1.Text = "General Information"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'Button6
+        'cmdExit1
         '
-        Me.Button6.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button6.Location = New System.Drawing.Point(45, 594)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(172, 55)
-        Me.Button6.TabIndex = 57
-        Me.Button6.Text = "Exit (F3)"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.cmdExit1.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdExit1.Location = New System.Drawing.Point(45, 594)
+        Me.cmdExit1.Name = "cmdExit1"
+        Me.cmdExit1.Size = New System.Drawing.Size(172, 55)
+        Me.cmdExit1.TabIndex = 57
+        Me.cmdExit1.Text = "Exit (F3)"
+        Me.cmdExit1.UseVisualStyleBackColor = True
         '
-        'Button3
+        'cmdNext1
         '
-        Me.Button3.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(1107, 594)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(172, 55)
-        Me.Button3.TabIndex = 54
-        Me.Button3.Text = "Next (F12)"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.cmdNext1.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdNext1.Location = New System.Drawing.Point(1107, 594)
+        Me.cmdNext1.Name = "cmdNext1"
+        Me.cmdNext1.Size = New System.Drawing.Size(172, 55)
+        Me.cmdNext1.TabIndex = 54
+        Me.cmdNext1.Text = "Next (F11)"
+        Me.cmdNext1.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -716,11 +716,11 @@ Partial Class CLRForm
         '
         Me.TabPage2.Controls.Add(Me.cmdDelete)
         Me.TabPage2.Controls.Add(Me.txtGC)
-        Me.TabPage2.Controls.Add(Me.Button5)
+        Me.TabPage2.Controls.Add(Me.cmdExit2)
         Me.TabPage2.Controls.Add(Me.Button4)
         Me.TabPage2.Controls.Add(Me.GroupBox4)
         Me.TabPage2.Controls.Add(Me.cmdSave)
-        Me.TabPage2.Controls.Add(Me.Button1)
+        Me.TabPage2.Controls.Add(Me.cmdPrev1)
         Me.TabPage2.Controls.Add(Me.GroupBox3)
         Me.TabPage2.Controls.Add(Me.GroupBox2)
         Me.TabPage2.Location = New System.Drawing.Point(4, 33)
@@ -749,14 +749,14 @@ Partial Class CLRForm
         Me.txtGC.Size = New System.Drawing.Size(100, 32)
         Me.txtGC.TabIndex = 57
         '
-        'Button5
+        'cmdExit2
         '
-        Me.Button5.Location = New System.Drawing.Point(45, 594)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(172, 55)
-        Me.Button5.TabIndex = 56
-        Me.Button5.Text = "Exit (F3)"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.cmdExit2.Location = New System.Drawing.Point(45, 594)
+        Me.cmdExit2.Name = "cmdExit2"
+        Me.cmdExit2.Size = New System.Drawing.Size(172, 55)
+        Me.cmdExit2.TabIndex = 56
+        Me.cmdExit2.Text = "Exit (F3)"
+        Me.cmdExit2.UseVisualStyleBackColor = True
         '
         'Button4
         '
@@ -889,14 +889,14 @@ Partial Class CLRForm
         Me.cmdSave.Text = "Save"
         Me.cmdSave.UseVisualStyleBackColor = True
         '
-        'Button1
+        'cmdPrev1
         '
-        Me.Button1.Location = New System.Drawing.Point(929, 594)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(172, 55)
-        Me.Button1.TabIndex = 52
-        Me.Button1.Text = "Prev (F11)"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.cmdPrev1.Location = New System.Drawing.Point(929, 594)
+        Me.cmdPrev1.Name = "cmdPrev1"
+        Me.cmdPrev1.Size = New System.Drawing.Size(172, 55)
+        Me.cmdPrev1.TabIndex = 52
+        Me.cmdPrev1.Text = "Prev (F10)"
+        Me.cmdPrev1.UseVisualStyleBackColor = True
         '
         'GroupBox3
         '
@@ -1157,8 +1157,8 @@ Partial Class CLRForm
     Friend WithEvents Label19 As Label
     Friend WithEvents TextBox17 As TextBox
     Friend WithEvents cmdSave As Button
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents cmdPrev1 As Button
+    Friend WithEvents cmdNext1 As Button
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents txtTEUs As TextBox
     Friend WithEvents txtUnits As TextBox
@@ -1171,8 +1171,8 @@ Partial Class CLRForm
     Friend WithEvents Label41 As Label
     Friend WithEvents Label40 As Label
     Friend WithEvents Label39 As Label
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button5 As Button
+    Friend WithEvents cmdExit1 As Button
+    Friend WithEvents cmdExit2 As Button
     Friend WithEvents mskNetCraneProd As MaskedTextBox
     Friend WithEvents mskGrossCraneProd As MaskedTextBox
     Friend WithEvents mskNetHours As MaskedTextBox

@@ -1,6 +1,39 @@
 ﻿Imports Reports.ReportFunctions
 Imports Reports
+Imports System.Runtime.InteropServices
 Public Class CLRForm
+    Public Const KEY_ALT As Integer = &H1
+    Public Const _HOTKEY As Integer = &H312
+
+    Public Declare Function GetActiveWindow Lib "user32" Alias "GetActiveWindow" () As IntPtr
+
+    <DllImport("User32.dll")>
+    Public Shared Function RegisterHotKey(ByVal hwnd As IntPtr,
+                        ByVal id As Integer, ByVal fsModifiers As Integer,
+                        ByVal vk As Integer) As Integer
+    End Function
+
+
+    <DllImport("User32.dll")>
+    Public Shared Function UnregisterHotKey(ByVal hwnd As IntPtr,
+                        ByVal id As Integer) As Integer
+    End Function
+
+    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+        If m.Msg = _HOTKEY And GetActiveWindow = Me.Handle Then
+            Dim id As IntPtr = m.WParam
+            Select Case (id.ToString)
+                Case "1"
+                    ExitForm()
+                Case "2"
+                    PrevForm()
+                Case "3"
+                    NextForm()
+            End Select
+        End If
+        MyBase.WndProc(m)
+    End Sub 'System wide hotkey event handling
+
     Public Sub New(Registry As String, ByRef N4Connection As ADODB.Connection, ByRef OPConnection As ADODB.Connection, Username As String)
 
         ' This call is required by the designer.
@@ -9,9 +42,28 @@ Public Class CLRForm
         connN4 = N4Connection
         connOP = OPConnection
         Me.username = Username
+
+        AddHandler cmdExit1.KeyPress, AddressOf ExitForm
+        AddHandler cmdExit2.KeyPress, AddressOf ExitForm
+        AddHandler cmdPrev1.KeyPress, AddressOf PrevForm
+        AddHandler cmdNext1.KeyPress, AddressOf NextForm
+
         ' Add any initialization after the InitializeComponent() call.
 
     End Sub
+
+    Private Sub NextForm()
+        If Me.TabControl1.SelectedIndex < Me.TabControl1.TabCount - 1 Then
+            Me.TabControl1.SelectedIndex += 1
+        End If
+    End Sub
+
+    Private Sub PrevForm()
+        If Me.TabControl1.SelectedIndex > 0 Then
+            Me.TabControl1.SelectedIndex -= 1
+        End If
+    End Sub
+
     Private clsCLR As CLRClass
     Private connN4 As ADODB.Connection
     Private connOP As ADODB.Connection
@@ -50,6 +102,11 @@ Public Class CLRForm
                 TabControl1.TabPages.Add(CraneControl.tabCraneLog.TabPages($"tab{crn.CraneName}"))
             Next
         End If
+
+
+        RegisterHotKey(Me.Handle, 1, 0, Keys.F3)
+        RegisterHotKey(Me.Handle, 2, 0, Keys.F10)
+        RegisterHotKey(Me.Handle, 3, 0, Keys.F11)
 
     End Sub
 
@@ -172,7 +229,7 @@ Public Class CLRForm
     End Sub
 
     Private Sub mskDelayend_KeyDown(sender As Object, e As KeyEventArgs) Handles mskDelayend.KeyDown
-If e.KeyCode = Keys.Enter Then
+        If e.KeyCode = Keys.Enter Then
             Dim rowindex As Integer
             Dim delaystart As Date = GetDateTime(mskDelaystart.Text)
             Dim delayend As Date = GetDateTime(mskDelayend.Text)
@@ -228,7 +285,7 @@ If e.KeyCode = Keys.Enter Then
             connOP.Close()
         End Try
 
-
+        MsgBox("Saved Successfully!")
 
     End Sub
 
@@ -261,7 +318,15 @@ If e.KeyCode = Keys.Enter Then
         End If
     End Sub
 
-    Private Sub mskDelayend_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles mskDelayend.MaskInputRejected
+    Private Sub CLRForm_HandleDestroyed(sender As Object, e As EventArgs) Handles Me.HandleDestroyed
+        UnregisterHotKey(Me.Handle, 1)
+        UnregisterHotKey(Me.Handle, 2)
+        UnregisterHotKey(Me.Handle, 3)
 
     End Sub
+
+    Private Sub ExitForm()
+        Me.Dispose()
+    End Sub
+
 End Class
