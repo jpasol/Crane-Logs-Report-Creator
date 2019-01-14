@@ -43,10 +43,12 @@ Public Class CLRForm
         connOP = OPConnection
         Me.username = Username
 
-        AddHandler cmdExit1.KeyPress, AddressOf ExitForm
-        AddHandler cmdExit2.KeyPress, AddressOf ExitForm
-        AddHandler cmdPrev1.KeyPress, AddressOf PrevForm
-        AddHandler cmdNext1.KeyPress, AddressOf NextForm
+        AddHandler cmdExit1.Click, AddressOf ExitForm
+        AddHandler cmdExit2.Click, AddressOf ExitForm
+        AddHandler cmdPrev1.Click, AddressOf PrevForm
+        AddHandler cmdNext1.Click, AddressOf NextForm
+
+        DelaySum.DataSource = clsCLR.CraneLogsData.BerthingHourDelays
 
         ' Add any initialization after the InitializeComponent() call.
 
@@ -84,15 +86,6 @@ Public Class CLRForm
     Private Sub CLRForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         MapDetails()
 
-        'removed to pave way for reformating 12282018
-        ''ADD BERTHING HOUR DELAYS TO DELAYSUM
-        'DelaySum.Rows.Add({"VFM"})
-        'DelaySum.Rows.Add({"GOB"})
-        'DelaySum.Rows.Add({"POB"})
-
-        DelaySum.DataSource = clsCLR.CraneLogsData.BerthingHourDelays
-
-
         If clsCLR.Exists() Then
             clsCLR.RetrieveData()
 
@@ -108,6 +101,8 @@ Public Class CLRForm
         RegisterHotKey(Me.Handle, 2, 0, Keys.F10)
         RegisterHotKey(Me.Handle, 3, 0, Keys.F11)
 
+
+        RefreshInfo()
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -137,30 +132,36 @@ Public Class CLRForm
 
         Select Case tabSelected.Text.ToString
             Case "General Information"
-                With clsCLR
-                    mskFirstmve.Text = GetMilTime(.FirstMove)
-                    mskLastmve.Text = GetMilTime(.LastMove)
-                    mskMoves.Text = .TotalMoves
-                    mskDensity.Text = Format(.CraneDensity, "0.00")
-                    mskBerthHours.Text = Format(.TotalBerthHours, "0.00")
-                    mskNetBerth.Text = Format(.NetBerthHours, "0.00")
-                    mskGrossBerthProd.Text = Format(.GrossBerthProdRate, "0.00")
-                    mskNetBerthProd.Text = Format(.NetBerthProdRate, "0.00")
-                    mskGrossWorkingTime.Text = Format(.GrossVesselWorkingTime, "0.00")
-                    mskNetWorkingTime.Text = Format(.NetVesselWorkingTime, "0.00")
-                    mskGrossVesselProd.Text = Format(.GrossVesselProdRate, "0.00")
-                    mskNetVesselProd.Text = Format(.NetVesselProdRate, "0.00")
-                    mskGrossHours.Text = Format(.TotalGrossWorkingHours, "0.00")
-                    mskNetHours.Text = Format(.TotalNetWorkingHours, "0.00")
-                    mskGrossCraneProd.Text = Format(.GrossCraneProductivity, "0.00")
-                    mskNetCraneProd.Text = Format(.NetCraneProductivity, "0.00")
-                End With
-
+                RefreshInfo()
             Case "More Information"
                 CraneSummary()
                 DelaySummary()
         End Select
     End Sub
+
+    Private Sub RefreshInfo()
+        With clsCLR
+            On Error Resume Next
+
+            mskFirstmve.Text = GetMilTime(.FirstMove)
+            mskLastmve.Text = GetMilTime(.LastMove)
+            mskMoves.Text = .TotalMoves
+            mskDensity.Text = Format(.CraneDensity, "0.00")
+            mskBerthHours.Text = Format(.TotalBerthHours, "0.00")
+            mskNetBerth.Text = Format(.NetBerthHours, "0.00")
+            mskGrossBerthProd.Text = Format(.GrossBerthProdRate, "0.00")
+            mskNetBerthProd.Text = Format(.NetBerthProdRate, "0.00")
+            mskGrossWorkingTime.Text = Format(.GrossVesselWorkingTime, "0.00")
+            mskNetWorkingTime.Text = Format(.NetVesselWorkingTime, "0.00")
+            mskGrossVesselProd.Text = Format(.GrossVesselProdRate, "0.00")
+            mskNetVesselProd.Text = Format(.NetVesselProdRate, "0.00")
+            mskGrossHours.Text = Format(.TotalGrossWorkingHours, "0.00")
+            mskNetHours.Text = Format(.TotalNetWorkingHours, "0.00")
+            mskGrossCraneProd.Text = Format(.GrossCraneProductivity, "0.00")
+            mskNetCraneProd.Text = Format(.NetCraneProductivity, "0.00")
+        End With
+    End Sub
+
     Private Sub CraneSummary()
         ProdSum.Rows.Clear()
         txtUnits.Text = 0
@@ -261,31 +262,38 @@ Public Class CLRForm
 
         Dim result As MsgBoxResult
 
+        Dim existsResult As Boolean = clsCLR.Exists
+        connOP.Open()
+        connOP.BeginTrans()
+
         Try
-            Dim existsResult As Boolean = clsCLR.Exists
-            connOP.Open()
-            connOP.BeginTrans()
             If existsResult = True Then
                 result = MsgBox("Update Crane Log Report?", vbYesNo)
                 If result = vbYes Then
                     clsCLR.CancelExistingCraneLogsReport() 'cancelled succesfully
                     clsCLR.Save()
+                    connOP.CommitTrans()
+                    MsgBox("Saved Successfully!")
+                Else
+                    connOP.RollbackTrans()
                 End If
             Else
                 result = MsgBox("Continue Saving?", vbYesNo)
                 If result = vbYes Then
                     clsCLR.Save()
+                    connOP.CommitTrans()
+                    MsgBox("Saved Successfully!")
+                Else
+                    connOP.RollbackTrans()
                 End If
             End If
-
-            connOP.CommitTrans()
-            connOP.Close()
         Catch ex As Exception
+            MsgBox("Rolling Back Changes")
             connOP.RollbackTrans()
-            connOP.Close()
         End Try
 
-        MsgBox("Saved Successfully!")
+        connOP.Close()
+
 
     End Sub
 
@@ -329,4 +337,11 @@ Public Class CLRForm
         Me.Dispose()
     End Sub
 
+    Private Sub TabControl1_DrawItem(sender As Object, e As DrawItemEventArgs) Handles TabControl1.DrawItem
+        e.Graphics.FillRectangle(New SolidBrush(Color.FromArgb(255 / (e.Index + 1), 255, 102, 0)), e.Bounds)
+
+        Dim paddedBounds As Rectangle = e.Bounds
+        paddedBounds.Inflate(-2, -2)
+        e.Graphics.DrawString(TabControl1.TabPages(e.Index).Text, TabControl1.TabPages(e.Index).Font, New SolidBrush(Color.Black), paddedBounds)
+    End Sub
 End Class

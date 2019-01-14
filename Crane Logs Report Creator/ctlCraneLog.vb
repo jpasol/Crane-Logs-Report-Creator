@@ -8,29 +8,11 @@ Public Class CraneCtl
         ' This call is required by the designer.
         InitializeComponent()
 
-        'ADD HANDLERS TO RESTRICT TEXTBOXES TO NUMERIC INPUT
-        AddHandler txtBox20.KeyPress, AddressOf Common_Numeric
-        AddHandler txtBox40.KeyPress, AddressOf Common_Numeric
-        AddHandler txtBox45.KeyPress, AddressOf Common_Numeric
-        AddHandler txtGear20.KeyPress, AddressOf Common_Numeric
-        AddHandler txtGear40.KeyPress, AddressOf Common_Numeric
-        AddHandler txtHatch20.KeyPress, AddressOf Common_Numeric
-        AddHandler txtHatch40.KeyPress, AddressOf Common_Numeric
-
-        'add handlers when losing focus from all datagridviews
-        AddHandler ContainerDsc.LostFocus, AddressOf Refresh_info
-        AddHandler ContainerLoad.LostFocus, AddressOf Refresh_info
-        AddHandler GearboxDsc.LostFocus, AddressOf Refresh_info
-        AddHandler GearboxLoad.LostFocus, AddressOf Refresh_info
-        AddHandler HatchDsc.LostFocus, AddressOf Refresh_info
-        AddHandler HatchLoad.LostFocus, AddressOf Refresh_info
-        AddHandler dgvDelays.LostFocus, AddressOf Refresh_info
-
-        'Reflect First and Last Move
-        AddHandler mskFirst.LostFocus, AddressOf FirstLastMove_LostFocus
-        AddHandler mskLast.LostFocus, AddressOf FirstLastMove_LostFocus
-
         ' Add any initialization after the InitializeComponent() call.
+        AddHandlersToTextboxes()
+        AddHandlerstoDatagridViews()
+        AddHandlersToInputs()
+
         crnCrane = Crane
         With Crane
             Me.tabCrane.Name = "tab" & .CraneName
@@ -74,7 +56,64 @@ Public Class CraneCtl
         mskFirst.Text = GetMilTime(crnCrane.FirstMove)
         mskLast.Text = GetMilTime(crnCrane.LastMove)
 
+
     End Sub
+
+    Private Sub AddHandlersToInputs()
+        'Reflect First and Last Move
+        AddHandler mskFirst.LostFocus, AddressOf FirstLastMove_LostFocus
+        AddHandler mskLast.LostFocus, AddressOf FirstLastMove_LostFocus
+    End Sub
+
+    Private Sub AddHandlerstoDatagridViews()
+        'add handlers when losing focus from all datagridviews
+        AddHandler ContainerDsc.LostFocus, AddressOf Refresh_info
+        AddHandler ContainerLoad.LostFocus, AddressOf Refresh_info
+        AddHandler GearboxDsc.LostFocus, AddressOf Refresh_info
+        AddHandler GearboxLoad.LostFocus, AddressOf Refresh_info
+        AddHandler HatchDsc.LostFocus, AddressOf Refresh_info
+        AddHandler HatchLoad.LostFocus, AddressOf Refresh_info
+        AddHandler dgvDelays.LostFocus, AddressOf Refresh_info
+
+        'Add ConfirmDelete Handler
+        AddHandler ContainerDsc.UserDeletingRow, AddressOf ConfirmDelete
+        AddHandler ContainerLoad.UserDeletingRow, AddressOf ConfirmDelete
+        AddHandler GearboxDsc.UserDeletingRow, AddressOf ConfirmDelete
+        AddHandler GearboxLoad.UserDeletingRow, AddressOf ConfirmDelete
+        AddHandler HatchDsc.UserDeletingRow, AddressOf ConfirmDelete
+        AddHandler HatchLoad.UserDeletingRow, AddressOf ConfirmDelete
+        AddHandler dgvDelays.UserDeletingRow, AddressOf ConfirmDelete
+
+        'Add DeletedSuccesfully Prompt Handler
+        AddHandler ContainerDsc.UserDeletedRow, AddressOf DeletedPrompt
+        AddHandler ContainerLoad.UserDeletedRow, AddressOf DeletedPrompt
+        AddHandler GearboxDsc.UserDeletedRow, AddressOf DeletedPrompt
+        AddHandler GearboxLoad.UserDeletedRow, AddressOf DeletedPrompt
+        AddHandler HatchDsc.UserDeletedRow, AddressOf DeletedPrompt
+        AddHandler HatchLoad.UserDeletedRow, AddressOf DeletedPrompt
+        AddHandler dgvDelays.UserDeletedRow, AddressOf DeletedPrompt
+    End Sub
+
+    Private Sub AddHandlersToTextboxes()
+        'ADD HANDLERS TO RESTRICT TEXTBOXES TO NUMERIC INPUT
+        AddHandler txtBox20.KeyPress, AddressOf Common_Numeric
+        AddHandler txtBox40.KeyPress, AddressOf Common_Numeric
+        AddHandler txtBox45.KeyPress, AddressOf Common_Numeric
+        AddHandler txtGear20.KeyPress, AddressOf Common_Numeric
+        AddHandler txtGear40.KeyPress, AddressOf Common_Numeric
+        AddHandler txtHatch20.KeyPress, AddressOf Common_Numeric
+        AddHandler txtHatch40.KeyPress, AddressOf Common_Numeric
+    End Sub
+
+    Private Sub SetComboBoxSelectionTo0()
+        cmbBound.SelectedIndex = 0
+        cmbDelays.SelectedIndex = 0
+        cmbFreight.SelectedIndex = 0
+        cmbGearmove.SelectedIndex = 0
+        cmbHatchmove.SelectedIndex = 0
+        cmbMovekind.SelectedIndex = 0
+    End Sub
+
     Private dischargeContainers As New DataView
     Private loadContainers As New DataView
     Private dischargeGearboxes As New DataView
@@ -139,6 +178,7 @@ Public Class CraneCtl
 
             delayTable.Rows.Add(mskDescription.Text, delayfrom, delayto, span.TotalHours)
             PopulateDelays()
+            EmptyOutControls({cmbDelays, mskDescription, mskFrom, mskTo})
         End If
     End Sub
 
@@ -188,7 +228,14 @@ Public Class CraneCtl
             Refresh_info()
             ContainerDsc.Refresh()
             ContainerLoad.Refresh()
+            EmptyOutControls({cmbBound, cmbMovekind, cmbFreight, txtBox20, txtBox40, txtBox45})
         End If
+    End Sub
+
+    Private Sub EmptyOutControls(p() As Control)
+        For Each ctl As Control In p
+            ctl.ResetText()
+        Next
     End Sub
 
     Private Function GetFreight(text As String) As String
@@ -254,12 +301,14 @@ Public Class CraneCtl
             Refresh_info()
             GearboxDsc.Refresh()
             GearboxLoad.Refresh()
+            EmptyOutControls({cmbGearmove, txtGearbay, txtGear20, txtGear40})
         End If
     End Sub
 
     Private Function IsInputValid(p() As Control) As Boolean
         For Each txtbox As Control In p
             If txtbox.Text = "" Then
+                If txtbox.GetType Is GetType(ComboBox) Then DirectCast(txtbox, ComboBox).DroppedDown = True
                 txtbox.Focus()
                 txtbox.BackColor = Color.Red
                 Return False
@@ -286,6 +335,7 @@ Public Class CraneCtl
             Refresh_info()
             HatchDsc.Refresh()
             HatchLoad.Refresh()
+            EmptyOutControls({cmbHatchmove, txtHatchbay, txtHatch20, txtHatch40})
         End If
     End Sub
 
@@ -332,6 +382,26 @@ Public Class CraneCtl
             End With
         Next
 
+    End Sub
+
+    Private Sub CraneCtl_ControlAdded(sender As Object, e As ControlEventArgs) Handles Me.ControlAdded
+        SetComboBoxSelectionTo0()
+    End Sub
+
+    Private Sub ConfirmDelete(sender As Object, e As DataGridViewRowCancelEventArgs)
+        Dim result = MsgBox("Delete Row?", vbYesNo)
+        If result = vbYes Then
+            e.Cancel = False
+
+        Else
+            e.Cancel = True
+        End If
+    End Sub
+
+    Private Sub DeletedPrompt(sender As Object, e As DataGridViewRowEventArgs)
+        crnCrane.Moves.AcceptChanges()
+        crnCrane.Delays.AcceptChanges()
+        MsgBox("Succesfully Deleted")
     End Sub
 
 End Class

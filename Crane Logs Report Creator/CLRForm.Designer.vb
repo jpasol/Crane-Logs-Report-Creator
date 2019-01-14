@@ -22,6 +22,7 @@ Partial Class CLRForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.cmdExit1 = New System.Windows.Forms.Button()
@@ -132,6 +133,7 @@ Partial Class CLRForm
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed
         Me.TabControl1.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabControl1.Location = New System.Drawing.Point(12, 12)
         Me.TabControl1.Name = "TabControl1"
@@ -145,7 +147,7 @@ Partial Class CLRForm
         Me.TabPage1.Controls.Add(Me.cmdNext1)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Controls.Add(Me.gbxVessel)
-        Me.TabPage1.Font = New System.Drawing.Font("Calibri", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabPage1.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabPage1.Location = New System.Drawing.Point(4, 33)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -734,11 +736,11 @@ Partial Class CLRForm
         'cmdDelete
         '
         Me.cmdDelete.BackColor = System.Drawing.Color.Red
-        Me.cmdDelete.Location = New System.Drawing.Point(607, 605)
+        Me.cmdDelete.Location = New System.Drawing.Point(529, 606)
         Me.cmdDelete.Name = "cmdDelete"
-        Me.cmdDelete.Size = New System.Drawing.Size(32, 32)
+        Me.cmdDelete.Size = New System.Drawing.Size(110, 32)
         Me.cmdDelete.TabIndex = 58
-        Me.cmdDelete.Text = "X"
+        Me.cmdDelete.Text = "Delete"
         Me.cmdDelete.UseVisualStyleBackColor = False
         '
         'txtGC
@@ -1060,6 +1062,9 @@ Partial Class CLRForm
         'delayhours
         '
         Me.delayhours.DataPropertyName = "delayhours"
+        DataGridViewCellStyle3.Format = "N2"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.delayhours.DefaultCellStyle = DataGridViewCellStyle3
         Me.delayhours.HeaderText = "Total"
         Me.delayhours.Name = "delayhours"
         '

@@ -170,6 +170,7 @@ Public Class CLRClass
             refkeyCLR = SaveCraneLogsReport()
             SaveBerthDelays(refkeyCLR)
             SaveCranes(refkeyCLR)
+
         Catch ex As Exception
             MsgBox("Save Unsuccessful, Rolling Back Changes" & vbNewLine &
                    "Error Message: " & ex.Message)
@@ -264,7 +265,8 @@ INSERT INTO [opreports].[dbo].[crane]
         Dim insertcommand As New ADODB.Command
         insertcommand.ActiveConnection = OPConnection
         For Each delay As DataRow In crn.Delays.Nondeductable.Rows
-            insertcommand.CommandText = $"
+            If GetSpanHours(delay("delaystart"), delay("delayend")) > 0 Then
+                insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_delays]
            ([crane_refkey]
            ,[che_qc]
@@ -281,18 +283,20 @@ INSERT INTO [opreports].[dbo].[crane_delays]
            ,'{delay("delayend").ToString}'
            )
 "
-            insertcommand.Execute()
+                insertcommand.Execute()
+            End If
+
         Next
     End Sub
 
     Friend Sub CancelExistingCraneLogsReport()
         Try
             CancelCraneLogReport(Refkey)
-            CancelBerthDelays(Refkey)
-            CancelCrane(Refkey)
+            'CancelBerthDelays(Refkey)
+            'CancelCrane(Refkey)
         Catch ex As Exception
-            MsgBox("Cancellation Unsuccessful, Rolling Back Changes" & vbNewLine &
-        "Error Message: " & ex.Message)
+            MsgBox("Cancellation Unsuccessful" & vbNewLine &
+                    "Error Message: " & ex.Message)
             Throw ex
         End Try
 
@@ -323,7 +327,7 @@ UPDATE [opreports].[dbo].[clr_berthdelays]
         cancelCraneDelays.CommandText = $"
 UPDATE [opreports].[dbo].[crane_containers]
    SET [status] = 'VOID'
- WHERE [crane_refkey] = {Refkey}
+ WHERE [crane_refkey] = {craneRefkey}
 "
         cancelCraneDelays.Execute()
     End Sub
@@ -334,7 +338,7 @@ UPDATE [opreports].[dbo].[crane_containers]
         cancelCraneHatchcovers.CommandText = $"
 UPDATE [opreports].[dbo].[crane_containers]
    SET [status] = 'VOID'
- WHERE [crane_refkey] = {Refkey}
+ WHERE [crane_refkey] = {craneRefkey}
 "
         cancelCraneHatchcovers.Execute()
     End Sub
@@ -345,7 +349,7 @@ UPDATE [opreports].[dbo].[crane_containers]
         cancelCraneGearboxes.CommandText = $"
 UPDATE [opreports].[dbo].[crane_containers]
    SET [status] = 'VOID'
- WHERE [crane_refkey] = {Refkey}
+ WHERE [crane_refkey] = {craneRefkey}
 "
         cancelCraneGearboxes.Execute()
     End Sub
@@ -356,7 +360,7 @@ UPDATE [opreports].[dbo].[crane_containers]
         cancelCraneContainers.CommandText = $"
 UPDATE [opreports].[dbo].[crane_containers]
    SET [status] = 'VOID'
- WHERE [crane_refkey] = {Refkey}
+ WHERE [crane_refkey] = {craneRefkey}
 "
         cancelCraneContainers.Execute()
 
@@ -399,7 +403,8 @@ UPDATE [opreports].[dbo].[reports_clr]
         Dim insertcommand As New ADODB.Command
         insertcommand.ActiveConnection = OPConnection
         For Each delay As DataRow In crn.Delays.Break.Rows
-            insertcommand.CommandText = $"
+            If GetSpanHours(delay("delaystart"), delay("delayend")) > 0 Then
+                insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_delays]
            ([crane_refkey]
            ,[che_qc]
@@ -416,7 +421,8 @@ INSERT INTO [opreports].[dbo].[crane_delays]
            ,'{delay("delayend").ToString}'
            )
 "
-            insertcommand.Execute()
+                insertcommand.Execute()
+            End If
         Next
     End Sub
 
@@ -424,7 +430,8 @@ INSERT INTO [opreports].[dbo].[crane_delays]
         Dim insertcommand As New ADODB.Command
         insertcommand.ActiveConnection = OPConnection
         For Each delay As DataRow In crn.Delays.Deductable.Rows
-            insertcommand.CommandText = $"
+            If GetSpanHours(delay("delaystart"), delay("delayend")) > 0 Then
+                insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_delays]
            ([crane_refkey]
            ,[che_qc]
@@ -441,7 +448,8 @@ INSERT INTO [opreports].[dbo].[crane_delays]
            ,'{delay("delayend").ToString}'
            )
 "
-            insertcommand.Execute()
+                insertcommand.Execute()
+            End If
         Next
     End Sub
 
@@ -449,7 +457,8 @@ INSERT INTO [opreports].[dbo].[crane_delays]
         Dim insertcommand As New ADODB.Command
         insertcommand.ActiveConnection = OPConnection
         For Each mve As DataRow In crn.Moves.Hatchcover.Rows
-            insertcommand.CommandText = $"
+            If (mve("cvrsze20") + mve("cvrsze40")) > 0 Then
+                insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_hatchcovers]
            ([crane_refkey]
            ,[che_qc]
@@ -467,7 +476,8 @@ INSERT INTO [opreports].[dbo].[crane_hatchcovers]
            ,{mve("cvrsze20").ToString}
            ,{mve("cvrsze40").ToString})
 "
-            insertcommand.Execute()
+                insertcommand.Execute()
+            End If
         Next
     End Sub
 
@@ -475,7 +485,8 @@ INSERT INTO [opreports].[dbo].[crane_hatchcovers]
         Dim insertcommand As New ADODB.Command
         insertcommand.ActiveConnection = OPConnection
         For Each mve As DataRow In crn.Moves.Gearbox.Rows
-            insertcommand.CommandText = $"
+            If (mve("gbxsze20") + mve("gbxsze40")) > 0 Then
+                insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_gearboxes]
            ([crane_refkey]
            ,[che_qc]
@@ -493,7 +504,8 @@ INSERT INTO [opreports].[dbo].[crane_gearboxes]
            ,{mve("gbxsze20").ToString}
            ,{mve("gbxsze40").ToString})
 "
-            insertcommand.Execute()
+                insertcommand.Execute()
+            End If
         Next
     End Sub
 
@@ -501,7 +513,8 @@ INSERT INTO [opreports].[dbo].[crane_gearboxes]
         Dim insertcommand As New ADODB.Command
         insertcommand.ActiveConnection = OPConnection
         For Each mve As DataRow In crn.Moves.Container.Rows
-            insertcommand.CommandText = $"
+            If (mve("cntsze20") + mve("cntsze40") + mve("cntsze45")) > 0 Then
+                insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_containers]
            ([crane_refkey]
            ,[che_qc]
@@ -524,7 +537,9 @@ INSERT INTO [opreports].[dbo].[crane_containers]
            ,{mve("cntsze45").ToString}
            )
 "
-            insertcommand.Execute()
+
+                insertcommand.Execute()
+            End If
         Next
     End Sub
 
@@ -570,7 +585,7 @@ FROM [opreports].[dbo].[reports_clr]
 Where registry = '{CLRVessel.Registry}' and (status <> 'VOID' or status IS NULL)
 order by refkey desc
 "
-        Return cranelogRetriever.Execute.Fields("refkey").Value.ToString 'tostring just to be safe
+        Return cranelogRetriever.Execute.Fields("refkey").Value 'tostring just to be safe
 
     End Function
     Private Sub GetBerthDelays(Refkey As Integer)
