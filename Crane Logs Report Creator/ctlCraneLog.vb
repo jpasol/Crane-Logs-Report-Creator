@@ -1,4 +1,5 @@
-﻿Imports Reports
+﻿Imports System.ComponentModel
+Imports Reports
 Imports Reports.ReportFunctions
 
 Public Class CraneCtl
@@ -123,7 +124,7 @@ Public Class CraneCtl
     ' pending for delays
     Private crnCrane As Crane
 
-    Private Sub Refresh_info()
+    Public Sub Refresh_info()
         With crnCrane
             txtMoves.Text = .Moves.TotalMoves
             txtGhours.Text = Format(.GrossWorkingHours, "0.00")

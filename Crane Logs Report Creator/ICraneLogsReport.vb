@@ -21,7 +21,6 @@ Public Interface ICraneLogsReport
     ReadOnly Property TotalNetWorkingHours As Double
     ReadOnly Property GrossCraneProductivity As Double
     ReadOnly Property NetCraneProductivity As Double
-
     Property LastPort
     Property NextPort
 

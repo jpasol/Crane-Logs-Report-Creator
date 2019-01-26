@@ -86,15 +86,11 @@ Public Class CLRForm
     Private Sub CLRForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         MapDetails()
 
-        If clsCLR.Exists() Then
-            clsCLR.RetrieveData()
-
-            For Each crn As Crane In clsCLR.Crane
-                Dim CraneControl As New CraneCtl(crn)
-                CraneControl.PopulateDelays()
-                TabControl1.TabPages.Add(CraneControl.tabCraneLog.TabPages($"tab{crn.CraneName}"))
-            Next
-        End If
+        For Each crn As Crane In clsCLR.Crane
+            Dim CraneControl As New CraneCtl(crn)
+            CraneControl.PopulateDelays()
+            TabControl1.TabPages.Add(CraneControl.tabCraneLog.TabPages($"tab{crn.CraneName}"))
+        Next
 
 
         RegisterHotKey(Me.Handle, 1, 0, Keys.F3)
@@ -119,7 +115,7 @@ Public Class CLRForm
                 ctlCrane = New CraneCtl(tempcrane)
                 TabControl1.TabPages.Add(ctlCrane.tabCraneLog.TabPages("tab" & strGC))
                 TabControl1.SelectTab("tab" & strGC)
-                ctlCrane.Refresh()
+                ctlCrane.Refresh_info()
             End With
         End Try
 

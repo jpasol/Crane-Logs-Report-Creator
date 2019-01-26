@@ -8,8 +8,8 @@ Public Class CLRClass
     Implements IReportswSave
     Implements ICraneLogsReport
 
-    Public Sub New(Registry As String, ByRef N4connection As ADODB.Connection, ByRef OPConnection As ADODB.Connection, Username As String)
-        CLRVessel = New Vessel(Registry, N4connection)
+    Public Sub New(Registry As String, ByRef N4connection As ADODB.Connection, ByRef OPConnection As ADODB.Connection, Optional Username As String = "")
+        CLRVessel = New Vessel(Registry, N4connection, WithoutUnits:=True)
         Crane = New List(Of Crane)
         CraneLogsData = New CraneLogsData
         ReportFunctions = New ReportFunctions(OPConnection, N4connection) 'so you dont need to explicitly include the connection as parameter
@@ -17,6 +17,69 @@ Public Class CLRClass
         Me.OPConnection = OPConnection
         Me.UserName = Username
 
+        If Exists() Then
+            RetrieveData()
+        Else
+            GenerateBerthDelays()
+            GenerateCranes()
+        End If
+    End Sub
+
+    Private Sub GenerateCranes()
+        For craneNum As Integer = 1 To 4
+            Dim craneName As String = $"GC0{craneNum}"
+            Dim tempCrane As New Crane(craneName, CLRVessel.Registry, N4Connection, False)
+            If tempCrane.Moves.TotalMoves > 0 Then
+                tempCrane.FirstMove = GetFirstMove(tempCrane)
+                tempCrane.LastMove = GetLastMove(tempCrane)
+                Crane.Add(tempCrane)
+            End If
+        Next
+    End Sub
+
+    Private Function GetLastMove(tempCrane As Crane) As Date
+        Dim tempDataTable As New DataTable
+        tempDataTable.Merge(tempCrane.Moves.Inbound)
+        tempDataTable.Merge(tempCrane.Moves.Outbound)
+
+        Return CDate(tempDataTable.AsEnumerable.OrderByDescending(Function(row) CDate(row("time_move"))).Select(Function(row) row("time_move").ToString).First)
+
+    End Function
+
+    Private Function GetFirstMove(tempCrane As Crane) As Date
+        Dim tempDataTable As New DataTable
+        tempDataTable.Merge(tempCrane.Moves.Inbound)
+        tempDataTable.Merge(tempCrane.Moves.Outbound)
+
+        Return CDate(tempDataTable.AsEnumerable.OrderBy(Function(row) CDate(row("time_move"))).Select(Function(row) row("time_move").ToString).First)
+    End Function
+
+    Private Sub GenerateBerthDelays()
+        CreateVesselFormalities()
+        CreateGOB()
+        CreatePOB()
+    End Sub
+
+    Private Sub CreatePOB()
+        Dim pobStart As Date = CLRVessel.LaborOffBoard
+        Dim pobEnd As Date = CLRVessel.ATD
+
+        CraneLogsData.BerthingHourDelays.AddBerthingHourDelaysRow("POB", pobStart, pobEnd, GetSpanHours(pobStart, pobEnd))
+
+    End Sub
+
+    Private Sub CreateGOB()
+        Dim gobStart As Date = CLRVessel.LaborOnBoard
+        Dim gobEnd As Date = DateAdd(DateInterval.Minute, 5, gobStart)
+
+        CraneLogsData.BerthingHourDelays.AddBerthingHourDelaysRow("GOB", gobStart, gobEnd, GetSpanHours(gobStart, gobEnd))
+    End Sub
+
+    Private Sub CreateVesselFormalities()
+        Dim vfmStart As Date = CLRVessel.ATA
+        Dim vfmEnd As Date = CLRVessel.LaborOnBoard
+
+        CraneLogsData.BerthingHourDelays.AddBerthingHourDelaysRow("VFM", vfmStart, vfmEnd, GetSpanHours(vfmStart, vfmEnd))
     End Sub
 
     Private Property UserName As String
@@ -582,7 +645,7 @@ INSERT INTO [opreports].[dbo].[clr_berthdelays]
         cranelogRetriever.CommandText = $"
 SELECT top 1 [refkey]
 FROM [opreports].[dbo].[reports_clr]
-Where registry = '{CLRVessel.Registry}' and (status <> 'VOID' or status IS NULL)
+Where registry = '{CLRVessel.Registry}'
 order by refkey desc
 "
         Return cranelogRetriever.Execute.Fields("refkey").Value 'tostring just to be safe
@@ -596,7 +659,7 @@ order by refkey desc
       ,[delayend]
   FROM [opreports].[dbo].[clr_berthdelays]
 	
-	WHERE [clr_refkey] = {Refkey} and (status <> 'VOID' or status IS NULL)
+	WHERE [clr_refkey] = {Refkey}
 "
         Dim dataAdapter As New OleDb.OleDbDataAdapter
         dataAdapter.Fill(CraneLogsData.BerthingHourDelays, berthdelayRetriever.Execute) 'shortcut to fill instead of copying the returned recordset of execute
@@ -625,7 +688,7 @@ SELECT  [refkey]
       ,[moves]
   FROM [opreports].[dbo].[crane]
 	
-	WHERE [clr_refkey] = {Refkey} and (status <> 'VOID' or status IS NULL)
+	WHERE [clr_refkey] = {Refkey}
 "
         }
         Dim cranes As New ADODB.Recordset
@@ -636,7 +699,7 @@ SELECT  [refkey]
             Catch
             Finally
                 While Not (.EOF Or .BOF)
-                    Dim temporaryCrane As New Crane(.Fields("che_qc").Value, CLRVessel.Registry, N4Connection)
+                    Dim temporaryCrane As New Crane(.Fields("che_qc").Value, CLRVessel.Registry, N4Connection, True)
                     temporaryCrane.Moves.Container.Clear() 'removes preloaded data
 
                     temporaryCrane.FirstMove = .Fields("first_move").Value
@@ -691,7 +754,7 @@ SELECT [delay_kind]
       ,[delaystart]
       ,[delayend]
   FROM [opreports].[dbo].[crane_delays]
-    WHERE [crane_refkey] = {craneRefkey} and (status <> 'VOID' or status IS NULL)
+    WHERE [crane_refkey] = {craneRefkey}
 "
         Return craneDelays.Execute
 
@@ -708,7 +771,7 @@ SELECT [actual_ib]
       ,[20]  as 'cvrsze20'
       ,[40]  as 'cvrsze40'
   FROM [opreports].[dbo].[crane_hatchcovers]
-    WHERE crane_refkey = {craneRefkey} and (status <> 'VOID' or status IS NULL)
+    WHERE crane_refkey = {craneRefkey}
 "
             Return hatchCoverMoves.Execute
         End With
@@ -725,7 +788,7 @@ SELECT [actual_ib]
       ,[20]  as 'gbxsze20'
       ,[40]  as 'gbxsze40'
   FROM [opreports].[dbo].[crane_gearboxes]
-    WHERE crane_refkey = {craneRefkey} and (status <> 'VOID' or status IS NULL)
+    WHERE crane_refkey = {craneRefkey}
 "
             Return gearboxMoves.Execute
         End With
@@ -744,14 +807,14 @@ SELECT [move_kind]
       ,[40] as 'cntsze40'
       ,[45] as 'cntsze45'
   FROM [opreports].[dbo].[crane_containers]
-	WHERE [crane_refkey] = {craneRefkey} and (status <> 'VOID' or status IS NULL)
+	WHERE [crane_refkey] = {craneRefkey}
 "
         Return containerMoves.Execute
     End Function
 
     Public Sub IntializeCrane(GantryName As String) Implements ICraneLogsReport.IntializeCrane
         Dim number As Integer = GantryName.Substring(GantryName.Length - 1, 1)
-        Crane.Add(New Crane(GantryName, CLRVessel.Registry, N4Connection))
+        Crane.Add(New Crane(GantryName, CLRVessel.Registry, N4Connection, False))
     End Sub
 
     Public Function Exists() As Boolean Implements IReportswSave.Exists ' no need register parameter since this can only be used when clr class is instantiated
