@@ -9,7 +9,7 @@ Public Class CLRClass
     Implements ICraneLogsReport
 
     Public Sub New(Registry As String, ByRef N4connection As ADODB.Connection, ByRef OPConnection As ADODB.Connection, Optional Username As String = "")
-        CLRVessel = New Vessel(Registry, N4connection, WithoutUnits:=True)
+        CLRVessel = New Vessel(Registry, OPConnection, N4connection, WithoutUnits:=True)
         Crane = New List(Of Crane)
         CraneLogsData = New CraneLogsData
         ReportFunctions = New ReportFunctions(OPConnection, N4connection) 'so you dont need to explicitly include the connection as parameter
@@ -55,6 +55,7 @@ Public Class CLRClass
     End Function
 
     Private Sub GenerateBerthDelays()
+        On Error Resume Next
         CreateVesselFormalities()
         CreateGOB()
         CreatePOB()
@@ -819,7 +820,6 @@ SELECT [move_kind]
 
     Public Function Exists() As Boolean Implements IReportswSave.Exists ' no need register parameter since this can only be used when clr class is instantiated
         Dim craneLogsFinder As New ADODB.Command
-
         OPConnection.Open()
         craneLogsFinder.ActiveConnection = OPConnection
         craneLogsFinder.CommandText = $"Select refkey from reports_clr where registry = '{CLRVessel.Registry}' and (status <> 'VOID' or status IS NULL)" 'shortcut to registry since they will only point to the same thing  
@@ -832,6 +832,7 @@ SELECT [move_kind]
             OPConnection.Close()
             Return result
         End With
+
     End Function
 
 End Class
