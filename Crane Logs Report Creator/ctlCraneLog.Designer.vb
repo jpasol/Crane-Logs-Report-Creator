@@ -28,6 +28,12 @@ Partial Class CraneCtl
         Me.tabCrane = New System.Windows.Forms.TabPage()
         Me.tabMoves = New System.Windows.Forms.TabControl()
         Me.tabCntrs = New System.Windows.Forms.TabPage()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
         Me.cmbFreight = New System.Windows.Forms.ComboBox()
         Me.ContainerLoad = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -58,6 +64,10 @@ Partial Class CraneCtl
         Me.cntsze45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.tabGearbox = New System.Windows.Forms.TabPage()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
         Me.txtGear40 = New System.Windows.Forms.TextBox()
         Me.txtGear20 = New System.Windows.Forms.TextBox()
         Me.txtGearbay = New System.Windows.Forms.TextBox()
@@ -80,6 +90,10 @@ Partial Class CraneCtl
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.tabHatchcover = New System.Windows.Forms.TabPage()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
         Me.txtHatch40 = New System.Windows.Forms.TextBox()
         Me.txtHatch20 = New System.Windows.Forms.TextBox()
         Me.txtHatchbay = New System.Windows.Forms.TextBox()
@@ -136,20 +150,6 @@ Partial Class CraneCtl
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblGantry = New System.Windows.Forms.Label()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.Label33 = New System.Windows.Forms.Label()
-        Me.Label34 = New System.Windows.Forms.Label()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.Label36 = New System.Windows.Forms.Label()
-        Me.Label37 = New System.Windows.Forms.Label()
         Me.tabCraneLog.SuspendLayout()
         Me.tabCrane.SuspendLayout()
         Me.tabMoves.SuspendLayout()
@@ -231,11 +231,71 @@ Partial Class CraneCtl
         Me.tabCntrs.Controls.Add(Me.Label2)
         Me.tabCntrs.Location = New System.Drawing.Point(4, 33)
         Me.tabCntrs.Name = "tabCntrs"
-        Me.tabCntrs.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabCntrs.Padding = New System.Windows.Forms.Padding(60)
         Me.tabCntrs.Size = New System.Drawing.Size(1308, 376)
         Me.tabCntrs.TabIndex = 0
         Me.tabCntrs.Text = "Containers"
         Me.tabCntrs.UseVisualStyleBackColor = True
+        '
+        'Label29
+        '
+        Me.Label29.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label29.Location = New System.Drawing.Point(843, 3)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(104, 46)
+        Me.Label29.TabIndex = 45
+        Me.Label29.Text = "45"
+        Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label28
+        '
+        Me.Label28.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label28.Location = New System.Drawing.Point(737, 3)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(104, 46)
+        Me.Label28.TabIndex = 44
+        Me.Label28.Text = "40"
+        Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label27
+        '
+        Me.Label27.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label27.Location = New System.Drawing.Point(631, 3)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(104, 46)
+        Me.Label27.TabIndex = 43
+        Me.Label27.Text = "20"
+        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label26
+        '
+        Me.Label26.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label26.Location = New System.Drawing.Point(520, 3)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(109, 46)
+        Me.Label26.TabIndex = 42
+        Me.Label26.Text = "Freight"
+        Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label25
+        '
+        Me.Label25.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.Location = New System.Drawing.Point(411, 3)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(108, 46)
+        Me.Label25.TabIndex = 41
+        Me.Label25.Text = "Move Kind"
+        Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label24
+        '
+        Me.Label24.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.Location = New System.Drawing.Point(194, 3)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(215, 46)
+        Me.Label24.TabIndex = 40
+        Me.Label24.Text = "Discharge / Loading"
+        Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'cmbFreight
         '
@@ -521,6 +581,46 @@ Partial Class CraneCtl
         Me.tabGearbox.Text = "Gearbox"
         Me.tabGearbox.UseVisualStyleBackColor = True
         '
+        'Label30
+        '
+        Me.Label30.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.Location = New System.Drawing.Point(731, 3)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(104, 46)
+        Me.Label30.TabIndex = 49
+        Me.Label30.Text = "40"
+        Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label31
+        '
+        Me.Label31.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label31.Location = New System.Drawing.Point(625, 3)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(104, 46)
+        Me.Label31.TabIndex = 48
+        Me.Label31.Text = "20"
+        Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label32
+        '
+        Me.Label32.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label32.Location = New System.Drawing.Point(519, 3)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(104, 46)
+        Me.Label32.TabIndex = 47
+        Me.Label32.Text = "Bay"
+        Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label33
+        '
+        Me.Label33.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label33.Location = New System.Drawing.Point(302, 3)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(215, 46)
+        Me.Label33.TabIndex = 46
+        Me.Label33.Text = "Discharge / Loading"
+        Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'txtGear40
         '
         Me.txtGear40.Location = New System.Drawing.Point(735, 52)
@@ -724,6 +824,46 @@ Partial Class CraneCtl
         Me.tabHatchcover.TabIndex = 2
         Me.tabHatchcover.Text = "Hatch Cover"
         Me.tabHatchcover.UseVisualStyleBackColor = True
+        '
+        'Label34
+        '
+        Me.Label34.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label34.Location = New System.Drawing.Point(731, 3)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(104, 46)
+        Me.Label34.TabIndex = 53
+        Me.Label34.Text = "40"
+        Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label35
+        '
+        Me.Label35.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label35.Location = New System.Drawing.Point(625, 3)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(104, 46)
+        Me.Label35.TabIndex = 52
+        Me.Label35.Text = "20"
+        Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label36
+        '
+        Me.Label36.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label36.Location = New System.Drawing.Point(519, 3)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(104, 46)
+        Me.Label36.TabIndex = 51
+        Me.Label36.Text = "Bay"
+        Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label37
+        '
+        Me.Label37.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label37.Location = New System.Drawing.Point(302, 3)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(215, 46)
+        Me.Label37.TabIndex = 50
+        Me.Label37.Text = "Opening / Closing"
+        Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'txtHatch40
         '
@@ -1252,146 +1392,6 @@ Partial Class CraneCtl
         Me.lblGantry.TabIndex = 0
         Me.lblGantry.Text = "Label1"
         Me.lblGantry.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label24
-        '
-        Me.Label24.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(194, 3)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(215, 46)
-        Me.Label24.TabIndex = 40
-        Me.Label24.Text = "Discharge / Loading"
-        Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label25
-        '
-        Me.Label25.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label25.Location = New System.Drawing.Point(411, 3)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(108, 46)
-        Me.Label25.TabIndex = 41
-        Me.Label25.Text = "Move Kind"
-        Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label26
-        '
-        Me.Label26.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label26.Location = New System.Drawing.Point(520, 3)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(109, 46)
-        Me.Label26.TabIndex = 42
-        Me.Label26.Text = "Freight"
-        Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label27
-        '
-        Me.Label27.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.Location = New System.Drawing.Point(631, 3)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(104, 46)
-        Me.Label27.TabIndex = 43
-        Me.Label27.Text = "20"
-        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label28
-        '
-        Me.Label28.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.Location = New System.Drawing.Point(737, 3)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(104, 46)
-        Me.Label28.TabIndex = 44
-        Me.Label28.Text = "40"
-        Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label29
-        '
-        Me.Label29.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(843, 3)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(104, 46)
-        Me.Label29.TabIndex = 45
-        Me.Label29.Text = "45"
-        Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label30
-        '
-        Me.Label30.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.Location = New System.Drawing.Point(731, 3)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(104, 46)
-        Me.Label30.TabIndex = 49
-        Me.Label30.Text = "40"
-        Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label31
-        '
-        Me.Label31.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.Location = New System.Drawing.Point(625, 3)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(104, 46)
-        Me.Label31.TabIndex = 48
-        Me.Label31.Text = "20"
-        Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label32
-        '
-        Me.Label32.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label32.Location = New System.Drawing.Point(519, 3)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(104, 46)
-        Me.Label32.TabIndex = 47
-        Me.Label32.Text = "Bay"
-        Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label33
-        '
-        Me.Label33.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.Location = New System.Drawing.Point(302, 3)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(215, 46)
-        Me.Label33.TabIndex = 46
-        Me.Label33.Text = "Discharge / Loading"
-        Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label34
-        '
-        Me.Label34.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label34.Location = New System.Drawing.Point(731, 3)
-        Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(104, 46)
-        Me.Label34.TabIndex = 53
-        Me.Label34.Text = "40"
-        Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label35
-        '
-        Me.Label35.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label35.Location = New System.Drawing.Point(625, 3)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(104, 46)
-        Me.Label35.TabIndex = 52
-        Me.Label35.Text = "20"
-        Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label36
-        '
-        Me.Label36.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label36.Location = New System.Drawing.Point(519, 3)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(104, 46)
-        Me.Label36.TabIndex = 51
-        Me.Label36.Text = "Bay"
-        Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label37
-        '
-        Me.Label37.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label37.Location = New System.Drawing.Point(302, 3)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(215, 46)
-        Me.Label37.TabIndex = 50
-        Me.Label37.Text = "Opening / Closing"
-        Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'CraneCtl
         '

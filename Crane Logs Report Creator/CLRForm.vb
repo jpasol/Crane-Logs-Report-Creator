@@ -102,23 +102,23 @@ Public Class CLRForm
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-
-        Dim strGC As String = "GC0" & txtGC.Text
-        Dim tempcrane As Reports.Crane
-        Try
-            TabControl1.SelectTab("tab" & strGC)
-        Catch ex As Exception
-            With clsCLR
-                clsCLR.IntializeCrane(strGC)
-
-                tempcrane = (.Crane.AsEnumerable.Where(Function(crn) crn.CraneName = strGC).Select(Function(crn) crn))(0)
-                ctlCrane = New CraneCtl(tempcrane)
-                TabControl1.TabPages.Add(ctlCrane.tabCraneLog.TabPages("tab" & strGC))
+        If txtGC.TextLength > 0 Then
+            Dim strGC As String = "GC0" & txtGC.Text
+            Dim tempcrane As Reports.Crane
+            Try
                 TabControl1.SelectTab("tab" & strGC)
-                ctlCrane.Refresh_info()
-            End With
-        End Try
+            Catch ex As Exception
+                With clsCLR
+                    clsCLR.IntializeCrane(strGC)
 
+                    tempcrane = (.Crane.AsEnumerable.Where(Function(crn) crn.CraneName = strGC).Select(Function(crn) crn))(0)
+                    ctlCrane = New CraneCtl(tempcrane)
+                    TabControl1.TabPages.Add(ctlCrane.tabCraneLog.TabPages("tab" & strGC))
+                    TabControl1.SelectTab("tab" & strGC)
+                    ctlCrane.Refresh_info()
+                End With
+            End Try
+        End If
 
     End Sub
 
@@ -137,7 +137,6 @@ Public Class CLRForm
 
     Private Sub RefreshInfo()
         With clsCLR
-            On Error Resume Next
 
             mskFirstmve.Text = GetMilTime(.FirstMove)
             mskLastmve.Text = GetMilTime(.LastMove)
