@@ -28,25 +28,25 @@ Partial Class CraneCtl
         Me.tabCrane = New System.Windows.Forms.TabPage()
         Me.tabMoves = New System.Windows.Forms.TabControl()
         Me.tabCntrs = New System.Windows.Forms.TabPage()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.Label27 = New System.Windows.Forms.Label()
+        Me.ContainerLoadMTY = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ContainerDscMTY = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
-        Me.cmbFreight = New System.Windows.Forms.ComboBox()
-        Me.ContainerLoad = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.ContainerLoadFCL = New System.Windows.Forms.DataGridView()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.txtBox45 = New System.Windows.Forms.TextBox()
-        Me.txtBox40 = New System.Windows.Forms.TextBox()
-        Me.txtBox20 = New System.Windows.Forms.TextBox()
-        Me.cmbMovekind = New System.Windows.Forms.ComboBox()
-        Me.btnCtnAdd = New System.Windows.Forms.Button()
-        Me.cmbBound = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtL20 = New System.Windows.Forms.TextBox()
         Me.txtL40 = New System.Windows.Forms.TextBox()
@@ -56,23 +56,13 @@ Partial Class CraneCtl
         Me.txtD40 = New System.Windows.Forms.TextBox()
         Me.txtD45 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.ContainerDsc = New System.Windows.Forms.DataGridView()
+        Me.ContainerDscFCL = New System.Windows.Forms.DataGridView()
         Me.ctrCategory = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cntsze20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cntsze40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cntsze45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.tabGearbox = New System.Windows.Forms.TabPage()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.Label31 = New System.Windows.Forms.Label()
-        Me.Label32 = New System.Windows.Forms.Label()
-        Me.Label33 = New System.Windows.Forms.Label()
-        Me.txtGear40 = New System.Windows.Forms.TextBox()
-        Me.txtGear20 = New System.Windows.Forms.TextBox()
-        Me.txtGearbay = New System.Windows.Forms.TextBox()
-        Me.btnGearAdd = New System.Windows.Forms.Button()
-        Me.cmbGearmove = New System.Windows.Forms.ComboBox()
         Me.GearboxLoad = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -90,15 +80,6 @@ Partial Class CraneCtl
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.tabHatchcover = New System.Windows.Forms.TabPage()
-        Me.Label34 = New System.Windows.Forms.Label()
-        Me.Label35 = New System.Windows.Forms.Label()
-        Me.Label36 = New System.Windows.Forms.Label()
-        Me.Label37 = New System.Windows.Forms.Label()
-        Me.txtHatch40 = New System.Windows.Forms.TextBox()
-        Me.txtHatch20 = New System.Windows.Forms.TextBox()
-        Me.txtHatchbay = New System.Windows.Forms.TextBox()
-        Me.btnHatchAdd = New System.Windows.Forms.Button()
-        Me.cmbHatchmove = New System.Windows.Forms.ComboBox()
         Me.HatchLoad = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -127,11 +108,6 @@ Partial Class CraneCtl
         Me.mskDescription = New System.Windows.Forms.MaskedTextBox()
         Me.cmbDelays = New System.Windows.Forms.ComboBox()
         Me.dgvDelays = New System.Windows.Forms.DataGridView()
-        Me.delaykind = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtNDelays = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -150,12 +126,19 @@ Partial Class CraneCtl
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblGantry = New System.Windows.Forms.Label()
+        Me.delaykind = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabCraneLog.SuspendLayout()
         Me.tabCrane.SuspendLayout()
         Me.tabMoves.SuspendLayout()
         Me.tabCntrs.SuspendLayout()
-        CType(Me.ContainerLoad, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ContainerDsc, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ContainerLoadMTY, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ContainerDscMTY, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ContainerLoadFCL, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ContainerDscFCL, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabGearbox.SuspendLayout()
         CType(Me.GearboxLoad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GearboxDsc, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -204,20 +187,13 @@ Partial Class CraneCtl
         '
         'tabCntrs
         '
-        Me.tabCntrs.Controls.Add(Me.Label29)
-        Me.tabCntrs.Controls.Add(Me.Label28)
-        Me.tabCntrs.Controls.Add(Me.Label27)
+        Me.tabCntrs.Controls.Add(Me.ContainerLoadMTY)
+        Me.tabCntrs.Controls.Add(Me.ContainerDscMTY)
         Me.tabCntrs.Controls.Add(Me.Label26)
-        Me.tabCntrs.Controls.Add(Me.Label25)
+        Me.tabCntrs.Controls.Add(Me.Label27)
         Me.tabCntrs.Controls.Add(Me.Label24)
-        Me.tabCntrs.Controls.Add(Me.cmbFreight)
-        Me.tabCntrs.Controls.Add(Me.ContainerLoad)
-        Me.tabCntrs.Controls.Add(Me.txtBox45)
-        Me.tabCntrs.Controls.Add(Me.txtBox40)
-        Me.tabCntrs.Controls.Add(Me.txtBox20)
-        Me.tabCntrs.Controls.Add(Me.cmbMovekind)
-        Me.tabCntrs.Controls.Add(Me.btnCtnAdd)
-        Me.tabCntrs.Controls.Add(Me.cmbBound)
+        Me.tabCntrs.Controls.Add(Me.Label25)
+        Me.tabCntrs.Controls.Add(Me.ContainerLoadFCL)
         Me.tabCntrs.Controls.Add(Me.Label5)
         Me.tabCntrs.Controls.Add(Me.txtL20)
         Me.tabCntrs.Controls.Add(Me.txtL40)
@@ -227,7 +203,7 @@ Partial Class CraneCtl
         Me.tabCntrs.Controls.Add(Me.txtD40)
         Me.tabCntrs.Controls.Add(Me.txtD45)
         Me.tabCntrs.Controls.Add(Me.Label3)
-        Me.tabCntrs.Controls.Add(Me.ContainerDsc)
+        Me.tabCntrs.Controls.Add(Me.ContainerDscFCL)
         Me.tabCntrs.Controls.Add(Me.Label2)
         Me.tabCntrs.Location = New System.Drawing.Point(4, 33)
         Me.tabCntrs.Name = "tabCntrs"
@@ -237,111 +213,170 @@ Partial Class CraneCtl
         Me.tabCntrs.Text = "Containers"
         Me.tabCntrs.UseVisualStyleBackColor = True
         '
-        'Label29
+        'ContainerLoadMTY
         '
-        Me.Label29.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(843, 3)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(104, 46)
-        Me.Label29.TabIndex = 45
-        Me.Label29.Text = "45"
-        Me.Label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ContainerLoadMTY.AllowUserToAddRows = False
+        Me.ContainerLoadMTY.AllowUserToDeleteRows = False
+        Me.ContainerLoadMTY.AllowUserToResizeRows = False
+        Me.ContainerLoadMTY.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.ContainerLoadMTY.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
+        Me.ContainerLoadMTY.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ContainerLoadMTY.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn15})
+        Me.ContainerLoadMTY.Location = New System.Drawing.Point(975, 82)
+        Me.ContainerLoadMTY.Name = "ContainerLoadMTY"
+        Me.ContainerLoadMTY.RowHeadersVisible = False
+        Me.ContainerLoadMTY.Size = New System.Drawing.Size(321, 252)
+        Me.ContainerLoadMTY.TabIndex = 44
         '
-        'Label28
+        'Column1
         '
-        Me.Label28.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.Location = New System.Drawing.Point(737, 3)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(104, 46)
-        Me.Label28.TabIndex = 44
-        Me.Label28.Text = "40"
-        Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Column1.DataPropertyName = "container"
+        Me.Column1.HeaderText = "Container"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 118
         '
-        'Label27
+        'DataGridViewTextBoxColumn13
         '
-        Me.Label27.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.Location = New System.Drawing.Point(631, 3)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(104, 46)
-        Me.Label27.TabIndex = 43
-        Me.Label27.Text = "20"
-        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "cntsze20"
+        Me.DataGridViewTextBoxColumn13.FillWeight = 51.21306!
+        Me.DataGridViewTextBoxColumn13.HeaderText = "20"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn14.DataPropertyName = "cntsze40"
+        Me.DataGridViewTextBoxColumn14.FillWeight = 51.21306!
+        Me.DataGridViewTextBoxColumn14.HeaderText = "40"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "cntsze45"
+        Me.DataGridViewTextBoxColumn15.FillWeight = 51.21306!
+        Me.DataGridViewTextBoxColumn15.HeaderText = "45"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        '
+        'ContainerDscMTY
+        '
+        Me.ContainerDscMTY.AllowUserToAddRows = False
+        Me.ContainerDscMTY.AllowUserToDeleteRows = False
+        Me.ContainerDscMTY.AllowUserToResizeRows = False
+        Me.ContainerDscMTY.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.ContainerDscMTY.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
+        Me.ContainerDscMTY.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ContainerDscMTY.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn23, Me.DataGridViewTextBoxColumn24})
+        Me.ContainerDscMTY.Location = New System.Drawing.Point(332, 82)
+        Me.ContainerDscMTY.Name = "ContainerDscMTY"
+        Me.ContainerDscMTY.RowHeadersVisible = False
+        Me.ContainerDscMTY.Size = New System.Drawing.Size(321, 252)
+        Me.ContainerDscMTY.TabIndex = 43
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "container"
+        Me.DataGridViewTextBoxColumn17.FillWeight = 105.0768!
+        Me.DataGridViewTextBoxColumn17.HeaderText = "Container"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "cntsze20"
+        Me.DataGridViewTextBoxColumn18.FillWeight = 68.98444!
+        Me.DataGridViewTextBoxColumn18.HeaderText = "20"
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        '
+        'DataGridViewTextBoxColumn23
+        '
+        Me.DataGridViewTextBoxColumn23.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn23.DataPropertyName = "cntsze40"
+        Me.DataGridViewTextBoxColumn23.FillWeight = 68.98444!
+        Me.DataGridViewTextBoxColumn23.HeaderText = "40"
+        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
+        '
+        'DataGridViewTextBoxColumn24
+        '
+        Me.DataGridViewTextBoxColumn24.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn24.DataPropertyName = "cntsze45"
+        Me.DataGridViewTextBoxColumn24.FillWeight = 68.98444!
+        Me.DataGridViewTextBoxColumn24.HeaderText = "45"
+        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
         '
         'Label26
         '
-        Me.Label26.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label26.Location = New System.Drawing.Point(520, 3)
+        Me.Label26.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label26.Location = New System.Drawing.Point(975, 41)
         Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(109, 46)
+        Me.Label26.Size = New System.Drawing.Size(321, 38)
         Me.Label26.TabIndex = 42
-        Me.Label26.Text = "Freight"
+        Me.Label26.Text = "EMPTY"
         Me.Label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Label25
+        'Label27
         '
-        Me.Label25.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label25.Location = New System.Drawing.Point(411, 3)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(108, 46)
-        Me.Label25.TabIndex = 41
-        Me.Label25.Text = "Move Kind"
-        Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label27.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label27.Location = New System.Drawing.Point(655, 41)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(321, 38)
+        Me.Label27.TabIndex = 41
+        Me.Label27.Text = "FULL"
+        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label24
         '
-        Me.Label24.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(194, 3)
+        Me.Label24.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label24.Location = New System.Drawing.Point(332, 41)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(215, 46)
+        Me.Label24.Size = New System.Drawing.Size(321, 38)
         Me.Label24.TabIndex = 40
-        Me.Label24.Text = "Discharge / Loading"
+        Me.Label24.Text = "EMPTY"
         Me.Label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'cmbFreight
+        'Label25
         '
-        Me.cmbFreight.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cmbFreight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbFreight.FormattingEnabled = True
-        Me.cmbFreight.Items.AddRange(New Object() {"FULL", "EMPTY"})
-        Me.cmbFreight.Location = New System.Drawing.Point(525, 52)
-        Me.cmbFreight.Name = "cmbFreight"
-        Me.cmbFreight.Size = New System.Drawing.Size(104, 32)
-        Me.cmbFreight.TabIndex = 39
+        Me.Label25.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label25.Location = New System.Drawing.Point(12, 41)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(321, 38)
+        Me.Label25.TabIndex = 39
+        Me.Label25.Text = "FULL"
+        Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'ContainerLoad
+        'ContainerLoadFCL
         '
-        Me.ContainerLoad.AllowUserToAddRows = False
-        Me.ContainerLoad.AllowUserToResizeRows = False
-        Me.ContainerLoad.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
-        Me.ContainerLoad.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
-        Me.ContainerLoad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.ContainerLoad.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn11})
-        Me.ContainerLoad.Location = New System.Drawing.Point(655, 128)
-        Me.ContainerLoad.Name = "ContainerLoad"
-        Me.ContainerLoad.Size = New System.Drawing.Size(641, 205)
-        Me.ContainerLoad.TabIndex = 38
+        Me.ContainerLoadFCL.AllowUserToAddRows = False
+        Me.ContainerLoadFCL.AllowUserToDeleteRows = False
+        Me.ContainerLoadFCL.AllowUserToResizeRows = False
+        Me.ContainerLoadFCL.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.ContainerLoadFCL.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
+        Me.ContainerLoadFCL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ContainerLoadFCL.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column3, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn11})
+        Me.ContainerLoadFCL.Location = New System.Drawing.Point(655, 82)
+        Me.ContainerLoadFCL.Name = "ContainerLoadFCL"
+        Me.ContainerLoadFCL.RowHeadersVisible = False
+        Me.ContainerLoadFCL.Size = New System.Drawing.Size(321, 252)
+        Me.ContainerLoadFCL.TabIndex = 38
         '
-        'DataGridViewTextBoxColumn1
+        'Column3
         '
-        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "move_kind"
-        Me.DataGridViewTextBoxColumn1.FillWeight = 203.0457!
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Move Kind"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "freight_kind"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Freight"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Width = 93
+        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column3.DataPropertyName = "container"
+        Me.Column3.FillWeight = 105.0768!
+        Me.Column3.HeaderText = "Container"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
         '
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.DataGridViewTextBoxColumn3.DataPropertyName = "cntsze20"
-        Me.DataGridViewTextBoxColumn3.FillWeight = 65.65144!
+        Me.DataGridViewTextBoxColumn3.FillWeight = 51.21306!
         Me.DataGridViewTextBoxColumn3.HeaderText = "20"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         '
@@ -349,7 +384,7 @@ Partial Class CraneCtl
         '
         Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.DataGridViewTextBoxColumn4.DataPropertyName = "cntsze40"
-        Me.DataGridViewTextBoxColumn4.FillWeight = 65.65144!
+        Me.DataGridViewTextBoxColumn4.FillWeight = 51.21306!
         Me.DataGridViewTextBoxColumn4.HeaderText = "40"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         '
@@ -357,61 +392,9 @@ Partial Class CraneCtl
         '
         Me.DataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.DataGridViewTextBoxColumn11.DataPropertyName = "cntsze45"
-        Me.DataGridViewTextBoxColumn11.FillWeight = 65.65144!
+        Me.DataGridViewTextBoxColumn11.FillWeight = 51.21306!
         Me.DataGridViewTextBoxColumn11.HeaderText = "45"
         Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        '
-        'txtBox45
-        '
-        Me.txtBox45.Location = New System.Drawing.Point(847, 52)
-        Me.txtBox45.Name = "txtBox45"
-        Me.txtBox45.Size = New System.Drawing.Size(100, 32)
-        Me.txtBox45.TabIndex = 37
-        '
-        'txtBox40
-        '
-        Me.txtBox40.Location = New System.Drawing.Point(741, 52)
-        Me.txtBox40.Name = "txtBox40"
-        Me.txtBox40.Size = New System.Drawing.Size(100, 32)
-        Me.txtBox40.TabIndex = 36
-        '
-        'txtBox20
-        '
-        Me.txtBox20.Location = New System.Drawing.Point(635, 52)
-        Me.txtBox20.Name = "txtBox20"
-        Me.txtBox20.Size = New System.Drawing.Size(100, 32)
-        Me.txtBox20.TabIndex = 35
-        '
-        'cmbMovekind
-        '
-        Me.cmbMovekind.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cmbMovekind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbMovekind.FormattingEnabled = True
-        Me.cmbMovekind.Items.AddRange(New Object() {"DISCHARGE", "LOADING", "SVD", "SOB", "TRANSHIPMENT"})
-        Me.cmbMovekind.Location = New System.Drawing.Point(415, 52)
-        Me.cmbMovekind.Name = "cmbMovekind"
-        Me.cmbMovekind.Size = New System.Drawing.Size(104, 32)
-        Me.cmbMovekind.TabIndex = 34
-        '
-        'btnCtnAdd
-        '
-        Me.btnCtnAdd.Location = New System.Drawing.Point(953, 52)
-        Me.btnCtnAdd.Name = "btnCtnAdd"
-        Me.btnCtnAdd.Size = New System.Drawing.Size(162, 32)
-        Me.btnCtnAdd.TabIndex = 33
-        Me.btnCtnAdd.Text = "Add"
-        Me.btnCtnAdd.UseVisualStyleBackColor = True
-        '
-        'cmbBound
-        '
-        Me.cmbBound.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cmbBound.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbBound.FormattingEnabled = True
-        Me.cmbBound.Items.AddRange(New Object() {"DISCHARGE", "LOADING"})
-        Me.cmbBound.Location = New System.Drawing.Point(198, 52)
-        Me.cmbBound.Name = "cmbBound"
-        Me.cmbBound.Size = New System.Drawing.Size(211, 32)
-        Me.cmbBound.TabIndex = 29
         '
         'Label5
         '
@@ -482,47 +465,42 @@ Partial Class CraneCtl
         'Label3
         '
         Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label3.Location = New System.Drawing.Point(655, 87)
+        Me.Label3.Location = New System.Drawing.Point(655, 3)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(641, 38)
         Me.Label3.TabIndex = 19
         Me.Label3.Text = "LOADING"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'ContainerDsc
+        'ContainerDscFCL
         '
-        Me.ContainerDsc.AllowUserToAddRows = False
-        Me.ContainerDsc.AllowUserToResizeRows = False
-        Me.ContainerDsc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
-        Me.ContainerDsc.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
-        Me.ContainerDsc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.ContainerDsc.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ctrCategory, Me.Column1, Me.cntsze20, Me.cntsze40, Me.cntsze45})
-        Me.ContainerDsc.Location = New System.Drawing.Point(12, 128)
-        Me.ContainerDsc.Name = "ContainerDsc"
-        Me.ContainerDsc.Size = New System.Drawing.Size(641, 205)
-        Me.ContainerDsc.TabIndex = 18
+        Me.ContainerDscFCL.AllowUserToAddRows = False
+        Me.ContainerDscFCL.AllowUserToDeleteRows = False
+        Me.ContainerDscFCL.AllowUserToResizeRows = False
+        Me.ContainerDscFCL.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader
+        Me.ContainerDscFCL.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders
+        Me.ContainerDscFCL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ContainerDscFCL.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ctrCategory, Me.cntsze20, Me.cntsze40, Me.cntsze45})
+        Me.ContainerDscFCL.Location = New System.Drawing.Point(12, 82)
+        Me.ContainerDscFCL.Name = "ContainerDscFCL"
+        Me.ContainerDscFCL.RowHeadersVisible = False
+        Me.ContainerDscFCL.Size = New System.Drawing.Size(321, 252)
+        Me.ContainerDscFCL.TabIndex = 18
         '
         'ctrCategory
         '
         Me.ctrCategory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ctrCategory.DataPropertyName = "move_kind"
-        Me.ctrCategory.FillWeight = 203.0457!
-        Me.ctrCategory.HeaderText = "Move Kind"
+        Me.ctrCategory.DataPropertyName = "container"
+        Me.ctrCategory.FillWeight = 187.9699!
+        Me.ctrCategory.HeaderText = "Container"
         Me.ctrCategory.Name = "ctrCategory"
         Me.ctrCategory.ReadOnly = True
-        '
-        'Column1
-        '
-        Me.Column1.DataPropertyName = "freight_kind"
-        Me.Column1.HeaderText = "Freight"
-        Me.Column1.Name = "Column1"
-        Me.Column1.Width = 93
         '
         'cntsze20
         '
         Me.cntsze20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.cntsze20.DataPropertyName = "cntsze20"
-        Me.cntsze20.FillWeight = 65.65144!
+        Me.cntsze20.FillWeight = 68.98444!
         Me.cntsze20.HeaderText = "20"
         Me.cntsze20.Name = "cntsze20"
         '
@@ -530,7 +508,7 @@ Partial Class CraneCtl
         '
         Me.cntsze40.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.cntsze40.DataPropertyName = "cntsze40"
-        Me.cntsze40.FillWeight = 65.65144!
+        Me.cntsze40.FillWeight = 68.98444!
         Me.cntsze40.HeaderText = "40"
         Me.cntsze40.Name = "cntsze40"
         '
@@ -538,14 +516,14 @@ Partial Class CraneCtl
         '
         Me.cntsze45.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.cntsze45.DataPropertyName = "cntsze45"
-        Me.cntsze45.FillWeight = 65.65144!
+        Me.cntsze45.FillWeight = 68.98444!
         Me.cntsze45.HeaderText = "45"
         Me.cntsze45.Name = "cntsze45"
         '
         'Label2
         '
         Me.Label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label2.Location = New System.Drawing.Point(12, 87)
+        Me.Label2.Location = New System.Drawing.Point(12, 3)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(641, 38)
         Me.Label2.TabIndex = 16
@@ -554,15 +532,6 @@ Partial Class CraneCtl
         '
         'tabGearbox
         '
-        Me.tabGearbox.Controls.Add(Me.Label30)
-        Me.tabGearbox.Controls.Add(Me.Label31)
-        Me.tabGearbox.Controls.Add(Me.Label32)
-        Me.tabGearbox.Controls.Add(Me.Label33)
-        Me.tabGearbox.Controls.Add(Me.txtGear40)
-        Me.tabGearbox.Controls.Add(Me.txtGear20)
-        Me.tabGearbox.Controls.Add(Me.txtGearbay)
-        Me.tabGearbox.Controls.Add(Me.btnGearAdd)
-        Me.tabGearbox.Controls.Add(Me.cmbGearmove)
         Me.tabGearbox.Controls.Add(Me.GearboxLoad)
         Me.tabGearbox.Controls.Add(Me.Label15)
         Me.tabGearbox.Controls.Add(Me.txtGL20)
@@ -581,96 +550,14 @@ Partial Class CraneCtl
         Me.tabGearbox.Text = "Gearbox"
         Me.tabGearbox.UseVisualStyleBackColor = True
         '
-        'Label30
-        '
-        Me.Label30.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.Location = New System.Drawing.Point(731, 3)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(104, 46)
-        Me.Label30.TabIndex = 49
-        Me.Label30.Text = "40"
-        Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label31
-        '
-        Me.Label31.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.Location = New System.Drawing.Point(625, 3)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(104, 46)
-        Me.Label31.TabIndex = 48
-        Me.Label31.Text = "20"
-        Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label32
-        '
-        Me.Label32.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label32.Location = New System.Drawing.Point(519, 3)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(104, 46)
-        Me.Label32.TabIndex = 47
-        Me.Label32.Text = "Bay"
-        Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label33
-        '
-        Me.Label33.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label33.Location = New System.Drawing.Point(302, 3)
-        Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(215, 46)
-        Me.Label33.TabIndex = 46
-        Me.Label33.Text = "Discharge / Loading"
-        Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'txtGear40
-        '
-        Me.txtGear40.Location = New System.Drawing.Point(735, 52)
-        Me.txtGear40.Name = "txtGear40"
-        Me.txtGear40.Size = New System.Drawing.Size(100, 32)
-        Me.txtGear40.TabIndex = 43
-        '
-        'txtGear20
-        '
-        Me.txtGear20.Location = New System.Drawing.Point(629, 52)
-        Me.txtGear20.Name = "txtGear20"
-        Me.txtGear20.Size = New System.Drawing.Size(100, 32)
-        Me.txtGear20.TabIndex = 42
-        '
-        'txtGearbay
-        '
-        Me.txtGearbay.Location = New System.Drawing.Point(523, 52)
-        Me.txtGearbay.Name = "txtGearbay"
-        Me.txtGearbay.Size = New System.Drawing.Size(100, 32)
-        Me.txtGearbay.TabIndex = 41
-        '
-        'btnGearAdd
-        '
-        Me.btnGearAdd.Location = New System.Drawing.Point(841, 52)
-        Me.btnGearAdd.Name = "btnGearAdd"
-        Me.btnGearAdd.Size = New System.Drawing.Size(162, 32)
-        Me.btnGearAdd.TabIndex = 39
-        Me.btnGearAdd.Text = "Add"
-        Me.btnGearAdd.UseVisualStyleBackColor = True
-        '
-        'cmbGearmove
-        '
-        Me.cmbGearmove.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cmbGearmove.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbGearmove.FormattingEnabled = True
-        Me.cmbGearmove.Items.AddRange(New Object() {"DISCHARGE", "LOADING"})
-        Me.cmbGearmove.Location = New System.Drawing.Point(306, 52)
-        Me.cmbGearmove.Name = "cmbGearmove"
-        Me.cmbGearmove.Size = New System.Drawing.Size(211, 32)
-        Me.cmbGearmove.TabIndex = 38
-        '
         'GearboxLoad
         '
-        Me.GearboxLoad.AllowUserToAddRows = False
         Me.GearboxLoad.AllowUserToResizeRows = False
         Me.GearboxLoad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GearboxLoad.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7})
-        Me.GearboxLoad.Location = New System.Drawing.Point(655, 129)
+        Me.GearboxLoad.Location = New System.Drawing.Point(655, 44)
         Me.GearboxLoad.Name = "GearboxLoad"
-        Me.GearboxLoad.Size = New System.Drawing.Size(641, 206)
+        Me.GearboxLoad.Size = New System.Drawing.Size(641, 288)
         Me.GearboxLoad.TabIndex = 36
         '
         'DataGridViewTextBoxColumn5
@@ -746,13 +633,12 @@ Partial Class CraneCtl
         '
         'GearboxDsc
         '
-        Me.GearboxDsc.AllowUserToAddRows = False
         Me.GearboxDsc.AllowUserToResizeRows = False
         Me.GearboxDsc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GearboxDsc.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.baynum, Me.gbxsze20, Me.gbxsze40})
-        Me.GearboxDsc.Location = New System.Drawing.Point(12, 129)
+        Me.GearboxDsc.Location = New System.Drawing.Point(12, 44)
         Me.GearboxDsc.Name = "GearboxDsc"
-        Me.GearboxDsc.Size = New System.Drawing.Size(641, 206)
+        Me.GearboxDsc.Size = New System.Drawing.Size(641, 288)
         Me.GearboxDsc.TabIndex = 23
         '
         'baynum
@@ -779,7 +665,7 @@ Partial Class CraneCtl
         'Label13
         '
         Me.Label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label13.Location = New System.Drawing.Point(655, 87)
+        Me.Label13.Location = New System.Drawing.Point(655, 3)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(641, 38)
         Me.Label13.TabIndex = 21
@@ -789,7 +675,7 @@ Partial Class CraneCtl
         'Label14
         '
         Me.Label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label14.Location = New System.Drawing.Point(12, 87)
+        Me.Label14.Location = New System.Drawing.Point(12, 3)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(641, 38)
         Me.Label14.TabIndex = 20
@@ -798,15 +684,6 @@ Partial Class CraneCtl
         '
         'tabHatchcover
         '
-        Me.tabHatchcover.Controls.Add(Me.Label34)
-        Me.tabHatchcover.Controls.Add(Me.Label35)
-        Me.tabHatchcover.Controls.Add(Me.Label36)
-        Me.tabHatchcover.Controls.Add(Me.Label37)
-        Me.tabHatchcover.Controls.Add(Me.txtHatch40)
-        Me.tabHatchcover.Controls.Add(Me.txtHatch20)
-        Me.tabHatchcover.Controls.Add(Me.txtHatchbay)
-        Me.tabHatchcover.Controls.Add(Me.btnHatchAdd)
-        Me.tabHatchcover.Controls.Add(Me.cmbHatchmove)
         Me.tabHatchcover.Controls.Add(Me.HatchLoad)
         Me.tabHatchcover.Controls.Add(Me.Label17)
         Me.tabHatchcover.Controls.Add(Me.txtHL20)
@@ -825,96 +702,14 @@ Partial Class CraneCtl
         Me.tabHatchcover.Text = "Hatch Cover"
         Me.tabHatchcover.UseVisualStyleBackColor = True
         '
-        'Label34
-        '
-        Me.Label34.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label34.Location = New System.Drawing.Point(731, 3)
-        Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(104, 46)
-        Me.Label34.TabIndex = 53
-        Me.Label34.Text = "40"
-        Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label35
-        '
-        Me.Label35.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label35.Location = New System.Drawing.Point(625, 3)
-        Me.Label35.Name = "Label35"
-        Me.Label35.Size = New System.Drawing.Size(104, 46)
-        Me.Label35.TabIndex = 52
-        Me.Label35.Text = "20"
-        Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label36
-        '
-        Me.Label36.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label36.Location = New System.Drawing.Point(519, 3)
-        Me.Label36.Name = "Label36"
-        Me.Label36.Size = New System.Drawing.Size(104, 46)
-        Me.Label36.TabIndex = 51
-        Me.Label36.Text = "Bay"
-        Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label37
-        '
-        Me.Label37.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label37.Location = New System.Drawing.Point(302, 3)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(215, 46)
-        Me.Label37.TabIndex = 50
-        Me.Label37.Text = "Opening / Closing"
-        Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'txtHatch40
-        '
-        Me.txtHatch40.Location = New System.Drawing.Point(735, 52)
-        Me.txtHatch40.Name = "txtHatch40"
-        Me.txtHatch40.Size = New System.Drawing.Size(100, 32)
-        Me.txtHatch40.TabIndex = 46
-        '
-        'txtHatch20
-        '
-        Me.txtHatch20.Location = New System.Drawing.Point(629, 52)
-        Me.txtHatch20.Name = "txtHatch20"
-        Me.txtHatch20.Size = New System.Drawing.Size(100, 32)
-        Me.txtHatch20.TabIndex = 45
-        '
-        'txtHatchbay
-        '
-        Me.txtHatchbay.Location = New System.Drawing.Point(523, 52)
-        Me.txtHatchbay.Name = "txtHatchbay"
-        Me.txtHatchbay.Size = New System.Drawing.Size(100, 32)
-        Me.txtHatchbay.TabIndex = 44
-        '
-        'btnHatchAdd
-        '
-        Me.btnHatchAdd.Location = New System.Drawing.Point(841, 52)
-        Me.btnHatchAdd.Name = "btnHatchAdd"
-        Me.btnHatchAdd.Size = New System.Drawing.Size(162, 32)
-        Me.btnHatchAdd.TabIndex = 42
-        Me.btnHatchAdd.Text = "Add"
-        Me.btnHatchAdd.UseVisualStyleBackColor = True
-        '
-        'cmbHatchmove
-        '
-        Me.cmbHatchmove.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cmbHatchmove.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbHatchmove.FormattingEnabled = True
-        Me.cmbHatchmove.Items.AddRange(New Object() {"OPENING", "CLOSING"})
-        Me.cmbHatchmove.Location = New System.Drawing.Point(306, 52)
-        Me.cmbHatchmove.Name = "cmbHatchmove"
-        Me.cmbHatchmove.Size = New System.Drawing.Size(211, 32)
-        Me.cmbHatchmove.TabIndex = 41
-        '
         'HatchLoad
         '
-        Me.HatchLoad.AllowUserToAddRows = False
         Me.HatchLoad.AllowUserToResizeRows = False
         Me.HatchLoad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.HatchLoad.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10})
-        Me.HatchLoad.Location = New System.Drawing.Point(655, 128)
+        Me.HatchLoad.Location = New System.Drawing.Point(655, 43)
         Me.HatchLoad.Name = "HatchLoad"
-        Me.HatchLoad.Size = New System.Drawing.Size(641, 207)
+        Me.HatchLoad.Size = New System.Drawing.Size(641, 289)
         Me.HatchLoad.TabIndex = 40
         '
         'DataGridViewTextBoxColumn8
@@ -991,7 +786,7 @@ Partial Class CraneCtl
         'Label19
         '
         Me.Label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label19.Location = New System.Drawing.Point(655, 87)
+        Me.Label19.Location = New System.Drawing.Point(655, 3)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(641, 38)
         Me.Label19.TabIndex = 31
@@ -1000,13 +795,12 @@ Partial Class CraneCtl
         '
         'HatchDsc
         '
-        Me.HatchDsc.AllowUserToAddRows = False
         Me.HatchDsc.AllowUserToResizeRows = False
         Me.HatchDsc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.HatchDsc.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.hc_baynum, Me.hcsze20, Me.hcsze40})
-        Me.HatchDsc.Location = New System.Drawing.Point(12, 129)
+        Me.HatchDsc.Location = New System.Drawing.Point(12, 44)
         Me.HatchDsc.Name = "HatchDsc"
-        Me.HatchDsc.Size = New System.Drawing.Size(641, 206)
+        Me.HatchDsc.Size = New System.Drawing.Size(641, 288)
         Me.HatchDsc.TabIndex = 30
         '
         'hc_baynum
@@ -1033,7 +827,7 @@ Partial Class CraneCtl
         'Label20
         '
         Me.Label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label20.Location = New System.Drawing.Point(12, 87)
+        Me.Label20.Location = New System.Drawing.Point(12, 3)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(641, 38)
         Me.Label20.TabIndex = 28
@@ -1165,44 +959,6 @@ Partial Class CraneCtl
         Me.dgvDelays.Name = "dgvDelays"
         Me.dgvDelays.Size = New System.Drawing.Size(1296, 207)
         Me.dgvDelays.TabIndex = 9
-        '
-        'delaykind
-        '
-        Me.delaykind.HeaderText = "Delay Kind"
-        Me.delaykind.Name = "delaykind"
-        Me.delaykind.Width = 150
-        '
-        'DataGridViewTextBoxColumn19
-        '
-        Me.DataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn19.FillWeight = 203.0457!
-        Me.DataGridViewTextBoxColumn19.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
-        '
-        'DataGridViewTextBoxColumn20
-        '
-        Me.DataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn20.DefaultCellStyle = DataGridViewCellStyle1
-        Me.DataGridViewTextBoxColumn20.FillWeight = 65.65144!
-        Me.DataGridViewTextBoxColumn20.HeaderText = "From"
-        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
-        '
-        'DataGridViewTextBoxColumn21
-        '
-        Me.DataGridViewTextBoxColumn21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn21.FillWeight = 65.65144!
-        Me.DataGridViewTextBoxColumn21.HeaderText = "To"
-        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
-        '
-        'DataGridViewTextBoxColumn22
-        '
-        Me.DataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn22.DefaultCellStyle = DataGridViewCellStyle2
-        Me.DataGridViewTextBoxColumn22.FillWeight = 65.65144!
-        Me.DataGridViewTextBoxColumn22.HeaderText = "Total"
-        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
         '
         'Label1
         '
@@ -1393,6 +1149,48 @@ Partial Class CraneCtl
         Me.lblGantry.Text = "Label1"
         Me.lblGantry.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'delaykind
+        '
+        Me.delaykind.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.delaykind.HeaderText = "Delay Kind"
+        Me.delaykind.Name = "delaykind"
+        Me.delaykind.Width = 125
+        '
+        'DataGridViewTextBoxColumn19
+        '
+        Me.DataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.DataGridViewTextBoxColumn19.FillWeight = 203.0457!
+        Me.DataGridViewTextBoxColumn19.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
+        Me.DataGridViewTextBoxColumn19.Width = 131
+        '
+        'DataGridViewTextBoxColumn20
+        '
+        Me.DataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn20.DefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridViewTextBoxColumn20.FillWeight = 65.65144!
+        Me.DataGridViewTextBoxColumn20.HeaderText = "From"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        Me.DataGridViewTextBoxColumn20.Width = 78
+        '
+        'DataGridViewTextBoxColumn21
+        '
+        Me.DataGridViewTextBoxColumn21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.DataGridViewTextBoxColumn21.FillWeight = 65.65144!
+        Me.DataGridViewTextBoxColumn21.HeaderText = "To"
+        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
+        Me.DataGridViewTextBoxColumn21.Width = 54
+        '
+        'DataGridViewTextBoxColumn22
+        '
+        Me.DataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn22.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridViewTextBoxColumn22.FillWeight = 65.65144!
+        Me.DataGridViewTextBoxColumn22.HeaderText = "Total"
+        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
+        '
         'CraneCtl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1405,8 +1203,10 @@ Partial Class CraneCtl
         Me.tabMoves.ResumeLayout(False)
         Me.tabCntrs.ResumeLayout(False)
         Me.tabCntrs.PerformLayout()
-        CType(Me.ContainerLoad, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ContainerDsc, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ContainerLoadMTY, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ContainerDscMTY, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ContainerLoadFCL, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ContainerDscFCL, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabGearbox.ResumeLayout(False)
         Me.tabGearbox.PerformLayout()
         CType(Me.GearboxLoad, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1437,7 +1237,7 @@ Partial Class CraneCtl
     Friend WithEvents txtD40 As TextBox
     Friend WithEvents txtD45 As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents ContainerDsc As DataGridView
+    Friend WithEvents ContainerDscFCL As DataGridView
     Friend WithEvents Label2 As Label
     Friend WithEvents tabGearbox As TabPage
     Friend WithEvents Label15 As Label
@@ -1491,22 +1291,6 @@ Partial Class CraneCtl
     Friend WithEvents Label21 As Label
     Friend WithEvents txtDDelay As TextBox
     Friend WithEvents txtBreaks As TextBox
-    Friend WithEvents txtBox45 As TextBox
-    Friend WithEvents txtBox40 As TextBox
-    Friend WithEvents txtBox20 As TextBox
-    Friend WithEvents cmbMovekind As ComboBox
-    Friend WithEvents btnCtnAdd As Button
-    Friend WithEvents cmbBound As ComboBox
-    Friend WithEvents txtGear40 As TextBox
-    Friend WithEvents txtGear20 As TextBox
-    Friend WithEvents txtGearbay As TextBox
-    Friend WithEvents btnGearAdd As Button
-    Friend WithEvents cmbGearmove As ComboBox
-    Friend WithEvents txtHatch40 As TextBox
-    Friend WithEvents txtHatch20 As TextBox
-    Friend WithEvents txtHatchbay As TextBox
-    Friend WithEvents btnHatchAdd As Button
-    Friend WithEvents cmbHatchmove As ComboBox
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
@@ -1519,35 +1303,32 @@ Partial Class CraneCtl
     Friend WithEvents hc_baynum As DataGridViewTextBoxColumn
     Friend WithEvents hcsze20 As DataGridViewTextBoxColumn
     Friend WithEvents hcsze40 As DataGridViewTextBoxColumn
-    Friend WithEvents ContainerLoad As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents ContainerLoadFCL As DataGridView
+    Friend WithEvents ContainerLoadMTY As DataGridView
+    Friend WithEvents ContainerDscMTY As DataGridView
+    Friend WithEvents Label26 As Label
+    Friend WithEvents Label27 As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn23 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
     Friend WithEvents ctrCategory As DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents cntsze20 As DataGridViewTextBoxColumn
     Friend WithEvents cntsze40 As DataGridViewTextBoxColumn
     Friend WithEvents cntsze45 As DataGridViewTextBoxColumn
-    Friend WithEvents cmbFreight As ComboBox
     Friend WithEvents delaykind As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
-    Friend WithEvents Label29 As Label
-    Friend WithEvents Label28 As Label
-    Friend WithEvents Label27 As Label
-    Friend WithEvents Label26 As Label
-    Friend WithEvents Label25 As Label
-    Friend WithEvents Label24 As Label
-    Friend WithEvents Label30 As Label
-    Friend WithEvents Label31 As Label
-    Friend WithEvents Label32 As Label
-    Friend WithEvents Label33 As Label
-    Friend WithEvents Label34 As Label
-    Friend WithEvents Label35 As Label
-    Friend WithEvents Label36 As Label
-    Friend WithEvents Label37 As Label
 End Class

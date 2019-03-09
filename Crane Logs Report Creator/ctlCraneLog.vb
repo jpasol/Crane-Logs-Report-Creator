@@ -10,7 +10,7 @@ Public Class CraneCtl
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        AddHandlersToTextboxes()
+        'AddHandlersToTextboxes()
         AddHandlerstoDatagridViews()
         AddHandlersToInputs()
 
@@ -22,37 +22,49 @@ Public Class CraneCtl
         End With
 
 
-        ContainerDsc.AutoGenerateColumns = False
-        ContainerLoad.AutoGenerateColumns = False
+        ContainerDscFCL.AutoGenerateColumns = False
+        ContainerLoadFCL.AutoGenerateColumns = False
+        ContainerDscMTY.AutoGenerateColumns = False
+        ContainerLoadMTY.AutoGenerateColumns = False
         GearboxDsc.AutoGenerateColumns = False
         GearboxLoad.AutoGenerateColumns = False
         HatchDsc.AutoGenerateColumns = False
         HatchLoad.AutoGenerateColumns = False
 
         With crnCrane
-            dischargeContainers.Table = .Moves.Container
-            dischargeContainers.RowFilter = "actual_ib is not null and actual_ib <> ''"
-            loadContainers.Table = .Moves.Container
-            loadContainers.RowFilter = "actual_ob is not null and actual_ob <> ''"
+            dischargeContainersFCL.Table = .Moves.Container
+            dischargeContainersFCL.RowFilter = "actual_ib is not null and actual_ib <> '' and freight_kind = 'FCL'"
+            loadContainersFCL.Table = .Moves.Container
+            loadContainersFCL.RowFilter = "actual_ob is not null and actual_ob <> '' and freight_kind = 'FCL'"
+
+            dischargeContainersMTY.Table = .Moves.Container
+            dischargeContainersMTY.RowFilter = "actual_ib is not null and actual_ib <> '' and freight_kind = 'MTY'"
+            loadContainersMTY.Table = .Moves.Container
+            loadContainersMTY.RowFilter = "actual_ob is not null and actual_ob <> '' and freight_kind = 'MTY'"
 
             dischargeGearboxes.Table = .Moves.Gearbox
             dischargeGearboxes.RowFilter = "actual_ib is not null and actual_ib <> ''"
-            loadGearboxes.Table = .Moves.Gearbox
+            loadGearboxes.Table = .Moves.Gearbox1
             loadGearboxes.RowFilter = "actual_ob is not null and actual_ob <> ''"
 
             openingHatchcovers.Table = .Moves.Hatchcover
             openingHatchcovers.RowFilter = "actual_ib is not null and actual_ib <> ''"
-            closingHatchcovers.Table = .Moves.Hatchcover
+            closingHatchcovers.Table = .Moves.Hatchcover1
             closingHatchcovers.RowFilter = "actual_ob is not null and actual_ob <> ''"
             'pending for delays
         End With
 
-        ContainerDsc.DataSource = dischargeContainers
-        ContainerLoad.DataSource = loadContainers
+        ContainerDscFCL.DataSource = dischargeContainersFCL
+        ContainerLoadFCL.DataSource = loadContainersFCL
+        ContainerDscMTY.DataSource = dischargeContainersMTY
+        ContainerLoadMTY.DataSource = loadContainersMTY
         GearboxDsc.DataSource = dischargeGearboxes
         GearboxLoad.DataSource = loadGearboxes
         HatchDsc.DataSource = openingHatchcovers
         HatchLoad.DataSource = closingHatchcovers
+
+
+
 
         mskFirst.Text = GetMilTime(crnCrane.FirstMove)
         mskLast.Text = GetMilTime(crnCrane.LastMove)
@@ -67,9 +79,26 @@ Public Class CraneCtl
     End Sub
 
     Private Sub AddHandlerstoDatagridViews()
+        'add ControlAdded Handler
+        'AddHandler Me.ControlAdded, AddressOf AddContainerRows
+
+
+
+        AddHandler ContainerDscFCL.EditingControlShowing, AddressOf DataGridViewNumeric
+        AddHandler ContainerLoadFCL.EditingControlShowing, AddressOf DataGridViewNumeric
+        AddHandler ContainerDscMTY.EditingControlShowing, AddressOf DataGridViewNumeric
+        AddHandler ContainerLoadMTY.EditingControlShowing, AddressOf DataGridViewNumeric
+
+        AddHandler GearboxDsc.EditingControlShowing, AddressOf DataGridViewNumeric
+        AddHandler GearboxLoad.EditingControlShowing, AddressOf DataGridViewNumeric
+        AddHandler HatchDsc.EditingControlShowing, AddressOf DataGridViewNumeric
+        AddHandler HatchLoad.EditingControlShowing, AddressOf DataGridViewNumeric
+
         'add handlers when losing focus from all datagridviews
-        AddHandler ContainerDsc.LostFocus, AddressOf Refresh_info
-        AddHandler ContainerLoad.LostFocus, AddressOf Refresh_info
+        AddHandler ContainerDscFCL.LostFocus, AddressOf Refresh_info
+        AddHandler ContainerLoadFCL.LostFocus, AddressOf Refresh_info
+        AddHandler ContainerDscMTY.LostFocus, AddressOf Refresh_info
+        AddHandler ContainerLoadMTY.LostFocus, AddressOf Refresh_info
         AddHandler GearboxDsc.LostFocus, AddressOf Refresh_info
         AddHandler GearboxLoad.LostFocus, AddressOf Refresh_info
         AddHandler HatchDsc.LostFocus, AddressOf Refresh_info
@@ -77,8 +106,8 @@ Public Class CraneCtl
         AddHandler dgvDelays.LostFocus, AddressOf Refresh_info
 
         'Add ConfirmDelete Handler
-        AddHandler ContainerDsc.UserDeletingRow, AddressOf ConfirmDelete
-        AddHandler ContainerLoad.UserDeletingRow, AddressOf ConfirmDelete
+        'AddHandler ContainerDsc.UserDeletingRow, AddressOf ConfirmDelete
+        'AddHandler ContainerLoad.UserDeletingRow, AddressOf ConfirmDelete
         AddHandler GearboxDsc.UserDeletingRow, AddressOf ConfirmDelete
         AddHandler GearboxLoad.UserDeletingRow, AddressOf ConfirmDelete
         AddHandler HatchDsc.UserDeletingRow, AddressOf ConfirmDelete
@@ -86,8 +115,8 @@ Public Class CraneCtl
         AddHandler dgvDelays.UserDeletingRow, AddressOf ConfirmDelete
 
         'Add DeletedSuccesfully Prompt Handler
-        AddHandler ContainerDsc.UserDeletedRow, AddressOf DeletedPrompt
-        AddHandler ContainerLoad.UserDeletedRow, AddressOf DeletedPrompt
+        'AddHandler ContainerDsc.UserDeletedRow, AddressOf DeletedPrompt
+        'AddHandler ContainerLoad.UserDeletedRow, AddressOf DeletedPrompt
         AddHandler GearboxDsc.UserDeletedRow, AddressOf DeletedPrompt
         AddHandler GearboxLoad.UserDeletedRow, AddressOf DeletedPrompt
         AddHandler HatchDsc.UserDeletedRow, AddressOf DeletedPrompt
@@ -95,28 +124,30 @@ Public Class CraneCtl
         AddHandler dgvDelays.UserDeletedRow, AddressOf DeletedPrompt
     End Sub
 
-    Private Sub AddHandlersToTextboxes()
-        'ADD HANDLERS TO RESTRICT TEXTBOXES TO NUMERIC INPUT
-        AddHandler txtBox20.KeyPress, AddressOf Common_Numeric
-        AddHandler txtBox40.KeyPress, AddressOf Common_Numeric
-        AddHandler txtBox45.KeyPress, AddressOf Common_Numeric
-        AddHandler txtGear20.KeyPress, AddressOf Common_Numeric
-        AddHandler txtGear40.KeyPress, AddressOf Common_Numeric
-        AddHandler txtHatch20.KeyPress, AddressOf Common_Numeric
-        AddHandler txtHatch40.KeyPress, AddressOf Common_Numeric
-    End Sub
+    'Private Sub AddHandlersToTextboxes()
+    '    'ADD HANDLERS TO RESTRICT TEXTBOXES TO NUMERIC INPUT
+    '    AddHandler txtBox20.KeyPress, AddressOf Common_Numeric
+    '    AddHandler txtBox40.KeyPress, AddressOf Common_Numeric
+    '    AddHandler txtBox45.KeyPress, AddressOf Common_Numeric
+    '    AddHandler txtGear20.KeyPress, AddressOf Common_Numeric
+    '    AddHandler txtGear40.KeyPress, AddressOf Common_Numeric
+    '    AddHandler txtHatch20.KeyPress, AddressOf Common_Numeric
+    '    AddHandler txtHatch40.KeyPress, AddressOf Common_Numeric
+    'End Sub
 
-    Private Sub SetComboBoxSelectionTo0()
-        cmbBound.SelectedIndex = 0
-        cmbDelays.SelectedIndex = 0
-        cmbFreight.SelectedIndex = 0
-        cmbGearmove.SelectedIndex = 0
-        cmbHatchmove.SelectedIndex = 0
-        cmbMovekind.SelectedIndex = 0
-    End Sub
+    'Private Sub SetComboBoxSelectionTo0()
+    '    cmbBound.SelectedIndex = 0
+    '    cmbDelays.SelectedIndex = 0
+    '    cmbFreight.SelectedIndex = 0
+    '    cmbGearmove.SelectedIndex = 0
+    '    cmbHatchmove.SelectedIndex = 0
+    '    cmbMovekind.SelectedIndex = 0
+    'End Sub
 
-    Private dischargeContainers As New DataView
-    Private loadContainers As New DataView
+    Private dischargeContainersFCL As New DataView
+    Private loadContainersFCL As New DataView
+    Private dischargeContainersMTY As New DataView
+    Private loadContainersMTY As New DataView
     Private dischargeGearboxes As New DataView
     Private loadGearboxes As New DataView
     Private openingHatchcovers As New DataView
@@ -205,33 +236,33 @@ Public Class CraneCtl
         Return True
     End Function
 
-    Private Sub btnCtnAdd_Click(sender As Object, e As EventArgs) Handles btnCtnAdd.Click
-        If IsInputValid({cmbBound, cmbMovekind, cmbFreight, txtBox20, txtBox40, txtBox45}) Then
-            Dim actualOB As String = GetBound(cmbBound.Text)(0)
-            Dim actualIB As String = GetBound(cmbBound.Text)(1)
+    'Private Sub btnCtnAdd_Click(sender As Object, e As EventArgs)
+    '    If IsInputValid({cmbBound, cmbMovekind, cmbFreight, txtBox20, txtBox40, txtBox45}) Then
+    '        Dim actualOB As String = GetBound(cmbBound.Text)(0)
+    '        Dim actualIB As String = GetBound(cmbBound.Text)(1)
 
-            Dim movekind As String = TranslateMoveKind(cmbMovekind.Text)
-            Dim category As String = TranslateCategory(cmbMovekind.Text)
-            Dim Freight As String = GetFreight(cmbFreight.Text)
+    '        Dim movekind As String = TranslateMoveKind(cmbMovekind.Text)
+    '        Dim category As String = TranslateCategory(cmbMovekind.Text)
+    '        Dim Freight As String = GetFreight(cmbFreight.Text)
 
-            Dim count20 As Long = CLng(0 & txtBox20.Text)
-            Dim count40 As Long = CLng(0 & txtBox40.Text)
-            Dim count45 As Long = CLng(0 & txtBox45.Text)
+    '        Dim count20 As Long = CLng(0 & txtBox20.Text)
+    '        Dim count40 As Long = CLng(0 & txtBox40.Text)
+    '        Dim count45 As Long = CLng(0 & txtBox45.Text)
 
-            crnCrane.Moves.Container.AddContainerRow(movekind,
-                                                     actualOB,
-                                                     actualIB,
-                                                     Freight,
-                                                     category,
-                                                     count20,
-                                                     count40,
-                                                     count45)
-            Refresh_info()
-            ContainerDsc.Refresh()
-            ContainerLoad.Refresh()
-            EmptyOutControls({cmbBound, cmbMovekind, cmbFreight, txtBox20, txtBox40, txtBox45})
-        End If
-    End Sub
+    '        crnCrane.Moves.Container.AddContainerRow(movekind,
+    '                                                 actualOB,
+    '                                                 actualIB,
+    '                                                 Freight,
+    '                                                 category,
+    '                                                 count20,
+    '                                                 count40,
+    '                                                 count45)
+    '        Refresh_info()
+    '        ContainerDsc.Refresh()
+    '        ContainerLoad.Refresh()
+    '        EmptyOutControls({cmbBound, cmbMovekind, cmbFreight, txtBox20, txtBox40, txtBox45})
+    '    End If
+    'End Sub
 
     Private Sub EmptyOutControls(p() As Control)
         For Each ctl As Control In p
@@ -239,72 +270,72 @@ Public Class CraneCtl
         Next
     End Sub
 
-    Private Function GetFreight(text As String) As String
-        Select Case text
-            Case "FULL"
-                Return "FCL"
-            Case "EMPTY"
-                Return "MTY"
-            Case Else
-                Return Nothing
-        End Select
-    End Function
+    'Private Function GetFreight(text As String) As String
+    '    Select Case text
+    '        Case "FULL"
+    '            Return "FCL"
+    '        Case "EMPTY"
+    '            Return "MTY"
+    '        Case Else
+    '            Return Nothing
+    '    End Select
+    'End Function
 
 
-    Private Function TranslateCategory(text As String) As String
-        Select Case text
-            Case "TRANSHIPMENT"
-                Return "TRSHP"
-            Case Else
-                Return Nothing
-        End Select
-    End Function
+    'Private Function TranslateCategory(text As String) As String
+    '    Select Case text
+    '        Case "TRANSHIPMENT"
+    '            Return "TRSHP"
+    '        Case Else
+    '            Return Nothing
+    '    End Select
+    'End Function
 
-    Private Function TranslateMoveKind(text As String) As String
-        Select Case text
-            Case "DISCHARGE"
-                Return "DSCH"
-            Case "LOADING"
-                Return "LOAD"
-            Case "SVD"
-                Return "SHFT"
-            Case "SOB"
-                Return "SHOB"
-            Case Else
-                Return Nothing
-        End Select
-    End Function
+    'Private Function TranslateMoveKind(text As String) As String
+    '    Select Case text
+    '        Case "DISCHARGE"
+    '            Return "DSCH"
+    '        Case "LOADING"
+    '            Return "LOAD"
+    '        Case "SVD"
+    '            Return "SHFT"
+    '        Case "SOB"
+    '            Return "SHOB"
+    '        Case Else
+    '            Return Nothing
+    '    End Select
+    'End Function
 
-    Private Function GetBound(text As String) As String()
-        Select Case text
-            Case "DISCHARGE", "OPENING"
-                Return {Nothing, crnCrane.Registry}
-            Case "LOADING", "CLOSING"
-                Return {crnCrane.Registry, Nothing}
-            Case Else
-                Return {Nothing, Nothing}
-        End Select
-    End Function
+    'Private Function GetBound(text As String) As String()
+    '    Select Case text
+    '        Case "DISCHARGE", "OPENING"
+    '            Return {Nothing, crnCrane.Registry}
+    '        Case "LOADING", "CLOSING"
+    '            Return {crnCrane.Registry, Nothing}
+    '        Case Else
+    '            Return {Nothing, Nothing}
+    '    End Select
+    'End Function
 
-    Private Sub btnGearAdd_Click(sender As Object, e As EventArgs) Handles btnGearAdd.Click
-        If IsInputValid({cmbGearmove, txtGearbay, txtGear20, txtGear40}) Then
-            Dim actualOB As String = GetBound(cmbGearmove.Text)(0)
-            Dim actualIB As String = GetBound(cmbGearmove.Text)(1)
+    'Private Sub btnGearAdd_Click(sender As Object, e As EventArgs)
+    '    If IsInputValid({cmbGearmove, txtGearbay, txtGear20, txtGear40}) Then
+    '        Dim actualOB As String = GetBound(cmbGearmove.Text)(0)
+    '        Dim actualIB As String = GetBound(cmbGearmove.Text)(1)
 
-            Dim count20 As Long = CLng(0 & txtGear20.Text)
-            Dim count40 As Long = CLng(0 & txtGear40.Text)
+    '        Dim count20 As Long = CLng(0 & txtGear20.Text)
+    '        Dim count40 As Long = CLng(0 & txtGear40.Text)
 
-            crnCrane.Moves.Gearbox.AddGearboxRow(actualOB,
-                                                 actualIB,
-                                                 txtGearbay.Text,
-                                                 count20,
-                                                 count40)
-            Refresh_info()
-            GearboxDsc.Refresh()
-            GearboxLoad.Refresh()
-            EmptyOutControls({cmbGearmove, txtGearbay, txtGear20, txtGear40})
-        End If
-    End Sub
+    '        crnCrane.Moves.Gearbox.AddGearboxRow(actualOB,
+    '                                             actualIB,
+    '                                             txtGearbay.Text,
+    '                                             count20,
+    '                                             count40)
+    '        Refresh_info()
+    '        GearboxDsc.Refresh()
+    '        GearboxLoad.Refresh()
+    '        EmptyOutControls({cmbGearmove, txtGearbay, txtGear20, txtGear40})
+    '    End If
+    'End Sub
 
     Private Function IsInputValid(p() As Control) As Boolean
         For Each txtbox As Control In p
@@ -320,25 +351,25 @@ Public Class CraneCtl
         Return True
     End Function
 
-    Private Sub btnHatchAdd_Click(sender As Object, e As EventArgs) Handles btnHatchAdd.Click
-        If IsInputValid({cmbHatchmove, txtHatchbay, txtHatch20, txtHatch40}) Then
-            Dim actualOB As String = GetBound(cmbHatchmove.Text)(0)
-            Dim actualIB As String = GetBound(cmbHatchmove.Text)(1)
+    'Private Sub btnHatchAdd_Click(sender As Object, e As EventArgs)
+    '    If IsInputValid({cmbHatchmove, txtHatchbay, txtHatch20, txtHatch40}) Then
+    '        Dim actualOB As String = GetBound(cmbHatchmove.Text)(0)
+    '        Dim actualIB As String = GetBound(cmbHatchmove.Text)(1)
 
-            Dim count20 As Long = CLng(0 & txtHatch20.Text)
-            Dim count40 As Long = CLng(0 & txtHatch40.Text)
+    '        Dim count20 As Long = CLng(0 & txtHatch20.Text)
+    '        Dim count40 As Long = CLng(0 & txtHatch40.Text)
 
-            crnCrane.Moves.Hatchcover.AddHatchcoverRow(actualOB,
-                                                       actualIB,
-                                                       txtHatchbay.Text,
-                                                       count20,
-                                                       count40)
-            Refresh_info()
-            HatchDsc.Refresh()
-            HatchLoad.Refresh()
-            EmptyOutControls({cmbHatchmove, txtHatchbay, txtHatch20, txtHatch40})
-        End If
-    End Sub
+    '        crnCrane.Moves.Hatchcover.AddHatchcoverRow(actualOB,
+    '                                                   actualIB,
+    '                                                   txtHatchbay.Text,
+    '                                                   count20,
+    '                                                   count40)
+    '        Refresh_info()
+    '        HatchDsc.Refresh()
+    '        HatchLoad.Refresh()
+    '        EmptyOutControls({cmbHatchmove, txtHatchbay, txtHatch20, txtHatch40})
+    '    End If
+    'End Sub
 
     Public Sub PopulateDelays()
 
@@ -385,9 +416,13 @@ Public Class CraneCtl
 
     End Sub
 
-    Private Sub CraneCtl_ControlAdded(sender As Object, e As ControlEventArgs) Handles Me.ControlAdded
-        SetComboBoxSelectionTo0()
-    End Sub
+    'Private Sub AddContainerRows()
+    '    Dim ContainerTypes As String() = {"CONTAINER", "SVD", "SOB", "TRANSHIPMENT"}
+    '    For Each type As String In ContainerTypes
+    '        ContainerDsc.Rows.Add({type})
+    '        ContainerLoad.Rows.Add({type})
+    '    Next
+    'End Sub
 
     Private Sub ConfirmDelete(sender As Object, e As DataGridViewRowCancelEventArgs)
         Dim result = MsgBox("Delete Row?", vbYesNo)
@@ -403,6 +438,17 @@ Public Class CraneCtl
         crnCrane.Moves.AcceptChanges()
         crnCrane.Delays.AcceptChanges()
         MsgBox("Succesfully Deleted")
+    End Sub
+
+    Private Sub DataGridViewNumeric(sender As Object, e As DataGridViewEditingControlShowingEventArgs)
+
+        RemoveHandler e.Control.KeyPress, AddressOf Common_Numeric
+
+        Dim textBox As TextBox = DirectCast(e.Control, TextBox)
+        If Not (textBox Is Nothing) Then
+            AddHandler textBox.KeyPress, AddressOf Common_Numeric
+        End If
+
     End Sub
 
 End Class

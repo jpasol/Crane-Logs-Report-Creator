@@ -24,6 +24,52 @@ Public Class CLRClass
             GenerateCranes()
         End If
     End Sub
+    Public Function SumDeductableDelays() As DataTable
+        Me.CraneLogsData.DelaySummary.Clear()
+        Dim gantryCranes As String() = {"GC01", "GC02", "GC03", "GC04"}
+        For Each craneName As String In gantryCranes
+            Dim tempRow As DataRow
+            tempRow = Me.CraneLogsData.DelaySummary.NewRow
+            tempRow("crane") = craneName
+
+            Try
+                If Me.Crane.AsEnumerable.Select(Function(crn) crn.CraneName).Contains(craneName) Then
+                    With Me.Crane.AsEnumerable.Where(Function(crn) crn.CraneName = craneName).FirstOrDefault
+                        tempRow("delaystart") = .Delays.Deductable.Select(Function(row) CDate(row("delaystart"))).Min
+                        tempRow("delayend") = .Delays.Deductable.Select(Function(row) CDate(row("delayend"))).Max
+                        tempRow("delayhours") = .Delays.Deductable.Sum(Function(row) CDbl(row("delayhours").ToString))
+                    End With
+                End If
+            Catch
+            End Try
+
+            Me.CraneLogsData.DelaySummary.Rows.Add(tempRow)
+        Next
+
+    End Function
+
+    Public Function SumNonDeductableDelays() As DataTable
+        Me.CraneLogsData.DelaySummaryND.Clear()
+        Dim gantryCranes As String() = {"GC01", "GC02", "GC03", "GC04"}
+        For Each craneName As String In gantryCranes
+            Dim tempRow As DataRow
+            tempRow = Me.CraneLogsData.DelaySummaryND.NewRow
+            tempRow("crane") = craneName
+
+            Try
+                If Me.Crane.AsEnumerable.Select(Function(crn) crn.CraneName).Contains(craneName) Then
+                    With Me.Crane.AsEnumerable.Where(Function(crn) crn.CraneName = craneName).FirstOrDefault
+                        tempRow("delaystart") = .Delays.Nondeductable.Select(Function(row) CDate(row("delaystart"))).Min
+                        tempRow("delayend") = .Delays.Nondeductable.Select(Function(row) CDate(row("delayend"))).Max
+                        tempRow("delayhours") = .Delays.Nondeductable.Sum(Function(row) CDbl(row("delayhours").ToString))
+                    End With
+                End If
+            Catch
+            End Try
+
+            Me.CraneLogsData.DelaySummaryND.Rows.Add(tempRow)
+        Next
+    End Function
 
     Private Sub GenerateCranes()
         For craneNum As Integer = 1 To 4
@@ -42,7 +88,7 @@ Public Class CLRClass
         tempDataTable.Merge(tempCrane.Moves.Inbound)
         tempDataTable.Merge(tempCrane.Moves.Outbound)
 
-        Return CDate(tempDataTable.AsEnumerable.OrderByDescending(Function(row) CDate(row("time_move"))).Select(Function(row) row("time_move").ToString).First)
+        Return CDate(tempDataTable.AsEnumerable.Where(Function(mve) Not (mve("time_move") Is DBNull.Value)).OrderByDescending(Function(row) CDate(row("time_move"))).Select(Function(row) row("time_move").ToString).First)
 
     End Function
 
@@ -51,7 +97,7 @@ Public Class CLRClass
         tempDataTable.Merge(tempCrane.Moves.Inbound)
         tempDataTable.Merge(tempCrane.Moves.Outbound)
 
-        Return CDate(tempDataTable.AsEnumerable.OrderBy(Function(row) CDate(row("time_move"))).Select(Function(row) row("time_move").ToString).First)
+        Return CDate(tempDataTable.AsEnumerable.Where(Function(mve) Not (mve("time_move") Is DBNull.Value)).OrderBy(Function(row) CDate(row("time_move"))).Select(Function(row) row("time_move").ToString).First)
     End Function
 
     Private Sub GenerateBerthDelays()
@@ -520,7 +566,10 @@ INSERT INTO [opreports].[dbo].[crane_delays]
     Private Sub SaveHatchcoverMoves(crn As Crane, refkeyCrane As Integer)
         Dim insertcommand As New ADODB.Command
         insertcommand.ActiveConnection = OPConnection
-        For Each mve As DataRow In crn.Moves.Hatchcover.Rows
+        Dim consolidatedTable As DataTable
+        consolidatedTable.Merge(crn.Moves.Hatchcover)
+        consolidatedTable.Merge(crn.Moves.Hatchcover1)
+        For Each mve As DataRow In consolidatedTable.Rows
             If (mve("cvrsze20") + mve("cvrsze40")) > 0 Then
                 insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_hatchcovers]
@@ -548,7 +597,10 @@ INSERT INTO [opreports].[dbo].[crane_hatchcovers]
     Private Sub SaveGearboxMoves(crn As Crane, refkeyCrane As Integer)
         Dim insertcommand As New ADODB.Command
         insertcommand.ActiveConnection = OPConnection
-        For Each mve As DataRow In crn.Moves.Gearbox.Rows
+        Dim consolidatedTable As DataTable
+        consolidatedTable.Merge(crn.Moves.Gearbox)
+        consolidatedTable.Merge(crn.Moves.Gearbox1)
+        For Each mve As DataRow In consolidatedTable.Rows
             If (mve("gbxsze20") + mve("gbxsze40")) > 0 Then
                 insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[crane_gearboxes]
@@ -701,7 +753,7 @@ SELECT  [refkey]
             Finally
                 While Not (.EOF Or .BOF)
                     Dim temporaryCrane As New Crane(.Fields("che_qc").Value, CLRVessel.Registry, N4Connection, True)
-                    temporaryCrane.Moves.Container.Clear() 'removes preloaded data
+                    'temporaryCrane.Moves.Container.Clear() 'removes preloaded data
 
                     temporaryCrane.FirstMove = .Fields("first_move").Value
                     temporaryCrane.LastMove = .Fields("last_move").Value
@@ -709,9 +761,9 @@ SELECT  [refkey]
                     Dim craneRefkey = .Fields("refkey").Value
                     Dim informationFiller As New OleDb.OleDbDataAdapter
                     With informationFiller
-                        .Fill(temporaryCrane.Moves.Container, GetContainerMoves(craneRefkey))
-                        .Fill(temporaryCrane.Moves.Gearbox, GetGearboxMoves(craneRefkey))
-                        .Fill(temporaryCrane.Moves.Hatchcover, GetHatchcoverMoves(craneRefkey))
+                        GetContainerMoves(temporaryCrane.Moves.Container, craneRefkey)
+                        GetGearboxMoves(temporaryCrane.Moves, craneRefkey)
+                        GetHatchcoverMoves(temporaryCrane.Moves, craneRefkey)
 
 
                         PopulateDelays(temporaryCrane, GetCraneDelays(craneRefkey))
@@ -761,7 +813,7 @@ SELECT [delay_kind]
 
     End Function
 
-    Private Function GetHatchcoverMoves(craneRefkey As Object) As Object
+    Private Function GetHatchcoverMoves(temporaryCraneData As CraneMoves, craneRefkey As Object) As Object
         Dim hatchCoverMoves As New ADODB.Command
         With hatchCoverMoves
             .ActiveConnection = OPConnection
@@ -774,11 +826,24 @@ SELECT [actual_ib]
   FROM [opreports].[dbo].[crane_hatchcovers]
     WHERE crane_refkey = {craneRefkey}
 "
-            Return hatchCoverMoves.Execute
+            With hatchCoverMoves.Execute
+                While Not .EOF
+                    Dim tempFieldValues As New List(Of String)
+                For index As Integer = 0 To .Fields.Count - 1
+                    tempFieldValues.Add(.Fields(index).Value)
+                Next
+                    If Not .Fields("actual_ib") Is DBNull.Value Then
+                        temporaryCraneData.Hatchcover.Rows.Add(tempFieldValues.ToArray)
+                    Else
+                        temporaryCraneData.Hatchcover1.Rows.Add(tempFieldValues.ToArray)
+                    End If
+                    .MoveNext()
+                End While
+            End With
         End With
     End Function
 
-    Private Function GetGearboxMoves(craneRefkey As Object) As ADODB.Recordset
+    Private Function GetGearboxMoves(temporaryCraneData As CraneMoves, craneRefkey As Object) As ADODB.Recordset
         Dim gearboxMoves As New ADODB.Command
         With gearboxMoves
             .ActiveConnection = OPConnection
@@ -791,15 +856,29 @@ SELECT [actual_ib]
   FROM [opreports].[dbo].[crane_gearboxes]
     WHERE crane_refkey = {craneRefkey}
 "
-            Return gearboxMoves.Execute
+            With gearboxMoves.Execute
+                While Not .EOF
+                    Dim tempFieldValues As New List(Of String)
+                For index As Integer = 0 To .Fields.Count - 1
+                    tempFieldValues.Add(.Fields(index).Value)
+                Next
+                    If Not .Fields("actual_ib") Is DBNull.Value Then
+                        temporaryCraneData.Gearbox.Rows.Add(tempFieldValues.ToArray)
+                    Else
+                        temporaryCraneData.Gearbox1.Rows.Add(tempFieldValues.ToArray)
+                    End If
+                    .MoveNext()
+                End While
+            End With
         End With
     End Function
 
-    Private Function GetContainerMoves(craneRefkey As Object) As ADODB.Recordset
+    Private Function GetContainerMoves(ContainerMovesTable As DataTable, craneRefkey As Object)
         Dim containerMoves As New ADODB.Command
         containerMoves.ActiveConnection = OPConnection
         containerMoves.CommandText = $"
-SELECT [move_kind]
+SELECT (isnull([move_kind],'') + isnull([category],'')) as 'container'
+      ,[move_kind]
       ,[actual_ib]
       ,[actual_ob]
       ,[freight_kind]
@@ -810,7 +889,22 @@ SELECT [move_kind]
   FROM [opreports].[dbo].[crane_containers]
 	WHERE [crane_refkey] = {craneRefkey}
 "
-        Return containerMoves.Execute
+        With containerMoves.Execute
+            While Not .EOF
+                Try
+                    Dim cntr As String = Trim(.Fields("container").Value)
+                    Dim freightKind As String = Trim(.Fields("freight_kind").Value)
+                    Dim tempRow As DataRow = ContainerMovesTable.AsEnumerable.Where(Function(row) row("container").ToString = cntr And
+                                                           row("freight_kind").ToString = freightKind).FirstOrDefault
+
+                    tempRow.Item("cntsze20") = .Fields("cntsze20").Value
+                    tempRow.Item("cntsze40") = .Fields("cntsze40").Value
+                    tempRow.Item("cntsze45") = .Fields("cntsze45").Value
+                Catch
+                End Try
+                .MoveNext()
+            End While
+        End With
     End Function
 
     Public Sub IntializeCrane(GantryName As String) Implements ICraneLogsReport.IntializeCrane

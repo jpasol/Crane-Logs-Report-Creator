@@ -12,7 +12,7 @@
   <xs:element name="CraneLogsData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="CraneLogsData" msprop:Generator_UserDSName="CraneLogsData">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="CraneProductivity" msprop:Generator_TableClassName="CraneProductivityDataTable" msprop:Generator_TableVarName="tableCraneProductivity" msprop:Generator_RowChangedName="CraneProductivityRowChanged" msprop:Generator_TablePropName="CraneProductivity" msprop:Generator_RowDeletingName="CraneProductivityRowDeleting" msprop:Generator_RowChangingName="CraneProductivityRowChanging" msprop:Generator_RowEvHandlerName="CraneProductivityRowChangeEventHandler" msprop:Generator_RowDeletedName="CraneProductivityRowDeleted" msprop:Generator_RowClassName="CraneProductivityRow" msprop:Generator_UserTableName="CraneProductivity" msprop:Generator_RowEvArgName="CraneProductivityRowChangeEvent">
+        <xs:element name="CraneProductivity" msprop:Generator_TableClassName="CraneProductivityDataTable" msprop:Generator_TableVarName="tableCraneProductivity" msprop:Generator_TablePropName="CraneProductivity" msprop:Generator_RowDeletingName="CraneProductivityRowDeleting" msprop:Generator_RowChangingName="CraneProductivityRowChanging" msprop:Generator_RowEvHandlerName="CraneProductivityRowChangeEventHandler" msprop:Generator_RowDeletedName="CraneProductivityRowDeleted" msprop:Generator_UserTableName="CraneProductivity" msprop:Generator_RowChangedName="CraneProductivityRowChanged" msprop:Generator_RowEvArgName="CraneProductivityRowChangeEvent" msprop:Generator_RowClassName="CraneProductivityRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="move_kind" msprop:Generator_ColumnVarNameInTable="columnmove_kind" msprop:Generator_ColumnPropNameInRow="move_kind" msprop:Generator_ColumnPropNameInTable="move_kindColumn" msprop:Generator_UserColumnName="move_kind" type="xs:string" minOccurs="0" />
@@ -23,7 +23,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="BerthingHourDelays" msprop:Generator_TableClassName="BerthingHourDelaysDataTable" msprop:Generator_TableVarName="tableBerthingHourDelays" msprop:Generator_RowChangedName="BerthingHourDelaysRowChanged" msprop:Generator_TablePropName="BerthingHourDelays" msprop:Generator_RowDeletingName="BerthingHourDelaysRowDeleting" msprop:Generator_RowChangingName="BerthingHourDelaysRowChanging" msprop:Generator_RowEvHandlerName="BerthingHourDelaysRowChangeEventHandler" msprop:Generator_RowDeletedName="BerthingHourDelaysRowDeleted" msprop:Generator_RowClassName="BerthingHourDelaysRow" msprop:Generator_UserTableName="BerthingHourDelays" msprop:Generator_RowEvArgName="BerthingHourDelaysRowChangeEvent">
+        <xs:element name="BerthingHourDelays" msprop:Generator_TableClassName="BerthingHourDelaysDataTable" msprop:Generator_TableVarName="tableBerthingHourDelays" msprop:Generator_TablePropName="BerthingHourDelays" msprop:Generator_RowDeletingName="BerthingHourDelaysRowDeleting" msprop:Generator_RowChangingName="BerthingHourDelaysRowChanging" msprop:Generator_RowEvHandlerName="BerthingHourDelaysRowChangeEventHandler" msprop:Generator_RowDeletedName="BerthingHourDelaysRowDeleted" msprop:Generator_UserTableName="BerthingHourDelays" msprop:Generator_RowChangedName="BerthingHourDelaysRowChanged" msprop:Generator_RowEvArgName="BerthingHourDelaysRowChangeEvent" msprop:Generator_RowClassName="BerthingHourDelaysRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="berthdelay" msprop:Generator_ColumnVarNameInTable="columnberthdelay" msprop:Generator_ColumnPropNameInRow="berthdelay" msprop:Generator_ColumnPropNameInTable="berthdelayColumn" msprop:Generator_UserColumnName="berthdelay" type="xs:string" minOccurs="0" />
@@ -33,7 +33,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MonthlyCummulativeVolume" msprop:Generator_TableClassName="MonthlyCummulativeVolumeDataTable" msprop:Generator_TableVarName="tableMonthlyCummulativeVolume" msprop:Generator_RowChangedName="MonthlyCummulativeVolumeRowChanged" msprop:Generator_TablePropName="MonthlyCummulativeVolume" msprop:Generator_RowDeletingName="MonthlyCummulativeVolumeRowDeleting" msprop:Generator_RowChangingName="MonthlyCummulativeVolumeRowChanging" msprop:Generator_RowEvHandlerName="MonthlyCummulativeVolumeRowChangeEventHandler" msprop:Generator_RowDeletedName="MonthlyCummulativeVolumeRowDeleted" msprop:Generator_RowClassName="MonthlyCummulativeVolumeRow" msprop:Generator_UserTableName="MonthlyCummulativeVolume" msprop:Generator_RowEvArgName="MonthlyCummulativeVolumeRowChangeEvent">
+        <xs:element name="MonthlyCummulativeVolume" msprop:Generator_TableClassName="MonthlyCummulativeVolumeDataTable" msprop:Generator_TableVarName="tableMonthlyCummulativeVolume" msprop:Generator_TablePropName="MonthlyCummulativeVolume" msprop:Generator_RowDeletingName="MonthlyCummulativeVolumeRowDeleting" msprop:Generator_RowChangingName="MonthlyCummulativeVolumeRowChanging" msprop:Generator_RowEvHandlerName="MonthlyCummulativeVolumeRowChangeEventHandler" msprop:Generator_RowDeletedName="MonthlyCummulativeVolumeRowDeleted" msprop:Generator_UserTableName="MonthlyCummulativeVolume" msprop:Generator_RowChangedName="MonthlyCummulativeVolumeRowChanged" msprop:Generator_RowEvArgName="MonthlyCummulativeVolumeRowChangeEvent" msprop:Generator_RowClassName="MonthlyCummulativeVolumeRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="actual_ob" msprop:Generator_ColumnVarNameInTable="columnactual_ob" msprop:Generator_ColumnPropNameInRow="actual_ob" msprop:Generator_ColumnPropNameInTable="actual_obColumn" msprop:Generator_UserColumnName="actual_ob" type="xs:string" minOccurs="0" />
@@ -41,6 +41,26 @@
               <xs:element name="cntsze20" msprop:Generator_ColumnVarNameInTable="columncntsze20" msprop:Generator_ColumnPropNameInRow="cntsze20" msprop:Generator_ColumnPropNameInTable="cntsze20Column" msprop:Generator_UserColumnName="cntsze20" type="xs:string" minOccurs="0" />
               <xs:element name="cntsze40" msprop:Generator_ColumnVarNameInTable="columncntsze40" msprop:Generator_ColumnPropNameInRow="cntsze40" msprop:Generator_ColumnPropNameInTable="cntsze40Column" msprop:Generator_UserColumnName="cntsze40" type="xs:string" minOccurs="0" />
               <xs:element name="cntsze45" msprop:Generator_ColumnVarNameInTable="columncntsze45" msprop:Generator_ColumnPropNameInRow="cntsze45" msprop:Generator_ColumnPropNameInTable="cntsze45Column" msprop:Generator_UserColumnName="cntsze45" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DelaySummary" msprop:Generator_TableClassName="DelaySummaryDataTable" msprop:Generator_TableVarName="tableDelaySummary" msprop:Generator_TablePropName="DelaySummary" msprop:Generator_RowDeletingName="DelaySummaryRowDeleting" msprop:Generator_RowChangingName="DelaySummaryRowChanging" msprop:Generator_RowEvHandlerName="DelaySummaryRowChangeEventHandler" msprop:Generator_RowDeletedName="DelaySummaryRowDeleted" msprop:Generator_UserTableName="DelaySummary" msprop:Generator_RowChangedName="DelaySummaryRowChanged" msprop:Generator_RowEvArgName="DelaySummaryRowChangeEvent" msprop:Generator_RowClassName="DelaySummaryRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="crane" msprop:Generator_ColumnVarNameInTable="columncrane" msprop:Generator_ColumnPropNameInRow="crane" msprop:Generator_ColumnPropNameInTable="craneColumn" msprop:Generator_UserColumnName="crane" type="xs:string" minOccurs="0" />
+              <xs:element name="delaystart" msprop:Generator_ColumnVarNameInTable="columndelaystart" msprop:Generator_ColumnPropNameInRow="delaystart" msprop:Generator_ColumnPropNameInTable="delaystartColumn" msprop:Generator_UserColumnName="delaystart" type="xs:string" minOccurs="0" />
+              <xs:element name="delayend" msprop:Generator_ColumnVarNameInTable="columndelayend" msprop:Generator_ColumnPropNameInRow="delayend" msprop:Generator_ColumnPropNameInTable="delayendColumn" msprop:Generator_UserColumnName="delayend" type="xs:string" minOccurs="0" />
+              <xs:element name="delayhours" msprop:Generator_ColumnVarNameInTable="columndelayhours" msprop:Generator_ColumnPropNameInRow="delayhours" msprop:Generator_ColumnPropNameInTable="delayhoursColumn" msprop:Generator_UserColumnName="delayhours" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DelaySummaryND" msprop:Generator_TableClassName="DelaySummaryNDDataTable" msprop:Generator_TableVarName="tableDelaySummaryND" msprop:Generator_TablePropName="DelaySummaryND" msprop:Generator_RowDeletingName="DelaySummaryNDRowDeleting" msprop:Generator_RowChangingName="DelaySummaryNDRowChanging" msprop:Generator_RowEvHandlerName="DelaySummaryNDRowChangeEventHandler" msprop:Generator_RowDeletedName="DelaySummaryNDRowDeleted" msprop:Generator_UserTableName="DelaySummaryND" msprop:Generator_RowChangedName="DelaySummaryNDRowChanged" msprop:Generator_RowEvArgName="DelaySummaryNDRowChangeEvent" msprop:Generator_RowClassName="DelaySummaryNDRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="crane" msprop:Generator_ColumnVarNameInTable="columncrane" msprop:Generator_ColumnPropNameInRow="crane" msprop:Generator_ColumnPropNameInTable="craneColumn" msprop:Generator_UserColumnName="crane" type="xs:string" minOccurs="0" />
+              <xs:element name="delaystart" msprop:Generator_ColumnVarNameInTable="columndelaystart" msprop:Generator_ColumnPropNameInRow="delaystart" msprop:Generator_ColumnPropNameInTable="delaystartColumn" msprop:Generator_UserColumnName="delaystart" type="xs:string" minOccurs="0" />
+              <xs:element name="delayend" msprop:Generator_ColumnVarNameInTable="columndelayend" msprop:Generator_ColumnPropNameInRow="delayend" msprop:Generator_ColumnPropNameInTable="delayendColumn" msprop:Generator_UserColumnName="delayend" type="xs:string" minOccurs="0" />
+              <xs:element name="delayhours" msprop:Generator_ColumnVarNameInTable="columndelayhours" msprop:Generator_ColumnPropNameInRow="delayhours" msprop:Generator_ColumnPropNameInTable="delayhoursColumn" msprop:Generator_UserColumnName="delayhours" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

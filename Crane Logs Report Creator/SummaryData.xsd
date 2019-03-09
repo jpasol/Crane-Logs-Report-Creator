@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SummaryData" targetNamespace="http://tempuri.org/SummaryData.xsd" xmlns:mstns="http://tempuri.org/SummaryData.xsd" xmlns="http://tempuri.org/SummaryData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SummaryData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SummaryData" msprop:Generator_UserDSName="SummaryData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SummaryTable" msprop:Generator_TableClassName="SummaryTableDataTable" msprop:Generator_TableVarName="tableSummaryTable" msprop:Generator_TablePropName="SummaryTable" msprop:Generator_RowDeletingName="SummaryTableRowDeleting" msprop:Generator_RowChangingName="SummaryTableRowChanging" msprop:Generator_RowEvHandlerName="SummaryTableRowChangeEventHandler" msprop:Generator_RowDeletedName="SummaryTableRowDeleted" msprop:Generator_UserTableName="SummaryTable" msprop:Generator_RowChangedName="SummaryTableRowChanged" msprop:Generator_RowEvArgName="SummaryTableRowChangeEvent" msprop:Generator_RowClassName="SummaryTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="category" msprop:Generator_ColumnVarNameInTable="columncategory" msprop:Generator_ColumnPropNameInRow="category" msprop:Generator_ColumnPropNameInTable="categoryColumn" msprop:Generator_UserColumnName="category" type="xs:string" minOccurs="0" />
+              <xs:element name="freightkind" msprop:Generator_ColumnVarNameInTable="columnfreightkind" msprop:Generator_ColumnPropNameInRow="freightkind" msprop:Generator_ColumnPropNameInTable="freightkindColumn" msprop:Generator_UserColumnName="freightkind" type="xs:string" minOccurs="0" />
+              <xs:element name="_x0032_0" msprop:Generator_ColumnVarNameInTable="column20" msprop:Generator_ColumnPropNameInRow="_20" msprop:Generator_ColumnPropNameInTable="_20Column" msprop:Generator_UserColumnName="20" type="xs:long" minOccurs="0" />
+              <xs:element name="_x0034_0" msprop:Generator_ColumnVarNameInTable="column40" msprop:Generator_ColumnPropNameInRow="_40" msprop:Generator_ColumnPropNameInTable="_40Column" msprop:Generator_UserColumnName="40" type="xs:long" minOccurs="0" />
+              <xs:element name="_x0034_5" msprop:Generator_ColumnVarNameInTable="column45" msprop:Generator_ColumnPropNameInRow="_45" msprop:Generator_ColumnPropNameInTable="_45Column" msprop:Generator_UserColumnName="45" type="xs:long" minOccurs="0" />
+              <xs:element name="unit" msprop:Generator_ColumnVarNameInTable="columnunit" msprop:Generator_ColumnPropNameInRow="unit" msprop:Generator_ColumnPropNameInTable="unitColumn" msprop:Generator_UserColumnName="unit" type="xs:long" minOccurs="0" />
+              <xs:element name="teu" msprop:Generator_ColumnVarNameInTable="columnteu" msprop:Generator_ColumnPropNameInRow="teu" msprop:Generator_ColumnPropNameInTable="teuColumn" msprop:Generator_UserColumnName="teu" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

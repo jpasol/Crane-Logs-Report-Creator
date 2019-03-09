@@ -207,6 +207,12 @@
     <Compile Include="ctlCraneLog.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="NumericInputBox.vb" />
+    <Compile Include="SummaryData.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SummaryData.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CLRForm.resx">
@@ -246,6 +252,17 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="SummaryData.xsc">
+      <DependentUpon>SummaryData.xsd</DependentUpon>
+    </None>
+    <None Include="SummaryData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SummaryData.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="SummaryData.xss">
+      <DependentUpon>SummaryData.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
