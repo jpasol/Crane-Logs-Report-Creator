@@ -16,7 +16,6 @@
                 Return -1 'not found
             End Try
         End Function
-
     End Class
 
     Partial Public Class MonthlyCummulativeVolumeDataTable

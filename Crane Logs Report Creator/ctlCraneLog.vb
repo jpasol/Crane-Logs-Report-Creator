@@ -43,14 +43,14 @@ Public Class CraneCtl
             loadContainersMTY.RowFilter = "actual_ob is not null and actual_ob <> '' and freight_kind = 'MTY'"
 
             dischargeGearboxes.Table = .Moves.Gearbox
-            dischargeGearboxes.RowFilter = "actual_ib is not null and actual_ib <> ''"
+            'dischargeGearboxes.RowFilter = "actual_ib is not null and actual_ib <> ''"
             loadGearboxes.Table = .Moves.Gearbox1
-            loadGearboxes.RowFilter = "actual_ob is not null and actual_ob <> ''"
+            'loadGearboxes.RowFilter = "actual_ob is not null and actual_ob <> ''"
 
             openingHatchcovers.Table = .Moves.Hatchcover
-            openingHatchcovers.RowFilter = "actual_ib is not null and actual_ib <> ''"
+            'openingHatchcovers.RowFilter = "actual_ib is not null and actual_ib <> ''"
             closingHatchcovers.Table = .Moves.Hatchcover1
-            closingHatchcovers.RowFilter = "actual_ob is not null and actual_ob <> ''"
+            'closingHatchcovers.RowFilter = "actual_ob is not null and actual_ob <> ''"
             'pending for delays
         End With
 
@@ -172,17 +172,21 @@ Public Class CraneCtl
                 txtL45.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ob")) <> "").Sum(Function(row) CInt(row("cntsze45").ToString))
             End With
             With .Moves.Hatchcover
-                txtHD20.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ib")) <> "").Sum(Function(row) CInt(row("cvrsze20").ToString))
-                txtHD40.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ib")) <> "").Sum(Function(row) CInt(row("cvrsze40").ToString))
-                txtHL20.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ob")) <> "").Sum(Function(row) CInt(row("cvrsze20").ToString))
-                txtHL40.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ob")) <> "").Sum(Function(row) CInt(row("cvrsze40").ToString))
+                txtHD20.Text = .AsEnumerable.Sum(Function(row) CInt(row("cvrsze20").ToString))
+                txtHD40.Text = .AsEnumerable.Sum(Function(row) CInt(row("cvrsze40").ToString))
+            End With
+            With .Moves.Hatchcover1
+                txtHL20.Text = .AsEnumerable.Sum(Function(row) CInt(row("cvrsze20").ToString))
+                txtHL40.Text = .AsEnumerable.Sum(Function(row) CInt(row("cvrsze40").ToString))
             End With
 
             With .Moves.Gearbox
-                txtGD20.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ib")) <> "").Sum(Function(row) CInt(row("gbxsze20").ToString))
-                txtGD40.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ib")) <> "").Sum(Function(row) CInt(row("gbxsze40").ToString))
-                txtGL20.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ob")) <> "").Sum(Function(row) CInt(row("gbxsze20").ToString))
-                txtGL40.Text = .AsEnumerable.Where(Function(row) ParseDBNulltoString(row("actual_ob")) <> "").Sum(Function(row) CInt(row("gbxsze40").ToString))
+                txtGD20.Text = .AsEnumerable.Sum(Function(row) CInt(row("gbxsze20").ToString))
+                txtGD40.Text = .AsEnumerable.Sum(Function(row) CInt(row("gbxsze40").ToString))
+            End With
+            With .Moves.Gearbox1
+                txtGL20.Text = .AsEnumerable.Sum(Function(row) CInt(row("gbxsze20").ToString))
+                txtGL40.Text = .AsEnumerable.Sum(Function(row) CInt(row("gbxsze40").ToString))
             End With
 
 
@@ -378,8 +382,13 @@ Public Class CraneCtl
         For Each table As DataTable In crnCrane.Delays.Tables 'reflection to delay view
             For Each row As DataRow In table.Rows
                 With dgvDelays.Rows
-                    Dim tablenameList As Object() = {table.TableName}
-                    .Add(tablenameList.Concat(row.ItemArray).ToArray) 'table name union to row array
+                    Dim tablenameList As New List(Of Object)
+                    tablenameList.Add(table.TableName)
+                    tablenameList.Add(row("description"))
+                    tablenameList.Add(GetMilTime(row("delaystart").ToString))
+                    tablenameList.Add(GetMilTime(row("delayend").ToString))
+                    tablenameList.Add(row("delayhours"))
+                    .Add(tablenameList.ToArray) 'table name union to row array
                 End With
             Next
         Next

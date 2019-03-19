@@ -1,6 +1,8 @@
 ﻿Imports Reports.ReportFunctions
 Imports Reports
 Imports System.Runtime.InteropServices
+Imports Crane_Logs_Report_Creator
+
 Public Class CLRForm
     Public Const KEY_ALT As Integer = &H1
     Public Const _HOTKEY As Integer = &H312
@@ -163,8 +165,34 @@ Public Class CLRForm
 
 
         RefreshInfo()
+
         InitializeDelays()
 
+        RetrieveBerthDelays()
+    End Sub
+
+    Private Sub RetrieveBerthDelays()
+        Try
+            Dim berthDelays As String() = {"VFM", "GOB", "POB"}
+            For Each code In berthDelays
+                Dim fromMaskedboxName As String = $"msk{code}Start"
+                Dim toMaskedboxName As String = $"msk{code}End"
+                Dim totalMaskedboxName As String = $"msk{code}"
+
+                Dim fromMaskedTextbox As MaskedTextBox = DirectCast(GroupBox2.Controls.Item(fromMaskedboxName), MaskedTextBox)
+                Dim toMaskedTextbox As MaskedTextBox = DirectCast(GroupBox2.Controls.Item(toMaskedboxName), MaskedTextBox)
+                Dim totalMaskedTextbox As TextBox = DirectCast(GroupBox2.Controls.Item(totalMaskedboxName), TextBox)
+
+                With Me.clsCLR.CraneLogsData.BerthingHourDelays.AsEnumerable.Where(Function(row) row("berthdelay").ToString = code).FirstOrDefault
+                    fromMaskedTextbox.Text = GetMilTime(.Item("delaystart".ToString))
+                    toMaskedTextbox.Text = GetMilTime(.Item("delayend".ToString))
+                    totalMaskedTextbox.Text = GetSpanHours(CDate(.Item("delaystart".ToString)), CDate(.Item("delayend".ToString)))
+                End With
+
+            Next
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub InitializeDelays()
@@ -317,6 +345,8 @@ Public Class CLRForm
             .LastPort = mskLastPort.Text
             .NextPort = mskNextPort.Text
 
+            MapBerthDelays()
+
         End With
 
         Dim result As MsgBoxResult
@@ -355,6 +385,39 @@ Public Class CLRForm
 
 
     End Sub
+
+    Private Sub MapBerthDelays()
+        With clsCLR.CraneLogsData.BerthingHourDelays
+            .Clear()
+            Dim berthDelays As String() = {"VFM", "GOB", "POB"}
+            For Each code In berthDelays
+                Dim temprow As DataRow
+                temprow = .NewRow
+                temprow.ItemArray = BerthDelayRow(code)
+                .AddBerthingHourDelaysRow(temprow)
+            Next
+
+        End With
+    End Sub
+
+    Private Function BerthDelayRow(code As String) As String()
+        Dim fromMaskedboxName As String = $"msk{code}Start"
+        Dim toMaskedboxName As String = $"msk{code}End"
+        Dim totalMaskedboxName As String = $"msk{code}"
+
+        Dim fromMaskedTextbox As MaskedTextBox = DirectCast(GroupBox2.Controls.Item(fromMaskedboxName), MaskedTextBox)
+        Dim toMaskedTextbox As MaskedTextBox = DirectCast(GroupBox2.Controls.Item(toMaskedboxName), MaskedTextBox)
+        Dim totalMaskedTextbox As TextBox = DirectCast(GroupBox2.Controls.Item(totalMaskedboxName), TextBox)
+
+        Dim valueList As New List(Of String)
+        valueList.Add(code)
+        valueList.Add(GetDateTime(fromMaskedTextbox.Text))
+        valueList.Add(GetDateTime(toMaskedTextbox.Text))
+        valueList.Add(GetDateTime(totalMaskedTextbox.Text))
+
+        Return valueList.ToArray
+
+    End Function
 
     'Private Sub txtGC_KeyPress(sender As Object, e As KeyPressEventArgs)
     '    If Asc(e.KeyChar) <> 8 Then

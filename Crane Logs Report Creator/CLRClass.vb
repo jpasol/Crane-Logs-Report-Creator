@@ -35,9 +35,12 @@ Public Class CLRClass
             Try
                 If Me.Crane.AsEnumerable.Select(Function(crn) crn.CraneName).Contains(craneName) Then
                     With Me.Crane.AsEnumerable.Where(Function(crn) crn.CraneName = craneName).FirstOrDefault
-                        tempRow("delaystart") = .Delays.Deductable.Select(Function(row) CDate(row("delaystart"))).Min
-                        tempRow("delayend") = .Delays.Deductable.Select(Function(row) CDate(row("delayend"))).Max
-                        tempRow("delayhours") = .Delays.Deductable.Sum(Function(row) CDbl(row("delayhours").ToString))
+                        Dim consolidatedTable As New DataTable
+                        consolidatedTable.Merge(.Delays.Deductable)
+                        consolidatedTable.Merge(.Delays.Break)
+                        tempRow("delaystart") = GetMilTime(consolidatedTable.AsEnumerable.Select(Function(row) CDate(row("delaystart"))).Min.ToString)
+                        tempRow("delayend") = GetMilTime(consolidatedTable.AsEnumerable.Select(Function(row) CDate(row("delayend"))).Max.ToString)
+                        tempRow("delayhours") = consolidatedTable.AsEnumerable.Sum(Function(row) CDbl(row("delayhours").ToString))
                     End With
                 End If
             Catch
@@ -59,8 +62,8 @@ Public Class CLRClass
             Try
                 If Me.Crane.AsEnumerable.Select(Function(crn) crn.CraneName).Contains(craneName) Then
                     With Me.Crane.AsEnumerable.Where(Function(crn) crn.CraneName = craneName).FirstOrDefault
-                        tempRow("delaystart") = .Delays.Nondeductable.Select(Function(row) CDate(row("delaystart"))).Min
-                        tempRow("delayend") = .Delays.Nondeductable.Select(Function(row) CDate(row("delayend"))).Max
+                        tempRow("delaystart") = GetMilTime(.Delays.Nondeductable.Select(Function(row) CDate(row("delaystart"))).Min.ToString)
+                        tempRow("delayend") = GetMilTime(.Delays.Nondeductable.Select(Function(row) CDate(row("delayend"))).Max.ToString)
                         tempRow("delayhours") = .Delays.Nondeductable.Sum(Function(row) CDbl(row("delayhours").ToString))
                     End With
                 End If
@@ -566,7 +569,7 @@ INSERT INTO [opreports].[dbo].[crane_delays]
     Private Sub SaveHatchcoverMoves(crn As Crane, refkeyCrane As Integer)
         Dim insertcommand As New ADODB.Command
         insertcommand.ActiveConnection = OPConnection
-        Dim consolidatedTable As DataTable
+        Dim consolidatedTable As New DataTable
         consolidatedTable.Merge(crn.Moves.Hatchcover)
         consolidatedTable.Merge(crn.Moves.Hatchcover1)
         For Each mve As DataRow In consolidatedTable.Rows
@@ -583,8 +586,8 @@ INSERT INTO [opreports].[dbo].[crane_hatchcovers]
      VALUES
            ({refkeyCrane}
            ,'{crn.CraneName}'
-           ,'{mve("actual_ib").ToString}'
-           ,'{mve("actual_ob").ToString}'
+           ,'{ReplaceWithRegistry(mve("actual_ib").ToString)}'
+           ,'{ReplaceWithRegistry(mve("actual_ob").ToString)}'
            ,{mve("baynum").ToString}
            ,{mve("cvrsze20").ToString}
            ,{mve("cvrsze40").ToString})
@@ -597,7 +600,7 @@ INSERT INTO [opreports].[dbo].[crane_hatchcovers]
     Private Sub SaveGearboxMoves(crn As Crane, refkeyCrane As Integer)
         Dim insertcommand As New ADODB.Command
         insertcommand.ActiveConnection = OPConnection
-        Dim consolidatedTable As DataTable
+        Dim consolidatedTable As New DataTable
         consolidatedTable.Merge(crn.Moves.Gearbox)
         consolidatedTable.Merge(crn.Moves.Gearbox1)
         For Each mve As DataRow In consolidatedTable.Rows
@@ -614,8 +617,8 @@ INSERT INTO [opreports].[dbo].[crane_gearboxes]
      VALUES
            ({refkeyCrane}
            ,'{crn.CraneName}'
-           ,'{mve("actual_ib").ToString}'
-           ,'{mve("actual_ob").ToString}'
+           ,'{ReplaceWithRegistry(mve("actual_ib").ToString)}'
+           ,'{ReplaceWithRegistry(mve("actual_ob").ToString)}'
            ,{mve("baynum").ToString}
            ,{mve("gbxsze20").ToString}
            ,{mve("gbxsze40").ToString})
@@ -624,6 +627,14 @@ INSERT INTO [opreports].[dbo].[crane_gearboxes]
             End If
         Next
     End Sub
+
+    Private Function ReplaceWithRegistry(toString As String) As Object
+        If toString.Length > 0 Then
+            Return Me.Registry
+        Else
+            Return Nothing
+        End If
+    End Function
 
     Private Sub SaveContainerMoves(crn As Crane, refkeyCrane As Integer)
         Dim insertcommand As New ADODB.Command
@@ -759,15 +770,11 @@ SELECT  [refkey]
                     temporaryCrane.LastMove = .Fields("last_move").Value
 
                     Dim craneRefkey = .Fields("refkey").Value
-                    Dim informationFiller As New OleDb.OleDbDataAdapter
-                    With informationFiller
-                        GetContainerMoves(temporaryCrane.Moves.Container, craneRefkey)
-                        GetGearboxMoves(temporaryCrane.Moves, craneRefkey)
-                        GetHatchcoverMoves(temporaryCrane.Moves, craneRefkey)
+                    GetContainerMoves(temporaryCrane.Moves.Container, craneRefkey)
+                    GetGearboxMoves(temporaryCrane.Moves, craneRefkey)
+                    GetHatchcoverMoves(temporaryCrane.Moves, craneRefkey)
 
-
-                        PopulateDelays(temporaryCrane, GetCraneDelays(craneRefkey))
-                    End With
+                    PopulateDelays(temporaryCrane, GetCraneDelays(craneRefkey))
                     Crane.Add(temporaryCrane)
                     .MoveNext()
                 End While
@@ -832,7 +839,7 @@ SELECT [actual_ib]
                 For index As Integer = 0 To .Fields.Count - 1
                     tempFieldValues.Add(.Fields(index).Value)
                 Next
-                    If Not .Fields("actual_ib") Is DBNull.Value Then
+                    If Not .Fields("actual_ib").Value = "" Then
                         temporaryCraneData.Hatchcover.Rows.Add(tempFieldValues.ToArray)
                     Else
                         temporaryCraneData.Hatchcover1.Rows.Add(tempFieldValues.ToArray)
@@ -862,7 +869,7 @@ SELECT [actual_ib]
                 For index As Integer = 0 To .Fields.Count - 1
                     tempFieldValues.Add(.Fields(index).Value)
                 Next
-                    If Not .Fields("actual_ib") Is DBNull.Value Then
+                    If Not .Fields("actual_ib").Value = "" Then
                         temporaryCraneData.Gearbox.Rows.Add(tempFieldValues.ToArray)
                     Else
                         temporaryCraneData.Gearbox1.Rows.Add(tempFieldValues.ToArray)

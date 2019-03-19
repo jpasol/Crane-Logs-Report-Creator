@@ -24,6 +24,7 @@ Partial Class CraneCtl
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.tabCraneLog = New System.Windows.Forms.TabControl()
         Me.tabCrane = New System.Windows.Forms.TabPage()
         Me.tabMoves = New System.Windows.Forms.TabControl()
@@ -1167,6 +1168,7 @@ Partial Class CraneCtl
         'DataGridViewTextBoxColumn20
         '
         Me.DataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle1.Format = "0000\H 00/00/0000"
         DataGridViewCellStyle1.NullValue = Nothing
         Me.DataGridViewTextBoxColumn20.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridViewTextBoxColumn20.FillWeight = 65.65144!
@@ -1177,6 +1179,8 @@ Partial Class CraneCtl
         'DataGridViewTextBoxColumn21
         '
         Me.DataGridViewTextBoxColumn21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle2.Format = "0000\H 00/00/0000"
+        Me.DataGridViewTextBoxColumn21.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewTextBoxColumn21.FillWeight = 65.65144!
         Me.DataGridViewTextBoxColumn21.HeaderText = "To"
         Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
@@ -1185,8 +1189,8 @@ Partial Class CraneCtl
         'DataGridViewTextBoxColumn22
         '
         Me.DataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle2.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn22.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn22.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewTextBoxColumn22.FillWeight = 65.65144!
         Me.DataGridViewTextBoxColumn22.HeaderText = "Total"
         Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
