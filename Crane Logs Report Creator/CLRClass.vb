@@ -8,14 +8,16 @@ Public Class CLRClass
     Implements IReportswSave
     Implements ICraneLogsReport
 
-    Public Sub New(Registry As String, ByRef N4connection As ADODB.Connection, ByRef OPConnection As ADODB.Connection, Optional Username As String = "")
-        CLRVessel = New Vessel(Registry, OPConnection, N4connection, WithoutUnits:=True)
+    Public Sub New(Registry As String, Optional Username As String = "")
+        CLRVessel = New Vessel(Registry, WithoutUnits:=True)
         Crane = New List(Of Crane)
         CraneLogsData = New CraneLogsData
-        ReportFunctions = New ReportFunctions(OPConnection, N4connection) 'so you dont need to explicitly include the connection as parameter
-        Me.N4Connection = N4connection
-        Me.OPConnection = OPConnection
+        ReportFunctions = New ReportFunctions(OPConnection, N4Connection) 'so you dont need to explicitly include the connection as parameter
+        Dim connections As New Connections
+        Me.N4Connection = connections.N4Connection
+        Me.OPConnection = connections.OPConnection
         Me.UserName = Username
+        Me.Registry = Registry
 
         If Exists() Then
             RetrieveData()
@@ -143,12 +145,7 @@ Public Class CLRClass
     Public ReadOnly Property CraneLogsData As CraneLogsData Implements ICraneLogsReport.CraneLogsData
     Public Property LastPort As Object Implements ICraneLogsReport.LastPort
     Public Property NextPort As Object Implements ICraneLogsReport.NextPort
-
     Public ReadOnly Property Registry As String Implements ICraneLogsReport.Registry
-        Get
-            Return CLRVessel.Registry
-        End Get
-    End Property
 
     Public ReadOnly Property TotalMoves As Double Implements ICraneLogsReport.TotalMoves
         Get
@@ -277,25 +274,33 @@ Public Class CLRClass
 
     Public Sub Save() Implements IReportswSave.Save
         Dim refkeyCLR As Integer
+
+
         DateNow = Date.Now 'get date   
 
+        OPConnection.Open()
+        OPConnection.BeginTrans()
+
         Try
+
             refkeyCLR = SaveCraneLogsReport()
             SaveBerthDelays(refkeyCLR)
             SaveCranes(refkeyCLR)
 
+            OPConnection.CommitTrans()
         Catch ex As Exception
-            MsgBox("Save Unsuccessful, Rolling Back Changes" & vbNewLine &
-                   "Error Message: " & ex.Message)
+            OPConnection.RollbackTrans()
             Throw ex
         End Try
+        OPConnection.Close()
 
     End Sub
 
     Private Function SaveCraneLogsReport() As Integer
+
         Dim insertcommand As New ADODB.Command
-        insertcommand.ActiveConnection = OPConnection
-        insertcommand.CommandText = $"
+            insertcommand.ActiveConnection = OPConnection
+            insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[reports_clr]
            ([registry]
            ,[vslname]
@@ -327,7 +332,7 @@ INSERT INTO [opreports].[dbo].[reports_clr]
            ,NULL)
         "
 
-        Return insertcommand.Execute.Fields("refkey").Value
+            Return insertcommand.Execute.Fields("refkey").Value
 
     End Function
 

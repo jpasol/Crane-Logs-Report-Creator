@@ -40,9 +40,12 @@ Public Class CLRForm
 
         ' This call is required by the designer.
         InitializeComponent()
-        clsCLR = New CLRClass(Registry, N4Connection, OPConnection, Username)
-        connN4 = N4Connection
-        connOP = OPConnection
+        clsCLR = New CLRClass(Registry, Username)
+
+        Dim connections As New Reports.Connections
+
+        connN4 = connections.N4Connection
+        connOP = connections.OPConnection
         Me.username = Username
 
         AddHandler cmdNext1.Click, AddressOf NextForm
@@ -377,7 +380,8 @@ Public Class CLRForm
                 End If
             End If
         Catch ex As Exception
-            MsgBox("Rolling Back Changes")
+            MsgBox("Save Unsuccessful, Rolling Back Changes" & vbNewLine &
+                  "Error Message: " & ex.Message)
             connOP.RollbackTrans()
         End Try
 
