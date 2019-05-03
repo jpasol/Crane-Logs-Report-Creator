@@ -58,8 +58,16 @@ Partial Class CLRForm
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.tabDeduct = New System.Windows.Forms.TabPage()
         Me.SumDeductable = New System.Windows.Forms.DataGridView()
+        Me.crane = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.delayStart = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.delayEnd = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.totalDelayHours = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabNonDeduct = New System.Windows.Forms.TabPage()
         Me.SumNonDeductable = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
@@ -136,14 +144,6 @@ Partial Class CLRForm
         Me.AddCrane1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteCrane = New System.Windows.Forms.ToolStripMenuItem()
         Me.DateFormat = New System.Windows.Forms.ToolTip(Me.components)
-        Me.crane = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.delayStart = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.delayEnd = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.totalDelayHours = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLRMenu.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -497,6 +497,38 @@ Partial Class CLRForm
         Me.SumDeductable.Size = New System.Drawing.Size(630, 204)
         Me.SumDeductable.TabIndex = 55
         '
+        'crane
+        '
+        Me.crane.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.crane.DataPropertyName = "crane"
+        Me.crane.HeaderText = "Crane"
+        Me.crane.Name = "crane"
+        Me.crane.ReadOnly = True
+        Me.crane.Width = 79
+        '
+        'delayStart
+        '
+        Me.delayStart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.delayStart.DataPropertyName = "delaystart"
+        Me.delayStart.HeaderText = "From"
+        Me.delayStart.Name = "delayStart"
+        Me.delayStart.Width = 74
+        '
+        'delayEnd
+        '
+        Me.delayEnd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.delayEnd.DataPropertyName = "delayend"
+        Me.delayEnd.HeaderText = "To"
+        Me.delayEnd.Name = "delayEnd"
+        Me.delayEnd.Width = 52
+        '
+        'totalDelayHours
+        '
+        Me.totalDelayHours.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.totalDelayHours.DataPropertyName = "delayhours"
+        Me.totalDelayHours.HeaderText = "Total Hours"
+        Me.totalDelayHours.Name = "totalDelayHours"
+        '
         'tabNonDeduct
         '
         Me.tabNonDeduct.Controls.Add(Me.SumNonDeductable)
@@ -520,6 +552,38 @@ Partial Class CLRForm
         Me.SumNonDeductable.Name = "SumNonDeductable"
         Me.SumNonDeductable.Size = New System.Drawing.Size(630, 204)
         Me.SumNonDeductable.TabIndex = 56
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "crane"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Crane"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 79
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "delaystart"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "From"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 74
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "delayend"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "To"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.Width = 52
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "delayhours"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Total Hours"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         '
         'GroupBox2
         '
@@ -1133,9 +1197,9 @@ Partial Class CLRForm
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.0!)
         Me.Label5.Location = New System.Drawing.Point(121, 82)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(138, 22)
+        Me.Label5.Size = New System.Drawing.Size(137, 22)
         Me.Label5.TabIndex = 13
-        Me.Label5.Text = "ATD (First LIne)"
+        Me.Label5.Text = "ATD (Last LIne)"
         '
         'Label6
         '
@@ -1315,70 +1379,6 @@ Partial Class CLRForm
         'DateFormat
         '
         Me.DateFormat.ToolTipTitle = "ToolTipForDateFormat"
-        '
-        'crane
-        '
-        Me.crane.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.crane.DataPropertyName = "crane"
-        Me.crane.HeaderText = "Crane"
-        Me.crane.Name = "crane"
-        Me.crane.ReadOnly = True
-        Me.crane.Width = 79
-        '
-        'delayStart
-        '
-        Me.delayStart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.delayStart.DataPropertyName = "delaystart"
-        Me.delayStart.HeaderText = "From"
-        Me.delayStart.Name = "delayStart"
-        Me.delayStart.Width = 74
-        '
-        'delayEnd
-        '
-        Me.delayEnd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.delayEnd.DataPropertyName = "delayend"
-        Me.delayEnd.HeaderText = "To"
-        Me.delayEnd.Name = "delayEnd"
-        Me.delayEnd.Width = 52
-        '
-        'totalDelayHours
-        '
-        Me.totalDelayHours.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.totalDelayHours.DataPropertyName = "delayhours"
-        Me.totalDelayHours.HeaderText = "Total Hours"
-        Me.totalDelayHours.Name = "totalDelayHours"
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "crane"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Crane"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 79
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "delaystart"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "From"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 74
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "delayend"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "To"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.Width = 52
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "delayhours"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Total Hours"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
         '
         'CLRForm
         '

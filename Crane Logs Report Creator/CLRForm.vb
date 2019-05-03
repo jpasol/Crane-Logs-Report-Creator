@@ -355,37 +355,54 @@ Public Class CLRForm
         Dim result As MsgBoxResult
 
         Dim existsResult As Boolean = clsCLR.Exists
-        connOP.Open()
-        connOP.BeginTrans()
-
         Try
             If existsResult = True Then
                 result = MsgBox("Update Crane Log Report?", vbYesNo)
-                If result = vbYes Then
-                    clsCLR.CancelExistingCraneLogsReport() 'cancelled succesfully
-                    clsCLR.Save()
-                    connOP.CommitTrans()
-                    MsgBox("Saved Successfully!")
-                Else
-                    connOP.RollbackTrans()
-                End If
+                If result = vbYes Then clsCLR.UpdateReport()
             Else
                 result = MsgBox("Continue Saving?", vbYesNo)
-                If result = vbYes Then
-                    clsCLR.Save()
-                    connOP.CommitTrans()
-                    MsgBox("Saved Successfully!")
-                Else
-                    connOP.RollbackTrans()
-                End If
+                If result = vbYes Then clsCLR.SaveReport()
             End If
-        Catch ex As Exception
-            MsgBox("Save Unsuccessful, Rolling Back Changes" & vbNewLine &
-                  "Error Message: " & ex.Message)
-            connOP.RollbackTrans()
+
+        Catch
+
         End Try
 
-        connOP.Close()
+
+        'connOP.Open()
+        'connOP.BeginTrans()
+
+
+
+
+        'Try
+        '    If existsResult = True Then
+        '        result = MsgBox("Update Crane Log Report?", vbYesNo)
+        '        If result = vbYes Then
+        '            clsCLR.CancelExistingCraneLogsReport() 'cancelled succesfully
+        '            clsCLR.Save()
+        '            connOP.CommitTrans()
+        '            MsgBox("Saved Successfully!")
+        '        Else
+        '            connOP.RollbackTrans()
+        '        End If
+        '    Else
+        '        result = MsgBox("Continue Saving?", vbYesNo)
+        '        If result = vbYes Then
+        '            clsCLR.Save()
+        '            connOP.CommitTrans()
+        '            MsgBox("Saved Successfully!")
+        '        Else
+        '            connOP.RollbackTrans()
+        '        End If
+        '    End If
+        'Catch ex As Exception
+        '    MsgBox("Save Unsuccessful, Rolling Back Changes" & vbNewLine &
+        '          "Error Message: " & ex.Message)
+        '    connOP.RollbackTrans()
+        'End Try
+
+        'connOP.Close()
 
 
     End Sub

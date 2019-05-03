@@ -109,6 +109,11 @@ Partial Class CraneCtl
         Me.mskDescription = New System.Windows.Forms.MaskedTextBox()
         Me.cmbDelays = New System.Windows.Forms.ComboBox()
         Me.dgvDelays = New System.Windows.Forms.DataGridView()
+        Me.delaykind = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtNDelays = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -127,11 +132,6 @@ Partial Class CraneCtl
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblGantry = New System.Windows.Forms.Label()
-        Me.delaykind = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.tabCraneLog.SuspendLayout()
         Me.tabCrane.SuspendLayout()
         Me.tabMoves.SuspendLayout()
@@ -961,6 +961,54 @@ Partial Class CraneCtl
         Me.dgvDelays.Size = New System.Drawing.Size(1296, 207)
         Me.dgvDelays.TabIndex = 9
         '
+        'delaykind
+        '
+        Me.delaykind.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.delaykind.HeaderText = "Delay Kind"
+        Me.delaykind.Items.AddRange(New Object() {"Deductable", "Break", "Nondeductable"})
+        Me.delaykind.Name = "delaykind"
+        Me.delaykind.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.delaykind.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.delaykind.Width = 125
+        '
+        'DataGridViewTextBoxColumn19
+        '
+        Me.DataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.DataGridViewTextBoxColumn19.FillWeight = 203.0457!
+        Me.DataGridViewTextBoxColumn19.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
+        Me.DataGridViewTextBoxColumn19.Width = 131
+        '
+        'DataGridViewTextBoxColumn20
+        '
+        Me.DataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle1.Format = "0000\H 00/00/0000"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn20.DefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridViewTextBoxColumn20.FillWeight = 65.65144!
+        Me.DataGridViewTextBoxColumn20.HeaderText = "From"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        Me.DataGridViewTextBoxColumn20.Width = 78
+        '
+        'DataGridViewTextBoxColumn21
+        '
+        Me.DataGridViewTextBoxColumn21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle2.Format = "0000\H 00/00/0000"
+        Me.DataGridViewTextBoxColumn21.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridViewTextBoxColumn21.FillWeight = 65.65144!
+        Me.DataGridViewTextBoxColumn21.HeaderText = "To"
+        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
+        Me.DataGridViewTextBoxColumn21.Width = 54
+        '
+        'DataGridViewTextBoxColumn22
+        '
+        Me.DataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn22.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DataGridViewTextBoxColumn22.FillWeight = 65.65144!
+        Me.DataGridViewTextBoxColumn22.HeaderText = "Total"
+        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
+        '
         'Label1
         '
         Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -1150,51 +1198,6 @@ Partial Class CraneCtl
         Me.lblGantry.Text = "Label1"
         Me.lblGantry.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'delaykind
-        '
-        Me.delaykind.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.delaykind.HeaderText = "Delay Kind"
-        Me.delaykind.Name = "delaykind"
-        Me.delaykind.Width = 125
-        '
-        'DataGridViewTextBoxColumn19
-        '
-        Me.DataGridViewTextBoxColumn19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.DataGridViewTextBoxColumn19.FillWeight = 203.0457!
-        Me.DataGridViewTextBoxColumn19.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
-        Me.DataGridViewTextBoxColumn19.Width = 131
-        '
-        'DataGridViewTextBoxColumn20
-        '
-        Me.DataGridViewTextBoxColumn20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle1.Format = "0000\H 00/00/0000"
-        DataGridViewCellStyle1.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn20.DefaultCellStyle = DataGridViewCellStyle1
-        Me.DataGridViewTextBoxColumn20.FillWeight = 65.65144!
-        Me.DataGridViewTextBoxColumn20.HeaderText = "From"
-        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
-        Me.DataGridViewTextBoxColumn20.Width = 78
-        '
-        'DataGridViewTextBoxColumn21
-        '
-        Me.DataGridViewTextBoxColumn21.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle2.Format = "0000\H 00/00/0000"
-        Me.DataGridViewTextBoxColumn21.DefaultCellStyle = DataGridViewCellStyle2
-        Me.DataGridViewTextBoxColumn21.FillWeight = 65.65144!
-        Me.DataGridViewTextBoxColumn21.HeaderText = "To"
-        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
-        Me.DataGridViewTextBoxColumn21.Width = 54
-        '
-        'DataGridViewTextBoxColumn22
-        '
-        Me.DataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle3.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn22.DefaultCellStyle = DataGridViewCellStyle3
-        Me.DataGridViewTextBoxColumn22.FillWeight = 65.65144!
-        Me.DataGridViewTextBoxColumn22.HeaderText = "Total"
-        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
-        '
         'CraneCtl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1330,7 +1333,7 @@ Partial Class CraneCtl
     Friend WithEvents cntsze20 As DataGridViewTextBoxColumn
     Friend WithEvents cntsze40 As DataGridViewTextBoxColumn
     Friend WithEvents cntsze45 As DataGridViewTextBoxColumn
-    Friend WithEvents delaykind As DataGridViewTextBoxColumn
+    Friend WithEvents delaykind As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn

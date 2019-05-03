@@ -381,15 +381,13 @@ Public Class CraneCtl
 
         For Each table As DataTable In crnCrane.Delays.Tables 'reflection to delay view
             For Each row As DataRow In table.Rows
-                With dgvDelays.Rows
-                    Dim tablenameList As New List(Of Object)
-                    tablenameList.Add(table.TableName)
-                    tablenameList.Add(row("description"))
-                    tablenameList.Add(GetMilTime(row("delaystart").ToString))
-                    tablenameList.Add(GetMilTime(row("delayend").ToString))
-                    tablenameList.Add(row("delayhours"))
-                    .Add(tablenameList.ToArray) 'table name union to row array
-                End With
+                Dim tablenameList As New List(Of Object)
+                tablenameList.Add(table.TableName)
+                tablenameList.Add(row("description"))
+                tablenameList.Add(GetMilTime(row("delaystart").ToString))
+                tablenameList.Add(GetMilTime(row("delayend").ToString))
+                tablenameList.Add(row("delayhours"))
+                dgvDelays.Rows.Add(tablenameList.ToArray) 'table name union to row array
             Next
         Next
 
@@ -417,8 +415,8 @@ Public Class CraneCtl
             Dim tempDatatable As DataTable = crnCrane.Delays.Tables(row.Cells(0).Value)
             With tempDatatable
                 tempDatatable.Rows.Add(row.Cells(1).Value,
-                                        row.Cells(2).Value,
-                                        row.Cells(3).Value,
+                                        GetDateTime(row.Cells(2).Value),
+                                        GetDateTime(row.Cells(3).Value),
                                         row.Cells(4).Value)
             End With
         Next
@@ -458,6 +456,26 @@ Public Class CraneCtl
             AddHandler textBox.KeyPress, AddressOf Common_Numeric
         End If
 
+    End Sub
+
+    Private Sub dgvDelays_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDelays.CellEndEdit
+        Dim timeCells As Integer() = {2, 3}
+        If timeCells.Contains(e.ColumnIndex) Then
+            With DirectCast(sender, DataGridView).Rows(e.RowIndex)
+                Dim startTime As Date = GetDateTime(.Cells(2).Value)
+                Dim endTime As Date = GetDateTime(.Cells(3).Value)
+                Dim totalhours As Double = GetSpanHours(startTime, endTime)
+
+                .Cells(4).Value = totalhours
+            End With
+
+        End If
+    End Sub
+
+    Private Sub mskTo_KeyDown(sender As Object, e As KeyEventArgs) Handles mskTo.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            btnAddDelay.PerformClick()
+        End If
     End Sub
 
 End Class

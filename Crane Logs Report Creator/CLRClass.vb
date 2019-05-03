@@ -149,10 +149,7 @@ Public Class CLRClass
 
     Public ReadOnly Property TotalMoves As Double Implements ICraneLogsReport.TotalMoves
         Get
-            For Each crn As Crane In Crane
-                If Crane IsNot Nothing Then TotalMoves += crn.Moves.TotalMoves
-            Next
-            Return TotalMoves
+            Return Crane.AsEnumerable.Where(Function(crn) crn IsNot Nothing).Sum(Function(crn) crn.Moves.TotalMoves)
         End Get
     End Property
 
@@ -209,8 +206,9 @@ Public Class CLRClass
     Public ReadOnly Property NetVesselWorkingTime As Double Implements ICraneLogsReport.NetVesselWorkingTime
         Get
             NetVesselWorkingTime = GrossVesselWorkingTime
+            NetVesselWorkingTime -= Crane.AsEnumerable.Min(Function(crn) crn.Delays.Break.Totalhours)
             For Each crn As Crane In Crane
-                If Crane IsNot Nothing Then NetVesselWorkingTime -= (crn.Delays.Deductable.Totalhours + crn.Delays.Break.Totalhours)
+                If Crane IsNot Nothing Then NetVesselWorkingTime -= (crn.Delays.Deductable.Totalhours)
             Next
             Return NetVesselWorkingTime
         End Get
@@ -230,19 +228,13 @@ Public Class CLRClass
 
     Public ReadOnly Property TotalGrossWorkingHours As Double Implements ICraneLogsReport.TotalGrossWorkingHours
         Get
-            For Each crn As Crane In Crane
-                If Crane IsNot Nothing Then TotalGrossWorkingHours += crn.GrossWorkingHours
-            Next
-            Return TotalGrossWorkingHours
+            Return Crane.AsEnumerable.Where(Function(crn) crn IsNot Nothing).Sum(Function(crn) crn.GrossWorkingHours)
         End Get
     End Property
 
     Public ReadOnly Property TotalNetWorkingHours As Double Implements ICraneLogsReport.TotalNetWorkingHours
         Get
-            For Each crn As Crane In Crane
-                If Crane IsNot Nothing Then TotalNetWorkingHours += crn.NetWorkingHours
-            Next
-            Return TotalGrossWorkingHours
+            Return Crane.AsEnumerable.Where(Function(crn) crn IsNot Nothing).Sum(Function(crn) crn.NetWorkingHours)
         End Get
     End Property
 
@@ -275,11 +267,7 @@ Public Class CLRClass
     Public Sub Save() Implements IReportswSave.Save
         Dim refkeyCLR As Integer
 
-
         DateNow = Date.Now 'get date   
-
-        OPConnection.Open()
-        OPConnection.BeginTrans()
 
         Try
 
@@ -287,12 +275,12 @@ Public Class CLRClass
             SaveBerthDelays(refkeyCLR)
             SaveCranes(refkeyCLR)
 
-            OPConnection.CommitTrans()
+            MsgBox("Saved Successfully!")
         Catch ex As Exception
-            OPConnection.RollbackTrans()
+            MsgBox("Save Unsuccessful, Rolling Back Changes" & vbNewLine &
+      "Error Message: " & ex.Message)
             Throw ex
         End Try
-        OPConnection.Close()
 
     End Sub
 
@@ -373,6 +361,43 @@ INSERT INTO [opreports].[dbo].[crane]
         Next
     End Sub
 
+    Public Sub UpdateReport()
+        OPConnection.Open()
+        OPConnection.BeginTrans()
+
+        Try
+            CancelExistingCraneLogsReport()
+            Save()
+
+            OPConnection.CommitTrans()
+            OPConnection.Close()
+
+        Catch ex As Exception
+            OPConnection.RollbackTrans()
+            OPConnection.Close()
+            Throw ex
+        End Try
+
+    End Sub
+
+    Public Sub SaveReport()
+        OPConnection.Open()
+        OPConnection.BeginTrans()
+
+        Try
+            Save()
+
+            OPConnection.CommitTrans()
+            OPConnection.Close()
+
+        Catch ex As Exception
+
+            OPConnection.RollbackTrans()
+            OPConnection.Close()
+            Throw ex
+        End Try
+    End Sub
+
     Private Sub SaveDelays(crn As Crane, refkeyCrane As Integer)
         SaveDeductableDelays(crn, refkeyCrane)
         SaveBreaktimeDelays(crn, refkeyCrane)
@@ -397,7 +422,7 @@ INSERT INTO [opreports].[dbo].[crane_delays]
            ,'{crn.CraneName}'
            ,'NONDE'
            ,'{delay("description").ToString}'
-           ,'{delay("delaystart").ToString}'
+           ,'{delay("delaystart").ToString})'
            ,'{delay("delayend").ToString}'
            )
 "
@@ -795,7 +820,7 @@ SELECT  [refkey]
             Finally
                 While Not (.EOF Or .BOF)
                     Dim tableName As String = ReportFunctions.ConvertDelayKindtoTableName(.Fields("delay_kind").Value)
-                    Dim description As String = .Fields("description").Value
+                    Dim description As String = GetMilTime(.Fields("description").Value)
                     Dim delayFrom As Date = .Fields("delaystart").Value
                     Dim delayTo As Date = .Fields("delayend").Value
                     Dim span As TimeSpan = delayTo.Subtract(delayFrom)
@@ -926,8 +951,10 @@ SELECT (isnull([move_kind],'') + isnull([category],'')) as 'container'
 
     Public Function Exists() As Boolean Implements IReportswSave.Exists ' no need register parameter since this can only be used when clr class is instantiated
         Dim craneLogsFinder As New ADODB.Command
-        OPConnection.Open()
-        craneLogsFinder.ActiveConnection = OPConnection
+        Dim connections As New Connections
+
+        connections.OPConnection.Open()
+        craneLogsFinder.ActiveConnection = connections.OPConnection
         craneLogsFinder.CommandText = $"Select refkey from reports_clr where registry = '{CLRVessel.Registry}' and (status <> 'VOID' or status IS NULL)" 'shortcut to registry since they will only point to the same thing  
 
         Dim craneLogs As New ADODB.Recordset
@@ -935,7 +962,7 @@ SELECT (isnull([move_kind],'') + isnull([category],'')) as 'container'
 
         With craneLogs
             Dim result As Boolean = Not (.BOF And .EOF)
-            OPConnection.Close()
+            connections.OPConnection.Close()
             Return result
         End With
 
