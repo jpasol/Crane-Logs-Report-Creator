@@ -1,5 +1,4 @@
 ﻿Imports ADODB
-Imports Crane_Logs_Report_Creator
 Imports CrystalDecisions.CrystalReports.Engine
 Imports CrystalDecisions.Windows.Forms
 Imports Reports
@@ -288,7 +287,7 @@ Public Class CLRClass
 
         Dim insertcommand As New ADODB.Command
             insertcommand.ActiveConnection = OPConnection
-            insertcommand.CommandText = $"
+        insertcommand.CommandText = $"
 INSERT INTO [opreports].[dbo].[reports_clr]
            ([registry]
            ,[vslname]
@@ -320,7 +319,8 @@ INSERT INTO [opreports].[dbo].[reports_clr]
            ,NULL)
         "
 
-            Return insertcommand.Execute.Fields("refkey").Value
+        Refkey = insertcommand.Execute.Fields("refkey").Value 'update Refkey
+        Return Refkey
 
     End Function
 
@@ -366,7 +366,8 @@ INSERT INTO [opreports].[dbo].[crane]
         OPConnection.BeginTrans()
 
         Try
-            CancelExistingCraneLogsReport()
+            'CancelExistingCraneLogsReport()
+            DeleteExistingCraneLogsReport()
             Save()
 
             OPConnection.CommitTrans()
@@ -377,6 +378,120 @@ INSERT INTO [opreports].[dbo].[crane]
             OPConnection.Close()
             Throw ex
         End Try
+
+    End Sub
+
+    Private Sub DeleteExistingCraneLogsReport()
+        DeleteCraneLogsReport(Refkey)
+        DeleteBerthDelays(Refkey)
+        DeleteCranesAndDetails(Refkey)
+    End Sub
+
+    Private Sub DeleteBerthDelays(refkey As Integer)
+        Dim deleteBerthDelay As New ADODB.Command
+
+        deleteBerthDelay.ActiveConnection = OPConnection
+        deleteBerthDelay.CommandText = $"
+DELETE FROM [opreports].[dbo].[clr_berthdelays]
+      WHERE clr_refkey = {refkey}
+"
+        deleteBerthDelay.Execute()
+
+    End Sub
+
+    Private Sub DeleteCranesAndDetails(refkey As Integer)
+        For Each craneRefkey In GetCLRCranes(refkey)
+            DeleteCrane(craneRefkey)
+            DeleteContainers(craneRefkey)
+            DeleteDelays(craneRefkey)
+            DeleteGearboxes(craneRefkey)
+            DeleteHatchCovers(craneRefkey)
+        Next
+    End Sub
+
+    Private Sub DeleteHatchCovers(craneRefkey As Integer)
+        Dim deleteBerthDelay As New ADODB.Command
+
+        deleteBerthDelay.ActiveConnection = OPConnection
+        deleteBerthDelay.CommandText = $"
+DELETE FROM [opreports].[dbo].[crane_hatchcovers]
+      WHERE crane_refkey = {craneRefkey}
+"
+        deleteBerthDelay.Execute()
+    End Sub
+
+    Private Sub DeleteGearboxes(craneRefkey As Integer)
+        Dim deleteBerthDelay As New ADODB.Command
+
+        deleteBerthDelay.ActiveConnection = OPConnection
+        deleteBerthDelay.CommandText = $"
+DELETE FROM [opreports].[dbo].[crane_gearboxes]
+      WHERE crane_refkey = {craneRefkey}
+"
+        deleteBerthDelay.Execute()
+    End Sub
+
+    Private Sub DeleteDelays(craneRefkey As Integer)
+        Dim deleteBerthDelay As New ADODB.Command
+
+        deleteBerthDelay.ActiveConnection = OPConnection
+        deleteBerthDelay.CommandText = $"
+DELETE FROM [opreports].[dbo].[crane_delays]
+      WHERE crane_refkey = {craneRefkey}
+"
+        deleteBerthDelay.Execute()
+    End Sub
+
+    Private Sub DeleteContainers(craneRefkey As Integer)
+        Dim deleteBerthDelay As New ADODB.Command
+
+        deleteBerthDelay.ActiveConnection = OPConnection
+        deleteBerthDelay.CommandText = $"
+DELETE FROM [opreports].[dbo].[crane_containers]
+      WHERE crane_refkey = {craneRefkey}
+"
+        deleteBerthDelay.Execute()
+
+    End Sub
+
+    Private Sub DeleteCrane(craneRefkey As Integer)
+        Dim deleteBerthDelay As New ADODB.Command
+
+        deleteBerthDelay.ActiveConnection = OPConnection
+        deleteBerthDelay.CommandText = $"
+DELETE FROM [opreports].[dbo].[crane]
+      WHERE refkey = {craneRefkey}
+"
+        deleteBerthDelay.Execute()
+
+    End Sub
+
+    Private Function GetCLRCranes(refkey As Integer) As List(Of Integer)
+
+        Dim craneRefkeys As New ADODB.Command
+
+        craneRefkeys.ActiveConnection = OPConnection
+        craneRefkeys.CommandText = $"
+SELECT [refkey]
+  FROM [opreports].[dbo].[crane]
+      WHERE clr_refkey = {refkey}
+"
+        Dim tempDatatable As New DataTable
+        Dim tempAdapter As New OleDb.OleDbDataAdapter
+        tempAdapter.Fill(tempDatatable, craneRefkeys.Execute())
+
+        Return tempDatatable.AsEnumerable.Select(Of Integer)(Function(row) row("refkey")).Distinct().ToList()
+    End Function
+
+    Private Sub DeleteCraneLogsReport(refkey As Integer)
+        Dim deleteCLR As New ADODB.Command
+
+        deleteCLR.ActiveConnection = OPConnection
+        deleteCLR.CommandText = $"
+DELETE FROM [opreports].[dbo].[reports_clr]
+      WHERE refkey = {refkey}
+"
+        deleteCLR.Execute()
 
     End Sub
 
@@ -432,115 +547,115 @@ INSERT INTO [opreports].[dbo].[crane_delays]
         Next
     End Sub
 
-    Friend Sub CancelExistingCraneLogsReport()
-        Try
-            CancelCraneLogReport(Refkey)
-            'CancelBerthDelays(Refkey)
-            'CancelCrane(Refkey)
-        Catch ex As Exception
-            MsgBox("Cancellation Unsuccessful" & vbNewLine &
-                    "Error Message: " & ex.Message)
-            Throw ex
-        End Try
+    '    Friend Sub CancelExistingCraneLogsReport()
+    '        Try
+    '            CancelCraneLogReport(Refkey)
+    '            'CancelBerthDelays(Refkey)
+    '            'CancelCrane(Refkey)
+    '        Catch ex As Exception
+    '            MsgBox("Cancellation Unsuccessful" & vbNewLine &
+    '                    "Error Message: " & ex.Message)
+    '            Throw ex
+    '        End Try
 
-    End Sub
+    '    End Sub
 
-    Private Sub CancelCrane(refkey As Integer)
-        Dim craneRefkey As Integer = GetCraneRefkey(refkey)
+    '    Private Sub CancelCrane(refkey As Integer)
+    '        Dim craneRefkey As Integer = GetCraneRefkey(refkey)
 
-        Dim cancelCLR As New ADODB.Command
-        cancelCLR.ActiveConnection = OPConnection
-        cancelCLR.CommandText = $"
-UPDATE [opreports].[dbo].[clr_berthdelays]
-   SET [status] = 'VOID'
- WHERE [clr_refkey] = {refkey}
-"
-        cancelCLR.Execute()
+    '        Dim cancelCLR As New ADODB.Command
+    '        cancelCLR.ActiveConnection = OPConnection
+    '        cancelCLR.CommandText = $"
+    'UPDATE [opreports].[dbo].[clr_berthdelays]
+    '   SET [status] = 'VOID'
+    ' WHERE [clr_refkey] = {refkey}
+    '"
+    '        cancelCLR.Execute()
 
-        CancelCraneContainers(craneRefkey)
-        CancelCraneGearboxes(craneRefkey)
-        CancelCraneHatchcovers(craneRefkey)
-        CancelCraneDelays(craneRefkey)
+    '        CancelCraneContainers(craneRefkey)
+    '        CancelCraneGearboxes(craneRefkey)
+    '        CancelCraneHatchcovers(craneRefkey)
+    '        CancelCraneDelays(craneRefkey)
 
-    End Sub
+    '    End Sub
 
-    Private Sub CancelCraneDelays(craneRefkey As Integer)
-        Dim cancelCraneDelays As New ADODB.Command
-        cancelCraneDelays.ActiveConnection = OPConnection
-        cancelCraneDelays.CommandText = $"
-UPDATE [opreports].[dbo].[crane_containers]
-   SET [status] = 'VOID'
- WHERE [crane_refkey] = {craneRefkey}
-"
-        cancelCraneDelays.Execute()
-    End Sub
+    '    Private Sub CancelCraneDelays(craneRefkey As Integer)
+    '        Dim cancelCraneDelays As New ADODB.Command
+    '        cancelCraneDelays.ActiveConnection = OPConnection
+    '        cancelCraneDelays.CommandText = $"
+    'UPDATE [opreports].[dbo].[crane_containers]
+    '   SET [status] = 'VOID'
+    ' WHERE [crane_refkey] = {craneRefkey}
+    '"
+    '        cancelCraneDelays.Execute()
+    '    End Sub
 
-    Private Sub CancelCraneHatchcovers(craneRefkey As Integer)
-        Dim cancelCraneHatchcovers As New ADODB.Command
-        cancelCraneHatchcovers.ActiveConnection = OPConnection
-        cancelCraneHatchcovers.CommandText = $"
-UPDATE [opreports].[dbo].[crane_containers]
-   SET [status] = 'VOID'
- WHERE [crane_refkey] = {craneRefkey}
-"
-        cancelCraneHatchcovers.Execute()
-    End Sub
+    '    Private Sub CancelCraneHatchcovers(craneRefkey As Integer)
+    '        Dim cancelCraneHatchcovers As New ADODB.Command
+    '        cancelCraneHatchcovers.ActiveConnection = OPConnection
+    '        cancelCraneHatchcovers.CommandText = $"
+    'UPDATE [opreports].[dbo].[crane_containers]
+    '   SET [status] = 'VOID'
+    ' WHERE [crane_refkey] = {craneRefkey}
+    '"
+    '        cancelCraneHatchcovers.Execute()
+    '    End Sub
 
-    Private Sub CancelCraneGearboxes(craneRefkey As Integer)
-        Dim cancelCraneGearboxes As New ADODB.Command
-        cancelCraneGearboxes.ActiveConnection = OPConnection
-        cancelCraneGearboxes.CommandText = $"
-UPDATE [opreports].[dbo].[crane_containers]
-   SET [status] = 'VOID'
- WHERE [crane_refkey] = {craneRefkey}
-"
-        cancelCraneGearboxes.Execute()
-    End Sub
+    '    Private Sub CancelCraneGearboxes(craneRefkey As Integer)
+    '        Dim cancelCraneGearboxes As New ADODB.Command
+    '        cancelCraneGearboxes.ActiveConnection = OPConnection
+    '        cancelCraneGearboxes.CommandText = $"
+    'UPDATE [opreports].[dbo].[crane_containers]
+    '   SET [status] = 'VOID'
+    ' WHERE [crane_refkey] = {craneRefkey}
+    '"
+    '        cancelCraneGearboxes.Execute()
+    '    End Sub
 
-    Private Sub CancelCraneContainers(craneRefkey As Integer)
-        Dim cancelCraneContainers As New ADODB.Command
-        cancelCraneContainers.ActiveConnection = OPConnection
-        cancelCraneContainers.CommandText = $"
-UPDATE [opreports].[dbo].[crane_containers]
-   SET [status] = 'VOID'
- WHERE [crane_refkey] = {craneRefkey}
-"
-        cancelCraneContainers.Execute()
+    '    Private Sub CancelCraneContainers(craneRefkey As Integer)
+    '        Dim cancelCraneContainers As New ADODB.Command
+    '        cancelCraneContainers.ActiveConnection = OPConnection
+    '        cancelCraneContainers.CommandText = $"
+    'UPDATE [opreports].[dbo].[crane_containers]
+    '   SET [status] = 'VOID'
+    ' WHERE [crane_refkey] = {craneRefkey}
+    '"
+    '        cancelCraneContainers.Execute()
 
-    End Sub
+    '    End Sub
 
-    Private Function GetCraneRefkey(refkey As Integer) As Integer
-        Dim craneRefkey As New ADODB.Command
-        craneRefkey.ActiveConnection = OPConnection
-        craneRefkey.CommandText = $"
-SELECT TOP 1 [refkey]
-  FROM [opreports].[dbo].[crane]
-	WHERE [clr_refkey] = {refkey}
-"
-        Return craneRefkey.Execute.Fields("refkey").Value
-    End Function
+    '    Private Function GetCraneRefkey(refkey As Integer) As Integer
+    '        Dim craneRefkey As New ADODB.Command
+    '        craneRefkey.ActiveConnection = OPConnection
+    '        craneRefkey.CommandText = $"
+    'SELECT TOP 1 [refkey]
+    '  FROM [opreports].[dbo].[crane]
+    '	WHERE [clr_refkey] = {refkey}
+    '"
+    '        Return craneRefkey.Execute.Fields("refkey").Value
+    '    End Function
 
-    Private Sub CancelBerthDelays(refkey As Integer)
-        Dim cancelCLR As New ADODB.Command
-        cancelCLR.ActiveConnection = OPConnection
-        cancelCLR.CommandText = $"
-UPDATE [opreports].[dbo].[clr_berthdelays]
-   SET [status] = 'VOID'
- WHERE [clr_refkey] = {refkey}
-"
-        cancelCLR.Execute()
-    End Sub
+    '    Private Sub CancelBerthDelays(refkey As Integer)
+    '        Dim cancelCLR As New ADODB.Command
+    '        cancelCLR.ActiveConnection = OPConnection
+    '        cancelCLR.CommandText = $"
+    'UPDATE [opreports].[dbo].[clr_berthdelays]
+    '   SET [status] = 'VOID'
+    ' WHERE [clr_refkey] = {refkey}
+    '"
+    '        cancelCLR.Execute()
+    '    End Sub
 
-    Private Sub CancelCraneLogReport(refkey As Integer)
-        Dim cancelCLR As New ADODB.Command
-        cancelCLR.ActiveConnection = OPConnection
-        cancelCLR.CommandText = $"
-UPDATE [opreports].[dbo].[reports_clr]
-   SET [status] = 'VOID'
- WHERE [refkey] = {refkey}
-"
-        cancelCLR.Execute()
-    End Sub
+    '    Private Sub CancelCraneLogReport(refkey As Integer)
+    '        Dim cancelCLR As New ADODB.Command
+    '        cancelCLR.ActiveConnection = OPConnection
+    '        cancelCLR.CommandText = $"
+    'UPDATE [opreports].[dbo].[reports_clr]
+    '   SET [status] = 'VOID'
+    ' WHERE [refkey] = {refkey}
+    '"
+    '        cancelCLR.Execute()
+    '    End Sub
 
     Private Sub SaveBreaktimeDelays(crn As Crane, refkeyCrane As Integer)
         Dim insertcommand As New ADODB.Command
