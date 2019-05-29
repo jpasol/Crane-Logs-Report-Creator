@@ -263,9 +263,9 @@ Public Class CLRForm
                 Dim teu As Single
 
                 With clsCLR.Crane.AsEnumerable
-                    twenty = .Sum(Function(crn) crn.Moves.Container.TotalMoves(20, freight, cranemove))
-                    forty = .Sum(Function(crn) crn.Moves.Container.TotalMoves(40, freight, cranemove))
-                    ffive = .Sum(Function(crn) crn.Moves.Container.TotalMoves(45, freight, cranemove))
+                    twenty = .Sum(Function(crn) crn.Moves.Container.TotalUnits(20, freight, cranemove))
+                    forty = .Sum(Function(crn) crn.Moves.Container.TotalUnits(40, freight, cranemove))
+                    ffive = .Sum(Function(crn) crn.Moves.Container.TotalUnits(45, freight, cranemove))
                     unit = twenty + forty + ffive
                     teu = (twenty) + (forty * 2) + (ffive * 2.25)
 
