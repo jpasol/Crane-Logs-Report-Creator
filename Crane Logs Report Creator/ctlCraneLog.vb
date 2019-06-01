@@ -470,6 +470,7 @@ Public Class CraneCtl
             End With
 
         End If
+        dgvDelays_LostFocus(dgvDelays, New EventArgs)
     End Sub
 
     Private Sub mskTo_KeyDown(sender As Object, e As KeyEventArgs) Handles mskTo.KeyDown
