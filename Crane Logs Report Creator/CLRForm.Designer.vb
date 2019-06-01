@@ -494,7 +494,6 @@ Partial Class CLRForm
         Me.SumDeductable.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.crane, Me.delayStart, Me.delayEnd, Me.totalDelayHours})
         Me.SumDeductable.Location = New System.Drawing.Point(6, 6)
         Me.SumDeductable.Name = "SumDeductable"
-        Me.SumDeductable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.SumDeductable.Size = New System.Drawing.Size(630, 204)
         Me.SumDeductable.TabIndex = 55
         '
@@ -513,7 +512,6 @@ Partial Class CLRForm
         Me.delayStart.DataPropertyName = "delaystart"
         Me.delayStart.HeaderText = "From"
         Me.delayStart.Name = "delayStart"
-        Me.delayStart.ReadOnly = True
         Me.delayStart.Width = 74
         '
         'delayEnd
@@ -522,7 +520,6 @@ Partial Class CLRForm
         Me.delayEnd.DataPropertyName = "delayend"
         Me.delayEnd.HeaderText = "To"
         Me.delayEnd.Name = "delayEnd"
-        Me.delayEnd.ReadOnly = True
         Me.delayEnd.Width = 52
         '
         'totalDelayHours
@@ -531,7 +528,6 @@ Partial Class CLRForm
         Me.totalDelayHours.DataPropertyName = "delayhours"
         Me.totalDelayHours.HeaderText = "Total Hours"
         Me.totalDelayHours.Name = "totalDelayHours"
-        Me.totalDelayHours.ReadOnly = True
         '
         'tabNonDeduct
         '
@@ -554,7 +550,6 @@ Partial Class CLRForm
         Me.SumNonDeductable.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
         Me.SumNonDeductable.Location = New System.Drawing.Point(6, 6)
         Me.SumNonDeductable.Name = "SumNonDeductable"
-        Me.SumNonDeductable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.SumNonDeductable.Size = New System.Drawing.Size(630, 204)
         Me.SumNonDeductable.TabIndex = 56
         '
@@ -573,7 +568,6 @@ Partial Class CLRForm
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "delaystart"
         Me.DataGridViewTextBoxColumn5.HeaderText = "From"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
         Me.DataGridViewTextBoxColumn5.Width = 74
         '
         'DataGridViewTextBoxColumn7
@@ -582,7 +576,6 @@ Partial Class CLRForm
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "delayend"
         Me.DataGridViewTextBoxColumn7.HeaderText = "To"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
         Me.DataGridViewTextBoxColumn7.Width = 52
         '
         'DataGridViewTextBoxColumn8
@@ -591,7 +584,6 @@ Partial Class CLRForm
         Me.DataGridViewTextBoxColumn8.DataPropertyName = "delayhours"
         Me.DataGridViewTextBoxColumn8.HeaderText = "Total Hours"
         Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
         '
         'GroupBox2
         '

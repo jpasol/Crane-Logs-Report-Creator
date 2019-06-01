@@ -59,8 +59,7 @@ Public Class CLRForm
         AddHandler mskVFMEnd.TextChanged, AddressOf SumDelays
         AddHandler mskGOBEnd.TextChanged, AddressOf SumDelays
         AddHandler mskPOBEnd.TextChanged, AddressOf SumDelays
-        AddHandler SumDeductable.CellMouseDoubleClick, AddressOf ShowDeductableBreakdown
-        AddHandler SumNonDeductable.CellMouseDoubleClick, AddressOf ShowNonDeductableBreakdown
+
 
 
         summaryTable = New SummaryData.SummaryTableDataTable
@@ -577,32 +576,5 @@ Public Class CLRForm
         End Try
     End Sub
 
-    Private Sub ShowDeductableBreakdown(sender As Object, e As DataGridViewCellMouseEventArgs)
-        Try
-            Dim GantryCrane As Crane = clsCLR.Crane.Find(Function(crn) crn.CraneName = DirectCast(sender, DataGridView).Rows.Item(e.RowIndex).Cells(0).Value)
-            Dim tempTable As New DataTable
 
-            tempTable.Merge(GantryCrane.Delays.Deductable)
-            tempTable.Merge(GantryCrane.Delays.Break)
-
-            breakdown = New Crane_Logs_Report_Creator_Controls.CraneDelayBreakdown(tempTable)
-            breakdown.ShowDialog()
-        Catch
-        End Try
-    End Sub
-
-    Private Sub ShowNonDeductableBreakdown(sender As Object, e As DataGridViewCellMouseEventArgs)
-        Try
-            Dim GantryCrane As Crane = clsCLR.Crane.Find(Function(crn) crn.CraneName = DirectCast(sender, DataGridView).Rows.Item(e.RowIndex).Cells(0).Value)
-            Dim tempTable As New DataTable
-
-            tempTable.Merge(GantryCrane.Delays.Nondeductable)
-
-            breakdown = New Crane_Logs_Report_Creator_Controls.CraneDelayBreakdown(tempTable)
-            breakdown.ShowDialog()
-        Catch
-        End Try
-    End Sub
-
-    Private breakdown As Crane_Logs_Report_Creator_Controls.CraneDelayBreakdown
 End Class

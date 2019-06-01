@@ -266,10 +266,6 @@
       <Name>Reports Interface</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
-    <ProjectReference Include="..\Crane Logs Report Creator Controls\Crane Logs Report Creator Controls.csproj">
-      <Project>{6dddb34b-bcd6-43d7-b11f-06a064c9710c}</Project>
-      <Name>Crane Logs Report Creator Controls</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
