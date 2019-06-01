@@ -264,6 +264,9 @@ Public Class CLRClass
     End Sub
 
     Public Sub Save() Implements IReportswSave.Save
+        OPConnection.Open()
+        OPConnection.BeginTrans()
+
         Dim refkeyCLR As Integer
 
         DateNow = Date.Now 'get date   
@@ -274,10 +277,29 @@ Public Class CLRClass
             SaveBerthDelays(refkeyCLR)
             SaveCranes(refkeyCLR)
 
-            MsgBox("Saved Successfully!")
+            OPConnection.CommitTrans()
+            OPConnection.Close()
         Catch ex As Exception
-            MsgBox("Save Unsuccessful, Rolling Back Changes" & vbNewLine &
-      "Error Message: " & ex.Message)
+            OPConnection.RollbackTrans()
+            OPConnection.Close()
+            Throw ex
+        End Try
+
+    End Sub
+    Public Sub SilentSave()
+
+        Dim refkeyCLR As Integer
+
+        DateNow = Date.Now 'get date   
+
+        Try
+
+            refkeyCLR = SaveCraneLogsReport()
+            SaveBerthDelays(refkeyCLR)
+            SaveCranes(refkeyCLR)
+
+        Catch ex As Exception
+
             Throw ex
         End Try
 
@@ -368,14 +390,15 @@ INSERT INTO [opreports].[dbo].[crane]
         Try
             'CancelExistingCraneLogsReport()
             DeleteExistingCraneLogsReport()
-            Save()
+            SilentSave()
 
             OPConnection.CommitTrans()
             OPConnection.Close()
-
+            MessageBox.Show("Saved Successfully!")
         Catch ex As Exception
             OPConnection.RollbackTrans()
             OPConnection.Close()
+            MessageBox.Show("Saving Failed, Undoing Changes")
             Throw ex
         End Try
 
@@ -496,19 +519,12 @@ DELETE FROM [opreports].[dbo].[reports_clr]
     End Sub
 
     Public Sub SaveReport()
-        OPConnection.Open()
-        OPConnection.BeginTrans()
-
         Try
             Save()
-
-            OPConnection.CommitTrans()
-            OPConnection.Close()
-
+            MsgBox("Saved Successfully!")
         Catch ex As Exception
-
-            OPConnection.RollbackTrans()
-            OPConnection.Close()
+            MsgBox("Save Unsuccessful, Rolling Back Changes" & vbNewLine &
+      "Error Message: " & ex.Message)
             Throw ex
         End Try
     End Sub
@@ -537,7 +553,7 @@ INSERT INTO [opreports].[dbo].[crane_delays]
            ,'{crn.CraneName}'
            ,'NONDE'
            ,'{delay("description").ToString}'
-           ,'{delay("delaystart").ToString})'
+           ,'{delay("delaystart").ToString}'
            ,'{delay("delayend").ToString}'
            )
 "
@@ -935,7 +951,7 @@ SELECT  [refkey]
             Finally
                 While Not (.EOF Or .BOF)
                     Dim tableName As String = ReportFunctions.ConvertDelayKindtoTableName(.Fields("delay_kind").Value)
-                    Dim description As String = GetMilTime(.Fields("description").Value)
+                    Dim description As String = .Fields("description").Value
                     Dim delayFrom As Date = .Fields("delaystart").Value
                     Dim delayTo As Date = .Fields("delayend").Value
                     Dim span As TimeSpan = delayTo.Subtract(delayFrom)
